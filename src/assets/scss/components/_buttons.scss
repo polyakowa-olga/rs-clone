@@ -1,0 +1,32 @@
+.button {
+    flex-shrink: 0;
+    font-size: 1em;
+    padding: 0.5em;
+    color: $color_white;
+    background-color: $color_main;
+    border-radius: 3px;
+    transition: all 0.9s;
+    cursor: pointer;
+    border: solid 1px $color_black;
+
+    &:hover {
+        background-color: $color_main-hover;
+        color: $color_text-hover;
+    }
+
+    &:active {
+        border: solid 1px $color_main-dark;
+    }
+
+}
+
+.disabled {
+    background-color: gray;
+    color: $color_black;
+    cursor: context-menu;
+
+    &:hover {
+        background-color: gray;
+        color: $color_black;
+    }
+}

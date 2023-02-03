@@ -1,0 +1,12 @@
+.header {
+    @include flex-between();
+
+    background-color: $color_main-dark;
+
+    padding: 1em 2em;
+
+}
+
+.page-button-box {
+    @include flex();
+}
