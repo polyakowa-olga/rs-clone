@@ -1,6 +1,6 @@
 {
     "homepage": "",
-    "name": "async-race",
+    "name": "rs-clone",
     "version": "1.0.0",
     "description": "",
     "main": "webpack.base.config.js",
@@ -16,7 +16,7 @@
         "url": ""
     },
     "keywords": [],
-    "author": "Alexander Pepler",
+    "author": "",
     "license": "ISC",
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "5.46.0",
