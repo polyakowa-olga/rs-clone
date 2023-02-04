@@ -1,7 +1,6 @@
-import Element from ".././templates/element";
+import Element from '.././templates/element';
 
 class Footer extends Element {
-
     constructor(tag: string, classes: string[]) {
         super(tag, classes);
     }
@@ -25,7 +24,6 @@ class Footer extends Element {
         `;
         return this.container;
     }
-
 }
 
 export default Footer;

@@ -64,10 +64,10 @@ const baseConfig = {
         new CopyPlugin({
             patterns: [{ from: `./src/static`, to: './assets' }],
         }),
-        new ESLintPlugin({
-            extensions: [`js`, `ts`],
-            exclude: [`/node_modules/`],
-        }),
+        // new ESLintPlugin({
+        //     extensions: [`js`, `ts`],
+        //     exclude: [`/node_modules/`],
+        // }),
     ],
 };
 

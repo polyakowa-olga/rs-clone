@@ -7,7 +7,7 @@ class WinnersPage extends Page {
     createGamePage() {
         const message = document.createElement('div');
         message.textContent = 'winners page';
-        message.classList.add("message");
+        message.classList.add('message');
         return message;
     }
     returnHTML() {

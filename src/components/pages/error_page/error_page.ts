@@ -8,7 +8,7 @@ class ErrorPage extends Page {
     createError() {
         const message = document.createElement('div');
         message.textContent = 'Error 404! The page was not found.';
-        message.classList.add("message");
+        message.classList.add('message');
         return message;
     }
 

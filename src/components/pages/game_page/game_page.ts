@@ -7,7 +7,7 @@ class GamePage extends Page {
     createGamePage() {
         const message = document.createElement('div');
         message.textContent = 'game page';
-        message.classList.add("message");
+        message.classList.add('message');
         return message;
     }
     returnHTML() {

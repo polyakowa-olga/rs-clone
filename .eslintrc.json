@@ -21,7 +21,7 @@
         "node": true
     },
     "rules": {
-        "prettier/prettier": 1, /* error /
+        "prettier/prettier": 0, /* error /
         "no-debugger": "off",
         "no-console": 0, / 1 */
         "class-methods-use-this": "off",

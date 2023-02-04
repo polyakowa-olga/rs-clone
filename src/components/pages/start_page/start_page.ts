@@ -8,7 +8,7 @@ class StartPage extends Page {
     createStartPage() {
         const message = document.createElement('div');
         message.textContent = 'start page';
-        message.classList.add("message");
+        message.classList.add('message');
         return message;
     }
     returnHTML() {
