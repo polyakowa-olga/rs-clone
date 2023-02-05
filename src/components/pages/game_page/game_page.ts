@@ -1,13 +1,19 @@
+/* eslint-disable prettier/prettier */
 import Page from "../../templates/page";
+import CreatePlayers from "../../player/CreatePlayers";
 
 class GamePage extends Page {
+  createPlayer = new CreatePlayers("Pavel", '1500', '700');
   constructor(id: string) {
     super(id);
   }
   createGamePage() {
     const message = document.createElement("div");
-    message.textContent = "game page";
+
+    const createPlaye = this.createPlayer.createDiv();
     message.classList.add("message");
+    message.append(createPlaye);
+
     return message;
   }
   returnHTML() {

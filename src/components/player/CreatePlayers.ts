@@ -1,18 +1,30 @@
 class CreatePlayers {
   name: string;
-  money: number;
-  capital: number;
+  money: string;
+  capital: string;
 
-  constructor(name: string, money: number, capital: number) {
+  constructor(name: string, money: string, capital: string) {
     this.name = name;
     this.money = money;
     this.capital = capital;
   }
 
   createDiv() {
-    console.log(this.name);
-    console.log(this.money);
-    console.log(this.capital);
+    const block = document.createElement("div");
+    const nameBlock = document.createElement("h1");
+    const moneyBlock = document.createElement("h3");
+    const moneyBlockSpan = document.createElement("span");
+    const capitalBlock = document.createElement("h3");
+    const capitalBlockSpan = document.createElement("span");
+
+    nameBlock.innerText = this.name;
+    moneyBlockSpan.innerText = this.money;
+    moneyBlock.innerHTML = moneyBlock.innerText =
+      `Money : ` + moneyBlockSpan.outerHTML;
+    capitalBlockSpan.innerHTML = this.capital;
+    capitalBlock.innerHTML = capitalBlock.innerText =
+      `Capital : ` + capitalBlockSpan.outerHTML;
+    return block;
   }
 }
 
