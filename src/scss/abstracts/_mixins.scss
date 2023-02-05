@@ -1,0 +1,26 @@
+@mixin flex ($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5em;
+    flex-wrap: wrap;
+}
+
+@mixin flex-between ($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+    flex-wrap: wrap;
+}
+
+@mixin flex-center ($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    flex-wrap: wrap;
+}
