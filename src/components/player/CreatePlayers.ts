@@ -17,6 +17,10 @@ class CreatePlayers {
     const capitalBlock = document.createElement("h3");
     const capitalBlockSpan = document.createElement("span");
 
+    block.append(nameBlock);
+    block.append(moneyBlock);
+    block.append(capitalBlock);
+
     nameBlock.innerText = this.name;
     moneyBlockSpan.innerText = this.money;
     moneyBlock.innerHTML = moneyBlock.innerText =
