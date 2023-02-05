@@ -1,6 +1,7 @@
 // import './assets/scss/main.scss';
-import app from "./components/app";
+import App from "./components/app";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const app = new App();
   app.init();
 });

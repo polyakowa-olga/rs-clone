@@ -10,7 +10,9 @@ class CreatePlayers {
   }
 
   createDiv() {
-    return console.log("hello");
+    console.log(this.name);
+    console.log(this.money);
+    console.log(this.capital);
   }
 }
 
