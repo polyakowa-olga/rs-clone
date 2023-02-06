@@ -1,0 +1,27 @@
+//abstracts
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+@import "./abstracts/fonts";
+
+//base
+@import "./base/reset";
+@import "./base/base";
+
+//components
+@import "./components/links";
+@import "./components/buttons";
+@import "./components/gameboard";
+
+//layout
+@import "./layout/footer";
+@import "./layout/header";
+@import "./layout/content";
+
+//pages
+@import "./pages/start-page";
+@import "./pages/game-page";
+@import "./pages/winners-page";
+@import "./pages/error-page";
+
+//player
+@import "./player/player"
