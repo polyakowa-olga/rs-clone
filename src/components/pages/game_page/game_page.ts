@@ -1,4 +1,5 @@
 import Page from "../../templates/page";
+import GameBoard from "../game_page/game-board";
 import CreatePlayers from "../../player/CreatePlayers";
 
 class GamePage extends Page {
@@ -19,6 +20,10 @@ class GamePage extends Page {
   returnHTML() {
     const page = this.createGamePage();
     this.container.append(page);
+
+    const gameBoard = new GameBoard().init();
+    this.container.append(gameBoard);
+
     return this.container;
   }
 }
