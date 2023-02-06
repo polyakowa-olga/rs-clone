@@ -3,7 +3,7 @@ import Page from "../../templates/page";
 import CreatePlayers from "../../player/CreatePlayers";
 
 class GamePage extends Page {
-  createPlayer = new CreatePlayers("Pavel", '1500', '700');
+  createPlayer = new CreatePlayers(1, "Pavel", '1500', '700', "blue");
   constructor(id: string) {
     super(id);
   }
