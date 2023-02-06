@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 abstract class Page {
     protected container: HTMLElement;
 

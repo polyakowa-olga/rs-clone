@@ -62,7 +62,12 @@ const baseConfig = {
             filename: './index.html',
         }),
         new CopyPlugin({
-            patterns: [{ from: `./src/assets`, to: './assets' }],
+            patterns: [{ from: `./src/assets/`, to: './assets' }],
+        }),
+        new ESLintPlugin({
+            extensions: [`js`, `ts`],
+            exclude: [`/node_modules/`],
+
         }),
         // new ESLintPlugin({
         //     extensions: [`js`, `ts`],

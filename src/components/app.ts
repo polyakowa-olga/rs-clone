@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 import Page from './templates/page';
 import Header from './header/header';
 import Footer from './footer/footer';

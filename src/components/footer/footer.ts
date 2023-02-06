@@ -1,13 +1,14 @@
-import Element from '.././templates/element';
+import Element from ".././templates/element";
 
 class Footer extends Element {
-    constructor(tag: string, classes: string[]) {
-        super(tag, classes);
-    }
+  constructor(tag: string, classes: string[]) {
+    super(tag, classes);
+  }
 
-    returnHTML() {
-        // this.container.append(this.createPageButtons());
-        this.container.innerHTML = `
+  returnHTML() {
+    // this.container.append(this.createPageButtons());
+    this.container.innerHTML = `
+
         <div class="year">2022</div>
         <a class="link" href="https://github.com/KOSHAK2008">
           <img class="icon github-icon" src="./assets/github-icon.svg" alt="github_ico">
@@ -22,8 +23,8 @@ class Footer extends Element {
           <img class="icon RSS-icon" src="./icons/rs-school-js.svg" alt="RSS_ico">
         </a>
         `;
-        return this.container;
-    }
+    return this.container;
+  }
 }
 
 export default Footer;

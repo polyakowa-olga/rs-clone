@@ -10,6 +10,7 @@
 //components
 @import "./components/links";
 @import "./components/buttons";
+@import "./components/gameboard";
 
 
 //layout
@@ -22,3 +23,7 @@
 @import "./pages/game-page";
 @import "./pages/winners-page";
 @import "./pages/error-page";
+
+//player
+@import "./player/player"
+
