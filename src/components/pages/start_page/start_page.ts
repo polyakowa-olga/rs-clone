@@ -1,3 +1,4 @@
+
 import Page from "../../templates/page";
 
 class StartPage extends Page {

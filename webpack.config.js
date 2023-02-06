@@ -67,7 +67,12 @@ const baseConfig = {
         new ESLintPlugin({
             extensions: [`js`, `ts`],
             exclude: [`/node_modules/`],
+
         }),
+        // new ESLintPlugin({
+        //     extensions: [`js`, `ts`],
+        //     exclude: [`/node_modules/`],
+        // }),
     ],
 };
 

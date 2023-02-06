@@ -8,6 +8,7 @@ class Footer extends Element {
   returnHTML() {
     // this.container.append(this.createPageButtons());
     this.container.innerHTML = `
+
         <div class="year">2022</div>
         <a class="link" href="https://github.com/KOSHAK2008">
           <img class="icon github-icon" src="./assets/github-icon.svg" alt="github_ico">

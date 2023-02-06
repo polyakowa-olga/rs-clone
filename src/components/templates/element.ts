@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+
 abstract class Element {
     protected container: HTMLElement;
     classes: string[];
