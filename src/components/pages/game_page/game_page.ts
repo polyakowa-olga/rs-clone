@@ -1,16 +1,16 @@
-/* eslint-disable prettier/prettier */
 import Page from "../../templates/page";
 import CreatePlayers from "../../player/CreatePlayers";
 
 class GamePage extends Page {
-  createPlayer = new CreatePlayers(1, "Pavel", '1500', '700', "blue");
+  createPlayer = new CreatePlayers(1, "Pavel", "1500", "700", "blue");
   constructor(id: string) {
     super(id);
   }
   createGamePage() {
     const message = document.createElement("div");
-
     const createPlaye = this.createPlayer.createDiv();
+
+    // message.textContent = "game page";
     message.classList.add("message");
     message.append(createPlaye);
 
