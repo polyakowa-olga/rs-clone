@@ -1,4 +1,3 @@
-
 import Page from "../../templates/page";
 import GameBoard from "../game_page/game-board";
 import CreatePlayers from "../../player/CreatePlayers";
