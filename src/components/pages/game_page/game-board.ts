@@ -19,7 +19,6 @@ export default class GameBoard {
   cardsData: any;/* CHANGE TO INTERFACE */
 
   public init() {
-    this.getCardsData()
     return this.createBoard();
   }
 
@@ -33,7 +32,7 @@ export default class GameBoard {
     return board;
   }
 
-  private createPlayFields() {
+  private async createPlayFields() {
     for (let i = 1; i <= 38; i++) {
       const playField = document.createElement('div');
       playField.classList.add('playField');
@@ -88,28 +87,9 @@ export default class GameBoard {
           break;
       }
 
-      // modify accidental fields
-      if (i === 6 || i === 25 || i === 8 || i === 27 || i === 17 || i === 36) {
-        playField.insertAdjacentHTML('beforeend', boardAccidental);
-        const accidentialField = playField.querySelector('.accidential') as HTMLDivElement
-        switch (true) {
-          case i === 6 || i === 25:
-            accidentialField.innerText = 'FORCE MAJOR'
-            break;
-          case i === 8 || i === 27:
-            accidentialField.innerText = 'CHANCE'
-            break;
-          case i === 17 || i === 36:
-            accidentialField.innerText = 'TAX 6%'
-            break;
-
-        }
-      }
-
       (this.gameBoard as HTMLDivElement).append(playField);
-
     }
-    this.drawBoardElements()
+    await this.drawBoardElements()
   }
 
   private createChips() {
@@ -120,35 +100,37 @@ export default class GameBoard {
     }
   }
 
-  private getCardsData() {
-    // const data = fetch('../../../assets/cards-data.json')
-    //   .then((response) => response.json())
-    // // .then((json) => console.log(json));
-
-    // // this.cardsData = data
-    // // console.log(this.cardsData);
-    // // const data = await fetch('../../../assets/cards-data.json')
-    // // const response = data.json()
-    // // //   .then((response) => response.json())
-    // // //   .then((json) => json.cards);
-    // // // this.cardsData = data
-    // console.log(data);
-
+  private async getCardsData() {
+    const response = await fetch('../../../assets/cards-data.json')
+    const data = await response.json()
+    return data.cards
   }
 
   private async drawBoardElements() {
-    const data = await fetch('../../../assets/cards-data.json')
-      .then((response) => response.json())
-      .then((result) => result)
-    console.log(data);
+    this.cardsData = await this.getCardsData()
 
-    // const fields = this.gameBoard?.querySelectorAll('.playField') as NodeListOf<HTMLDivElement>
-    // fields.forEach((field, index) => {
-    //   const flag = field.querySelector('.flag') as HTMLDivElement
-    //   const logo = field.querySelector('.logo') as HTMLDivElement
-    //   const fieldPrice = field.querySelector('.fieldPrice') as HTMLDivElement
-    //   console.log(data[index])
-    // })
-
+    const fields = this.gameBoard?.querySelectorAll('.playField') as NodeListOf<HTMLDivElement>
+    fields.forEach((field, index) => {
+      const flag = field.querySelector('.flag') as HTMLDivElement
+      const logo = field.querySelector('.logo') as HTMLDivElement
+      const fieldPrice = field.querySelector('.fieldPrice') as HTMLDivElement
+      const currCard = this.cardsData[index]
+      switch (currCard.type) {
+        case 'trade':
+          flag.style.backgroundImage = `url('${currCard.flag}')`
+          logo.style.backgroundImage = `url('${currCard.images}')`
+          fieldPrice.innerText = `$${currCard.price}K`
+          break;
+        case 'common':
+          if ([1, 13, 20, 32].includes(index + 1)) {
+            break
+          }
+          field.insertAdjacentHTML('beforeend', boardAccidental);
+          const acc = field.querySelector('.accidential') as HTMLDivElement
+          if (acc) {
+            acc.innerText = currCard.title
+          }
+      }
+    })
   }
 }
