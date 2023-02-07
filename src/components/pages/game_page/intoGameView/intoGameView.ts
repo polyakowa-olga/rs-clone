@@ -1,6 +1,5 @@
 class createIntoGame {
   constructor(one: string, two: string) {
-    // const view = document.getElementById("playerMainView");
     const button = document.createElement("div");
     const oneNumber = document.createElement("h3");
     const twoNumber = document.createElement("h3");
