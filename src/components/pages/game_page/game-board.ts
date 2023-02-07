@@ -1,8 +1,22 @@
-/* eslint-disable prettier/prettier */
+/* eslint-disable */
 import { boardAccidental, boardBody, boardTradeElement } from "./game-board-src";
+
+// interface ICardsData {
+//   id: number,
+//   type: string,
+//   title: string,
+//   description: string,
+//   price?: number,
+//   tax: number,
+//   country?: string,
+//   owner?: any,
+//   images: string,
+//   flag: string
+// }
 
 export default class GameBoard {
   gameBoard: HTMLDivElement | undefined;
+  cardsData: any;/* CHANGE TO INTERFACE */
 
   public init() {
     return this.createBoard();
@@ -18,7 +32,7 @@ export default class GameBoard {
     return board;
   }
 
-  private createPlayFields() {
+  private async createPlayFields() {
     for (let i = 1; i <= 38; i++) {
       const playField = document.createElement('div');
       playField.classList.add('playField');
@@ -35,7 +49,7 @@ export default class GameBoard {
         case 1 <= i && i <= 12:
           playField.classList.add('top');
           playField.style.top = '0px';
-          playField.style.left = `${13.253 + 6.6265 * (i - 2)}%`;
+          playField.style.left = `${13.55 + 6.6265 * (i - 2)}%`;
           playField.innerHTML = boardTradeElement
           break;
         case i === 13:
@@ -57,7 +71,7 @@ export default class GameBoard {
         case 21 <= i && i <= 31:
           playField.classList.add('bottom');
           playField.style.bottom = '0px';
-          playField.style.right = `${13.3505 + 6.6265 * (i - 21)}%`;
+          playField.style.right = `${13.7 + 6.6265 * (i - 21)}%`;
           playField.innerHTML = boardTradeElement
           break;
         case i === 32:
@@ -68,53 +82,14 @@ export default class GameBoard {
         case 33 <= i && i <= 38:
           playField.classList.add('left');
           playField.style.left = '0px';
-          playField.style.bottom = `${19.8198 + 9.9099 * (i - 33)}%`;
+          playField.style.bottom = `${20.3 + 9.9099 * (i - 33)}%`;
           playField.innerHTML = boardTradeElement
           break;
       }
 
-      // modify accidental fields
-      if (i === 6 || i === 25 || i === 8 || i === 27 || i === 17 || i === 36) {
-        playField.insertAdjacentHTML('beforeend', boardAccidental);
-        const accidentialField = playField.querySelector('.accidential') as HTMLDivElement
-        switch (true) {
-          case i === 6 || i === 25:
-            accidentialField.innerText = 'FORCE MAJOR'
-            break;
-          case i === 8 || i === 27:
-            accidentialField.innerText = 'CHANCE'
-            break;
-          case i === 17 || i === 36:
-            accidentialField.innerText = 'TAX 6%'
-            break;
-
-        }
-      }
-      // switch (i === 6 || i === 25 || i === 8 || i === 27 || i === 17 || i === 36) {
-      //   case i === 6 || i === 25:
-      //     playField.insertAdjacentHTML('beforeend', boardAccidental);
-      //     (playField.querySelector('.accidential') as HTMLDivElement).innerText = 'FORCE MAJOR';
-      //     break;
-      //   case i === 8 || i === 27:
-      //     playField.insertAdjacentHTML('beforeend', boardAccidental);
-      //     (playField.querySelector('.accidential') as HTMLDivElement).innerText = 'CHANCE';
-      // switch (i === 6 || i === 25) {
-      //   case true:
-      //     (playField.querySelector('.accidential') as HTMLDivElement).innerText = 'FORCE MAJOR'
-      //     break;
-      // }
-
-      //   case i === 8 || i === 27:
-      //     (playField.querySelector('.accidential') as HTMLDivElement).innerText = 'CHANCE';
-      //     break;
-      //   case i === 17 || i === 36:
-      //     (playField.querySelector('.accidential') as HTMLDivElement).innerText = 'TAX 6%';
-      //     break;
-      // }
-
-
       (this.gameBoard as HTMLDivElement).append(playField);
     }
+    await this.drawBoardElements()
   }
 
   private createChips() {
@@ -123,5 +98,39 @@ export default class GameBoard {
       chip.classList.add('fieldChip', `color_${i}`);
       (this.gameBoard as HTMLDivElement).append(chip)
     }
+  }
+
+  private async getCardsData() {
+    const response = await fetch('../../../assets/cards-data.json')
+    const data = await response.json()
+    return data.cards
+  }
+
+  private async drawBoardElements() {
+    this.cardsData = await this.getCardsData()
+
+    const fields = this.gameBoard?.querySelectorAll('.playField') as NodeListOf<HTMLDivElement>
+    fields.forEach((field, index) => {
+      const flag = field.querySelector('.flag') as HTMLDivElement
+      const logo = field.querySelector('.logo') as HTMLDivElement
+      const fieldPrice = field.querySelector('.fieldPrice') as HTMLDivElement
+      const currCard = this.cardsData[index]
+      switch (currCard.type) {
+        case 'trade':
+          flag.style.backgroundImage = `url('${currCard.flag}')`
+          logo.style.backgroundImage = `url('${currCard.images}')`
+          fieldPrice.innerText = `$${currCard.price}K`
+          break;
+        case 'common':
+          if ([1, 13, 20, 32].includes(index + 1)) {
+            break
+          }
+          field.insertAdjacentHTML('beforeend', boardAccidental);
+          const acc = field.querySelector('.accidential') as HTMLDivElement
+          if (acc) {
+            acc.innerText = currCard.title
+          }
+      }
+    })
   }
 }
