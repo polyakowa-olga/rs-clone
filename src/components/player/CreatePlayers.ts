@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 class CreatePlayers {
   id: number;
   name: string;
@@ -5,18 +6,18 @@ class CreatePlayers {
   capital: string;
   color: string;
 
-  constructor(
+  constructor(player: {
     id: number,
     name: string,
     money: string,
     capital: string,
     color: string
-  ) {
-    this.id = id;
-    this.name = name;
-    this.money = money;
-    this.capital = capital;
-    this.color = color;
+  }) {
+    this.id = player.id;
+    this.name = player.name;
+    this.money = player.money;
+    this.capital = player.capital;
+    this.color = player.color;
   }
 
   createDiv() {
@@ -33,16 +34,17 @@ class CreatePlayers {
     const capitalBlock = document.createElement("h3");
     const capitalBlockSpan = document.createElement("span");
 
+    block.append(picturePlayerBlock);
+    picturePlayerBlock.append(picturePlayer);
     block.append(nameBlock);
     nameBlock.append(name);
     nameBlock.append(nameChipBlock);
     nameChipBlock.append(nameChip);
-    block.append(picturePlayerBlock);
-    picturePlayerBlock.append(picturePlayer);
     block.append(discriptionPlayerBlock);
     discriptionPlayerBlock.append(capitalBlock);
     discriptionPlayerBlock.append(moneyBlock);
 
+    block.classList.add("player");
     nameBlock.classList.add("name-block");
     name.classList.add("name");
     nameChipBlock.classList.add("name-chip-block");
