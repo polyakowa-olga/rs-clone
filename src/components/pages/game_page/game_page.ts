@@ -10,7 +10,6 @@ class GamePage extends Page {
     const message = document.createElement("div");
     message.classList.add("message");
     creatPlayerJson();
-
     return message;
   }
   returnHTML() {
