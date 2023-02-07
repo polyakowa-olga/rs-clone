@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 class CreatePlayers {
   id: number;
   name: string;
@@ -5,44 +6,48 @@ class CreatePlayers {
   capital: string;
   color: string;
 
-  constructor(
+  constructor(player: {
     id: number,
     name: string,
     money: string,
     capital: string,
     color: string
-  ) {
-    this.id = id;
-    this.name = name;
-    this.money = money;
-    this.capital = capital;
-    this.color = color;
+  }) {
+    this.id = player.id;
+    this.name = player.name;
+    this.money = player.money;
+    this.capital = player.capital;
+    this.color = player.color;
   }
 
   createDiv() {
     const block = document.createElement("div");
+    const pictureBlock = document.createElement("div");
     const picturePlayerBlock = document.createElement("div");
     const picturePlayer = document.createElement("img");
-    const discriptionPlayerBlock = document.createElement("div");
-    const nameBlock = document.createElement("div");
     const nameChipBlock = document.createElement("div");
     const nameChip = document.createElement("img");
+    const discriptionPlayerBlock = document.createElement("div");
+    const nameBlock = document.createElement("div");
     const name = document.createElement("h1");
     const moneyBlock = document.createElement("h3");
     const moneyBlockSpan = document.createElement("span");
     const capitalBlock = document.createElement("h3");
     const capitalBlockSpan = document.createElement("span");
 
+    block.append(pictureBlock);
+    pictureBlock.append(picturePlayerBlock);
+    pictureBlock.append(nameChipBlock);
+    picturePlayerBlock.append(picturePlayer);
+    nameChipBlock.append(nameChip);
     block.append(nameBlock);
     nameBlock.append(name);
-    nameBlock.append(nameChipBlock);
-    nameChipBlock.append(nameChip);
-    block.append(picturePlayerBlock);
-    picturePlayerBlock.append(picturePlayer);
     block.append(discriptionPlayerBlock);
     discriptionPlayerBlock.append(capitalBlock);
     discriptionPlayerBlock.append(moneyBlock);
 
+    block.classList.add("player");
+    pictureBlock.classList.add("picture-block");
     nameBlock.classList.add("name-block");
     name.classList.add("name");
     nameChipBlock.classList.add("name-chip-block");
