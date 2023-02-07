@@ -1,10 +1,25 @@
-/* eslint-disable prettier/prettier */
+/* eslint-disable */
 import { boardAccidental, boardBody, boardTradeElement } from "./game-board-src";
+
+// interface ICardsData {
+//   id: number,
+//   type: string,
+//   title: string,
+//   description: string,
+//   price?: number,
+//   tax: number,
+//   country?: string,
+//   owner?: any,
+//   images: string,
+//   flag: string
+// }
 
 export default class GameBoard {
   gameBoard: HTMLDivElement | undefined;
+  cardsData: any;/* CHANGE TO INTERFACE */
 
   public init() {
+    this.getCardsData()
     return this.createBoard();
   }
 
@@ -35,7 +50,7 @@ export default class GameBoard {
         case 1 <= i && i <= 12:
           playField.classList.add('top');
           playField.style.top = '0px';
-          playField.style.left = `${13.253 + 6.6265 * (i - 2)}%`;
+          playField.style.left = `${13.55 + 6.6265 * (i - 2)}%`;
           playField.innerHTML = boardTradeElement
           break;
         case i === 13:
@@ -57,7 +72,7 @@ export default class GameBoard {
         case 21 <= i && i <= 31:
           playField.classList.add('bottom');
           playField.style.bottom = '0px';
-          playField.style.right = `${13.3505 + 6.6265 * (i - 21)}%`;
+          playField.style.right = `${13.7 + 6.6265 * (i - 21)}%`;
           playField.innerHTML = boardTradeElement
           break;
         case i === 32:
@@ -68,7 +83,7 @@ export default class GameBoard {
         case 33 <= i && i <= 38:
           playField.classList.add('left');
           playField.style.left = '0px';
-          playField.style.bottom = `${19.8198 + 9.9099 * (i - 33)}%`;
+          playField.style.bottom = `${20.3 + 9.9099 * (i - 33)}%`;
           playField.innerHTML = boardTradeElement
           break;
       }
@@ -90,31 +105,11 @@ export default class GameBoard {
 
         }
       }
-      // switch (i === 6 || i === 25 || i === 8 || i === 27 || i === 17 || i === 36) {
-      //   case i === 6 || i === 25:
-      //     playField.insertAdjacentHTML('beforeend', boardAccidental);
-      //     (playField.querySelector('.accidential') as HTMLDivElement).innerText = 'FORCE MAJOR';
-      //     break;
-      //   case i === 8 || i === 27:
-      //     playField.insertAdjacentHTML('beforeend', boardAccidental);
-      //     (playField.querySelector('.accidential') as HTMLDivElement).innerText = 'CHANCE';
-      // switch (i === 6 || i === 25) {
-      //   case true:
-      //     (playField.querySelector('.accidential') as HTMLDivElement).innerText = 'FORCE MAJOR'
-      //     break;
-      // }
-
-      //   case i === 8 || i === 27:
-      //     (playField.querySelector('.accidential') as HTMLDivElement).innerText = 'CHANCE';
-      //     break;
-      //   case i === 17 || i === 36:
-      //     (playField.querySelector('.accidential') as HTMLDivElement).innerText = 'TAX 6%';
-      //     break;
-      // }
-
 
       (this.gameBoard as HTMLDivElement).append(playField);
+
     }
+    this.drawBoardElements()
   }
 
   private createChips() {
@@ -123,5 +118,37 @@ export default class GameBoard {
       chip.classList.add('fieldChip', `color_${i}`);
       (this.gameBoard as HTMLDivElement).append(chip)
     }
+  }
+
+  private getCardsData() {
+    // const data = fetch('../../../assets/cards-data.json')
+    //   .then((response) => response.json())
+    // // .then((json) => console.log(json));
+
+    // // this.cardsData = data
+    // // console.log(this.cardsData);
+    // // const data = await fetch('../../../assets/cards-data.json')
+    // // const response = data.json()
+    // // //   .then((response) => response.json())
+    // // //   .then((json) => json.cards);
+    // // // this.cardsData = data
+    // console.log(data);
+
+  }
+
+  private async drawBoardElements() {
+    const data = await fetch('../../../assets/cards-data.json')
+      .then((response) => response.json())
+      .then((result) => result)
+    console.log(data);
+
+    // const fields = this.gameBoard?.querySelectorAll('.playField') as NodeListOf<HTMLDivElement>
+    // fields.forEach((field, index) => {
+    //   const flag = field.querySelector('.flag') as HTMLDivElement
+    //   const logo = field.querySelector('.logo') as HTMLDivElement
+    //   const fieldPrice = field.querySelector('.fieldPrice') as HTMLDivElement
+    //   console.log(data[index])
+    // })
+
   }
 }
