@@ -1,10 +1,14 @@
 .player {
   height: 20%;
   border: 1px solid black;
-  font-size: 20px;
+  font-size: 65%;
   box-shadow: 1px 1px 15px black;
   margin: 10px;
   padding: 10px;
+}
+
+.picture-block {
+  display: flex;
 }
 
 .name-block {
@@ -21,8 +25,7 @@
 .name-chip-block {
   position: relative;
   overflow: hidden;
-  width: 100px;
-  height: 100px;
+  width: 60%;
 }
 
 .name-chip-block img {
@@ -30,7 +33,6 @@
   width: 610%;
   height: 200%;
   object-fit: cover;
-  border-radius: 50%;
 }
 
 .picture-player-block {
@@ -39,8 +41,8 @@
   align-items: center;
   border-radius: 50%;
   overflow: hidden;
-  width: 100px;
-  height: 100px;
+  width: 50%;
+  height: 50%;
 }
 
 .picture-player {
@@ -48,45 +50,45 @@
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 10px solid black;
+  border: 5px solid black;
 }
 
 .red {
-  border: 10px solid red;
+  border: 5px solid red;
 }
 
 .red-chip {
-  left: 0px;
+  left: -5%;
 }
 
 .blue {
-  border: 10px solid blue;
+  border: 5px solid blue;
 }
 
 .blue-chip {
-  left: -125px;
+  left: -130%;
 }
 
 .green {
-  border: 10px solid green;
+  border: 5px solid green;
 }
 
 .green-chip {
-  left: -250px;
+  left: -255%;
 }
 
 .yellow {
-  border: 10px solid yellow;
+  border: 5px solid yellow;
 }
 
 .yellow-chip {
-  left: -380px;
+  left: -375%;
 }
 
 .pink {
-  border: 10px solid pink;
+  border: 5px solid pink;
 }
 
 .pink-chip {
-  right: 0px;
+  right: -10px;
 }
