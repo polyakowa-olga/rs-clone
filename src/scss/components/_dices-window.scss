@@ -1,0 +1,57 @@
+.dices-box {
+    background: rgb(175, 189, 128);
+    width: 700px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 650px;
+    gap: 100px;
+    margin: 0 auto;
+}
+
+.dice {
+    width: 75px;
+    height: 75px;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.dice-side {
+    border: 0.5px solid rgb(156, 154, 154);
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    background-color: rgb(224, 231, 229);
+}
+
+.dice-front {
+    transform: translateZ(37.5px);
+}
+
+.dice-back {
+    transform: rotateY(180deg) translateZ(37.5px);
+}
+
+.dice-left {
+    transform: rotateY(-90deg) translateZ(37.5px);
+}
+
+.dice-right {
+    transform: rotateY(90deg) translateZ(37.5px);
+}
+
+.dice-top {
+    transform: rotateX(90deg) translateZ(37.5px);
+}
+
+.dice-bottom {
+    transform: rotateX(-90deg) translateZ(37.5px);
+    background-color: rgb(249, 252, 251);
+}
