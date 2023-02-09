@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import throwSettings from "./throw-settings";
 import dices from "./dice-params";
 

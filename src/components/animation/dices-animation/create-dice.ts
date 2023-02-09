@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Element from "../../templates/element";
 
 const sideData = {

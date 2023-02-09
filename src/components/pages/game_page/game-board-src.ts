@@ -1,14 +1,19 @@
-import createNumbers from "../../blocks/createNumbers";
+import createArrayBlocks from "../../blocks/createNumbers";
 import createIntoGame from "./intoGameView/intoGameView";
 
-const oneNumber = new createNumbers(1, 7).creatNumber();
-const twoNumber = new createNumbers(1, 7).creatNumber();
-const pageInto = new createIntoGame(`${oneNumber}`, `${twoNumber}`);
-const sumNumber = oneNumber + twoNumber;
+const araystwo = new createArrayBlocks();
+console.log(araystwo);
+const pageInto = new createIntoGame(
+  `${araystwo.oneNumber}`,
+  `${araystwo.twoNumber}`
+);
+const sumNumber = araystwo.oneNumber + araystwo.twoNumber;
 console.log(pageInto);
-console.log(oneNumber);
-console.log(twoNumber);
-console.log(sumNumber);
+console.log(`one block: ${araystwo.oneNumber}`);
+console.log(`two block: ${araystwo.twoNumber}`);
+console.log(`sum numbers: ${sumNumber}`);
+console.log(`array one block:${araystwo.arrayNumbersOneBlock}`);
+console.log(`array two block:${araystwo.arrayNumbersTwoBlock}`);
 
 export const boardBody = `<div class="boardBody">
 <div class="boardFieldsContainer"></div>
