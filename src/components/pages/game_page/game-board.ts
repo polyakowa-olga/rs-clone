@@ -34,7 +34,7 @@ export default class GameBoard {
     ///// animation dices start
     const dicesWindowBox = board.querySelector('.playerMainView') as HTMLDivElement;
     const button = document.createElement("button");
-    button.className = "throw-dices-btn";
+    button.classList.add("throw-dices-btn", "button");
     button.textContent = "throw dices";
     dicesWindowBox.append(button);
 

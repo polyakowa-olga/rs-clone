@@ -33,6 +33,7 @@ class App {
             page = new StartPage(idPage);
         } else if (idPage === PageIds.GamePage) {
             page = new GamePage(idPage);
+
         } else if (idPage === PageIds.WinnersPage) {
             page = new WinnersPage(idPage);
         } else {

@@ -3,7 +3,7 @@ import Element from "../../templates/element";
 
 const sideData = {
   commonClass: "dice-side",
-  indivClasses: ["dice-front", "dice-back", "dice-left", "dice-right", "dice-top", "dice-bottom"]
+  indivClasses: ["dice-front", "dice-back", "dice-left", "dice-right", "dice-top", "dice-bottom"],
 }
 
 class Dice extends Element {
@@ -21,7 +21,7 @@ class Dice extends Element {
       const side = document.createElement("div");
       side.classList.add(`${sideData.commonClass}`, `${indivClass}`);
       side.id = `${this.id}${indivClass.slice(4)}`;
-      side.textContent = `${indivClass.slice(5)}`;
+      //side.textContent = `${indivClass.slice(5)}`;
       sidesBox.append(side);
     }
     return sidesBox;
