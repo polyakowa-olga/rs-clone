@@ -25,7 +25,7 @@ const throwSettings = [
     frontTranslateZStep: 0.5,
     time1: -550,
     time2: -500,
-    rotateXStep1: 7.5,
+    rotateXStep1: 8.5,
     rotateYStep1: 4,
     // rotateXStep2: 65,
     // translateYStep2: 0,
