@@ -43,11 +43,14 @@ export default class GameBoard {
     dicesWindowBox.append(dicesWindowHTML);
 
     button.addEventListener("click", () => {
-
-      const diceAnimator = new DiceAnimator();
-      diceAnimator.throwDices();
       button.remove();
-      setTimeout(() => dicesWindowHTML.remove(), 3000)
+
+      setTimeout(() => {
+        const diceAnimator = new DiceAnimator();
+        diceAnimator.throwDices();
+      }, 500)
+
+      //  setTimeout(() => dicesWindowHTML.remove(), 3000)
     });
     ///// animation dices end
 

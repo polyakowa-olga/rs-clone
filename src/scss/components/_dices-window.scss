@@ -30,7 +30,7 @@ $sideSize: "18.75px";
     align-items: center;
     position: absolute;
     backface-visibility: hidden;
-    background-color: rgb(206, 21, 21);
+    background-color: rgb(12, 1, 1);
 }
 
 .dice-front {
@@ -55,65 +55,65 @@ $sideSize: "18.75px";
 
 .dice-bottom {
     transform: rotateX(-90deg) translateZ($sideSize);
-    background-color: rgb(226, 50, 65);
+
 }
 
 #dice-one-front {
 
-    background-image: url("../assets/img/dice-1.svg");
+    background-image: url("../assets/img/dice-1.png");
     background-size: cover;
 }
 
 #dice-one-back {
 
-    background-image: url("../assets/img/dice-2.svg");
+    background-image: url("../assets/img/dice-2.png");
     background-size: cover;
 }
 
 #dice-one-left {
 
-    background-image: url("../assets/img/dice-3.svg");
+    background-image: url("../assets/img/dice-3.png");
     background-size: cover;
 }
 
 #dice-one-right {
 
-    background-image: url("../assets/img/dice-4.svg");
+    background-image: url("../assets/img/dice-4.png");
     background-size: cover;
 }
 
 #dice-one-top {
 
-    background-image: url("../assets/img/dice-5.svg");
+    background-image: url("../assets/img/dice-5.png");
     background-size: cover;
 }
 
 #dice-one-bottom {
-    background-image: url("../assets/img/dice-6.svg");
+    background-image: url("../assets/img/dice-6.png");
     background-size: cover;
 }
 
 #dice-two-front {
 
-    background-image: url("../assets/img/dice-5.svg");
+    background-image: url("../assets/img/dice-5.png");
     background-size: cover;
 }
 
 #dice-two-back {
 
-    background-image: url("../assets/img/dice-6.svg");
+    background-image: url("../assets/img/dice-6.png");
     background-size: cover;
 }
 
 #dice-two-left {
 
-    background-image: url("../assets/img/dice-2.svg");
+    background-image: url("../assets/img/dice-2.png");
     background-size: cover;
 }
 
 #dice-two-right {
 
-    background-image: url("../assets/img/dice-3.svg");
+    background-image: url("../assets/img/dice-3.png");
     background-size: cover;
 }
 
@@ -124,6 +124,6 @@ $sideSize: "18.75px";
 }
 
 #dice-two-bottom {
-    background-image: url("../assets/img/dice-1.svg");
+    background-image: url("../assets/img/dice-1.png");
     background-size: cover;
 }
