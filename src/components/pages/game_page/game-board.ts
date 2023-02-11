@@ -125,14 +125,14 @@ export default class GameBoard {
     }
   }
 
-  private async getCardsData() {
+  public static async getCardsData() {
     const response = await fetch('../../../assets/cards-data.json')
     const data = await response.json()
     return data.cards
   }
 
   private async drawBoardElements() {
-    this.cardsData = await this.getCardsData()
+    this.cardsData = await GameBoard.getCardsData()
 
     const fields = this.gameBoard?.querySelectorAll('.playField') as NodeListOf<HTMLDivElement>
     fields.forEach((field, index) => {

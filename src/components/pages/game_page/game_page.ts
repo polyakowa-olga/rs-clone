@@ -1,8 +1,8 @@
 /* eslint-disable */
-// import { GameCubeRoll } from "../../blocks/createNumbers";
 import Page from "../../templates/page";
 import GameBoard from "../game_page/game-board";
 import { creatPlayerJson } from "../getJson/getJson";
+
 
 class GamePage extends Page {
   constructor(id: string) {

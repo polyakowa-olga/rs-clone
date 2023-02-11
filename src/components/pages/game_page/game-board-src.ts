@@ -1,7 +1,9 @@
+/* eslint-disable */
+
 export const boardBody = `<div class="boardBody">
 <div class="boardFieldsContainer"></div>
 <div class="chat" id="gameChat">CHAT</div>
-<div class="playerMainView" id="playerMainView">GAME INTERFACE</div>
+<div class="playerMainView">GAME INTERFACE<div id="pmv"></div></div>
 </div>`;
 
 export const boardTradeElement = `    
