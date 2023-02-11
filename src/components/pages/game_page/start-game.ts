@@ -1,6 +1,8 @@
 import Page from "../../templates/page";
 import GameBoard from "./game-board";
-import { creatPlayerJson } from "../getJson/getJson";
+// import { creatPlayer } from "../createJson/createJson";
+// import GamePage from "../game_page/game-page";
+// import { createArrayName } from "../game_page/game-page";
 
 class StartGame extends Page {
   constructor(id: string) {
@@ -9,7 +11,13 @@ class StartGame extends Page {
   createGamePage() {
     const message = document.createElement("div");
     message.classList.add("message");
-    creatPlayerJson();
+    // const inputfirst = document.querySelectorAll("input");
+    // console.log(inputfirst[0].value);
+    // console.log(inputfirst[1].value);
+    // const arrayName = [`${inputfirst[0].value}`, `${inputfirst[1].value}`];
+    // const arrayPlayer = ["Pavel", "Sveta", "galya", "pety"];
+    // console.log(createArrayName);
+    // creatPlayer(arrayName);
     return message;
   }
   returnHTML() {

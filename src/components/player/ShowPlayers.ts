@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-class CreatePlayers {
+class ShowPlayers {
   id: number;
   name: string;
   money: string;
@@ -69,4 +69,4 @@ class CreatePlayers {
   }
 }
 
-export default CreatePlayers;
+export default ShowPlayers;
