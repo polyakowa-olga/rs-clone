@@ -1,6 +1,6 @@
+/* eslint-disable prettier/prettier */
 import Page from "../../templates/page";
-import GameBoard from "../game_page/game-board";
-import { creatPlayerJson } from "../getJson/getJson";
+// import StartGame from "./start-game";
 
 class GamePage extends Page {
   constructor(id: string) {
@@ -9,16 +9,19 @@ class GamePage extends Page {
   createGamePage() {
     const message = document.createElement("div");
     message.classList.add("message");
-    creatPlayerJson();
+    const button = document.createElement("button");
+    const link = document.createElement("form");
+    link.append(button);
+    link.action = "#start-game";
+    message.append(link);
+    button.innerText = "click";
     return message;
   }
   returnHTML() {
     const page = this.createGamePage();
     this.container.append(page);
-
-    const gameBoard = new GameBoard().init();
-    this.container.append(gameBoard);
-
+    // const startGame = new StartGame();
+    // this.container.append(startGame);
     return this.container;
   }
 }
