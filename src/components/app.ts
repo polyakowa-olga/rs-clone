@@ -8,6 +8,7 @@ import GamePage from './pages/game_page/game-page';
 import WinnersPage from './pages/winners_page/winners_page';
 import ErrorPage from './pages/error_page/error_page';
 import StartGame from './pages/game_page/start-game';
+import { Game } from './pages/game_page/init-game';
 
 export const enum PageIds {
     StartPage = 'start-page',
@@ -57,6 +58,38 @@ class App {
             const page = App.returnNewPage(hash);
             if (page !== undefined) {
                 (<HTMLElement>document.querySelector('header')).after(page);
+            }
+
+            const main = document.querySelector("main");
+            if ((main as HTMLElement).id === PageIds.GamePage) {
+
+                // if (localStorage.getItem('tryyyy')) {
+                //     game = JSON.parse((localStorage.getItem('tryyyy') as string))
+                //     game.init()
+                //     console.log('1');
+
+                //     return
+                // }
+                // console.log('2');
+                const game = new Game([{
+                    "id": 1,
+                    "name": "Pavel",
+                    "money": 1500,
+                    "capital": 1500,
+                    "color": "red",
+                    "currentPosition": 1
+                },
+                {
+                    "id": 2,
+                    "name": "Pavel",
+                    "money": 1500,
+                    "capital": 1500,
+                    "color": "red",
+                    "currentPosition": 1
+                }])
+                game.init()
+                // localStorage.setItem('tryyyy', JSON.stringify(game))
+
             }
         });
     }

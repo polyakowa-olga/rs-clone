@@ -317,6 +317,7 @@
   }
 }
 
+
 // CHIPS
 .fieldChip {
   position: absolute;
@@ -388,4 +389,18 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+}
+
+
+#pmv {
+  width: fit-content;
+  height: fit-content;
+
+  & button {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 5px;
+    padding: 10px;
+  }
 }

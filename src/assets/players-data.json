@@ -3,35 +3,35 @@
     {
       "id": "1",
       "name": "Pavel",
-      "money": "100",
-      "capital": "150",
+      "money": "1500",
+      "capital": "1500",
       "color": "red"
     },
     {
       "id": "2",
       "name": "Ilia",
-      "money": "1000",
+      "money": "1500",
       "capital": "1500",
       "color": "blue"
     },
     {
       "id": "3",
       "name": "Olia",
-      "money": "1100",
+      "money": "1500",
       "capital": "1500",
       "color": "green"
     },
     {
       "id": "4",
       "name": "Anton",
-      "money": "1000",
+      "money": "1500",
       "capital": "1050",
       "color": "yellow"
     },
     {
       "id": "5",
       "name": "Kolia",
-      "money": "1001",
+      "money": "1500",
       "capital": "1500",
       "color": "pink"
     }
