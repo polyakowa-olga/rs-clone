@@ -1,5 +1,7 @@
 /* eslint-disable */
 import { boardAccidental, boardBody, boardTradeElement } from "./game-board-src";
+import DicesWindow from "../../animation/dices-animation/throw-dices-window"; // for dices animation
+import DiceAnimator from "../../animation/dices-animation/dice-animator"; // for dices animation
 
 // interface ICardsData {
 //   id: number,
@@ -17,7 +19,6 @@ import { boardAccidental, boardBody, boardTradeElement } from "./game-board-src"
 export default class GameBoard {
   gameBoard: HTMLDivElement | undefined;
   cardsData: any;/* CHANGE TO INTERFACE */
-
   public init() {
     return this.createBoard();
   }
@@ -29,6 +30,30 @@ export default class GameBoard {
     this.gameBoard = board.querySelector('.boardFieldsContainer') as HTMLDivElement;
     this.createPlayFields()
     this.createChips()
+
+    ///// animation dices start
+    const dicesWindowBox = board.querySelector('.playerMainView') as HTMLDivElement;
+    const button = document.createElement("button");
+    button.classList.add("throw-dices-btn", "button");
+    button.textContent = "throw dices";
+    dicesWindowBox.append(button);
+
+    const dicesWindow = new DicesWindow("div", ["dices-box"]);
+    const dicesWindowHTML = dicesWindow.returnHTML()
+    dicesWindowBox.append(dicesWindowHTML);
+
+    button.addEventListener("click", () => {
+      button.remove();
+
+      setTimeout(() => {
+        const diceAnimator = new DiceAnimator();
+        diceAnimator.throwDices();
+      }, 500)
+
+      //  setTimeout(() => dicesWindowHTML.remove(), 3000)
+    });
+    ///// animation dices end
+
     return board;
   }
 
