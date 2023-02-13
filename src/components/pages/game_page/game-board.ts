@@ -121,18 +121,40 @@ export default class GameBoard {
     for (let i = 1; i <= 5; i++) {
       const chip = document.createElement('div')
       chip.classList.add('fieldChip', `color_${i}`);
+      switch (i) {
+        case 1:
+          chip.style.left = `2%`
+          chip.style.top = `2%`
+          break;
+        case 2:
+          chip.style.left = `7%`
+          chip.style.top = `4%`
+          break;
+        case 3:
+          chip.style.left = `5%`
+          chip.style.top = `7%`
+          break;
+        case 4:
+          chip.style.left = `8.5%`
+          chip.style.top = `10%`
+          break;
+        case 5:
+          chip.style.left = `2.5%`
+          chip.style.top = `12%`
+          break;
+      }
       (this.gameBoard as HTMLDivElement).append(chip)
     }
   }
 
-  private async getCardsData() {
+  public static async getCardsData() {
     const response = await fetch('../../../assets/cards-data.json')
     const data = await response.json()
     return data.cards
   }
 
   private async drawBoardElements() {
-    this.cardsData = await this.getCardsData()
+    this.cardsData = await GameBoard.getCardsData()
 
     const fields = this.gameBoard?.querySelectorAll('.playField') as NodeListOf<HTMLDivElement>
     fields.forEach((field, index) => {
