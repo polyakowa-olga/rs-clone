@@ -61,6 +61,7 @@ class App {
             }
 
             const main = document.querySelector("main");
+            // НАЧАЛО ЛОГИКИ!!! 
             if ((main as HTMLElement).id === PageIds.GamePage) {
 
                 // if (localStorage.getItem('tryyyy')) {
