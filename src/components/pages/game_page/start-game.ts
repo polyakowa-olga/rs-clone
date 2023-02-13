@@ -1,5 +1,4 @@
 /* eslint-disable */
-// import { GameCubeRoll } from "../../blocks/createNumbers";
 import Page from "../../templates/page";
 import GameBoard from "./game-board";
 
