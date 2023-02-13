@@ -1,17 +1,15 @@
 /* eslint-disable */
 // import { GameCubeRoll } from "../../blocks/createNumbers";
 import Page from "../../templates/page";
-import GameBoard from "../game_page/game-board";
-import { creatPlayerJson } from "../getJson/getJson";
+import GameBoard from "./game-board";
 
-class GamePage extends Page {
+class StartGame extends Page {
   constructor(id: string) {
     super(id);
   }
   createGamePage() {
     const message = document.createElement("div");
     message.classList.add("message");
-    creatPlayerJson();
     return message;
   }
   returnHTML() {
@@ -25,4 +23,4 @@ class GamePage extends Page {
   }
 }
 
-export default GamePage;
+export default StartGame;

@@ -1,3 +1,65 @@
 #game-page {
     background-color: $color_main-hover;
 }
+
+.block-players {
+    position: absolute;
+    top: 15%;
+    left: 1%;
+    width: 80%;
+    background-color: aquamarine;
+
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.addInput {
+    top: 10px;
+    right: 15px;
+    width: 10px;
+    height: 10px;
+    background-image: url(../assets/img/udalenie.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    cursor: pointer;
+}
+
+.input {
+    width: 100%;
+}
+
+.input-block {
+    position: relative;
+    border: solid 1px black;
+    box-shadow: 2px 5px 5px gray;
+    padding: 5px;
+}
+
+.form-add {
+    border: solid 2px green;
+    background-color: greenyellow;
+    text-align: center;
+    margin: 1%;
+    cursor: pointer;
+}
+
+.button-start-game {
+    background-color: greenyellow;
+    border: solid 2px black;
+    font-size: xx-large;
+    cursor: pointer;
+}
+
+.text-form {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: xx-large;
+}
+
+.no-add {
+    cursor: default;
+}
