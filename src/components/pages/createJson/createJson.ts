@@ -13,8 +13,8 @@ export async function creatPlayer(arrayPlayer: string[]) {
       const createPlayer = new ShowPlayers(DB.players[j]);
       const createPlaye = createPlayer.createDiv();
       message.append(createPlaye);
-      console.log(DB.players);
     }
+    console.log(DB.players);
     return;
   }
 
