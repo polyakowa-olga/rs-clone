@@ -62,7 +62,7 @@ class App {
 
             const main = document.querySelector("main");
             // НАЧАЛО ЛОГИКИ!!! 
-            if ((main as HTMLElement).id === PageIds.GamePage) {
+            if ((main as HTMLElement).id === PageIds.StartGame) {
 
                 // if (localStorage.getItem('tryyyy')) {
                 //     game = JSON.parse((localStorage.getItem('tryyyy') as string))
