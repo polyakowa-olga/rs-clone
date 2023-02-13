@@ -55,7 +55,7 @@ export class Game {
 
     rollBtn.addEventListener('click', () => {
       this.cube.roll()
-      this.move(player, this.cube.sum, currPlayerChip)
+      // this.move(player, this.cube.sum, currPlayerChip)
     })
     endTurnBtn.addEventListener('click', () => {
       this.currPlayer += 1
@@ -66,139 +66,222 @@ export class Game {
     })
 
   }
-  move(player: Player, cubeSum: number, chip: HTMLDivElement) {
+  // move(player: Player, cubeSum: number, chip: HTMLDivElement) {
+  //   //  CURR POS
+  //   const currField = player.currentPosition
+  //   const currFieldElem = document.querySelector(`#field${currField}`) as HTMLDivElement
 
-    const currField = player.currentPosition
-    const currFieldElem = document.querySelector(`#field${currField}`) as HTMLDivElement
-    const chipStyle = window.getComputedStyle(chip)
-    // const currPLayerPosX = chipStyle.getPropertyValue('left')
-    // const currPLayerPosY = chipStyle.getPropertyValue('top')
-
-
-    const targetField = currField + 5/* cubeSum */
-    const targetFieldElem = document.querySelector(`#field${targetField}`) as HTMLDivElement
-    const targetFieldElemLeft = targetFieldElem.style.left
-    // console.log(targetFieldElemLeft);
+  //   const targetField = currField + 5/* cubeSum */
 
 
-    const topLeftCornerElem = document.querySelector(`#field${1}`) as HTMLDivElement
-    const topLeftCornerElemLeft = topLeftCornerElem.style.left
-    const topLeftCornerElemTop = topLeftCornerElem.style.top
-
-    const topRightCornerElem = document.querySelector(`#field${13}`) as HTMLDivElement
-    const topRightCornerElemLeft = topRightCornerElem.style.left
-    const topRightCornerElemTop = topRightCornerElem.style.top
-
-    const bottomRightCornerElem = document.querySelector(`#field${20}`) as HTMLDivElement
-    const bottomRightCornerElemLeft = bottomRightCornerElem.style.left
-    const bottomRightCornerElemTop = bottomRightCornerElem.style.top
-
-    const bottomLeftCornerElem = document.querySelector(`#field${32}`) as HTMLDivElement
-    const bottomLeftCornerElemLeft = bottomLeftCornerElem.style.left
-    const bottomLeftCornerElemTop = bottomLeftCornerElem.style.top
+  //   // const currPLayerLeft = (13 <= targetField && targetField <= 31) ? `${100 - Number(chip.style.left.replace(/%/g, ''))}%` : chip.style.left
+  //   // const currPLayerTop = (20 <= targetField && targetField <= 38) ? `${100 - Number(chip.style.top.replace(/%/g, ''))}%` : chip.style.top
 
 
+  //   //  TARGET POS
+  //   const targetFieldElem = document.querySelector(`#field${targetField}`) as HTMLDivElement
+  //   const targetFieldElemLeft = (13 <= targetField && targetField <= 31) ? `${100 - Number(targetFieldElem.style.left.replace(/%/g, ''))}%` : targetFieldElem.style.left
+  //   const targetFieldElemTop = (20 <= targetField && targetField <= 38) ? `${100 - Number(targetFieldElem.style.top.replace(/%/g, ''))}%` : targetFieldElem.style.top
 
+  //   //  POS'S OF CORNERS
+  //   const topLeftCornerElem = document.querySelector(`#field${1}`) as HTMLDivElement
+  //   const topLeftCornerElemLeft = topLeftCornerElem.style.left
+  //   const topLeftCornerElemTop = topLeftCornerElem.style.top
 
+  //   const topRightCornerElem = document.querySelector(`#field${13}`) as HTMLDivElement
+  //   const topRightCornerElemLeft = `90%`
+  //   const topRightCornerElemTop = topRightCornerElem.style.top
 
-    // chip.style.left = targetLeft
-    // chip.style.top = targetTop
+  //   const bottomRightCornerElem = document.querySelector(`#field${20}`) as HTMLDivElement
+  //   const bottomRightCornerElemRight = bottomRightCornerElem.style.right
+  //   const bottomRightCornerElemTop = `90%`
+
+  //   const bottomLeftCornerElem = document.querySelector(`#field${32}`) as HTMLDivElement
+  //   const bottomLeftCornerElemLeft = bottomLeftCornerElem.style.left
+  //   const bottomLeftCornerElemTop = `90%`
 
 
 
+  //   const fieldsBetween = [...Array(targetField - currField).keys()].map((n) => n + currField + 1)
+  //   const cornerFields = [1, 13, 20, 32]
+  //   console.log(fieldsBetween);
+
+
+  //   if (fieldsBetween.includes(13)) {
+  //     chip.animate([
+  //       // keyframes
+  //       { left: topRightCornerElemLeft, top: topLeftCornerElemTop },
+  //     ], {
+  //       // timing options
+  //       duration: 1000,
+  //       fill: 'forwards',
+  //     })
+  //   }
+  //   if (fieldsBetween.includes(20)) {
+  //     chip.animate([
+  //       // keyframes
+  //       { left: bottomRightCornerElemRight, top: bottomRightCornerElemTop },
+  //     ], {
+  //       // timing options
+  //       duration: 1000,
+  //       fill: 'forwards',
+  //     })
+  //   }
+  //   if (fieldsBetween.includes(32)) {
+  //     chip.animate([
+  //       // keyframes
+  //       { left: bottomLeftCornerElemLeft, top: bottomLeftCornerElemTop },
+  //     ], {
+  //       // timing options
+  //       duration: 1000,
+  //       fill: 'forwards',
+  //     })
+  //   }
+  //   if (fieldsBetween.includes(1)) {
+  //     chip.animate([
+  //       // keyframes
+  //       { left: topLeftCornerElemLeft, top: topLeftCornerElemTop },
+  //     ], {
+  //       // timing options
+  //       duration: 1000,
+  //       fill: 'forwards',
+  //     })
+  //   }
+  //   if (!(cornerFields.some((n) => fieldsBetween.lastIndexOf(n) === fieldsBetween.length - 1))) {
+  //     if (targetField > 13 && targetField < 20) {
+
+  //       chip.animate([
+  //         // keyframes
+  //         { left: targetFieldElemLeft, top: targetFieldElemTop },
+  //       ], {
+  //         // timing options
+  //         duration: 1000,
+  //         fill: 'forwards',
+  //       })
+  //     } else
+  //       if (targetField > 20 && targetField < 32) {
+  //         chip.animate([
+  //           // keyframes
+  //           { top: targetFieldElemTop, left: targetFieldElemLeft },
+  //         ], {
+  //           // timing options
+  //           duration: 1000,
+  //           fill: 'forwards',
+  //         })
+  //       } else
+  //         if (targetField > 32 && targetField < 1) {
+  //           chip.animate([
+  //             // keyframes
+  //             { left: '0%', top: targetFieldElemTop },
+  //           ], {
+  //             // timing options
+  //             duration: 1000,
+  //             fill: 'forwards',
+  //           })
+  //         }
+  //   }
+
+  // if (targetFieldElem.classList.contains('top')) {
+  //   if (targetFieldElem === topLeftCornerElem) {
+  //     chip.animate([
+  //       // keyframes
+  //       { left: targetFieldElemLeft },
+  //     ], {
+  //       // timing options
+  //       duration: 1000,
+  //       fill: 'forwards',
+  //     })
+  //   }
+  // }
 
 
 
 
+  // if (targetFieldElem.classList.contains('top')) {
+  //   chip.animate([
+  //     // keyframes
+  //     // { left: cu },
+  //     // { left: targetLeft },
+  //     { left: targetFieldElemLeft },
+  //     // { transform: `translateX(${targetLeft}) translateY(${targetTop})` },
+  //   ], {
+  //     // timing options
+  //     duration: 1000,
+  //     fill: 'forwards',
+  //   })
 
 
+  // }
+  // } else
+  //   if (targetFieldElem.classList.contains('right')) {
 
+  //     chip.animate([
+  //       // keyframes
+  //       { left: topRightCornerElemLeft, top: topRightCornerElemTop },
+  //       { left: targetLeft, top: targetTop },
+  //     ], {
+  //       // timing options
+  //       duration: 1000,
+  //       fill: 'forwards',
+  //     })
+  //   }
+  //     if (targetFieldElem.classList.contains('bottom')) {
+  //       if (currFieldElem.classList.contains('top')) {
+  //         chip.animate([
+  //           // keyframes
+  //           { transform: `translateX(${topRightCornerElemPosX}) translateY(${topRightCornerElemPosY})` },
+  //           { transform: `translateX(${bottomRightCornerElemPosX}) translateY(${bottomRightCornerElemPosY})` },
+  //           { transform: `translateX(${targetLeft}) translateY(${targetTop})` },
 
-    if (targetFieldElem.classList.contains('top')) {
-      chip.animate([
-        // keyframes
-        // { left: cu },
-        // { left: targetLeft },
-        { left: targetFieldElemLeft },
-        // { transform: `translateX(${targetLeft}) translateY(${targetTop})` },
-      ], {
-        // timing options
-        duration: 1000,
-        fill: 'forwards',
-      })
+  //         ], {
+  //           // timing options
+  //           duration: 1000,
+  //           fill: 'forwards',
+  //         })
+  //       } else {
 
+  //         chip.animate([
+  //           // keyframes
+  //           { transform: `translateX(${bottomRightCornerElemPosX}) translateY(${bottomRightCornerElemPosY})` },
+  //           { transform: `translateX(${targetLeft}) translateY(${targetTop})` },
 
-    }
-    // } else
-    //   if (targetFieldElem.classList.contains('right')) {
+  //         ], {
+  //           // timing options
+  //           duration: 1000,
+  //           fill: 'forwards',
+  //         })
+  //       }
 
-    //     chip.animate([
-    //       // keyframes
-    //       { right: topRightCornerElemLeft, top: topRightCornerElemTop },
-    //       { left: targetLeft, top: targetTop },
-    //     ], {
-    //       // timing options
-    //       duration: 1000,
-    //       fill: 'forwards',
-    //     })
-    //   }
-    //     if (targetFieldElem.classList.contains('bottom')) {
-    //       if (currFieldElem.classList.contains('top')) {
-    //         chip.animate([
-    //           // keyframes
-    //           { transform: `translateX(${topRightCornerElemPosX}) translateY(${topRightCornerElemPosY})` },
-    //           { transform: `translateX(${bottomRightCornerElemPosX}) translateY(${bottomRightCornerElemPosY})` },
-    //           { transform: `translateX(${targetLeft}) translateY(${targetTop})` },
+  //     } else
+  //       if (targetFieldElem.classList.contains('left')) {
+  //         if (currFieldElem.classList.contains('bottom')) {
+  //           chip.animate([
+  //             // keyframes
 
-    //         ], {
-    //           // timing options
-    //           duration: 1000,
-    //           fill: 'forwards',
-    //         })
-    //       } else {
+  //             { transform: `translateX(${bottomRightCornerElem}) translateY(${bottomRightCornerElem})` },
+  //             { transform: `translateX(${targetLeft}) translateY(${targetTop})` },
 
-    //         chip.animate([
-    //           // keyframes
-    //           { transform: `translateX(${bottomRightCornerElemPosX}) translateY(${bottomRightCornerElemPosY})` },
-    //           { transform: `translateX(${targetLeft}) translateY(${targetTop})` },
+  //           ], {
+  //             // timing options
+  //             duration: 1000,
+  //             fill: 'forwards',
+  //           })
+  //         } else {
 
-    //         ], {
-    //           // timing options
-    //           duration: 1000,
-    //           fill: 'forwards',
-    //         })
-    //       }
+  //           chip.animate([
+  //             // keyframes
+  //             { transform: `translateX(${bottomRightCornerElem}) translateY(${bottomRightCornerElem})` },
+  //             { transform: `translateX(${targetLeft}) translateY(${targetTop})` },
 
-    //     } else
-    //       if (targetFieldElem.classList.contains('left')) {
-    //         if (currFieldElem.classList.contains('bottom')) {
-    //           chip.animate([
-    //             // keyframes
+  //           ], {
+  //             // timing options
+  //             duration: 1000,
+  //             fill: 'forwards',
+  //           })
+  //         }
 
-    //             { transform: `translateX(${bottomRightCornerElem}) translateY(${bottomRightCornerElem})` },
-    //             { transform: `translateX(${targetLeft}) translateY(${targetTop})` },
+  //       }
 
-    //           ], {
-    //             // timing options
-    //             duration: 1000,
-    //             fill: 'forwards',
-    //           })
-    //         } else {
-
-    //           chip.animate([
-    //             // keyframes
-    //             { transform: `translateX(${bottomRightCornerElem}) translateY(${bottomRightCornerElem})` },
-    //             { transform: `translateX(${targetLeft}) translateY(${targetTop})` },
-
-    //           ], {
-    //             // timing options
-    //             duration: 1000,
-    //             fill: 'forwards',
-    //           })
-    //         }
-
-    //       }
-
-    player.currentPosition = targetField
-  }
+  // player.currentPosition = targetField
+  // }
 }
