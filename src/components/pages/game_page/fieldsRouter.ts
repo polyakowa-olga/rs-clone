@@ -1,7 +1,6 @@
-import { ICardsData } from "./game-board";
-import { Game, Player } from "./init-game";
+import { Game } from "./init-game";
 import { PlayerCash } from "./playerCash";
-
+import { Player, ICardsData } from "../../interfaces/interfaces";
 /* eslint-disable */
 export class FieldsRouter {
   public static route(player: Player, field: ICardsData) {

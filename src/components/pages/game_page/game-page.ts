@@ -105,10 +105,26 @@ class GamePage extends Page {
       },
       {
         "id": 2,
-        "name": "Pavel",
+        "name": "Kolya",
         "money": 1500,
         "capital": 1500,
-        "color": "red",
+        "color": "purple",
+        "currentPosition": 1
+      }, {
+        "id": 3,
+        "name": "Petya",
+        "money": 1500,
+        "capital": 1500,
+        "color": "green",
+        "currentPosition": 1,
+        "isBankrupt": true
+      },
+      {
+        "id": 4,
+        "name": "Vasya",
+        "money": 1500,
+        "capital": 1500,
+        "color": "yellow",
         "currentPosition": 1
       }])
       game.init()

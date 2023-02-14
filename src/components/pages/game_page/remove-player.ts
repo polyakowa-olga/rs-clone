@@ -1,4 +1,5 @@
-import { Game, Player } from "./init-game"
+import { Game } from "./init-game"
+import { Player } from "../../interfaces/interfaces";
 /* eslint-disable */
 export class RemovePlayer {
   public static remove(player: Player) {

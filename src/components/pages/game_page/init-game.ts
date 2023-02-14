@@ -1,24 +1,11 @@
 /* eslint-disable */
-//       "id": "1",
-//       "name": "Pavel",
-//       "money": "1500",
-//       "capital": "1500",
-
+import { Player, ICardsData } from "../../interfaces/interfaces"
 import { GameCubeRoll } from "../../blocks/createNumbers"
 import { FieldsRouter } from "./fieldsRouter"
-import GameBoard, { ICardsData } from "./game-board"
+import GameBoard from "./game-board"
 import { Move } from "./move"
 
-//       "color": "red"
-export interface Player {
-  id: number,
-  name: string,
-  money: number,
-  capital: number,
-  color: string,
-  currentPosition: number
-  isBankrupt?: boolean
-}
+
 
 
 export class Game {
@@ -57,32 +44,27 @@ export class Game {
       FieldsRouter.route(player, currPos)
       // rollBtn.remove()
     })
+    tradeBtn.addEventListener('click', () => {
+      // trade logic...
+    })
     endTurnBtn.addEventListener('click', () => {
-      Game.currPlayer += 1
-      let newPlayer = Game.players[Game.currPlayer] as Player
-      const giveNewPlayer = (player: Player) => {
+      const giveNewPlayer = () => {
+        Game.currPlayer += 1
         if (Game.currPlayer === Game.players.length) {
           Game.currPlayer = 0
         }
-        if (Object.prototype.hasOwnProperty.call(player, "isBankrupt")) {
-          Game.currPlayer += 1
-          newPlayer = Game.players[Game.currPlayer] as Player
-          giveNewPlayer(newPlayer)
+        let newPlayer = Game.players[Game.currPlayer] as Player
+        if (Object.prototype.hasOwnProperty.call(newPlayer, "isBankrupt")) {
+          giveNewPlayer()
         }
-        return
+        return newPlayer
       }
-      giveNewPlayer(<Player>newPlayer)
-      // if (newPlayer.hasOwnProperty('isBankrupt')) {
-      //   while (newPlayer.isBankrupt) {
-      //     Game.currPlayer += 1
-      //     if (Game.currPlayer === Game.players.length) {
-      //       Game.currPlayer = 0
-      //     }
-      //   }
-      // }
+      const newPlayer = giveNewPlayer()
       this.newTurn(newPlayer)
     })
 
   }
 
 }
+
+export { Player }
