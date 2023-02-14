@@ -1,4 +1,4 @@
-import { Player } from "./init-game";
+import { Player } from "../../interfaces/interfaces";
 
 /* eslint-disable */
 export class Move {

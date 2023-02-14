@@ -1,7 +1,6 @@
-import { ICardsData } from "./game-board";
-import { Game, Player } from "./init-game";
+import { Game } from "./init-game";
 import { PlayerCash } from "./playerCash";
-
+import { Player, ICardsData } from "../../interfaces/interfaces";
 /* eslint-disable */
 export class FieldsRouter {
   public static route(player: Player, field: ICardsData) {
@@ -78,8 +77,6 @@ export class FieldsRouter {
             const cardElem = document.querySelector(`#field${field.id}`) as HTMLDivElement
             const cardColorElem = cardElem.querySelector('.playerColor') as HTMLDivElement
 
-            console.log(cardColorElem);
-
             cardColorElem.classList.add(`color${player.id}`)
           } else {
             alert(`Player ${player.id} doesn't have enough in cash to buy ${field.title}`)
@@ -92,10 +89,16 @@ export class FieldsRouter {
 
       default:
         // chat message "{player} got on {player} property. Need to pay {sum} to {other player}"
-        console.log(`owner: ${field.owner}`);
+        const sumToPay = field.price as number /* SUM TO PAY other player {field.value}*/
+        const payBtn = document.createElement('button') as HTMLButtonElement;
+        payBtn.innerText = `PAY: ${sumToPay}k$`;
+        payBtn.addEventListener('click', () => {
+          PlayerCash.payPlayer2Player(player, sumToPay, field)
+          console.log(player);
+          console.log(field.owner);
 
-        // PlayerCash.checkForBankruptcy(player, 50 /* SUM TO PAY other player {field.value}*/)
-
+        })
+        Game.playerInterface.appendChild(payBtn)
         break;
     }
   }

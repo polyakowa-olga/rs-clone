@@ -1,24 +1,11 @@
 /* eslint-disable */
-//       "id": "1",
-//       "name": "Pavel",
-//       "money": "1500",
-//       "capital": "1500",
-
+import { Player, ICardsData } from "../../interfaces/interfaces"
 import { GameCubeRoll } from "../../blocks/createNumbers"
 import { FieldsRouter } from "./fieldsRouter"
-import GameBoard, { ICardsData } from "./game-board"
+import GameBoard from "./game-board"
 import { Move } from "./move"
 
-//       "color": "red"
-export interface Player {
-  id: number,
-  name: string,
-  money: number,
-  capital: number,
-  color: string,
-  currentPosition: number
-  isBankrupt?: boolean
-}
+
 
 
 export class Game {
@@ -27,6 +14,7 @@ export class Game {
   static playersQnt: number
 
   static playerInterface: HTMLDivElement
+  static chatWindowBox: HTMLDivElement
   static cardsData: ICardsData[]
   constructor(players: Player[]) {
     Game.players = players
@@ -35,6 +23,7 @@ export class Game {
   async init() {
     Game.cardsData = await GameBoard.getCardsData()
     Game.playerInterface = document.querySelector('#pmv') as HTMLDivElement
+    Game.chatWindowBox = document.querySelector('.chat') as HTMLDivElement
     this.newTurn(Game.players[Game.currPlayer])
   }
   newTurn(player: Player) {
@@ -52,34 +41,33 @@ export class Game {
 
     rollBtn.addEventListener('click', () => {
       GameCubeRoll.roll()
+      // setTimeout(() => {
+      //   Move.move(player, Game.currPlayer, GameCubeRoll.sum, currPlayerChip)
+      //   const currPos = Game.cardsData[player.currentPosition - 1];
+      //   FieldsRouter.route(player, currPos)
+      //   rollBtn.remove()
+      // }, 3000)
       Move.move(player, Game.currPlayer, GameCubeRoll.sum, currPlayerChip)
       const currPos = Game.cardsData[player.currentPosition - 1];
       FieldsRouter.route(player, currPos)
       // rollBtn.remove()
     })
+    tradeBtn.addEventListener('click', () => {
+      // trade logic...
+    })
     endTurnBtn.addEventListener('click', () => {
-      Game.currPlayer += 1
-      let newPlayer = Game.players[Game.currPlayer] as Player
-      const giveNewPlayer = (player: Player) => {
+      const giveNewPlayer: any = () => {
+        Game.currPlayer += 1
         if (Game.currPlayer === Game.players.length) {
           Game.currPlayer = 0
         }
-        if (Object.prototype.hasOwnProperty.call(player, "isBankrupt")) {
-          Game.currPlayer += 1
-          newPlayer = Game.players[Game.currPlayer] as Player
-          giveNewPlayer(newPlayer)
+        let newPlayer = Game.players[Game.currPlayer] as Player
+        if (Object.prototype.hasOwnProperty.call(newPlayer, "isBankrupt")) {
+          return giveNewPlayer()
         }
-        return
+        return newPlayer
       }
-      giveNewPlayer(<Player>newPlayer)
-      // if (newPlayer.hasOwnProperty('isBankrupt')) {
-      //   while (newPlayer.isBankrupt) {
-      //     Game.currPlayer += 1
-      //     if (Game.currPlayer === Game.players.length) {
-      //       Game.currPlayer = 0
-      //     }
-      //   }
-      // }
+      const newPlayer = giveNewPlayer()
       this.newTurn(newPlayer)
     })
 

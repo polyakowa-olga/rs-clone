@@ -11,16 +11,16 @@ class Footer extends Element {
 
         <div class="year">2022</div>
         <a class="link" href="https://github.com/KOSHAK2008">
-          <img class="icon github-icon" src="./assets/github-icon.svg" alt="github_ico">
+          <img class="icon github-icon" src="../assets/icons/github-icon.svg" alt="github_ico">
         </a>
         <a class="link" href="https://github.com/polyakowa-olga">
-          <img class="icon github-icon" src="./icons/github-icon.svg" alt="github_ico">
+          <img class="icon github-icon" src="../assets/icons/github-icon.svg" alt="github_ico">
         </a>
         <a class="link" href="https://github.com/imnephy">
-          <img class="icon github-icon" src="./icons/github-icon.svg" alt="github_ico">
+          <img class="icon github-icon" src="../assets/icons/github-icon.svg" alt="github_ico">
         </a>
         <a class="link" href="https://rs.school/js/">
-          <img class="icon RSS-icon" src="./icons/rs-school-js.svg" alt="RSS_ico">
+          <img class="icon RSS-icon" src="../assets/icons/rs-school-js.svg" alt="RSS_ico">
         </a>
         `;
     return this.container;

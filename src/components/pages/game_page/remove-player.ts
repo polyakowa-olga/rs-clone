@@ -1,4 +1,5 @@
-import { Game, Player } from "./init-game"
+import { Game } from "./init-game"
+import { Player } from "../../interfaces/interfaces";
 /* eslint-disable */
 export class RemovePlayer {
   public static remove(player: Player) {
@@ -8,11 +9,12 @@ export class RemovePlayer {
     // here for players side...
     // ------
     // here for board side...
-    Game.cardsData.filter((card) => card.owner === player)
+    Game.cardsData
+      .filter((card) => card.owner === player)
       .map((card) => card.owner = null)
     const playerColors = document.querySelectorAll('.playerColor')
     playerColors.forEach((item) => item.classList.remove(`color${player.id}`))
-    const playerChip = document.querySelector(`color_${player.id}`) as HTMLDivElement
-    playerChip.style.display = 'none'
+    const playerChip = document.querySelector(`.color_${player.id}`) as HTMLDivElement
+    playerChip.style.visibility = 'hidden'
   }
 }
