@@ -2,7 +2,8 @@
 /* eslint-disable prettier/prettier */
 import Page from "../../templates/page";
 import { creatPlayer } from "../createJson/createJson";
-
+import GameBoard from "./game-board";
+import { Game } from './init-game';
 class GamePage extends Page {
   static createArrayName: string[];
   static createInput: HTMLInputElement;
@@ -84,12 +85,33 @@ class GamePage extends Page {
     // const input2 = this.createInput();
     blockPlayers.append(buttonAddInputs);
 
-    link.action = "#start-game";
+    //link.action = "#start-game";
     button.innerText = "Start game";
     button.classList.add("button-start-game");
     button.addEventListener("click", () => {
       creatPlayer(this.createArrayName());
       console.log(this.createArrayName());
+      const container = document.querySelector('main');
+      const gameBoard = new GameBoard().init();
+      (container as HTMLDivElement).innerHTML = '';
+      container?.append(gameBoard);
+      const game = new Game([{
+        "id": 1,
+        "name": "Pavel",
+        "money": 1500,
+        "capital": 1500,
+        "color": "red",
+        "currentPosition": 1
+      },
+      {
+        "id": 2,
+        "name": "Pavel",
+        "money": 1500,
+        "capital": 1500,
+        "color": "red",
+        "currentPosition": 1
+      }])
+      game.init()
     })
     return message;
   }

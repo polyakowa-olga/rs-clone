@@ -7,13 +7,13 @@ import StartPage from './pages/start_page/start_page';
 import GamePage from './pages/game_page/game-page';
 import WinnersPage from './pages/winners_page/winners_page';
 import ErrorPage from './pages/error_page/error_page';
-import StartGame from './pages/game_page/start-game';
-import { Game } from './pages/game_page/init-game';
+//import StartGame from './pages/game_page/start-game';
+// import { Game } from './pages/game_page/init-game';
 
 export const enum PageIds {
     StartPage = 'start-page',
     GamePage = 'game-page',
-    StartGame = 'start-game',
+    //   StartGame = 'start-game',
     WinnersPage = 'winners-page',
     ErrorPage = 'error-page',
 }
@@ -37,8 +37,8 @@ class App {
         } else if (idPage === PageIds.GamePage) {
             page = new GamePage(idPage);
 
-        } else if (idPage === PageIds.StartGame) {
-            page = new StartGame(idPage);
+            // } else if (idPage === PageIds.StartGame) {
+            //     page = new StartGame(idPage);
 
         } else if (idPage === PageIds.WinnersPage) {
             page = new WinnersPage(idPage);
@@ -62,7 +62,7 @@ class App {
 
             const main = document.querySelector("main");
             // НАЧАЛО ЛОГИКИ!!! 
-            if ((main as HTMLElement).id === PageIds.StartGame) {
+            if ((main as HTMLElement).id === PageIds.GamePage) {
 
                 // if (localStorage.getItem('tryyyy')) {
                 //     game = JSON.parse((localStorage.getItem('tryyyy') as string))
@@ -72,23 +72,23 @@ class App {
                 //     return
                 // }
                 // console.log('2');
-                const game = new Game([{
-                    "id": 1,
-                    "name": "Pavel",
-                    "money": 1500,
-                    "capital": 1500,
-                    "color": "red",
-                    "currentPosition": 1
-                },
-                {
-                    "id": 2,
-                    "name": "Pavel",
-                    "money": 1500,
-                    "capital": 1500,
-                    "color": "red",
-                    "currentPosition": 1
-                }])
-                game.init()
+                // const game = new Game([{
+                //     "id": 1,
+                //     "name": "Pavel",
+                //     "money": 1500,
+                //     "capital": 1500,
+                //     "color": "red",
+                //     "currentPosition": 1
+                // },
+                // {
+                //     "id": 2,
+                //     "name": "Pavel",
+                //     "money": 1500,
+                //     "capital": 1500,
+                //     "color": "red",
+                //     "currentPosition": 1
+                // }])
+                //game.init()
                 // localStorage.setItem('tryyyy', JSON.stringify(game))
 
             }
