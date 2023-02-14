@@ -93,7 +93,7 @@ class GamePage extends Page {
       console.log(this.createArrayName());
       const container = document.querySelector('main');
       const gameBoard = new GameBoard().init();
-      container?.innerHTML = '';
+      (container as HTMLDivElement).innerHTML = '';
       container?.append(gameBoard);
       const game = new Game([{
         "id": 1,

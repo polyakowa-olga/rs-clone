@@ -8,7 +8,7 @@ import GamePage from './pages/game_page/game-page';
 import WinnersPage from './pages/winners_page/winners_page';
 import ErrorPage from './pages/error_page/error_page';
 //import StartGame from './pages/game_page/start-game';
-import { Game } from './pages/game_page/init-game';
+// import { Game } from './pages/game_page/init-game';
 
 export const enum PageIds {
     StartPage = 'start-page',
@@ -72,22 +72,22 @@ class App {
                 //     return
                 // }
                 // console.log('2');
-                const game = new Game([{
-                    "id": 1,
-                    "name": "Pavel",
-                    "money": 1500,
-                    "capital": 1500,
-                    "color": "red",
-                    "currentPosition": 1
-                },
-                {
-                    "id": 2,
-                    "name": "Pavel",
-                    "money": 1500,
-                    "capital": 1500,
-                    "color": "red",
-                    "currentPosition": 1
-                }])
+                // const game = new Game([{
+                //     "id": 1,
+                //     "name": "Pavel",
+                //     "money": 1500,
+                //     "capital": 1500,
+                //     "color": "red",
+                //     "currentPosition": 1
+                // },
+                // {
+                //     "id": 2,
+                //     "name": "Pavel",
+                //     "money": 1500,
+                //     "capital": 1500,
+                //     "color": "red",
+                //     "currentPosition": 1
+                // }])
                 //game.init()
                 // localStorage.setItem('tryyyy', JSON.stringify(game))
 
