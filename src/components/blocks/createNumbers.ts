@@ -1,25 +1,25 @@
 /* eslint-disable */
 export class GameCubeRoll {
-  min: number = 1;
-  max: number = 7;
-  cube1!: number;
-  cube2!: number;
-  arrayNumbersOneBlock!: number[];
-  arrayNumbersTwoBlock!: number[];
-  sum!: number;
-  createNumber() {
-    this.cube1 = Math.floor(Math.random() * (this.max - this.min)) + this.min
-    this.cube2 = Math.floor(Math.random() * (this.max - this.min)) + this.min
+  static min: number = 1;
+  static max: number = 7;
+  static cube1: number;
+  static cube2: number;
+  static arrayNumbersOneBlock: number[];
+  static arrayNumbersTwoBlock: number[];
+  static sum: number;
+  protected static createNumber() {
+    GameCubeRoll.cube1 = Math.floor(Math.random() * (GameCubeRoll.max - GameCubeRoll.min)) + GameCubeRoll.min
+    GameCubeRoll.cube2 = Math.floor(Math.random() * (GameCubeRoll.max - GameCubeRoll.min)) + GameCubeRoll.min
   }
-  roll() {
-    this.createNumber()
-    this.sum = this.cube1 + this.cube2
+  public static roll() {
+    GameCubeRoll.createNumber()
+    GameCubeRoll.sum = GameCubeRoll.cube1 + GameCubeRoll.cube2
 
-    this.arrayNumbersOneBlock = this.arrayblock(this.cube1) as number[]
-    this.arrayNumbersTwoBlock = this.arrayblock(this.cube2) as number[]
+    GameCubeRoll.arrayNumbersOneBlock = GameCubeRoll.arrayblock(GameCubeRoll.cube1) as number[]
+    GameCubeRoll.arrayNumbersTwoBlock = GameCubeRoll.arrayblock(GameCubeRoll.cube2) as number[]
   }
 
-  protected arrayblock(number: number) {
+  protected static arrayblock(number: number) {
     if (number === 6) {
       return [5, 1, 4, 3, 2, 6];
       // arrayNumbersBlock [front, back, left, right, top, bottom]

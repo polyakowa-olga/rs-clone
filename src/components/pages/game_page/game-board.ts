@@ -3,18 +3,18 @@ import { boardAccidental, boardBody, boardTradeElement } from "./game-board-src"
 import DicesWindow from "../../animation/dices-animation/throw-dices-window"; // for dices animation
 import DiceAnimator from "../../animation/dices-animation/dice-animator"; // for dices animation
 
-// interface ICardsData {
-//   id: number,
-//   type: string,
-//   title: string,
-//   description: string,
-//   price?: number,
-//   tax: number,
-//   country?: string,
-//   owner?: any,
-//   images: string,
-//   flag: string
-// }
+export interface ICardsData {
+  id: number,
+  type: string,
+  title: string,
+  description: string,
+  price?: number,
+  tax: number,
+  country?: string,
+  owner?: any,
+  images?: string,
+  flag?: string
+}
 
 export default class GameBoard {
   gameBoard: HTMLDivElement | undefined;
