@@ -95,7 +95,7 @@ class GamePage extends Page {
       const gameBoard = new GameBoard().init();
       (container as HTMLDivElement).innerHTML = '';
       container?.append(gameBoard);
-      const game = new Game([{
+      const playersToPlay = [{
         "id": 1,
         "name": "Pavel",
         "money": 1500,
@@ -117,7 +117,6 @@ class GamePage extends Page {
         "capital": 1500,
         "color": "green",
         "currentPosition": 1,
-        "isBankrupt": true
       },
       {
         "id": 4,
@@ -126,7 +125,8 @@ class GamePage extends Page {
         "capital": 1500,
         "color": "yellow",
         "currentPosition": 1
-      }])
+      }]
+      const game = new Game(playersToPlay)
       game.init()
     })
     return message;

@@ -14,6 +14,7 @@ export class Game {
   static playersQnt: number
 
   static playerInterface: HTMLDivElement
+  static chatWindowBox: HTMLDivElement
   static cardsData: ICardsData[]
   constructor(players: Player[]) {
     Game.players = players
@@ -22,6 +23,7 @@ export class Game {
   async init() {
     Game.cardsData = await GameBoard.getCardsData()
     Game.playerInterface = document.querySelector('#pmv') as HTMLDivElement
+    Game.chatWindowBox = document.querySelector('.chat') as HTMLDivElement
     this.newTurn(Game.players[Game.currPlayer])
   }
   newTurn(player: Player) {
@@ -39,6 +41,12 @@ export class Game {
 
     rollBtn.addEventListener('click', () => {
       GameCubeRoll.roll()
+      // setTimeout(() => {
+      //   Move.move(player, Game.currPlayer, GameCubeRoll.sum, currPlayerChip)
+      //   const currPos = Game.cardsData[player.currentPosition - 1];
+      //   FieldsRouter.route(player, currPos)
+      //   rollBtn.remove()
+      // }, 3000)
       Move.move(player, Game.currPlayer, GameCubeRoll.sum, currPlayerChip)
       const currPos = Game.cardsData[player.currentPosition - 1];
       FieldsRouter.route(player, currPos)
@@ -48,14 +56,14 @@ export class Game {
       // trade logic...
     })
     endTurnBtn.addEventListener('click', () => {
-      const giveNewPlayer = () => {
+      const giveNewPlayer: any = () => {
         Game.currPlayer += 1
         if (Game.currPlayer === Game.players.length) {
           Game.currPlayer = 0
         }
         let newPlayer = Game.players[Game.currPlayer] as Player
         if (Object.prototype.hasOwnProperty.call(newPlayer, "isBankrupt")) {
-          giveNewPlayer()
+          return giveNewPlayer()
         }
         return newPlayer
       }
@@ -66,5 +74,3 @@ export class Game {
   }
 
 }
-
-export { Player }
