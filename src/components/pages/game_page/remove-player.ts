@@ -1,8 +1,8 @@
 import { Game } from "./init-game"
-import { Player } from "../../interfaces/interfaces";
+import { IPlayer } from "../../interfaces/interfaces";
 /* eslint-disable */
 export class RemovePlayer {
-  public static remove(player: Player) {
+  public static remove(player: IPlayer) {
     player.isBankrupt = true
     // remove player from active players in html
     // ------

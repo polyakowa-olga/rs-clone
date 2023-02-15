@@ -1,9 +1,9 @@
 import { Game } from "./init-game";
 import { PlayerCash } from "./playerCash";
-import { Player, ICardsData } from "../../interfaces/interfaces";
+import { IPlayer, ICardsData } from "../../interfaces/interfaces";
 /* eslint-disable */
 export class FieldsRouter {
-  public static route(player: Player, field: ICardsData) {
+  public static route(player: IPlayer, field: ICardsData) {
     switch (field.type) {
       case 'common':
         this.commonRoute(player, field)
@@ -14,7 +14,7 @@ export class FieldsRouter {
     }
   }
 
-  protected static commonRoute(player: Player, field: ICardsData) {
+  protected static commonRoute(player: IPlayer, field: ICardsData) {
     // force major 6, 25
     // tax 17, 36
     // chance 8, 27
@@ -58,7 +58,7 @@ export class FieldsRouter {
     }
   }
 
-  protected static tradeRoute(player: Player, field: ICardsData) {
+  protected static tradeRoute(player: IPlayer, field: ICardsData) {
     switch (field.owner) {
       case player:
         // chat message "you got on your own property"

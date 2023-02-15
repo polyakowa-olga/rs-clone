@@ -1,4 +1,6 @@
-export interface Player {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable prettier/prettier */
+export interface IPlayer {
   id: number,
   name: string,
   money: number,
@@ -19,4 +21,9 @@ export interface ICardsData {
   owner?: any,
   images?: string,
   flag?: string
+}
+
+export interface IMessage {
+  text: string,
+  sum: number
 }
