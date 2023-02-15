@@ -16,5 +16,13 @@ export class RemovePlayer {
     playerColors.forEach((item) => item.classList.remove(`color${player.id}`))
     const playerChip = document.querySelector(`.color_${player.id}`) as HTMLDivElement
     playerChip.style.visibility = 'hidden'
+    RemovePlayer.checkEndGame()
+  }
+  protected static checkEndGame() {
+    const playersLeft = Game.players.filter((player) => !player.isBankrupt)
+    if (playersLeft.length === 1) {
+      console.log('GAME OVER');
+      // here html changes if game over
+    }
   }
 }

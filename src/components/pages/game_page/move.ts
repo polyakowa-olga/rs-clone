@@ -1,11 +1,26 @@
-import { IPlayer } from "../../interfaces/interfaces";
+import { Player } from "../../interfaces/interfaces";
+import { Game } from "./init-game";
+import { PlayerCash } from "./playerCash";
 
 /* eslint-disable */
 export class Move {
-  public static move(player: IPlayer, currPlayer: number, cubeSum: number, currPlayerChip: HTMLDivElement) {
+  public static move(player: Player, targetField: number) {
     const currField = player.currentPosition
+    Move.playerChipMove(player, targetField)
+    if ((27 <= currField && currField <= 38) && (1 <= targetField && targetField <= 12)) {
+      // chat message "give 200k$ for round"
+      PlayerCash.addMoneyToPlayer(player, 200)
+      console.log(`player ${player.id} gets 200$ and now have ${player.money}`);
+    }
+
+    player.currentPosition = targetField
+  }
+
+
+  protected static playerChipMove(player: Player, targetField: number) {
     // const currFieldElem = document.querySelector(`#field${currField}`) as HTMLDivElement
-    const targetField = (currField + 5) === 38 ? 38 : (currField + 5) % 38/* cubeSum here */
+    const currPlayer = Game.currPlayer
+    const currPlayerChip = document.querySelectorAll('.fieldChip')[currPlayer] as HTMLDivElement
     const targetFieldElem = document.querySelector(`#field${targetField}`) as HTMLDivElement
     const targetFieldElemStyleLeft = (1 <= targetField && targetField <= 12 || 32 <= targetField && targetField <= 38) ? 'left' : 'right'
     const targetFieldElemStyleTop = (1 <= targetField && targetField <= 19) ? 'top' : 'bottom'
@@ -141,7 +156,5 @@ export class Move {
         }
         break;
     }
-
-    player.currentPosition = targetField
   }
 }
