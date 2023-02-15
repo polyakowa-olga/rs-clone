@@ -6,7 +6,7 @@ import { ICardsData } from "../../interfaces/interfaces"
 
 export default class GameBoard {
   gameBoard: HTMLDivElement | undefined;
-  cardsData!: ICardsData[];/* CHANGE TO INTERFACE */
+  cardsData!: ICardsData[];
   public init() {
     return this.createBoard();
   }

@@ -5,8 +5,7 @@ import { IPlayer, ICardsData } from "../../interfaces/interfaces"
 import GameBoard from "./game-board"
 // import { Move } from "./move"
 import { PlayerBtnsInterface } from "./player-btns"
-// import { Move } from "./move"
-import { PlayerBtnsInterface } from "./player-btns"
+
 
 
 
@@ -28,7 +27,6 @@ export class Game {
     Game.playerInterface = document.querySelector('#pmv') as HTMLDivElement
     Game.chatWindowBox = document.querySelector('.chat') as HTMLDivElement
     Game.newTurn(Game.players[Game.currPlayer])
-    Game.newTurn(Game.players[Game.currPlayer])
   }
   public static newTurn(player: IPlayer) {
     console.log(`player: ${player.id} turn...`);
@@ -38,21 +36,12 @@ export class Game {
     if (player.isInPrison || player.isInPrison === 0) {
       if (player.isInPrison !== 0) {
         PlayerBtnsInterface.addRollBtn(player)
-        if (player.isInPrison || player.isInPrison === 0) {
-          if (player.isInPrison !== 0) {
-            PlayerBtnsInterface.addRollBtn(player)
-          }
-          PlayerBtnsInterface.outOfJailBtn(player)
-        } else {
-          PlayerBtnsInterface.baseComboBtns(player)
-        }
-
-        PlayerBtnsInterface.outOfJailBtn(player)
-      } else {
-        PlayerBtnsInterface.baseComboBtns(player)
       }
-
-
+      PlayerBtnsInterface.outOfJailBtn(player)
+    } else {
+      PlayerBtnsInterface.baseComboBtns(player)
     }
 
+
   }
+}
