@@ -1,7 +1,8 @@
 import { Game } from "./init-game";
 import { PlayerCash } from "./playerCash";
 import { IPlayer, ICardsData } from "../../interfaces/interfaces";
-import { chat } from "./components/chat/index"; // for chat
+import { Move } from "./move";
+import { PlayerBtnsInterface } from "./player-btns";
 /* eslint-disable */
 export class FieldsRouter {
   public static route(player: IPlayer, field: ICardsData) {
@@ -16,9 +17,16 @@ export class FieldsRouter {
   }
 
   protected static commonRoute(player: IPlayer, field: ICardsData) {
+    // start 1
     // force major 6, 25
     // tax 17, 36
     // chance 8, 27
+    // free parking 20
+    // prison 13
+    // go to prison 32
+    // free parking 20
+    // prison 13
+    // go to prison 32
     const fieldId = field.id
     switch (true) {
       case ([6, 25].includes(fieldId)):
@@ -26,12 +34,12 @@ export class FieldsRouter {
 
         ////// chat start
 
-        const someInfo = {
-          "sum": 40,
-          "text": "must pay money",
-        };
+        // const someInfo = {
+        //   "sum": 40,
+        //   "text": "must pay money",
+        // };
 
-        chat.run(Game.chatWindowBox, player, field, someInfo);
+        // chat.run(Game.chatWindowBox, player, field, someInfo);
 
         ///// chat end
         const sumToPay = 100 /* res of func */
@@ -41,8 +49,11 @@ export class FieldsRouter {
         forceMajorBtn.addEventListener('click', () => {
           // check bankrupt logic
           PlayerCash.removeMoneyFromPlayer(player, sumToPay)
+          console.log(`Player ${player.id} lost ${sumToPay}`);
+          console.log(`Player ${player.id} lost ${sumToPay}`);
           // --------------------
-          forceMajorBtn.remove()
+          PlayerBtnsInterface.clearEndTurn(player)
+          PlayerBtnsInterface.clearEndTurn(player)
         })
         break;
       case ([17, 36].includes(fieldId)):
@@ -53,7 +64,10 @@ export class FieldsRouter {
         Game.playerInterface.appendChild(taxBtn)
         taxBtn.addEventListener('click', () => {
           PlayerCash.removeMoneyFromPlayer(player, taxToPay)
-          taxBtn.remove()
+          console.log(`Player ${player.id} lost ${taxToPay}`);
+          PlayerBtnsInterface.clearEndTurn(player)
+          console.log(`Player ${player.id} lost ${taxToPay}`);
+          PlayerBtnsInterface.clearEndTurn(player)
         })
         break;
       case ([8, 27].includes(fieldId)):
@@ -64,9 +78,56 @@ export class FieldsRouter {
         Game.playerInterface.appendChild(chanceBtn)
         chanceBtn.addEventListener('click', () => {
           PlayerCash.addMoneyToPlayer(player, sumToGet)
-          chanceBtn.remove()
+          console.log(`Player ${player.id} get ${sumToGet}`);
+
+          PlayerBtnsInterface.clearEndTurn(player)
+          console.log(`Player ${player.id} get ${sumToGet}`);
+
+          PlayerBtnsInterface.clearEndTurn(player)
         })
         break;
+      case ([13].includes(fieldId)):
+        // create message to chat like "{player} got on prison zone, nothing happend"
+        console.log(`Player ${player.id} got on prison zone, nothing happend`);
+        PlayerBtnsInterface.clearEndTurn(player)
+        break;
+      case ([1].includes(fieldId)):
+        // create message to chat like "{player} got on prison zone, nothing happend"
+        console.log(`Player ${player.id} has passed a lap`);
+        PlayerBtnsInterface.clearEndTurn(player)
+        break;
+      case ([20].includes(fieldId)):
+        console.log(`Player ${player.id} decided to rest for a bit`);
+        // create message to chat like "{player} got on prison zone, nothing happend"
+        PlayerBtnsInterface.clearEndTurn(player)
+        break;
+      case ([32].includes(fieldId)):
+        // create message to chat like "{player} broke the law and ended up in jail"
+        player.isInPrison = 3
+        Move.move(player, 13)
+        console.log(`Player ${player.id} broke the law and ended up in jail`);
+        PlayerBtnsInterface.clearEndTurn(player)
+      case ([13].includes(fieldId)):
+        // create message to chat like "{player} got on prison zone, nothing happend"
+        console.log(`Player ${player.id} got on prison zone, nothing happend`);
+        PlayerBtnsInterface.clearEndTurn(player)
+        break;
+      case ([1].includes(fieldId)):
+        // create message to chat like "{player} got on prison zone, nothing happend"
+        console.log(`Player ${player.id} has passed a lap`);
+        PlayerBtnsInterface.clearEndTurn(player)
+        break;
+      case ([20].includes(fieldId)):
+        console.log(`Player ${player.id} decided to rest for a bit`);
+        // create message to chat like "{player} got on prison zone, nothing happend"
+        PlayerBtnsInterface.clearEndTurn(player)
+        break;
+      case ([32].includes(fieldId)):
+        // create message to chat like "{player} broke the law and ended up in jail"
+        player.isInPrison = 3
+        Move.move(player, 13)
+        console.log(`Player ${player.id} broke the law and ended up in jail`);
+        PlayerBtnsInterface.clearEndTurn(player)
     }
   }
 
@@ -74,7 +135,8 @@ export class FieldsRouter {
     switch (field.owner) {
       case player:
         // chat message "you got on your own property"
-        console.log('you got on your own property');
+        console.log(`Player ${player.id} got on his own property`);
+        console.log(`Player ${player.id} got on his own property`);
         break;
       case null:
         // chat message "you got on nobody's property"
@@ -85,15 +147,22 @@ export class FieldsRouter {
           if (player.money >= fieldPrice) {
             field.owner = player
             PlayerCash.removeMoneyFromPlayer(player, fieldPrice)
+            console.log(`Player ${player.id} buying ${field.title}`);
+            console.log(`Player ${player.id} buying ${field.title}`);
             // color field
             const cardElem = document.querySelector(`#field${field.id}`) as HTMLDivElement
             const cardColorElem = cardElem.querySelector('.playerColor') as HTMLDivElement
-
             cardColorElem.classList.add(`color${player.id}`)
+            // -----------
+            PlayerBtnsInterface.clearEndTurn(player)
+            // -----------
+            PlayerBtnsInterface.clearEndTurn(player)
           } else {
             alert(`Player ${player.id} doesn't have enough in cash to buy ${field.title}`)
           }
         })
+        PlayerBtnsInterface.clearEndTurn(player)
+        PlayerBtnsInterface.clearEndTurn(player)
         Game.playerInterface.appendChild(buyBtn)
         // Auction logic
         // -------------
@@ -106,9 +175,8 @@ export class FieldsRouter {
         payBtn.innerText = `PAY: ${sumToPay}k$`;
         payBtn.addEventListener('click', () => {
           PlayerCash.payPlayer2Player(player, sumToPay, field)
-          console.log(player);
-          console.log(field.owner);
-
+          PlayerBtnsInterface.clearEndTurn(player)
+          PlayerBtnsInterface.clearEndTurn(player)
         })
         Game.playerInterface.appendChild(payBtn)
         break;

@@ -8,6 +8,7 @@ export interface IPlayer {
   color: string,
   currentPosition: number
   isBankrupt?: boolean
+  isInPrison?: number
 }
 
 export interface ICardsData {

@@ -15,6 +15,7 @@ export class PlayerCash {
     const isBankrupt = PlayerCash.checkForBankruptcy(player, sumToRemove)
     if (isBankrupt) {
       RemovePlayer.remove(player)
+      console.log(`Player ${player.id} is bankrupt!`);
       return player.money
     }
     player.money -= sumToRemove;
@@ -30,8 +31,10 @@ export class PlayerCash {
     const restPlayerCash: number | undefined = PlayerCash.removeMoneyFromPlayer(player, sumToPay)
     if (restPlayerCash) {
       PlayerCash.addMoneyToPlayer(field.owner, restPlayerCash)
+      console.log(`Player ${field.owner.id} get rest cash from player ${player.id}`);
     } else {
       PlayerCash.addMoneyToPlayer(field.owner, sumToPay)
+      console.log(`Player ${field.owner.id} get ${field.price} from player ${player.id}`);
     }
   }
 

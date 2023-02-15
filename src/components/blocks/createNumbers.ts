@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { dices } from "../pages/game_page/components/dices/index"; // for dices animation
+// import { dices } from "../pages/game_page/components/dices/index"; // for dices animation
 
 export class GameCubeRoll {
   static min: number = 1;
@@ -9,6 +9,7 @@ export class GameCubeRoll {
   static arrayNumbersOneBlock: number[];
   static arrayNumbersTwoBlock: number[];
   static sum: number;
+  static isDouble: boolean;
   protected static createNumber() {
     GameCubeRoll.cube1 = Math.floor(Math.random() * (GameCubeRoll.max - GameCubeRoll.min)) + GameCubeRoll.min
     GameCubeRoll.cube2 = Math.floor(Math.random() * (GameCubeRoll.max - GameCubeRoll.min)) + GameCubeRoll.min
@@ -16,12 +17,12 @@ export class GameCubeRoll {
   public static roll() {
     GameCubeRoll.createNumber()
     GameCubeRoll.sum = GameCubeRoll.cube1 + GameCubeRoll.cube2
-
+    GameCubeRoll.isDouble = GameCubeRoll.cube1 === GameCubeRoll.cube2;
     GameCubeRoll.arrayNumbersOneBlock = GameCubeRoll.arrayblock(GameCubeRoll.cube1) as number[]
     GameCubeRoll.arrayNumbersTwoBlock = GameCubeRoll.arrayblock(GameCubeRoll.cube2) as number[]
 
     ///// animation dices start
-    dices.run(GameCubeRoll.arrayNumbersOneBlock, GameCubeRoll.arrayNumbersTwoBlock);
+    // dices.run(GameCubeRoll.arrayNumbersOneBlock, GameCubeRoll.arrayNumbersTwoBlock);
     ///// animation dices end
   }
 

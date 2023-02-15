@@ -1,9 +1,12 @@
 /* eslint-disable */
 import { IPlayer, ICardsData } from "../../interfaces/interfaces"
-import { GameCubeRoll } from "../../blocks/createNumbers"
-import { FieldsRouter } from "./fieldsRouter"
+// import { GameCubeRoll } from "../../blocks/createNumbers"
+// import { FieldsRouter } from "./fieldsRouter"
 import GameBoard from "./game-board"
-import { Move } from "./move"
+// import { Move } from "./move"
+import { PlayerBtnsInterface } from "./player-btns"
+// import { Move } from "./move"
+import { PlayerBtnsInterface } from "./player-btns"
 
 
 
@@ -24,53 +27,32 @@ export class Game {
     Game.cardsData = await GameBoard.getCardsData()
     Game.playerInterface = document.querySelector('#pmv') as HTMLDivElement
     Game.chatWindowBox = document.querySelector('.chat') as HTMLDivElement
-    this.newTurn(Game.players[Game.currPlayer])
+    Game.newTurn(Game.players[Game.currPlayer])
+    Game.newTurn(Game.players[Game.currPlayer])
   }
-  newTurn(player: IPlayer) {
+  public static newTurn(player: IPlayer) {
+    console.log(`player: ${player.id} turn...`);
+
     Game.playerInterface.innerHTML = ''
-    const currPlayerChip = document.querySelectorAll('.fieldChip')[Game.currPlayer] as HTMLDivElement
-    const rollBtn = document.createElement('button')
-    rollBtn.innerText = 'roll'
-    const tradeBtn = document.createElement('button')
-    tradeBtn.innerText = 'trade'
-    const endTurnBtn = document.createElement('button')
-    endTurnBtn.innerText = 'end turn'
-    Game.playerInterface.appendChild(rollBtn)
-    Game.playerInterface.appendChild(tradeBtn)
-    Game.playerInterface.appendChild(endTurnBtn)
 
-    rollBtn.addEventListener('click', () => {
-      GameCubeRoll.roll()
-      // setTimeout(() => {
-      //   Move.move(player, Game.currPlayer, GameCubeRoll.sum, currPlayerChip)
-      //   const currPos = Game.cardsData[player.currentPosition - 1];
-      //   FieldsRouter.route(player, currPos)
-      //   rollBtn.remove()
-      // }, 3000)
-      Move.move(player, Game.currPlayer, GameCubeRoll.sum, currPlayerChip)
-      const currPos = Game.cardsData[player.currentPosition - 1];
-      FieldsRouter.route(player, currPos)
-      // rollBtn.remove()
-    })
-    tradeBtn.addEventListener('click', () => {
-      // trade logic...
-    })
-    endTurnBtn.addEventListener('click', () => {
-      const giveNewPlayer: any = () => {
-        Game.currPlayer += 1
-        if (Game.currPlayer === Game.players.length) {
-          Game.currPlayer = 0
+    if (player.isInPrison || player.isInPrison === 0) {
+      if (player.isInPrison !== 0) {
+        PlayerBtnsInterface.addRollBtn(player)
+        if (player.isInPrison || player.isInPrison === 0) {
+          if (player.isInPrison !== 0) {
+            PlayerBtnsInterface.addRollBtn(player)
+          }
+          PlayerBtnsInterface.outOfJailBtn(player)
+        } else {
+          PlayerBtnsInterface.baseComboBtns(player)
         }
-        let newPlayer = Game.players[Game.currPlayer] as IPlayer
-        if (Object.prototype.hasOwnProperty.call(newPlayer, "isBankrupt")) {
-          return giveNewPlayer()
-        }
-        return newPlayer
+
+        PlayerBtnsInterface.outOfJailBtn(player)
+      } else {
+        PlayerBtnsInterface.baseComboBtns(player)
       }
-      const newPlayer = giveNewPlayer()
-      this.newTurn(newPlayer)
-    })
+
+
+    }
 
   }
-
-}
