@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable prettier/prettier */
 export interface Player {
   id: number,
   name: string,
@@ -19,4 +21,9 @@ export interface ICardsData {
   owner?: any,
   images?: string,
   flag?: string
+}
+
+export interface IMessage {
+  text: string,
+  sum: number
 }

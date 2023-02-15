@@ -1,18 +1,14 @@
 /* eslint-disable prettier/prettier */
-class ShowPlayers {
+import { Player } from "../interfaces/interfaces";
+
+class ShowPlayer {
   id: number;
   name: string;
-  money: string;
-  capital: string;
+  money: number;
+  capital: number;
   color: string;
 
-  constructor(player: {
-    id: number,
-    name: string,
-    money: string,
-    capital: string,
-    color: string
-  }) {
+  constructor(player: Player) {
     this.id = player.id;
     this.name = player.name;
     this.money = player.money;
@@ -61,12 +57,14 @@ class ShowPlayers {
     nameChip.src = "../../assets/img/chips_hall.png";
     picturePlayer.src = "../../assets/img/unknownPlayer.jpg";
     name.innerText = this.name;
-    moneyBlockSpan.innerText = this.money;
+    moneyBlockSpan.id = `money-${this.id}`;
+    moneyBlockSpan.innerText = this.money.toString();
     moneyBlock.innerHTML = moneyBlock.innerText = `Money : &#8364${moneyBlockSpan.outerHTML} $`;
-    capitalBlockSpan.innerHTML = this.capital;
+    capitalBlockSpan.id = `capital-${this.id}`;
+    capitalBlockSpan.innerHTML = this.capital.toString();
     capitalBlock.innerHTML = capitalBlock.innerText = `Capital : &#x20ac${capitalBlockSpan.outerHTML} $`;
     return block;
   }
 }
 
-export default ShowPlayers;
+export default ShowPlayer;
