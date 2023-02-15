@@ -21,6 +21,8 @@ export class Move {
     // const currFieldElem = document.querySelector(`#field${currField}`) as HTMLDivElement
     const currPlayer = Game.currPlayer
     const currPlayerChip = document.querySelectorAll('.fieldChip')[currPlayer] as HTMLDivElement
+    const currPlayer = Game.currPlayer
+    const currPlayerChip = document.querySelectorAll('.fieldChip')[currPlayer] as HTMLDivElement
     const targetFieldElem = document.querySelector(`#field${targetField}`) as HTMLDivElement
     const targetFieldElemStyleLeft = (1 <= targetField && targetField <= 12 || 32 <= targetField && targetField <= 38) ? 'left' : 'right'
     const targetFieldElemStyleTop = (1 <= targetField && targetField <= 19) ? 'top' : 'bottom'
