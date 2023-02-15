@@ -20,7 +20,7 @@ export class PlayerCash {
     }
     player.money -= sumToRemove;
     // player.capital -= sumToRemove; capital = money + capital (Anton)
-    new DrawPlayer(player).drawplayer(); // drow (Anton)
+    // new DrawPlayer(player).drawplayer(); // drow (Anton)
     // playerCash.refreshPlayerHTML(/* playerId */)
   }
   // REFRESH PLAYER HTML ELEMENTS
