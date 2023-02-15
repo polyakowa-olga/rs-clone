@@ -1,0 +1,13 @@
+.chat-box {
+    width: 90%;
+    height: 90%;
+    background-color: antiquewhite;
+    color: rgb(41, 32, 32);
+
+    @include flex ($direction: column);
+}
+
+.chat-message {
+    width: 100%;
+    background-color: aquamarine;
+}
