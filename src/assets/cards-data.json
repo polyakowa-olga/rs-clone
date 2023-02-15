@@ -4,7 +4,8 @@
       "id": 1,
       "type": "common",
       "title": "start",
-      "description": "доход",
+      "name": "Start",
+      "description": "Start field. Every time you pass it, you get a $200,000 profit",
       "tax": 200,
       "images": ""
     },
@@ -12,55 +13,102 @@
       "id": 2,
       "type": "trade",
       "title": "rolls royce",
-      "description": "for trade",
+      "name": "Rolls-Royce",
+      "description": "Rolls-Royce Motor Cars Limited is a British luxury automobile maker. A wholly owned subsidiary of German group BMW, it was established in 1998 after BMW was licensed the rights to the Rolls-Royce brand name and logo from Rolls-Royce plc and acquired the rights to the Spirit of Ecstasy and Rolls-Royce grill shape trademarks from Volkswagen AG.",
       "price": 60,
-      "tax": 0,
-      "country": "britain",
+      "country": "United Kingdom",
       "owner": null,
       "images": "../assets/img/comp2.png",
-      "flag": "../assets/img/britain.png"
+      "flag": "../assets/img/britain.png",
+      "web": "https://rolls-roycemotorcars.com/",
+      "value": {
+        "tax": 2,
+        "monopoly": 4,
+        "shares": [
+          10,
+          30,
+          90,
+          160,
+          250
+        ]
+      }
     },
     {
       "id": 3,
       "type": "trade",
       "title": "alibaba",
-      "description": "for trade",
+      "name": "Alibaba Group",
+      "description": "Alibaba Group Holding Limited is a Chinese multinational technology company specializing in e-commerce, retail, Internet, and technology. At closing time on the date of its IPO – US$25 billion, the world's highest in history – 19 September 2014, Alibaba's market value was US$231 billion. It is one of the top 10 most valuable and is the 59th biggest public companies in the world by Global 2000 list.",
       "price": 200,
-      "tax": 0,
-      "country": "china",
+      "country": "China",
       "owner": null,
       "images": "../assets/img/comp3.png",
-      "flag": "../assets/img/china.png"
+      "flag": "../assets/img/china.png",
+      "web": "https://www.alibabagroup.com",
+      "value": {
+        "tax": 25,
+        "shares": [
+          25,
+          50,
+          100,
+          200
+        ]
+      }
     },
     {
       "id": 4,
       "type": "trade",
       "title": "bp",
-      "description": "for trade",
+      "name": "BP",
+      "description": "BP is a multinational oil and gas company headquartered in London, England. It is one of the world's seven oil and gas 'supermajors', whose performance in 2012 made it the world's sixth-largest oil and gas company, the sixth-largest energy company by market capitalization and the company with the world's 12th-largest revenue.",
       "price": 60,
-      "tax": 0,
-      "country": "britain",
+      "country": "United Kingdom",
       "owner": null,
       "images": "../assets/img/comp4.png",
-      "flag": "../assets/img/britain.png"
+      "flag": "../assets/img/britain.png",
+      "web": "https://bp.com",
+      "value": {
+        "tax": 2,
+        "monopoly": 4,
+        "shares": [
+          10,
+          30,
+          90,
+          160,
+          250
+        ]
+      }
     },
     {
       "id": 5,
       "type": "trade",
       "title": "bbc",
-      "description": "for trade",
+      "name": "BBC",
+      "description": "BBC (The British Broadcasting Corporation) is a British public service broadcaster. Its headquarters are at Broadcasting House in Westminster, London. It is the world's oldest national broadcaster, and the largest broadcaster in the world by number of employees. It employs over 22,000 staff in total, more than 16,000 of whom are in public sector broadcasting. The total number of staff is 35,402 when part-time, flexible, and fixed-contract staff are included.",
       "price": 80,
-      "tax": 0,
-      "country": "britain",
+      "country": "United Kingdom",
       "owner": null,
       "images": "../assets/img/comp5.png",
-      "flag": "../assets/img/britain.png"
+      "flag": "../assets/img/britain.png",
+      "web": "https://bbc.co.uk/",
+      "value": {
+        "tax": 4,
+        "monopoly": 8,
+        "shares": [
+          20,
+          60,
+          180,
+          320,
+          450
+        ]
+      }
     },
     {
       "id": 6,
       "type": "common",
-      "title": "форс мажор",
-      "description": "убытки",
+      "title": "force majeure",
+      "name": "Force Majeure",
+      "description": "In this field, you incur losses from unforeseen events.",
       "tax": 0,
       "images": ""
     },
@@ -68,19 +116,28 @@
       "id": 7,
       "type": "trade",
       "title": "samsung",
-      "description": "for trade",
+      "name": "Samsung",
+      "description": "Samsung (Korean: 삼성; means 'three stars' in English) is a South Korean multinational conglomerate headquartered in Samsung Town, Seoul. It comprises numerous affiliated businesses, most of them united under the Samsung brand, and is the largest South Korean chaebol (business conglomerate).",
       "price": 150,
-      "tax": 0,
-      "country": "korea",
+      "country": "South Korea",
       "owner": null,
       "images": "../assets/img/comp7.png",
-      "flag": "../assets/img/korea.png"
+      "flag": "../assets/img/korea.png",
+      "web": "https://samsung.com",
+      "value": {
+        "tax": 10,
+        "shares": [
+          10,
+          25
+        ]
+      }
     },
     {
       "id": 8,
       "type": "common",
-      "title": "шанс",
-      "description": "доход",
+      "title": "chance",
+      "name": "Chance",
+      "description": "In this field you can get unscheduled income.",
       "tax": 0,
       "images": ""
     },
@@ -88,55 +145,102 @@
       "id": 9,
       "type": "trade",
       "title": "danone",
-      "description": "for trade",
+      "name": "Danone",
+      "description": "Danone is a French multinational food-products corporation based in Paris and founded in Barcelona, Spain. The company is listed on Euronext Paris where it is a component of the CAC 40 stock market index. Some of the company's products are branded Dannon in the United States. As of 2018, Danone sold products in 120 markets, and had sales in 2018 of €24.65 billion. In the first half of 2018, 29% of sales came from specialized nutrition, 19% came from waters, and 52% came from dairy and plant-based products.",
       "price": 100,
-      "tax": 0,
-      "country": "france",
+      "country": "France",
       "owner": null,
       "images": "../assets/img/comp9.png",
-      "flag": "../assets/img/france.png"
+      "flag": "../assets/img/france.png",
+      "web": "https://danone.com",
+      "value": {
+        "tax": 6,
+        "monopoly": 12,
+        "shares": [
+          30,
+          90,
+          270,
+          400,
+          550
+        ]
+      }
     },
     {
       "id": 10,
       "type": "trade",
       "title": "hennessy",
-      "description": "for trade",
+      "name": "Hennessy",
+      "description": "Jas Hennessy & Co., commonly known simply as Hennessy, is a French brandy distiller with its headquarters located in Cognac, France. Jas Hennessy & Co. sells about 50 million bottles a year worldwide, or more than 40 percent of the world's cognac, making it the largest cognac producer.",
       "price": 100,
-      "tax": 0,
-      "country": "france",
+      "country": "France",
       "owner": null,
       "images": "../assets/img/comp10.png",
-      "flag": "../assets/img/france.png"
+      "flag": "../assets/img/france.png",
+      "web": "https://hennessy.com",
+      "value": {
+        "tax": 6,
+        "monopoly": 12,
+        "shares": [
+          30,
+          90,
+          270,
+          400,
+          550
+        ]
+      }
     },
     {
       "id": 11,
       "type": "trade",
       "title": "lenovo",
-      "description": "for trade",
+      "name": "Lenovo",
+      "description": "Lenovo Group Limited, is a Chinese multinational technology company with headquarters in Beijing. The company designs, develops, manufactures, and sells personal computers, tablet computers, smartphones, workstations, servers, electronic storage devices, IT management software, and smart televisions. Lenovo is the world's largest personal computer vendor by unit sales, as of March 2019.",
       "price": 200,
-      "tax": 0,
-      "country": "china",
+      "country": "China",
       "owner": null,
       "images": "../assets/img/comp11.png",
-      "flag": "../assets/img/china.png"
+      "flag": "../assets/img/china.png",
+      "web": "https://lenovo.com",
+      "value": {
+        "tax": 25,
+        "shares": [
+          25,
+          50,
+          100,
+          200
+        ]
+      }
     },
     {
       "id": 12,
       "type": "trade",
       "title": "loreal",
-      "description": "for trade",
+      "name": "L'Oréal SA",
+      "description": "L'Oréal S.A. is a French personal care company headquartered in Clichy, Hauts-de-Seine with a registered office in Paris. It is the world's largest cosmetics company and has developed activities in the field concentrating on hair color, skin care, sun protection, make-up, perfume, and hair care.",
       "price": 120,
-      "tax": 0,
-      "country": "france",
+      "country": "France",
       "owner": null,
       "images": "../assets/img/comp12.png",
-      "flag": "../assets/img/france.png"
+      "flag": "../assets/img/france.png",
+      "web": "https://www.loreal.com/",
+      "value": {
+        "tax": 6,
+        "monopoly": 12,
+        "shares": [
+          30,
+          90,
+          270,
+          400,
+          550
+        ]
+      }
     },
     {
       "id": 13,
       "type": "common",
       "title": "prison",
-      "description": "be in prison",
+      "name": "Customs",
+      "description": "It's a penalty field. If you move here from the Customs Clearance field, you will have to pay a $50,000 penalty or throw a double in one of three attempts. If you hit this field directly, you don't have to pay any costs.",
       "tax": 0,
       "images": ""
     },
@@ -144,43 +248,80 @@
       "id": 14,
       "type": "trade",
       "title": "ikea",
-      "description": "for trade",
+      "name": "IKEA",
+      "description": "IKEA is a multinational group that designs and sells ready-to-assemble furniture, kitchen appliances and home accessories, among other useful goods and occasionally home services. Founded in Sweden in 1943 by 17-year-old Ingvar Kamprad, IKEA has been the world's largest furniture retailer since 2008.",
       "price": 140,
-      "tax": 0,
-      "country": "sweden",
+      "country": "Sweden",
       "owner": null,
       "images": "../assets/img/comp14.png",
-      "flag": "../assets/img/sweden.png"
+      "flag": "../assets/img/sweden.png",
+      "web": "https://ikea.com",
+      "value": {
+        "tax": 10,
+        "monopoly": 20,
+        "shares": [
+          50,
+          150,
+          450,
+          625,
+          750
+        ]
+      }
     },
     {
       "id": 15,
       "type": "trade",
       "title": "volvo",
-      "description": "for trade",
+      "name": "Volvo",
+      "description": "The Volvo Group is a Swedish multinational manufacturing company headquartered in Gothenburg. While its core activity is the production, distribution and sale of trucks, buses and construction equipment, Volvo also supplies marine and industrial drive systems and financial services. In 2016, it was the world's second largest manufacturer of heavy-duty trucks.",
       "price": 140,
-      "tax": 0,
-      "country": "sweden",
+      "country": "Sweden",
       "owner": null,
       "images": "../assets/img/comp15.png",
-      "flag": "../assets/img/sweden.png"
+      "flag": "../assets/img/sweden.png",
+      "web": "https://volvocars.com",
+      "value": {
+        "tax": 10,
+        "monopoly": 20,
+        "shares": [
+          50,
+          150,
+          450,
+          625,
+          750
+        ]
+      }
     },
     {
       "id": 16,
       "type": "trade",
       "title": "armani",
-      "description": "for trade",
+      "name": "Giorgio Armani",
+      "description": "Giorgio Armani S.p.A. is an Italian luxury fashion house founded by Giorgio Armani which designs, manufactures, distributes and retails haute couture, ready-to-wear, leather goods, shoes, watches, jewelry, accessories, eyewear, cosmetics and home interiors. In 2016, estimated sales of the company were around $2.65 billion.",
       "price": 180,
-      "tax": 0,
-      "country": "italy",
+      "country": "Italy",
       "owner": null,
       "images": "../assets/img/comp16.png",
-      "flag": "../assets/img/italy.png"
+      "flag": "../assets/img/italy.png",
+      "web": "https://armani.com",
+      "value": {
+        "tax": 14,
+        "monopoly": 28,
+        "shares": [
+          70,
+          200,
+          550,
+          750,
+          950
+        ]
+      }
     },
     {
       "id": 17,
       "type": "common",
-      "title": "налог",
-      "description": "расход в % от капитала",
+      "title": "tax",
+      "name": "Tax",
+      "description": "In this field you will have to pay taxes amounting to 6% of your current capital.",
       "tax": 6,
       "images": ""
     },
@@ -188,31 +329,56 @@
       "id": 18,
       "type": "trade",
       "title": "versace",
-      "description": "for trade",
+      "name": "Versace",
+      "description": "Gianni Versace S.r.l., usually referred to simply as Versace, is an Italian luxury fashion company and trade name founded by Gianni Versace in 1978. The main collection of the brand is Versace, which produces upmarket Italian-made ready-to-wear and leather accessories. The Versace brand is known for its innovative designs having symbolic flashy prints and bright colors but with style.",
       "price": 180,
-      "tax": 0,
-      "country": "italy",
+      "country": "Italy",
       "owner": null,
       "images": "../assets/img/comp18.png",
-      "flag": "../assets/img/italy.png"
+      "flag": "../assets/img/italy.png",
+      "web": "https://versace.com",
+      "value": {
+        "tax": 14,
+        "monopoly": 28,
+        "shares": [
+          70,
+          200,
+          550,
+          750,
+          950
+        ]
+      }
     },
     {
       "id": 19,
       "type": "trade",
       "title": "ferrary",
-      "description": "for trade",
+      "name": "Ferrari",
+      "description": "Ferrari is an Italian luxury sports car manufacturer based in Maranello. Founded by Enzo Ferrari in 1939, the company built its first car in 1940. However, the company's inception as an auto manufacturer is usually recognized in 1947, when the first Ferrari-badged car was completed. In 2014 Ferrari was rated the world's most powerful brand by Brand Finance. In June 2018, the 1964 250 GTO became the most expensive car in history.",
       "price": 200,
-      "tax": 0,
-      "country": "italy",
+      "country": "Italy",
       "owner": null,
       "images": "../assets/img/comp19.png",
-      "flag": "../assets/img/italy.png"
+      "flag": "../assets/img/italy.png",
+      "web": "https://ferrari.com",
+      "value": {
+        "tax": 14,
+        "monopoly": 28,
+        "shares": [
+          70,
+          200,
+          550,
+          750,
+          950
+        ]
+      }
     },
     {
       "id": 20,
       "type": "common",
-      "title": "офшорная зона",
-      "description": "обычная клетка",
+      "title": "offshore",
+      "name": "Offshore",
+      "description": "Freedom from all taxes and duties. On this field you do not incur any costs and can relax.",
       "tax": 0,
       "images": ""
     },
@@ -220,55 +386,102 @@
       "id": 21,
       "type": "trade",
       "title": "sony",
-      "description": "for trade",
+      "name": "Sony",
+      "description": "Sony Corporation is a Japanese multinational conglomerate corporation headquartered in Tokyo. Its diversified business includes consumer and professional electronics, gaming, entertainment and financial services. The company owns the largest music entertainment business in the world, the largest video game console business and one of the largest video game publishing businesses, and is one of the leading manufacturers of electronic products for the consumer and professional markets, and a leading player in the film and television entertainment industry.",
       "price": 220,
-      "tax": 0,
-      "country": "japan",
+      "country": "Japan",
       "owner": null,
       "images": "../assets/img/comp21.png",
-      "flag": "../assets/img/japan.png"
+      "flag": "../assets/img/japan.png",
+      "web": "https://sony.com",
+      "value": {
+        "tax": 18,
+        "monopoly": 36,
+        "shares": [
+          90,
+          250,
+          700,
+          875,
+          1050
+        ]
+      }
     },
     {
       "id": 22,
       "type": "trade",
       "title": "huawei",
-      "description": "for trade",
+      "name": "Huawei",
+      "description": "Huawei Technologies Co., Ltd. is a Chinese multinational technology company. It provides telecommunications equipment and sells consumer electronics, smartphones. Being the second-largest manufacturer of smartphones in the world, in December 2019, Huawei reported that its annual revenue had risen to $121.72 billion.",
       "price": 200,
-      "tax": 0,
-      "country": "china",
+      "country": "China",
       "owner": null,
       "images": "../assets/img/comp22.png",
-      "flag": "../assets/img/china.png"
+      "flag": "../assets/img/china.png",
+      "web": "https://huawei.com",
+      "value": {
+        "tax": 25,
+        "shares": [
+          25,
+          50,
+          100,
+          200
+        ]
+      }
     },
     {
       "id": 23,
       "type": "trade",
       "title": "canon",
-      "description": "for trade",
+      "name": "Canon",
+      "description": "Canon Inc. is a Japanese multinational corporation specializing in the manufacture of imaging and optical products, including cameras, camcorders, professional displays, TV broadcasting and film equipment, projectors, photocopiers, scanners, computer printers, binoculars, microscopes, medical equipment, LCD and OLED panel manufacturing equipment, CCTV solutions, imagining sensors, calculators, high precision positioning and measurements solutions, and custom optical components (including lenses) for third party companies.",
       "price": 220,
-      "tax": 0,
-      "country": "japan",
+      "country": "Japan",
       "owner": null,
       "images": "../assets/img/comp23.png",
-      "flag": "../assets/img/japan.png"
+      "flag": "../assets/img/japan.png",
+      "web": "https://global.canon",
+      "value": {
+        "tax": 18,
+        "monopoly": 36,
+        "shares": [
+          90,
+          250,
+          700,
+          875,
+          1050
+        ]
+      }
     },
     {
       "id": 24,
       "type": "trade",
       "title": "toyota",
-      "description": "for trade",
+      "name": "Toyota",
+      "description": "Toyota Motor Corporation is a Japanese multinational automotive manufacturer headquartered in Toyota, Aichi, Japan. In 2017, Toyota's corporate structure consisted of 364,445 employees worldwide and, as of December 2019, was the tenth-largest company in the world by revenue.",
       "price": 240,
-      "tax": 0,
-      "country": "japan",
+      "country": "Japan",
       "owner": null,
       "images": "../assets/img/comp24.png",
-      "flag": "../assets/img/japan.png"
+      "flag": "../assets/img/japan.png",
+      "web": "https://toyota.com",
+      "value": {
+        "tax": 20,
+        "monopoly": 40,
+        "shares": [
+          100,
+          300,
+          750,
+          925,
+          1100
+        ]
+      }
     },
     {
       "id": 25,
       "type": "common",
-      "title": "форс мажор",
-      "description": "убытки",
+      "title": "force majeure",
+      "name": "Force Majeure",
+      "description": "In this field, you incur losses from unforeseen events.",
       "tax": 0,
       "images": ""
     },
@@ -276,19 +489,28 @@
       "id": 26,
       "type": "trade",
       "title": "hyundai",
-      "description": "for trade",
+      "name": "Hyundai",
+      "description": "The Hyundai Motor Company, commonly known as Hyundai Motors, is a South Korean multinational automotive manufacturer headquartered in Seoul. Hyundai Motor Company was founded in 1967 and today it operates the world's largest integrated automobile manufacturing facility in Ulsan, South Korea which has an annual production capacity of 1.6 million units. The company employs about 75,000 people worldwide. Hyundai vehicles are sold in 193 countries through some 5,000 dealerships and showrooms.",
       "price": 150,
-      "tax": 0,
-      "country": "korea",
+      "country": "South Korea",
       "owner": null,
       "images": "../assets/img/comp26.png",
-      "flag": "../assets/img/korea.png"
+      "flag": "../assets/img/korea.png",
+      "web": "https://hyundai.com",
+      "value": {
+        "tax": 10,
+        "shares": [
+          10,
+          25
+        ]
+      }
     },
     {
       "id": 27,
       "type": "common",
-      "title": "шанс",
-      "description": "доход",
+      "title": "chance",
+      "name": "Chance",
+      "description": "In this field you can get unscheduled income.",
       "tax": 0,
       "images": ""
     },
@@ -296,55 +518,102 @@
       "id": 28,
       "type": "trade",
       "title": "siemens",
-      "description": "for trade",
+      "name": "Siemens",
+      "description": "Siemens AG is a German multinational conglomerate company headquartered in Munich and the largest industrial manufacturing company in Europe with branch offices abroad. The company is a component of the Euro Stoxx 50 stock market index. Siemens and its subsidiaries employ approximately 385,000 people worldwide and reported global revenue of around €87 billion in 2019 according to its earnings release.",
       "price": 260,
-      "tax": 0,
-      "country": "germany",
+      "country": "Germany",
       "owner": null,
       "images": "../assets/img/comp28.png",
-      "flag": "../assets/img/germany.png"
+      "flag": "../assets/img/germany.png",
+      "web": "https://siemens.com",
+      "value": {
+        "tax": 22,
+        "monopoly": 44,
+        "shares": [
+          110,
+          330,
+          800,
+          975,
+          1150
+        ]
+      }
     },
     {
       "id": 29,
       "type": "trade",
       "title": "adidas",
-      "description": "for trade",
+      "name": "Adidas",
+      "description": "Adidas AG is a multinational corporation, founded and headquartered in Herzogenaurach, Germany, that designs and manufactures shoes, clothing and accessories. It is the largest sportswear manufacturer in Europe, and the second largest in the world. Adidas' revenue for 2018 was listed at €21.915 billion.",
       "price": 260,
-      "tax": 0,
-      "country": "germany",
+      "country": "Germany",
       "owner": null,
       "images": "../assets/img/comp29.png",
-      "flag": "../assets/img/germany.png"
+      "flag": "../assets/img/germany.png",
+      "web": "https://adidas.com",
+      "value": {
+        "tax": 22,
+        "monopoly": 44,
+        "shares": [
+          110,
+          330,
+          800,
+          975,
+          1150
+        ]
+      }
     },
     {
       "id": 30,
       "type": "trade",
       "title": "xiaomi",
-      "description": "for trade",
+      "name": "Xiaomi",
+      "description": "Xiaomi Corporation is a Chinese electronics company founded in April 2010 and headquartered in Beijing. Xiaomi makes and invests in smartphones, mobile apps, laptops, bags, earphones, shoes, fitness bands, and many other products. Xiaomi is the world's 4th most valuable technology start-up after receiving $1.1 billion funding from investors, making Xiaomi's valuation more than $46 billion.",
       "price": 200,
-      "tax": 0,
-      "country": "china",
+      "country": "China",
       "owner": null,
       "images": "../assets/img/comp30.png",
-      "flag": "../assets/img/china.png"
+      "flag": "../assets/img/china.png",
+      "web": "https://mi.com",
+      "value": {
+        "tax": 25,
+        "shares": [
+          25,
+          50,
+          100,
+          200
+        ]
+      }
     },
     {
       "id": 31,
       "type": "trade",
       "title": "mercedes",
-      "description": "for trade",
+      "name": "Mercedes-Benz",
+      "description": "Mercedes-Benz is a German global automobile marque and a division of Daimler AG. Mercedes-Benz is known for luxury vehicles, vans, trucks, buses, coaches and ambulances. The headquarters is in Stuttgart. The name first appeared in 1926 under Daimler-Benz. In 2018, Mercedes-Benz was the largest seller of premium vehicles in the world, having sold 2.31 million passenger cars.",
       "price": 280,
-      "tax": 0,
-      "country": "germany",
+      "country": "Germany",
       "owner": null,
       "images": "../assets/img/comp31.png",
-      "flag": "../assets/img/germany.png"
+      "flag": "../assets/img/germany.png",
+      "web": "https://mercedes-benz.com",
+      "value": {
+        "tax": 24,
+        "monopoly": 48,
+        "shares": [
+          120,
+          360,
+          850,
+          1110,
+          1200
+        ]
+      }
     },
     {
       "id": 32,
       "type": "common",
-      "title": "таможня",
-      "description": "убытки",
+      "title": "customs",
+      "name": "Customs Clearance",
+      "description": "It's a penalty field. If you move here from the Customs Clearance field, you will have to pay a $50,000 penalty or throw a double in one of three attempts. If you hit this field directly, you don't have to pay any costs.",
       "tax": 0,
       "images": ""
     },
@@ -352,43 +621,80 @@
       "id": 33,
       "type": "trade",
       "title": "nestle",
-      "description": "for trade",
+      "name": "Nestle",
+      "description": "Nestlé S.A. is a Swiss multinational food and drink processing conglomerate corporation headquartered in Vevey, Vaud, Switzerland. It is the largest food company in the world, measured by revenues and other metrics, since 2014. It ranked No. 64 on the Fortune Global 500 in 2017 and No. 33 on the 2016 edition of the Forbes Global 2000 list of largest public companies.",
       "price": 320,
-      "tax": 0,
-      "country": "swiss",
+      "country": "Switzerland",
       "owner": null,
       "images": "../assets/img/comp33.png",
-      "flag": "../assets/img/swiss.png"
+      "flag": "../assets/img/swiss.png",
+      "web": "https://nestle.com",
+      "value": {
+        "tax": 28,
+        "monopoly": 56,
+        "shares": [
+          150,
+          450,
+          1000,
+          1200,
+          1400
+        ]
+      }
     },
     {
       "id": 34,
       "type": "trade",
       "title": "rolex",
-      "description": "for trade",
+      "name": "Rolex",
+      "description": "Rolex SA is a Swiss luxury watch manufacturer based in Geneva, Switzerland. As of June 2019, among the world's top ten most expensive watches ever sold at auctions, three are Rolex watches.",
       "price": 320,
-      "tax": 0,
-      "country": "swiss",
+      "country": "Switzerland",
       "owner": null,
       "images": "../assets/img/comp34.png",
-      "flag": "../assets/img/swiss.png"
+      "flag": "../assets/img/swiss.png",
+      "web": "https://rolex.com",
+      "value": {
+        "tax": 28,
+        "monopoly": 56,
+        "shares": [
+          150,
+          450,
+          1000,
+          1200,
+          1400
+        ]
+      }
     },
     {
       "id": 35,
       "type": "trade",
-      "title": "McDonald's",
-      "description": "for trade",
+      "title": "mcdonald's",
+      "name": "McDonald's",
+      "description": "McDonald's Corporation is an American multinational fast food chain, founded in 1940 as a restaurant operated by Richard and Maurice McDonald, in San Bernardino, California, United States. They rechristened their business as a hamburger stand, and later turned the company into a franchise, with the Golden Arches logo being introduced in 1953 at a location in Phoenix, Arizona. In 1955, Ray Kroc, a businessman, joined the company as a franchise agent and proceeded to purchase the chain from the McDonald brothers. McDonald's had its previous headquarters in Oak Brook, Illinois, but moved its global headquarters to Chicago in June 2018",
       "price": 350,
-      "tax": 0,
-      "country": "usa",
+      "country": "United States of America",
       "owner": null,
       "images": "../assets/img/comp35.png",
-      "flag": "../assets/img/usa.png"
+      "flag": "../assets/img/usa.png",
+      "web": "https://www.mcdonalds.com/",
+      "value": {
+        "tax": 35,
+        "monopoly": 70,
+        "shares": [
+          175,
+          500,
+          1100,
+          1300,
+          1500
+        ]
+      }
     },
     {
       "id": 36,
       "type": "common",
-      "title": "налог",
-      "description": "расход в % от капитала",
+      "title": "tax",
+      "name": "Tax",
+      "description": "In this field you will have to pay taxes amounting to 6% of your current capital.",
       "tax": 6,
       "images": ""
     },
@@ -396,25 +702,49 @@
       "id": 37,
       "type": "trade",
       "title": "walt disney",
-      "description": "for trade",
+      "name": "Walt Disney",
+      "description": "The Walt Disney Company, commonly known as Disney, is an American diversified multinational mass media and entertainment conglomerate headquartered at the Walt Disney Studios complex in Burbank, California. Disney was originally founded on October 16, 1923, by brothers Walt and Roy O. Disney as the Disney Brothers Cartoon Studio.",
       "price": 350,
-      "tax": 0,
-      "country": "usa",
+      "country": "United States of America",
       "owner": null,
       "images": "../assets/img/comp37.png",
-      "flag": "../assets/img/usa.png"
+      "flag": "../assets/img/usa.png",
+      "web": "https://disney.com",
+      "value": {
+        "tax": 35,
+        "monopoly": 70,
+        "shares": [
+          175,
+          500,
+          1100,
+          1300,
+          1500
+        ]
+      }
     },
     {
       "id": 38,
       "type": "trade",
       "title": "coca-cola",
-      "description": "for trade",
+      "name": "Coca-Cola",
+      "description": "The Coca-Cola Company is an American multinational corporation, and manufacturer, retailer, and marketer of nonalcoholic beverage concentrates and syrups. The company produces Coca-Cola, invented in 1886 by pharmacist John Stith Pemberton in Atlanta, Georgia. In 1889 the formula and brand were sold for $2,300 to Asa Griggs Candler, who incorporated The Coca-Cola Company in Atlanta in 1892. The Coca-Cola Company is the single largest plastic polluter in the world, producing over 3 million tons of plastic packaging each year including 110 billion plastic bottles.",
       "price": 400,
-      "tax": 0,
-      "country": "usa",
+      "country": "United States of America",
       "owner": null,
       "images": "../assets/img/comp38.png",
-      "flag": "../assets/img/usa.png"
+      "flag": "../assets/img/usa.png",
+      "web": "https://coca-cola.com",
+      "value": {
+        "tax": 50,
+        "monopoly": 100,
+        "shares": [
+          200,
+          600,
+          1400,
+          1700,
+          2000
+        ]
+      }
     }
   ]
 }
