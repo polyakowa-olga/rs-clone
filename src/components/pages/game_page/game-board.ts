@@ -1,7 +1,6 @@
 /* eslint-disable */
 import { boardAccidental, boardBody, boardTradeElement } from "./game-board-src";
-import DicesWindow from "../../animation/dices-animation/throw-dices-window"; // for dices animation
-import DiceAnimator from "../../animation/dices-animation/dice-animator"; // for dices animation
+import { chat } from "./components/chat/index"; // for chat
 import { ICardsData } from "../../interfaces/interfaces"
 
 
@@ -20,28 +19,10 @@ export default class GameBoard {
     this.createPlayFields()
     this.createChips()
 
-    ///// animation dices start
-    const dicesWindowBox = board.querySelector('.playerMainView') as HTMLDivElement;
-    const button = document.createElement("button");
-    button.classList.add("throw-dices-btn", "button");
-    button.textContent = "throw dices";
-    dicesWindowBox.append(button);
-
-    const dicesWindow = new DicesWindow("div", ["dices-box"]);
-    const dicesWindowHTML = dicesWindow.returnHTML()
-    dicesWindowBox.append(dicesWindowHTML);
-
-    button.addEventListener("click", () => {
-      button.remove();
-
-      setTimeout(() => {
-        const diceAnimator = new DiceAnimator();
-        diceAnimator.throwDices();
-      }, 500)
-
-      //  setTimeout(() => dicesWindowHTML.remove(), 3000)
-    });
-    ///// animation dices end
+    //// chat start
+    const chatWindowBox = board.querySelector('.chat') as HTMLDivElement;
+    chat.run(chatWindowBox);
+    //// chat end
 
     return board;
   }

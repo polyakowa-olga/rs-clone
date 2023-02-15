@@ -1,6 +1,7 @@
 import { Game } from "./init-game";
 import { PlayerCash } from "./playerCash";
 import { IPlayer, ICardsData } from "../../interfaces/interfaces";
+import { chat } from "./components/chat/index"; // for chat
 /* eslint-disable */
 export class FieldsRouter {
   public static route(player: IPlayer, field: ICardsData) {
@@ -22,6 +23,17 @@ export class FieldsRouter {
     switch (true) {
       case ([6, 25].includes(fieldId)):
         // create message to chat and take some money from player
+
+        ////// chat start
+
+        const someInfo = {
+          "sum": 40,
+          "text": "must pay money",
+        };
+
+        chat.run(Game.chatWindowBox, player, field, someInfo);
+
+        ///// chat end
         const sumToPay = 100 /* res of func */
         const forceMajorBtn = document.createElement('button') as HTMLButtonElement
         forceMajorBtn.innerText = `PAY: ${sumToPay}k$`

@@ -1,4 +1,6 @@
 /* eslint-disable */
+import { dices } from "../pages/game_page/components/dices/index"; // for dices animation
+
 export class GameCubeRoll {
   static min: number = 1;
   static max: number = 7;
@@ -17,6 +19,10 @@ export class GameCubeRoll {
 
     GameCubeRoll.arrayNumbersOneBlock = GameCubeRoll.arrayblock(GameCubeRoll.cube1) as number[]
     GameCubeRoll.arrayNumbersTwoBlock = GameCubeRoll.arrayblock(GameCubeRoll.cube2) as number[]
+
+    ///// animation dices start
+    dices.run(GameCubeRoll.arrayNumbersOneBlock, GameCubeRoll.arrayNumbersTwoBlock);
+    ///// animation dices end
   }
 
   protected static arrayblock(number: number) {
