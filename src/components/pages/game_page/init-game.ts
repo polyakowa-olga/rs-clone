@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Player, ICardsData } from "../../interfaces/interfaces"
+import { IPlayer, ICardsData } from "../../interfaces/interfaces"
 import { GameCubeRoll } from "../../blocks/createNumbers"
 import { FieldsRouter } from "./fieldsRouter"
 import GameBoard from "./game-board"
@@ -9,14 +9,14 @@ import { Move } from "./move"
 
 
 export class Game {
-  static players: Player[]
+  static players: IPlayer[]
   static currPlayer = 0
   static playersQnt: number
 
   static playerInterface: HTMLDivElement
   static chatWindowBox: HTMLDivElement
   static cardsData: ICardsData[]
-  constructor(players: Player[]) {
+  constructor(players: IPlayer[]) {
     Game.players = players
     Game.playersQnt = players.length
   }
@@ -26,7 +26,7 @@ export class Game {
     Game.chatWindowBox = document.querySelector('.chat') as HTMLDivElement
     this.newTurn(Game.players[Game.currPlayer])
   }
-  newTurn(player: Player) {
+  newTurn(player: IPlayer) {
     Game.playerInterface.innerHTML = ''
     const currPlayerChip = document.querySelectorAll('.fieldChip')[Game.currPlayer] as HTMLDivElement
     const rollBtn = document.createElement('button')
@@ -61,7 +61,7 @@ export class Game {
         if (Game.currPlayer === Game.players.length) {
           Game.currPlayer = 0
         }
-        let newPlayer = Game.players[Game.currPlayer] as Player
+        let newPlayer = Game.players[Game.currPlayer] as IPlayer
         if (Object.prototype.hasOwnProperty.call(newPlayer, "isBankrupt")) {
           return giveNewPlayer()
         }

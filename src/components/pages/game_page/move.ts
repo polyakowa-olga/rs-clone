@@ -1,8 +1,8 @@
-import { Player } from "../../interfaces/interfaces";
+import { IPlayer } from "../../interfaces/interfaces";
 
 /* eslint-disable */
 export class Move {
-  public static move(player: Player, currPlayer: number, cubeSum: number, currPlayerChip: HTMLDivElement) {
+  public static move(player: IPlayer, currPlayer: number, cubeSum: number, currPlayerChip: HTMLDivElement) {
     const currField = player.currentPosition
     // const currFieldElem = document.querySelector(`#field${currField}`) as HTMLDivElement
     const targetField = (currField + 5) === 38 ? 38 : (currField + 5) % 38/* cubeSum here */

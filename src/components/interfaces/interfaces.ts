@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prettier/prettier */
-export interface Player {
+export interface IPlayer {
   id: number,
   name: string,
   money: number,

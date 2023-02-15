@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Player } from "../interfaces/interfaces";
+import { IPlayer } from "../interfaces/interfaces";
 
 class ShowPlayer {
   id: number;
@@ -8,7 +8,7 @@ class ShowPlayer {
   capital: number;
   color: string;
 
-  constructor(player: Player) {
+  constructor(player: IPlayer) {
     this.id = player.id;
     this.name = player.name;
     this.money = player.money;
