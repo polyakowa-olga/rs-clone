@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Player, ICardsData } from "../../interfaces/interfaces"
+import { IPlayer, ICardsData } from "../../interfaces/interfaces"
 // import { GameCubeRoll } from "../../blocks/createNumbers"
 // import { FieldsRouter } from "./fieldsRouter"
 import GameBoard from "./game-board"
@@ -27,7 +27,7 @@ export class Game {
     Game.chatWindowBox = document.querySelector('.chat') as HTMLDivElement
     Game.newTurn(Game.players[Game.currPlayer])
   }
-  public static newTurn(player: Player) {
+  public static newTurn(player: IPlayer) {
     console.log(`player: ${player.id} turn...`);
 
     Game.playerInterface.innerHTML = ''

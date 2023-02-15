@@ -1,6 +1,6 @@
 import { Game } from "./init-game";
 import { PlayerCash } from "./playerCash";
-import { Player, ICardsData } from "../../interfaces/interfaces";
+import { IPlayer, ICardsData } from "../../interfaces/interfaces";
 import { Move } from "./move";
 import { PlayerBtnsInterface } from "./player-btns";
 /* eslint-disable */
@@ -16,7 +16,7 @@ export class FieldsRouter {
     }
   }
 
-  protected static commonRoute(player: Player, field: ICardsData) {
+  protected static commonRoute(player: IPlayer, field: ICardsData) {
     // start 1
     // force major 6, 25
     // tax 17, 36
@@ -31,12 +31,12 @@ export class FieldsRouter {
 
         ////// chat start
 
-        const someInfo = {
-          "sum": 40,
-          "text": "must pay money",
-        };
+        // const someInfo = {
+        //   "sum": 40,
+        //   "text": "must pay money",
+        // };
 
-        chat.run(Game.chatWindowBox, player, field, someInfo);
+        // chat.run(Game.chatWindowBox, player, field, someInfo);
 
         ///// chat end
         const sumToPay = 100 /* res of func */
