@@ -1,12 +1,12 @@
 import { GameCubeRoll } from "../../blocks/createNumbers";
-import { ICardsData, Player } from "../../interfaces/interfaces";
+import { ICardsData, IPlayer } from "../../interfaces/interfaces";
 import { FieldsRouter } from "./fieldsRouter";
 import { Game } from "./init-game";
 import { Move } from "./move";
 import { PlayerCash } from "./playerCash";
 /* eslint-disable */
 export class PlayerBtnsInterface {
-  public static addRollBtn(player: Player) {
+  public static addRollBtn(player: IPlayer) {
     const rollBtn = document.createElement('button')
     rollBtn.innerText = 'roll'
 
@@ -40,22 +40,22 @@ export class PlayerBtnsInterface {
     Game.playerInterface.appendChild(rollBtn)
   }
 
-  public static addTradeBtn(player: Player) {
+  public static addTradeBtn(player: IPlayer) {
     const tradeBtn = document.createElement('button')
     tradeBtn.innerText = 'trade'
 
     Game.playerInterface.appendChild(tradeBtn)
   }
-  public static addEndTurnBtn(player: Player) {
+  public static addEndTurnBtn(player: IPlayer) {
     const endTurnBtn = document.createElement('button')
     endTurnBtn.innerText = 'end turn'
     endTurnBtn.addEventListener('click', () => {
-      const giveNewPlayer: () => Player = () => {
+      const giveNewPlayer: () => IPlayer = () => {
         Game.currPlayer += 1
         if (Game.currPlayer === Game.players.length) {
           Game.currPlayer = 0
         }
-        let newPlayer = Game.players[Game.currPlayer] as Player
+        let newPlayer = Game.players[Game.currPlayer] as IPlayer
         if (Object.prototype.hasOwnProperty.call(newPlayer, "isBankrupt")) {
           return giveNewPlayer()
         }
@@ -66,7 +66,7 @@ export class PlayerBtnsInterface {
     })
     Game.playerInterface.appendChild(endTurnBtn)
   }
-  public static outOfJailBtn(player: Player) {
+  public static outOfJailBtn(player: IPlayer) {
     const turnsLeft = player.isInPrison as number
     const sumToPay = turnsLeft !== 0 ? 50 : 150
     const payForOutBtn = document.createElement('button')
@@ -81,19 +81,19 @@ export class PlayerBtnsInterface {
     Game.playerInterface.appendChild(payForOutBtn)
   }
 
-  public static baseComboBtns(player: Player) {
+  public static baseComboBtns(player: IPlayer) {
     PlayerBtnsInterface.addRollBtn(player)
     PlayerBtnsInterface.tradeAndLockComboBtns(player)
   }
-  public static prisonComboBtns(player: Player) {
+  public static prisonComboBtns(player: IPlayer) {
     PlayerBtnsInterface.addRollBtn(player)
     PlayerBtnsInterface.outOfJailBtn(player)
   }
-  public static tradeAndLockComboBtns(player: Player) {
+  public static tradeAndLockComboBtns(player: IPlayer) {
     PlayerBtnsInterface.addTradeBtn(player)
     // PlayerBtnsInterface.addLockBtn(player)
   }
-  public static clearEndTurn(player: Player) {
+  public static clearEndTurn(player: IPlayer) {
     Game.playerInterface.innerHTML = ''
     PlayerBtnsInterface.tradeAndLockComboBtns(player)
     PlayerBtnsInterface.addEndTurnBtn(player)

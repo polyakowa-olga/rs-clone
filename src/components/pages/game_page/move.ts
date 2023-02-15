@@ -1,10 +1,10 @@
-import { Player } from "../../interfaces/interfaces";
+import { IPlayer } from "../../interfaces/interfaces";
 import { Game } from "./init-game";
 import { PlayerCash } from "./playerCash";
 
 /* eslint-disable */
 export class Move {
-  public static move(player: Player, targetField: number) {
+  public static move(player: IPlayer, targetField: number) {
     const currField = player.currentPosition
     Move.playerChipMove(player, targetField)
     if ((27 <= currField && currField <= 38) && (1 <= targetField && targetField <= 12)) {
@@ -17,7 +17,7 @@ export class Move {
   }
 
 
-  protected static playerChipMove(player: Player, targetField: number) {
+  protected static playerChipMove(player: IPlayer, targetField: number) {
     // const currFieldElem = document.querySelector(`#field${currField}`) as HTMLDivElement
     const currPlayer = Game.currPlayer
     const currPlayerChip = document.querySelectorAll('.fieldChip')[currPlayer] as HTMLDivElement
