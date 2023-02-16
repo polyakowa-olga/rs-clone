@@ -3,8 +3,11 @@ import { PlayerCash } from "./playerCash";
 import { IPlayer, ICardsData } from "../../interfaces/interfaces";
 import { Move } from "./move";
 import { PlayerBtnsInterface } from "./player-btns";
+import { chat } from "./components/chat/index"; // for chat
+import EventMessages from "../../messages/chanceMessages"; // for chat
 /* eslint-disable */
-export class FieldsRouter {
+export class FieldsRouter {// for chat
+  static MessageDataGetter = new EventMessages();// for chat
   public static route(player: IPlayer, field: ICardsData) {
     switch (field.type) {
       case 'common':
@@ -28,21 +31,18 @@ export class FieldsRouter {
     // prison 13
     // go to prison 32
     const fieldId = field.id
+    let message;// for chat
     switch (true) {
       case ([6, 25].includes(fieldId)):
         // create message to chat and take some money from player
 
         ////// chat start
+        message = FieldsRouter.MessageDataGetter.forceMajeureMessages();
 
-        // const someInfo = {
-        //   "sum": 40,
-        //   "text": "must pay money",
-        // };
-
-        // chat.run(Game.chatWindowBox, player, field, someInfo);
+        chat.run(Game.chatWindowBox, player, field, message);
 
         ///// chat end
-        const sumToPay = 100 /* res of func */
+        const sumToPay = message.sum /* res of func */
         const forceMajorBtn = document.createElement('button') as HTMLButtonElement
         forceMajorBtn.innerText = `PAY: ${sumToPay}k$`
         Game.playerInterface.appendChild(forceMajorBtn)
@@ -56,6 +56,11 @@ export class FieldsRouter {
         break;
       case ([17, 36].includes(fieldId)):
         // create message to chat and take some money from player
+        ////// chat start
+
+        chat.run(Game.chatWindowBox, player, field);
+
+        ///// chat end
         const taxToPay = Math.floor(player.capital * 6 / 100);
         const taxBtn = document.createElement('button') as HTMLButtonElement;
         taxBtn.innerText = `PAY: ${taxToPay}k$`
@@ -68,7 +73,15 @@ export class FieldsRouter {
         break;
       case ([8, 27].includes(fieldId)):
         // create message to chat and give some money to player
-        const sumToGet = 100 /* res */;
+
+        ////// chat start
+        message = FieldsRouter.MessageDataGetter.chanceMessages();
+
+        chat.run(Game.chatWindowBox, player, field, message);
+
+        ///// chat end
+
+        const sumToGet = message.sum /* res */;
         const chanceBtn = document.createElement('button') as HTMLButtonElement;
         chanceBtn.innerText = `GET: ${sumToGet}k$`
         Game.playerInterface.appendChild(chanceBtn)
