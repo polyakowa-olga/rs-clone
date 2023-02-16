@@ -10,33 +10,20 @@ class DicesController {
     diceAnimator.throwDice(dices[1], throwSettings[1]);
   }
   run(diceOneSidesSet: number[], diceTwoSidesSet: number[]) {
-    console.log(diceOneSidesSet, diceTwoSidesSet);
     const dicesWindowBox = document.querySelector(".playerMainView");
-    const button = document.createElement("button");
-    button.classList.add("throw-dices-btn", "button");
-    button.textContent = "throw dices";
+    const dicesWindow = new DicesWindow(
+      "div",
+      ["dices-box"],
+      diceOneSidesSet,
+      diceTwoSidesSet
+    );
+    const dicesWindowHTML = dicesWindow.returnHTML();
     if (dicesWindowBox) {
-      dicesWindowBox.append(button);
-
-      const dicesWindow = new DicesWindow(
-        "div",
-        ["dices-box"],
-        diceOneSidesSet,
-        diceTwoSidesSet
-      );
-      const dicesWindowHTML = dicesWindow.returnHTML();
       dicesWindowBox.append(dicesWindowHTML);
-
-      button.addEventListener("click", () => {
-        button.remove();
-
-        setTimeout(() => {
-          this.throwDices();
-        }, 500);
-
-        setTimeout(() => dicesWindowHTML.remove(), 3000);
-      });
     }
+    setTimeout(() => this.throwDices(), 1000);
+
+    setTimeout(() => dicesWindowHTML.remove(), 3000);
   }
 }
 

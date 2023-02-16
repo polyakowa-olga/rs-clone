@@ -1,6 +1,4 @@
 /* eslint-disable prettier/prettier */
-
-
 interface ISettings {
   x: number;
   y: number;
@@ -28,7 +26,7 @@ interface IDiceParams {
 
 class DiceAnimator {
 
-  throwDice(diceParams: IDiceParams, settings: ISettings) {
+  throwDice(diceParams: IDiceParams, { ...settings }: ISettings) {
     const { diceId, frontId, backId, leftId, rightId, topId, bottomId } = diceParams;
     const Dice = document.querySelector(diceId);
     const front = document.querySelector(frontId);
