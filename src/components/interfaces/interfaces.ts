@@ -6,9 +6,9 @@ export interface IPlayer {
   money: number,
   capital: number,
   color: string,
-  currentPosition: number
-  isBankrupt?: boolean
-  isInPrison?: number
+  currentPosition: number,
+  isBankrupt?: boolean,
+  isInPrison?: number,
 }
 
 export interface ICardsData {
@@ -21,10 +21,19 @@ export interface ICardsData {
   country?: string,
   owner?: any,
   images?: string,
-  flag?: string
+  flag?: string,
+  web?: string,
+  value?: ICardValue,
+  currValue?: number,
+}
+
+interface ICardValue {
+  tax: number,
+  monopoly: number,
+  shares: number[],
 }
 
 export interface IMessage {
   text: string,
-  sum: number
+  sum: number,
 }
