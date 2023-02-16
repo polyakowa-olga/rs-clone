@@ -29,16 +29,16 @@ class Dice extends Element {
   }
 
   createDice(diceSidesSet?: number[]) {
+    console.log(diceSidesSet)
     const sidesBox = document.createDocumentFragment();
 
-    console.log(diceSidesSet);
     for (let i = 0; i < sideData.indivClasses.length; i++) {
       const indivClass = sideData.indivClasses[i];
       const side = document.createElement("div");
       side.classList.add(`${sideData.commonClass}`, `${indivClass}`);
       side.id = `${this.id}${indivClass.slice(4)}`;
       if (diceSidesSet) {
-        side.style.backgroundImage = sideData.imgSrc[diceSidesSet[i]];
+        side.style.backgroundImage = sideData.imgSrc[diceSidesSet[i] - 1];
       }
       sidesBox.append(side);
     }

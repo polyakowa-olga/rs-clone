@@ -34,20 +34,20 @@ class ChatController {
   run(
     place: HTMLElement,
     player?: IPlayer | undefined,
-    cardData?: ICardData,
-    messageInfo?: IMessageInfo
+    cardData?: ICardData | undefined,
+    messageInfo?: IMessageInfo | undefined
   ) {
     if (!this.checkForChatExist()) {
       this.chat.textContent = "play started";
       place.append(this.chat);
     } else {
-      if (player && cardData && messageInfo) {
+      if (player && cardData) {
         const message = new Message(
           messageData.tag,
           messageData.classes,
           player,
           cardData,
-          messageInfo
+          (messageInfo = messageInfo ? messageInfo : undefined)
         ).returnHTML();
         setTimeout(() => {
           this.chat.append(message);
