@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
 // import { IPlayer } from "../../interfaces/interfaces";
+import ShowPlayer from "../../player/ShowPlayer";
 import Page from "../../templates/page";
-import { creatPlayer } from "../createJson/createJson";
+// import { creatPlayer } from "../createJson/createJson";
 import GameBoard from "./game-board";
 import { Game } from './init-game';
 class GamePage extends Page {
@@ -91,13 +92,18 @@ class GamePage extends Page {
     button.classList.add("button-start-game");
     button.addEventListener("click", async () => {
       const names = this.createArrayName()
-      await creatPlayer(names);
-      // console.log(this.createArrayName());
+      // await creatPlayer(names);
 
       const container = document.querySelector('main');
       const gameBoard = new GameBoard().init();
       (container as HTMLDivElement).innerHTML = '';
       container?.append(gameBoard);
+
+      const message = document.getElementById("game-page") as HTMLDivElement;
+      const blockPlayers = document.createElement("div") as HTMLDivElement;
+      message.prepend(blockPlayers);
+      blockPlayers.classList.add("players");
+
       const playersToPlay = [{
         "id": 1,
         "name": "Pavel",
@@ -111,7 +117,7 @@ class GamePage extends Page {
         "name": "Kolya",
         "money": 1500,
         "capital": 1500,
-        "color": "purple",
+        "color": "blue",
         "currentPosition": 1
       }, {
         "id": 3,
@@ -134,14 +140,20 @@ class GamePage extends Page {
         "name": "Vasya",
         "money": 1500,
         "capital": 1500,
-        "color": "yellow",
+        "color": "pink",
         "currentPosition": 1
       }]
       playersToPlay.forEach((player, i) => {
-        player.name = names[i]
+        player.name = names[i];
       })
       playersToPlay.length = names.length
       console.log('final players:', playersToPlay);
+      playersToPlay.forEach((player, i) => {
+        const createPlayer = new ShowPlayer(player);
+        const createBlockPlayer = createPlayer.createDiv();
+        blockPlayers.append(createBlockPlayer);
+      })
+      // 
 
       const game = new Game(playersToPlay)
       game.init()
