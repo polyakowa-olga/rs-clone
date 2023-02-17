@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
-import { IPlayer } from "../../interfaces/interfaces";
+// import { IPlayer } from "../../interfaces/interfaces";
 import Page from "../../templates/page";
 import { creatPlayer } from "../createJson/createJson";
 import GameBoard from "./game-board";

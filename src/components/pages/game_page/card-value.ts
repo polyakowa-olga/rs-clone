@@ -28,15 +28,27 @@ export class CardValue {
 
     if (isMonopoly) {
       // field.currValue = field.value?.monopoly
-      countryTradeCards.map((fld) => fld.currValue = field.value?.monopoly)
+      if (curCountry === "China") {
+        countryTradeCards.map((fld) => fld.currValue = field.value?.shares[3])
+      } else {
+        countryTradeCards.map((fld) => fld.currValue = field.value?.monopoly)
+      }
       // shares logic...
     } else if (field.owner === player) {
-      field.currValue = field.value?.tax
+      if (curCountry === "China") {
+        const playerProp = countryTradeCards.filter((fld) => fld.owner === player)
+        playerProp.map((fld) => fld.currValue = fld.value?.shares[playerProp.length - 1])
+      } else {
+        field.currValue = field.value?.tax
+      }
     } else {
       field.currValue === field.price
     }
     // refresh html
     GameLayout.changeFieldValue(<ICardsData[]>countryTradeCards)
     // ------------
+  }
+  protected static chinaHandler() {
+
   }
 }
