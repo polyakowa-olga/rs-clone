@@ -1,17 +1,17 @@
 /* eslint-disable */
 import Element from "../../../../../templates/element";
-import { IPlayer, ICardData, IMessageInfo } from "./types";
-
+import { IMessageInfo } from "./types";
+import { IPlayer, ICardsData } from "../../../../../interfaces/interfaces";
 class Message extends Element {
   player: IPlayer;
-  cardData: ICardData;
+  cardData: ICardsData;
   messageInfo?: IMessageInfo | undefined;
 
   constructor(
     tag: string,
     classes: string[],
     player: IPlayer,
-    cardData: ICardData,
+    cardData: ICardsData,
     messageInfo?: IMessageInfo | undefined
   ) {
     super(tag, classes);
@@ -22,7 +22,7 @@ class Message extends Element {
 
   createMessage() {
     const info = this.messageInfo
-      ? this.messageInfo.text.replace(/you/i, "")
+      ? this.messageInfo.text.replace(/Y/i, "y")
       : undefined;
     let message: string;
 
@@ -32,8 +32,27 @@ class Message extends Element {
       message = `${this.player.name} paid tax`;
     } else if (this.cardData.id === 8 || this.cardData.id === 27) {
       message = `${this.player.name} ${info}`;
+    } else if (this.cardData.id === 13) {
+      message = `${this.player.name} moved to prison zone`;
+    } else if (this.cardData.id === 1) {
+      message = `${this.player.name} moved to Start field and get a $200,000 profit`;
+    } else if (this.cardData.id === 20) {
+      message = `${this.player.name} moved to Offshore field and can relax.`;
+    } else if (this.cardData.id === 32) {
+      message = `${this.player.name} broke the law and ended up in jail`;
     } else {
-      message = `${this.player.name} ${info} ${this.cardData.title} for ${info}$`;
+      if (this.player.id === this.cardData.owner) {
+        message = `${this.player.name} moved to his own field`;
+      } else if (
+        this.cardData.owner !== null &&
+        this.player.id !== this.cardData.owner
+      ) {
+        console.log(this.cardData);
+        let tax = this.cardData.value ? this.cardData.value.tax : undefined;
+        message = `${this.player.name} moved to ${this.cardData.owner.name}'s field and must pay ${tax}$`;
+      } else {
+        message = `${this.player.name} moved to ${this.cardData.name} field`;
+      }
     }
 
     return message;

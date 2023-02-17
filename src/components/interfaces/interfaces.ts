@@ -15,6 +15,7 @@ export interface ICardsData {
   id: number,
   type: string,
   title: string,
+  name: string,
   description: string,
   price?: number,
   tax: number,
