@@ -74,6 +74,42 @@ class EventMessages {
         sum: 25
       },
       {
+        text: "Your building loan matures. Collect $150",
+        sum: 150
+      },
+      {
+        text: "Bank error in your favor! Collect $75.",
+        sum: 75
+      },
+      {
+        text: "Income Tax refund - collect $20",
+        sum: 20
+      },
+      {
+        text: "You have won a prize in a beauty contest",
+        sum: 10
+      },
+      {
+        text: "You inherit $100",
+        sum: 100
+      },
+      {
+        text: "From sale of stock you get $50",
+        sum: 50
+      }
+    ];
+    const number =
+      Math.floor(Math.random() * (ArrayMesasges.length + 1 - 0)) + 0;
+    return ArrayMesasges[number];
+  }
+
+  forceMajeureMessages() {
+    const ArrayMesasges = [
+      {
+        text: "Doctor’s fee. Pay $50",
+        sum: -50
+      },
+      {
         text:
           "You go to the local school’s car wash fundraiser – but you forget to close your windows! PAY $100.",
         sum: -100
@@ -107,34 +143,10 @@ class EventMessages {
       {
         text: "Parking fine $15",
         sum: -15
-      }
-    ];
-    const number =
-      Math.floor(Math.random() * (ArrayMesasges.length + 1 - 0)) + 0;
-    return ArrayMesasges[number];
-  }
-
-  forceMajeureMessages() {
-    const ArrayMesasges = [
-      {
-        text: "Doctor’s fee. Pay $50",
-        sum: -50
-      },
-      {
-        text: "Bank error in your favor! Collect $75.",
-        sum: 75
       },
       {
         text: "Speeding fine $15",
         sum: -15
-      },
-      {
-        text: "Your building loan matures. Collect $150",
-        sum: 150
-      },
-      {
-        text: "Income Tax refund - collect $20",
-        sum: 20
       },
       {
         text: "Life Insurance Matures. Pay $100",
@@ -155,18 +167,6 @@ class EventMessages {
       {
         text: "You are assessed for street repairs. Pay $40",
         sum: -40
-      },
-      {
-        text: "You have won a prize in a beauty contest",
-        sum: 10
-      },
-      {
-        text: "You inherit $100",
-        sum: 100
-      },
-      {
-        text: "From sale of stock you get $50",
-        sum: 50
       }
     ];
     const number =
