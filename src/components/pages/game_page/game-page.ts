@@ -145,13 +145,14 @@ class GamePage extends Page {
       }]
       playersToPlay.forEach((player, i) => {
         player.name = names[i];
+      })
+      playersToPlay.length = names.length
+      console.log('final players:', playersToPlay);
+      playersToPlay.forEach((player, i) => {
         const createPlayer = new ShowPlayer(player);
         const createBlockPlayer = createPlayer.createDiv();
         blockPlayers.append(createBlockPlayer);
       })
-      playersToPlay.length = names.length
-      console.log('final players:', playersToPlay);
-
       // 
 
       const game = new Game(playersToPlay)
