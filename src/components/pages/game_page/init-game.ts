@@ -27,6 +27,7 @@ export class Game {
     Game.playerInterface = document.querySelector('#pmv') as HTMLDivElement
     Game.chatWindowBox = document.querySelector('.chat') as HTMLDivElement
     Game.newTurn(Game.players[Game.currPlayer])
+    Game.hideExtraChips(Game.playersQnt)
   }
   public static newTurn(player: IPlayer) {
     console.log(`player: ${player.id} turn...`);
@@ -41,7 +42,13 @@ export class Game {
     } else {
       PlayerBtnsInterface.baseComboBtns(player)
     }
-
-
+  }
+  public static hideExtraChips(playersQnt: number) {
+    const arr = [...Array(playersQnt).keys()].map((n) => n + 1);
+    const hide = [1, 2, 3, 4, 5].filter((n) => !arr.includes(n))
+    hide.forEach((n) => {
+      const chip = document.querySelector(`.color_${n}`) as HTMLDivElement
+      chip.style.display = 'none'
+    })
   }
 }
