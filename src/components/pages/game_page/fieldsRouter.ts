@@ -122,6 +122,7 @@ export class FieldsRouter {// for chat
       case player:
         // chat message "you got on your own property"
         console.log(`Player ${player.id} got on his own property`);
+        PlayerBtnsInterface.clearEndTurn(player)
         break;
       case null:
         // chat message "you got on nobody's property"

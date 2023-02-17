@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
+import { IPlayer } from "../../interfaces/interfaces";
 import Page from "../../templates/page";
 import { creatPlayer } from "../createJson/createJson";
 import GameBoard from "./game-board";
@@ -88,9 +89,11 @@ class GamePage extends Page {
     //link.action = "#start-game";
     button.innerText = "Start game";
     button.classList.add("button-start-game");
-    button.addEventListener("click", () => {
-      creatPlayer(this.createArrayName());
-      console.log(this.createArrayName());
+    button.addEventListener("click", async () => {
+      const names = this.createArrayName()
+      await creatPlayer(names);
+      // console.log(this.createArrayName());
+
       const container = document.querySelector('main');
       const gameBoard = new GameBoard().init();
       (container as HTMLDivElement).innerHTML = '';
@@ -125,7 +128,21 @@ class GamePage extends Page {
         "capital": 1500,
         "color": "yellow",
         "currentPosition": 1
+      },
+      {
+        "id": 5,
+        "name": "Vasya",
+        "money": 1500,
+        "capital": 1500,
+        "color": "yellow",
+        "currentPosition": 1
       }]
+      playersToPlay.forEach((player, i) => {
+        player.name = names[i]
+      })
+      playersToPlay.length = names.length
+      console.log('final players:', playersToPlay);
+
       const game = new Game(playersToPlay)
       game.init()
     })

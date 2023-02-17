@@ -15,7 +15,7 @@ export class PlayerBtnsInterface {
       const cubeSum: number = GameCubeRoll.sum
       const isDouble: boolean = GameCubeRoll.isDouble
       const currField: number = player.currentPosition
-      const tf = currField + 6/* cubeSum */
+      const tf = currField + cubeSum/* cubeSum */
       const targetField = tf === 38 ? 38 : tf % 38
       console.log(`cube1:${GameCubeRoll.cube1}; cube2:${GameCubeRoll.cube2} double:${isDouble}`);
 
