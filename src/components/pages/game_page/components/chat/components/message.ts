@@ -1,7 +1,7 @@
 /* eslint-disable */
 import Element from "../../../../../templates/element";
-import { IPlayer, ICardsData, IMessageInfo } from "./types";
-
+import { IMessageInfo } from "./types";
+import { IPlayer, ICardsData } from "../../../../../interfaces/interfaces";
 class Message extends Element {
   player: IPlayer;
   cardData: ICardsData;
@@ -49,7 +49,7 @@ class Message extends Element {
       ) {
         console.log(this.cardData);
         let tax = this.cardData.value ? this.cardData.value.tax : undefined;
-        message = `${this.player.name} moved to ${this.cardData.owner.name}'s field and must pay ${tax}`;
+        message = `${this.player.name} moved to ${this.cardData.owner.name}'s field and must pay ${tax}$`;
       } else {
         message = `${this.player.name} moved to ${this.cardData.name} field`;
       }

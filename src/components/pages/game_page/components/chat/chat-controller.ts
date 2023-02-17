@@ -1,6 +1,7 @@
 import Message from "./components/message";
 import Chat from "./components/chat";
-import { IPlayer, ICardData, IMessageInfo } from "./components/types";
+import { IMessageInfo } from "./components/types";
+import { IPlayer, ICardsData } from "../../../../interfaces/interfaces";
 
 const chatData = {
   tag: "div",
@@ -34,7 +35,7 @@ class ChatController {
   run(
     place: HTMLElement,
     player?: IPlayer | undefined,
-    cardData?: ICardData | undefined,
+    cardData?: ICardsData | undefined,
     messageInfo?: IMessageInfo | undefined
   ) {
     if (!this.checkForChatExist()) {
