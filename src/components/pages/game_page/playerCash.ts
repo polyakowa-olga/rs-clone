@@ -1,25 +1,34 @@
 import { ICardsData, IPlayer } from "../../interfaces/interfaces";
-import DrawPlayer from "../../player/drawPlayer";
+// import DrawPlayer from "../../player/drawPlayer";
 import { RemovePlayer } from "./remove-player";
 /* eslint-disable */
 export class PlayerCash {
   public static addMoneyToPlayer(player: IPlayer, sumToAdd: number) {
     player.money += sumToAdd;
     player.capital += sumToAdd;
-    new DrawPlayer(player).drawplayer(); // drow (Anton)
+    // new DrawPlayer(player).drawplayer(); // drow (Anton)
 
     // playerCash.refreshPlayerHTML(/* playerId */)
   }
 
-  public static removeMoneyFromPlayer(player: IPlayer, sumToRemove: number) {
+  public static removeMoneyFromPlayer(player: IPlayer, sumToRemove: number, buyingProp?: boolean) {
     const isBankrupt = PlayerCash.checkForBankruptcy(player, sumToRemove)
     if (isBankrupt) {
       RemovePlayer.remove(player)
       console.log(`Player ${player.id} is bankrupt!`);
       return player.money
     }
-    player.money -= sumToRemove;
-    // player.capital -= sumToRemove; capital = money + capital (Anton)
+
+    switch (buyingProp) {
+      case true:
+        player.money -= sumToRemove;
+        break;
+      default:
+        player.money -= sumToRemove;
+        player.capital -= sumToRemove;
+        break;
+    }
+    // capital = money + capital (Anton)
     // new DrawPlayer(player).drawplayer(); // drow (Anton)
     // playerCash.refreshPlayerHTML(/* playerId */)
   }
@@ -34,7 +43,7 @@ export class PlayerCash {
       console.log(`Player ${field.owner.id} get rest cash from player ${player.id}`);
     } else {
       PlayerCash.addMoneyToPlayer(field.owner, sumToPay)
-      console.log(`Player ${field.owner.id} get ${field.price} from player ${player.id}`);
+      console.log(`Player ${field.owner.id} get ${sumToPay} from player ${player.id}`);
     }
   }
 

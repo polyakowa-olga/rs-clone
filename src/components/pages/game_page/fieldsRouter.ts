@@ -5,6 +5,8 @@ import { Move } from "./move";
 import { PlayerBtnsInterface } from "./player-btns";
 import { chat } from "./components/chat/index"; // for chat
 import EventMessages from "../../messages/chanceMessages"; // for chat
+import { CardValue } from "./card-value";
+import { GameCubeRoll } from "../../blocks/createNumbers";
 /* eslint-disable */
 export class FieldsRouter {// for chat
   static MessageDataGetter = new EventMessages();// for chat
@@ -120,6 +122,7 @@ export class FieldsRouter {// for chat
       case player:
         // chat message "you got on your own property"
         console.log(`Player ${player.id} got on his own property`);
+        PlayerBtnsInterface.clearEndTurn(player)
         break;
       case null:
         // chat message "you got on nobody's property"
@@ -129,7 +132,10 @@ export class FieldsRouter {// for chat
         buyBtn.addEventListener('click', () => {
           if (player.money >= fieldPrice) {
             field.owner = player
-            PlayerCash.removeMoneyFromPlayer(player, fieldPrice)
+            PlayerCash.removeMoneyFromPlayer(player, fieldPrice, true)
+            // changing currValue and refresh html
+            CardValue.setCurrentValue(player, field)
+            // ------------------
             console.log(`Player ${player.id} buying ${field.title}`);
             // color field
             const cardElem = document.querySelector(`#field${field.id}`) as HTMLDivElement
@@ -149,7 +155,8 @@ export class FieldsRouter {// for chat
 
       default:
         // chat message "{player} got on {player} property. Need to pay {sum} to {other player}"
-        const sumToPay = field.price as number /* SUM TO PAY other player {field.value}*/
+        const currFieldValue = field.currValue ? field.currValue : field.price as number
+        const sumToPay = [7, 26].includes(field.id) ? (currFieldValue * GameCubeRoll.sum) : currFieldValue as number /* SUM TO PAY other player {field.value}, south-korea check*/
         const payBtn = document.createElement('button') as HTMLButtonElement;
         payBtn.innerText = `PAY: ${sumToPay}k$`;
         payBtn.addEventListener('click', () => {
