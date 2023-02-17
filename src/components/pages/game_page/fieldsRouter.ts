@@ -95,21 +95,41 @@ export class FieldsRouter {// for chat
         break;
       case ([13].includes(fieldId)):
         // create message to chat like "{player} got on prison zone, nothing happend"
+        ////// chat start
+
+        chat.run(Game.chatWindowBox, player, field);
+
+        ///// chat end
         console.log(`Player ${player.id} got on prison zone, nothing happend`);
         PlayerBtnsInterface.clearEndTurn(player)
         break;
       case ([1].includes(fieldId)):
         // create message to chat like "{player} got on prison zone, nothing happend"
+        ////// chat start
+
+        chat.run(Game.chatWindowBox, player, field);
+
+        ///// chat end
         console.log(`Player ${player.id} has passed a lap`);
         PlayerBtnsInterface.clearEndTurn(player)
         break;
       case ([20].includes(fieldId)):
         console.log(`Player ${player.id} decided to rest for a bit`);
         // create message to chat like "{player} got on prison zone, nothing happend"
+        ////// chat start
+
+        chat.run(Game.chatWindowBox, player, field);
+
+        ///// chat end
         PlayerBtnsInterface.clearEndTurn(player)
         break;
       case ([32].includes(fieldId)):
         // create message to chat like "{player} broke the law and ended up in jail"
+        ////// chat start
+
+        chat.run(Game.chatWindowBox, player, field);
+
+        ///// chat end
         player.isInPrison = 3
         Move.move(player, 13)
         console.log(`Player ${player.id} broke the law and ended up in jail`);
@@ -121,11 +141,21 @@ export class FieldsRouter {// for chat
     switch (field.owner) {
       case player:
         // chat message "you got on your own property"
+        ////// chat start
+
+        chat.run(Game.chatWindowBox, player, field);
+
+        ///// chat end
         console.log(`Player ${player.id} got on his own property`);
         PlayerBtnsInterface.clearEndTurn(player)
         break;
       case null:
         // chat message "you got on nobody's property"
+        ////// chat start
+
+        chat.run(Game.chatWindowBox, player, field);
+
+        ///// chat end
         const buyBtn = document.createElement('button') as HTMLButtonElement;
         const fieldPrice = field.price as number
         buyBtn.innerText = `Buy ${field.title}`
@@ -155,6 +185,11 @@ export class FieldsRouter {// for chat
 
       default:
         // chat message "{player} got on {player} property. Need to pay {sum} to {other player}"
+        ////// chat start
+
+        chat.run(Game.chatWindowBox, player, field);
+
+        ///// chat end
         const currFieldValue = field.currValue ? field.currValue : field.price as number
         const sumToPay = [7, 26].includes(field.id) ? (currFieldValue * GameCubeRoll.sum) : currFieldValue as number /* SUM TO PAY other player {field.value}, south-korea check*/
         const payBtn = document.createElement('button') as HTMLButtonElement;

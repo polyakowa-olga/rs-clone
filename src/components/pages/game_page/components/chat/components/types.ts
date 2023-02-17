@@ -7,9 +7,10 @@ export interface IPlayer {
   currentPosition: number;
 }
 
-export interface ICardData {
+export interface ICardsData {
   id: number;
   type: string;
+  name: string
   title: string;
   description: string;
   price?: number;
@@ -18,6 +19,13 @@ export interface ICardData {
   owner?: any;
   images?: string;
   flag?: string;
+  web?: string;
+  value?: {
+    tax: number;
+    monopoly: number;
+    shares: number[];
+  };
+  currValue?: number;
 }
 
 export interface IMessageInfo {
