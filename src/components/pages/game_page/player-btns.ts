@@ -1,6 +1,8 @@
 import { GameCubeRoll } from "../../blocks/createNumbers";
 import { ICardsData, IPlayer } from "../../interfaces/interfaces";
+import { CardValue } from "./card-value";
 import { FieldsRouter } from "./fieldsRouter";
+import { GameLayout } from "./game-layout";
 import { Game } from "./init-game";
 import { Move } from "./move";
 import { PlayerCash } from "./playerCash";
@@ -15,7 +17,7 @@ export class PlayerBtnsInterface {
       const cubeSum: number = GameCubeRoll.sum
       const isDouble: boolean = GameCubeRoll.isDouble
       const currField: number = player.currentPosition
-      const tf = currField + 2/* cubeSum */
+      const tf = currField + 1/* cubeSum */
       const targetField = tf === 38 ? 38 : tf % 38
       console.log(`cube1:${GameCubeRoll.cube1}; cube2:${GameCubeRoll.cube2} double:${isDouble}`);
 
@@ -85,6 +87,11 @@ export class PlayerBtnsInterface {
   public static baseComboBtns(player: IPlayer) {
     PlayerBtnsInterface.addRollBtn(player)
     PlayerBtnsInterface.tradeAndLockComboBtns(player)
+    // shares
+    PlayerBtnsInterface.addSharesBtns(player)
+  }
+  public static addSharesBtns(player: IPlayer) {
+    PlayerBtnsInterface.addBuySharesBtn(player)
   }
   public static prisonComboBtns(player: IPlayer) {
     PlayerBtnsInterface.addRollBtn(player)
@@ -99,5 +106,168 @@ export class PlayerBtnsInterface {
     PlayerBtnsInterface.tradeAndLockComboBtns(player)
     PlayerBtnsInterface.addEndTurnBtn(player)
   }
+  // shares
+  public static addBuySharesBtn(player: IPlayer) {
+    const buySharesBtn = document.createElement('button') as HTMLButtonElement
+    buySharesBtn.classList.add('buySharesBtn')
+    // --------
+    const sellSharesBtn = document.createElement('button') as HTMLButtonElement
+    sellSharesBtn.classList.add('sellSharesBtn')
+    // --------
+    const boardFieldsContainer = Game.boardFieldsContainer
+    const playerFields = Game.cardsData.filter((field) => field.owner === player).map((field) => field.id)
+
+    const isPlayerHaveMonopoly = [...CardValue.countryFields.values()].some((arr) => arr.every((n) => playerFields.includes(n)))
+    if (!isPlayerHaveMonopoly) {
+      return
+    }
+
+    /* all player monopoly fields [[2,4..],[],...] */
+    const playerMonopolyFields: number[][] = [...CardValue.countryFields.values()].filter((arr) => arr.every((n) => playerFields.includes(n)))
+
+    const sharesHandler = (e: Event, isBuy?: boolean) => {
+      const targetField = (e.target as HTMLDivElement).closest('.playField')
+      const fieldId = targetField?.id as string
+      if (fieldId) {
+        const id = Number(fieldId.replace(/field/g, ''))
+        if (playerFields.includes(id)) {
+          const currMonopoly: number[] = playerMonopolyFields.filter((arr) => arr.includes(id))[0]
+          if (currMonopoly) {
+            if ([7, 26, 3, 30, 11, 22].includes(id)) {
+              console.log(`Player ${player.id} can't buy shares for this property`);
+              return
+            }
+            const currField = Game.cardsData.find((val) => val.id === id) as ICardsData
+            const currFieldSharesPrice = currField.sharesPrice as number
+
+            // check pockets
+            if (isBuy && !PlayerCash.isEnoughInCash(player, currFieldSharesPrice)) {
+              return
+            }
+            // -------------
+            const currMonopolyFields: ICardsData[] = currMonopoly.map((id) => Game.cardsData.find((val) => val.id === id)) as ICardsData[]
+            const currFieldShares = currField.value?.shares as number[]
+            let currFieldValue = currField.currValue
+            let strictSell: boolean = false
+            switch (currFieldValue) {
+              case currFieldShares[0]:
+                switch (isBuy) {
+                  case true:
+                    currField.currValue = currFieldShares[1]
+                    console.log(`Player ${player.id} had bought 2 shares of ${currField.title}`);
+                    break;
+                  default:
+                    currField.currValue = currField.value?.monopoly
+                    console.log(`Player ${player.id} had sold 1 shares of ${currField.title}`);
+                    break;
+                }
+                break;
+              case currFieldShares[1]:
+                switch (isBuy) {
+                  case true:
+                    currField.currValue = currFieldShares[2]
+                    console.log(`Player ${player.id} had bought 3 shares of ${currField.title}`);
+                    break;
+                  default:
+                    currField.currValue = currFieldShares[0]
+                    console.log(`Player ${player.id} had sold 2 shares of ${currField.title}`);
+                    break;
+                }
+                break;
+              case currFieldShares[2]:
+                switch (isBuy) {
+                  case true:
+                    currField.currValue = currFieldShares[3]
+                    console.log(`Player ${player.id} had bought 4 shares of ${currField.title}`);
+                    break;
+                  default:
+                    currField.currValue = currFieldShares[1]
+                    console.log(`Player ${player.id} had sold 3 shares of ${currField.title}`);
+                    break;
+                }
+                break;
+              case currFieldShares[3]:
+                switch (isBuy) {
+                  case true:
+                    currField.currValue = currFieldShares[4]
+                    console.log(`Player ${player.id} had bought 100% shares of ${currField.title}`);
+                    break;
+                  default:
+                    currField.currValue = currFieldShares[2]
+                    console.log(`Player ${player.id} had sold 4 shares of ${currField.title}`);
+                    break;
+                }
+                break;
+              case currFieldShares[4]:
+                switch (isBuy) {
+                  case true:
+                    console.log(`Player ${player.id} already have 100% shares of ${currField.title}`);
+                    break;
+                  default:
+                    currField.currValue = currFieldShares[3]
+                    console.log(`Player ${player.id} had sold 5 shares of ${currField.title}`);
+                    break;
+                }
+                break;
+              default:
+                switch (isBuy) {
+                  case true:
+                    currField.currValue = currFieldShares[0]
+                    console.log(`Player ${player.id} had bought his 1st share of ${currField.title}`);
+                    break;
+                  default:
+                    // currField.currValue = currFieldShares[2]
+                    strictSell = true
+                    console.log(`Player ${player.id} don't have shares of ${currField.title}`);
+                    break;
+                }
+                break;
+            }
+            switch (isBuy) {
+              case true:
+                if (currFieldValue !== currField.currValue) {
+                  PlayerCash.removeMoneyFromPlayer(player, currFieldSharesPrice, true)
+                }
+                break;
+              default:
+                if (!strictSell) {
+                  const sumToAdd = Math.ceil(currFieldSharesPrice / 2)
+                  PlayerCash.addMoneyToPlayer(player, sumToAdd)
+                }
+                break;
+            }
+            console.log(`Player's field current value: $${currField.currValue}K`);
+            GameLayout.changeFieldValue(<ICardsData[]>currMonopolyFields)
+          }
+
+
+        }
+
+
+      }
+      // return
+      switch (isBuy) {
+        case true:
+          // buySharesBtn.remove()
+          break;
+        default:
+          break;
+      }
+    }
+    buySharesBtn.addEventListener('click', () => {
+      boardFieldsContainer.addEventListener('click', (e: Event) => sharesHandler(e, true), { once: true })
+    })
+    buySharesBtn.innerText = `BUY SHARES!`
+    Game.playerInterface.appendChild(buySharesBtn)
+
+
+
+    sellSharesBtn.addEventListener('click', () => {
+      boardFieldsContainer.addEventListener('click', (e: Event) => sharesHandler(e, false), { once: true })
+    })
+    sellSharesBtn.innerText = `sell shares`
+    Game.playerInterface.appendChild(sellSharesBtn)
+  }
+
 }
 

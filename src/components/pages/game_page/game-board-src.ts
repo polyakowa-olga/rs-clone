@@ -17,3 +17,8 @@ export const boardTradeElement = `
 
 export const boardAccidental = `<div class="accidential">
 </div>`;
+
+export const topBottomSharesFields = [2, 4, 5, 9, 10, 12, 28, 29, 31, 21, 23, 24]
+export const leftrightSharesFields = [14, 15, 16, 18, 19, 33, 34, 35, 37, 38]
+export const skSharesFields = [7, 26]
+export const chinaSharesFields = [3, 30, 11, 22]

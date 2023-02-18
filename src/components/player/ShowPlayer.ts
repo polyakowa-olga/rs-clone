@@ -39,8 +39,8 @@ class ShowPlayer {
     block.append(nameBlock);
     nameBlock.append(name);
     block.append(discriptionPlayerBlock);
-    discriptionPlayerBlock.append(capitalBlock);
     discriptionPlayerBlock.append(moneyBlock);
+    discriptionPlayerBlock.append(capitalBlock);
 
     block.classList.add("player");
     pictureBlock.classList.add("picture-block");
@@ -59,10 +59,10 @@ class ShowPlayer {
     name.innerText = this.name;
     moneyBlockSpan.id = `money-${this.id}`;
     moneyBlockSpan.innerText = this.money.toString();
-    moneyBlock.innerHTML = moneyBlock.innerText = `Money : &#8364${moneyBlockSpan.outerHTML} $`;
+    moneyBlock.innerHTML = moneyBlock.innerText = `Money: $${moneyBlockSpan.outerHTML}K`;
     capitalBlockSpan.id = `capital-${this.id}`;
     capitalBlockSpan.innerHTML = this.capital.toString();
-    capitalBlock.innerHTML = capitalBlock.innerText = `Capital : &#x20ac${capitalBlockSpan.outerHTML} $`;
+    capitalBlock.innerHTML = capitalBlock.innerText = `Capital: $${capitalBlockSpan.outerHTML}K`;
     return block;
   }
 }

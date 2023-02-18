@@ -18,6 +18,7 @@ export class Game {
   static playerInterface: HTMLDivElement
   static chatWindowBox: HTMLDivElement
   static cardsData: ICardsData[]
+  static boardFieldsContainer: HTMLDivElement
   constructor(players: IPlayer[]) {
     Game.players = players
     Game.playersQnt = players.length
@@ -25,6 +26,7 @@ export class Game {
   async init() {
     Game.cardsData = await GameBoard.getCardsData()
     Game.playerInterface = document.querySelector('#pmv') as HTMLDivElement
+    Game.boardFieldsContainer = document.querySelector('.boardFieldsContainer') as HTMLDivElement
     Game.chatWindowBox = document.querySelector('.chat') as HTMLDivElement
     Game.newTurn(Game.players[Game.currPlayer])
     Game.hideExtraChips(Game.playersQnt)

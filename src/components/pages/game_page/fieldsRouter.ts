@@ -7,6 +7,7 @@ import { chat } from "./components/chat/index"; // for chat
 import EventMessages from "../../messages/chanceMessages"; // for chat
 import { CardValue } from "./card-value";
 import { GameCubeRoll } from "../../blocks/createNumbers";
+import { GameLayout } from "./game-layout";
 /* eslint-disable */
 export class FieldsRouter {// for chat
   static MessageDataGetter = new EventMessages();// for chat
@@ -138,14 +139,12 @@ export class FieldsRouter {// for chat
             // ------------------
             console.log(`Player ${player.id} buying ${field.title}`);
             // color field
-            const cardElem = document.querySelector(`#field${field.id}`) as HTMLDivElement
-            const cardColorElem = cardElem.querySelector('.playerColor') as HTMLDivElement
-            cardColorElem.classList.add(`color${player.id}`)
+            GameLayout.playerColorField(player, field)
             // -----------
-            PlayerBtnsInterface.clearEndTurn(player)
           } else {
-            alert(`Player ${player.id} doesn't have enough in cash to buy ${field.title}`)
+            console.log(`Player ${player.id} doesn't have enough in cash to buy ${field.title}`)
           }
+          PlayerBtnsInterface.clearEndTurn(player)
         })
         PlayerBtnsInterface.clearEndTurn(player)
         Game.playerInterface.appendChild(buyBtn)
