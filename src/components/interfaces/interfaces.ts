@@ -18,6 +18,7 @@ export interface ICardsData {
   name: string,
   description: string,
   price?: number,
+  sharesPrice?: number
   tax: number,
   country?: string,
   owner?: any,

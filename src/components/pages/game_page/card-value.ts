@@ -30,9 +30,12 @@ export class CardValue {
       // field.currValue = field.value?.monopoly
       if (curCountry === "China") {
         countryTradeCards.map((fld) => fld.currValue = field.value?.shares[3])
+      } else if (!field.value?.shares.includes(field.currValue as number)) { /* errors may be */
+        countryTradeCards.map((fld) => fld.currValue = fld.value?.monopoly)
       } else {
-        countryTradeCards.map((fld) => fld.currValue = field.value?.monopoly)
+        console.log(`from card-value.ts 36+- (shares mb)`);
       }
+
       // shares logic...
     } else if (field.owner === player) {
       if (curCountry === "China") {
@@ -48,7 +51,5 @@ export class CardValue {
     GameLayout.changeFieldValue(<ICardsData[]>countryTradeCards)
     // ------------
   }
-  protected static chinaHandler() {
 
-  }
 }
