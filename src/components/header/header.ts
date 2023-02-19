@@ -4,7 +4,7 @@ import { PageIds } from "../app";
 enum PageNames {
   StartPage = "Start Page",
   GamePage = "Game Page",
-  WinnersPage = "Winners Page"
+  RulesPage = "Rules Page"
 }
 
 const Buttons = [
@@ -17,8 +17,8 @@ const Buttons = [
     content: PageNames.GamePage
   },
   {
-    id: PageIds.WinnersPage,
-    content: PageNames.WinnersPage
+    id: PageIds.RulesPage,
+    content: PageNames.RulesPage
   }
 ];
 
