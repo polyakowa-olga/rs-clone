@@ -1,3 +1,86 @@
-#rul-page {
-    background-color: $color_text-hover;
+#rules-page {
+    background-color: #979BA6;
+}
+
+.rules-game {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    padding: 50px;
+    background-color: #979BA6;
+}
+
+.about-game {
+    padding-bottom: 50px;
+}
+
+.name-about-game h1,
+h2 {
+    font-size: 3.5em;
+    padding: 0 2rem;
+    margin: -0.25em auto 0.5em auto;
+    text-align: left;
+    text-transform: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    line-height: 1.1;
+    color: #161C32;
+}
+
+h1 {
+    font-size: 3.5em;
+    padding: 0 2rem;
+    margin: 0 auto 0.5em auto;
+    text-align: left;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    line-height: 1.1;
+}
+
+span {
+    font-size: .45em;
+    text-transform: lowercase;
+    font-weight: 400;
+}
+
+.game-rules h3 {
+    color: #4A3520;
+    padding-bottom: 20px;
+}
+
+.block-game-rules {
+    padding-bottom: 25px;
+}
+
+.block-game-rules h3 {
+    padding: 0.5em 1.3em;
+    margin: 0;
+    font-size: 1.4em;
+    line-height: 1;
+}
+
+p {
+    text-align: left;
+    padding: 0 3rem;
+    font-size: 1.1em;
+    margin: 0.75em auto;
+    color: #4A4420;
+}
+
+.button-language {
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    right: 100px;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    color: #161C32;
+    box-shadow: 5px 5px 5px #35363A;
+    background-color: #44464D;
+    border-radius: 5px;
+    border: solid 1px #161C32;
 }
