@@ -4,9 +4,10 @@
 
 .player {
   height: 20%;
-  border: 1px solid black;
+  border: 1px solid #CB8C5F;
   font-size: 65%;
-  box-shadow: 1px 1px 15px black;
+  box-shadow: 1px 1px 15px #714E35;
+  border-radius: 5px;
   margin: 10px;
   padding: 10px;
 }
@@ -19,11 +20,19 @@
   display: flex;
 }
 
-
 .name {
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+  color: #81BE74;
+}
+
+.description-player h3 {
+  color: #CB9C7C;
+}
+
+.description-player span {
+  color: #CB8C5F;
 }
 
 .name-chip-block {

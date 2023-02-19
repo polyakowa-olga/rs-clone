@@ -1,26 +1,32 @@
 #game-page {
-    background-color: $color_main-hover;
+    background-color: #62310E;
+    color: #CB9C7C;
 }
 
 .block-players {
     position: absolute;
     top: 15%;
     left: 1%;
-    width: 80%;
-    background-color: aquamarine;
-
+    width: 98%;
+    background-color: #96582C;
+    box-shadow: 3px 2px 5px #714E35;
+    border-radius: 15px;
+    padding: 1%;
 }
 
 .form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .addInput {
-    top: 10px;
-    right: 15px;
-    width: 10px;
-    height: 10px;
+    top: 3px;
+    right: 0px;
+    width: 30px;
+    height: 30px;
     background-image: url(../assets/img/udalenie.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -28,29 +34,71 @@
     cursor: pointer;
 }
 
-.input {
-    width: 100%;
+input::placeholder {
+    color: #347D25;
 }
 
 .input-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
-    border: solid 1px black;
-    box-shadow: 2px 5px 5px gray;
-    padding: 5px;
+    margin: 1%;
+    width: 16%;
+}
+
+input {
+    width: 100%;
+    -webkit-border-radius: none;
+    -moz-border-radius: none;
+    -khtml-border-radius: none;
+    outline: none;
+    color: #18510C;
+    border-radius: 5px;
+    border: solid 1px #347D25;
+    box-shadow: 2px 5px 5px #355E2C;
+    padding: 10px;
+    background-color: #81BE74;
+}
+
+.input-block-img {
+    position: relative;
+    overflow: hidden;
+    width: 100px;
+    height: 70px;
+}
+
+.input-img {
+    position: absolute;
+    width: 610%;
+    height: 200%;
+    object-fit: cover;
 }
 
 .form-add {
-    border: solid 2px green;
-    background-color: greenyellow;
+    color: #62310E;
+    border: solid 2px #62310E;
+    background-color: #96582C;
+    box-shadow: 2px 5px 5px #714E35;
+    border-radius: 5px;
+    padding: 10px;
     text-align: center;
     margin: 1%;
+    font-size: 40px;
+    border-radius: 50%;
     cursor: pointer;
 }
 
 .button-start-game {
-    background-color: greenyellow;
-    border: solid 2px black;
-    font-size: xx-large;
+    color: #0C1F41;
+    background-color: #5C7CB1;
+    border: solid 2px #243B63;
+    border-radius: 15px;
+    box-shadow: 2px 5px 5px #27344B;
+    font-size: 36px;
+    padding: 15px;
+    margin: 5%;
+    width: 100%;
     cursor: pointer;
 }
 
@@ -62,4 +110,5 @@
 
 .no-add {
     cursor: default;
+    display: none;
 }

@@ -13,11 +13,59 @@ class GamePage extends Page {
     super(id);
   }
 
+  createImg() {
+    const allImg = document.querySelectorAll(".input-img");
+    console.log(allImg);
+    for (let i = 0; i < allImg.length; ++i) {
+      const e = allImg[i] as HTMLImageElement;
+      e.src = "../../../assets/img/chips_hall.png";
+    }
+    if (allImg[0]) {
+      allImg[0].classList.remove("blue-chip");
+      allImg[0].classList.remove("green-chip");
+      allImg[0].classList.remove("yellow-chip");
+      allImg[0].classList.remove("pink-chip");
+      allImg[0].classList.add("red-chip");
+    }
+    if (allImg[1]) {
+      allImg[1].classList.remove("red-chip");
+      allImg[1].classList.remove("green-chip")
+      allImg[1].classList.remove("yellow-chip");
+      allImg[1].classList.remove("pink-chip");
+      allImg[1].classList.add("blue-chip");
+    }
+    if (allImg[2]) {
+      allImg[2].classList.remove("red-chip");
+      allImg[2].classList.remove("blue-chip")
+      allImg[2].classList.remove("yellow-chip");
+      allImg[2].classList.remove("pink-chip");
+      allImg[2].classList.add("green-chip");
+    }
+    if (allImg[3]) {
+      allImg[3].classList.remove("red-chip");
+      allImg[3].classList.remove("blue-chip")
+      allImg[3].classList.remove("green-chip");
+      allImg[3].classList.remove("pink-chip");
+      allImg[3].classList.add("yellow-chip");
+    }
+    if (allImg[4]) {
+      allImg[4].classList.remove("red-chip");
+      allImg[4].classList.remove("blue-chip")
+      allImg[4].classList.remove("green-chip");
+      allImg[4].classList.remove("yellow-chip");
+      allImg[4].classList.add("pink-chip");
+    }
+  }
+
   createInput() {
     const inputBlock = document.createElement("div");
+    const inputBlockImg = document.createElement("div");
+    const inputImg = document.createElement("img");
     const inputName = document.createElement('input');
     const addInput = document.createElement("div");
 
+    inputBlock.append(inputBlockImg);
+    inputBlockImg.append(inputImg);
     inputBlock.append(inputName);
     inputBlock.append(addInput);
 
@@ -26,6 +74,9 @@ class GamePage extends Page {
     inputName.classList.add("input");
     inputBlock.classList.add("input-block");
     addInput.classList.add("addInput");
+    inputImg.classList.add("input-img");
+    inputBlockImg.classList.add("input-block-img");
+    inputImg.src = "../../../assets/img/chips_hall.png";
 
     addInput.addEventListener("click", () => {
       const allInputs = document.querySelectorAll("input");
@@ -33,12 +84,11 @@ class GamePage extends Page {
       if (allInputs.length > 2) {
         buttonAddInputs.classList.remove("no-add");
         inputBlock.remove();
+        this.createImg();
       }
     })
-
     return inputBlock;
   }
-
 
   createArrayName() {
     const arraname = [];
@@ -49,7 +99,6 @@ class GamePage extends Page {
     }
     return arraname;
   }
-
 
   createGamePage() {
     const message = document.createElement("div");
@@ -67,32 +116,30 @@ class GamePage extends Page {
     link.classList.add("form");
     const buttonAddInputs = document.createElement("div");
     buttonAddInputs.classList.add("form-add");
-    buttonAddInputs.innerText = "Add player";
-    textforBlock.innerText = "Please, choose from 2 to 5 players..."
+    buttonAddInputs.innerText = "+";
+    textforBlock.innerText = "Please, add player from 2 till 5";
     buttonAddInputs.addEventListener("click", () => {
       const allInputs = document.querySelectorAll("input")
       if (allInputs.length < 4) {
         const input = this.createInput();
-        link.append(input);
+        link.prepend(input);
+        this.createImg();
+        button.classList.remove("no-add");
       } else if (allInputs.length < 5) {
         const input = this.createInput();
-        link.append(input);
+        link.prepend(input);
         buttonAddInputs.classList.add("no-add");
+        this.createImg();
       }
     })
+    link.prepend(buttonAddInputs);
     const input = this.createInput();
-    link.append(input);
-    const input2 = this.createInput();
-    link.append(input2);
-    // const input2 = this.createInput();
-    blockPlayers.append(buttonAddInputs);
-
-    //link.action = "#start-game";
+    link.prepend(input);
     button.innerText = "Start game";
     button.classList.add("button-start-game");
+    button.classList.add("no-add");
     button.addEventListener("click", async () => {
-      const names = this.createArrayName()
-      // await creatPlayer(names);
+      const names = this.createArrayName();
 
       const container = document.querySelector('main');
       const gameBoard = new GameBoard().init();
@@ -103,7 +150,6 @@ class GamePage extends Page {
       const blockPlayers = document.createElement("div") as HTMLDivElement;
       message.prepend(blockPlayers);
       blockPlayers.classList.add("players");
-
       const playersToPlay = [{
         "id": 1,
         "name": "Pavel",
@@ -156,7 +202,7 @@ class GamePage extends Page {
       // 
 
       const game = new Game(playersToPlay)
-      game.init()
+      game.init();
     })
     return message;
   }
