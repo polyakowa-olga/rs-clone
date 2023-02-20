@@ -1,6 +1,7 @@
 import Message from "./components/message";
 import Chat from "./components/chat";
 import { IMessageInfo } from "./components/types";
+import Separator from "./components/separator";
 import { IPlayer, ICardsData } from "../../../../interfaces/interfaces";
 
 const chatData = {
@@ -39,10 +40,10 @@ class ChatController {
     messageInfo?: IMessageInfo | undefined
   ) {
     if (!this.checkForChatExist()) {
-      this.chat.textContent = "play started";
       place.append(this.chat);
     } else {
       if (player && cardData) {
+        const separator = new Separator("div", ["gap"]).returnHTML();
         const message = new Message(
           messageData.tag,
           messageData.classes,
@@ -51,7 +52,7 @@ class ChatController {
           (messageInfo = messageInfo ? messageInfo : undefined)
         ).returnHTML();
         setTimeout(() => {
-          this.chat.append(message);
+          document.querySelector(".messages-box")?.append(message, separator);
         }, 1500);
       }
     }
