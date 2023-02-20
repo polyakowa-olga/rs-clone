@@ -2,7 +2,7 @@
 import { boardAccidental, boardBody, boardTradeElement } from "./game-board-src";
 import { chat } from "./components/chat/index"; // for chat
 import { ICardsData } from "../../interfaces/interfaces"
-
+import { cardInfoWindow } from "./components/card-info-window/index"; // for info-window
 
 export default class GameBoard {
   gameBoard: HTMLDivElement | undefined;
@@ -23,6 +23,9 @@ export default class GameBoard {
     const chatWindowBox = board.querySelector('.chat') as HTMLDivElement;
     chat.run(chatWindowBox);
     //// chat end
+    //// info-window start
+    document.addEventListener("click", cardInfoWindow.showInfo);
+    //// info-window end
 
     return board;
   }
