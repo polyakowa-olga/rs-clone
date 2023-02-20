@@ -54,7 +54,6 @@ class Message extends Element {
         message = `${this.player.name} moved to ${this.cardData.name} field`;
       }
     }
-
     return message;
   }
 
