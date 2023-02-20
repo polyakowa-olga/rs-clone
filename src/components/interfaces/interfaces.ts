@@ -29,7 +29,7 @@ export interface ICardsData {
   currValue?: number,
 }
 
-interface ICardValue {
+export interface ICardValue {
   tax: number,
   monopoly: number,
   shares: number[],
