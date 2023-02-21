@@ -2,8 +2,8 @@
 
 export const boardBody = `<div class="boardBody">
 <div class="boardFieldsContainer"></div>
-<div class="chat" id="gameChat">CHAT</div>
-<div class="playerMainView">GAME INTERFACE<div id="pmv"></div></div>
+<div class="chat" id="gameChat"><h3 class="block-name">CHAT</h3></div>
+<div class="playerMainView"><h3 class="block-name">GAME INTERFACE</h3><div id="pmv"></div></div>
 </div>`;
 
 export const boardTradeElement = `    
