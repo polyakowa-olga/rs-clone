@@ -122,12 +122,12 @@ class GamePage extends Page {
       const allInputs = document.querySelectorAll("input")
       if (allInputs.length < 4) {
         const input = this.createInput();
-        link.prepend(input);
+        link.append(input);
         this.createImg();
         button.classList.remove("no-add");
       } else if (allInputs.length < 5) {
         const input = this.createInput();
-        link.prepend(input);
+        link.append(input);
         buttonAddInputs.classList.add("no-add");
         this.createImg();
       }
@@ -140,7 +140,6 @@ class GamePage extends Page {
     button.classList.add("no-add");
     button.addEventListener("click", async () => {
       const names = this.createArrayName();
-
       const container = document.querySelector('main');
       const gameBoard = new GameBoard().init();
       (container as HTMLDivElement).innerHTML = '';
@@ -152,7 +151,7 @@ class GamePage extends Page {
       blockPlayers.classList.add("players");
       const playersToPlay = [{
         "id": 1,
-        "name": "Pavel",
+        "name": "Player1",
         "money": 1500,
         "capital": 1500,
         "color": "red",
@@ -160,14 +159,14 @@ class GamePage extends Page {
       },
       {
         "id": 2,
-        "name": "Kolya",
+        "name": "PLayer2",
         "money": 1500,
         "capital": 1500,
         "color": "blue",
         "currentPosition": 1
       }, {
         "id": 3,
-        "name": "Petya",
+        "name": "Player3",
         "money": 1500,
         "capital": 1500,
         "color": "green",
@@ -175,7 +174,7 @@ class GamePage extends Page {
       },
       {
         "id": 4,
-        "name": "Vasya",
+        "name": "Player4",
         "money": 1500,
         "capital": 1500,
         "color": "yellow",
@@ -183,14 +182,14 @@ class GamePage extends Page {
       },
       {
         "id": 5,
-        "name": "Vasya",
+        "name": "PLayer5",
         "money": 1500,
         "capital": 1500,
         "color": "pink",
         "currentPosition": 1
       }]
       playersToPlay.forEach((player, i) => {
-        player.name = names[i];
+        if (names[i]) player.name = names[i];
       })
       playersToPlay.length = names.length
       console.log('final players:', playersToPlay);
@@ -199,10 +198,12 @@ class GamePage extends Page {
         const createBlockPlayer = createPlayer.createDiv();
         blockPlayers.append(createBlockPlayer);
       })
-      // 
-
       const game = new Game(playersToPlay)
       game.init();
+
+      // 
+
+
     })
     return message;
   }
