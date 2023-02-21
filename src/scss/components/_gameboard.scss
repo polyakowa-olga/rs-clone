@@ -66,31 +66,31 @@
 
       .color1 {
         background-image: url(../assets/img/1_top.png);
-        top: -1px;
+        top: -1.7%;
         left: 0.5px;
       }
 
       .color2 {
         background-image: url(../assets/img/2_top.png);
-        top: -1px;
+        top: -1.7%;
         left: 0.5px;
       }
 
       .color3 {
         background-image: url(../assets/img/3_top.png);
-        top: -1px;
+        top: -1.7%;
         left: 0.5px;
       }
 
       .color4 {
         background-image: url(../assets/img/4_top.png);
-        top: -1px;
+        top: -1.7%;
         left: 0.5px;
       }
 
       .color5 {
         background-image: url(../assets/img/5_top.png);
-        top: -1px;
+        top: -1.7%;
         left: 0.5px;
       }
     }
@@ -446,35 +446,6 @@
   }
 }
 
-// player colors
-
-// .color1 {
-//   background-color: red;
-//   opacity: 0.4;
-// }
-
-// .color2 {
-//   background-color: purple;
-//   opacity: 0.4;
-// }
-
-// .color3 {
-//   background-color: green;
-//   opacity: 0.4;
-// }
-
-// .color4 {
-//   background-color: yellow;
-//   opacity: 0.4;
-// }
-
-// .color5 {
-//   background-color: pink;
-//   opacity: 0.4;
-// }
-
-
-
 #gameChat {
   position: absolute;
   width: 31.6%;
@@ -607,4 +578,43 @@
 
 .sharesCHN4 {
   background-image: url(../assets/img/sharesCHN4.png);
+}
+
+// trade
+
+
+.trade {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 91;
+  background-color: aliceblue;
+}
+
+.trade__container {
+  margin: 5%;
+}
+
+.trade__title {
+  font-size: large;
+}
+
+.trade__top-player {
+  border: 1px solid #222;
+  padding: 5%;
+}
+
+
+.trade__bottom-player {
+  border: 1px solid #222;
+  padding: 5%;
+}
+
+#trade__close {
+  background-color: #222;
+  color: white;
+  padding: 5%;
+
+  position: absolute;
+  right: 2%;
 }

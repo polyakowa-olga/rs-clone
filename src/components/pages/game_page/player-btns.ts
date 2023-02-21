@@ -6,6 +6,7 @@ import { GameLayout } from "./game-layout";
 import { Game } from "./init-game";
 import { Move } from "./move";
 import { PlayerCash } from "./playerCash";
+import { Trade } from "./trade";
 /* eslint-disable */
 export class PlayerBtnsInterface {
   public static addRollBtn(player: IPlayer) {
@@ -46,7 +47,7 @@ export class PlayerBtnsInterface {
   public static addTradeBtn(player: IPlayer) {
     const tradeBtn = document.createElement('button')
     tradeBtn.innerText = 'trade'
-
+    tradeBtn.addEventListener('click', () => Trade.startTrading(player))
     Game.playerInterface.appendChild(tradeBtn)
   }
   public static addEndTurnBtn(player: IPlayer) {
