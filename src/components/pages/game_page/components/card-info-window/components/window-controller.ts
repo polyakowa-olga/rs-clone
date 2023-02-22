@@ -12,8 +12,12 @@ class CardInfoWindowController {
     const element = event.target as HTMLElement;
     if (element && element.classList.contains("i-cross")) {
       document.querySelector(`#${windowData.id}`)?.remove();
+      return;
     }
-
+    if (document.querySelector(`#${windowData.id}`) && !element.closest(`#${windowData.id}`)) {
+      document.querySelector(`#${windowData.id}`)?.remove();
+      return;
+    }
     const field = element.closest(".playField") as HTMLElement;
     let choosedFieId: ICardData | undefined;
     if (cardsDataContainer && cardsDataContainer.cardsData) {
