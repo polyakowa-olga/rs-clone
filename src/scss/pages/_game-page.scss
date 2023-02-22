@@ -91,6 +91,10 @@ input {
     cursor: pointer;
 }
 
+.form-add:hover {
+    box-shadow: 2px 2px 10px #c08154;
+}
+
 .button-start-game {
     position: absolute;
     top: 85%;
@@ -104,6 +108,13 @@ input {
     margin: 5%;
     width: 100%;
     cursor: pointer;
+}
+
+.button-start-game:hover {
+    background-color: #243B63;
+    // border: solid 2px #5C7CB1;
+    box-shadow: 3px 3px 10px #5C7CB1;
+    color: #5C7CB1;
 }
 
 .text-form {
