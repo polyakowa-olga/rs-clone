@@ -17,6 +17,8 @@ export class GameLayout {
       }
       const currFieldShares: number[] | undefined = field.value?.shares
       if (currFieldShares) {
+        sharesElem.removeAttribute('class');
+        sharesElem.classList.add('shares');
         switch (field.currValue) {
           case currFieldShares[0]:
             if (topBottomSharesFields.includes(field.id)) {
@@ -66,8 +68,6 @@ export class GameLayout {
             }
             break;
           default:
-            sharesElem.removeAttribute('class');
-            sharesElem.classList.add('shares');
             break;
         }
       }
@@ -92,6 +92,7 @@ export class GameLayout {
   public static playerColorField(player: IPlayer, field: ICardsData) {
     const cardElem = document.querySelector(`#field${field.id}`) as HTMLDivElement
     const cardColorElem = cardElem.querySelector('.playerColor') as HTMLDivElement
-    cardColorElem.classList.add(`color${player.id}`)
+    cardColorElem.className = ''
+    cardColorElem.classList.add('playerColor', `color${player.id}`)
   }
 }

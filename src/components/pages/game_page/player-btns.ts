@@ -12,7 +12,6 @@ export class PlayerBtnsInterface {
   public static addRollBtn(player: IPlayer) {
     const rollBtn = document.createElement('button')
     rollBtn.innerText = 'roll'
-
     rollBtn.addEventListener('click', () => {
       GameCubeRoll.roll()
       const cubeSum: number = GameCubeRoll.sum
@@ -69,6 +68,7 @@ export class PlayerBtnsInterface {
       Game.newTurn(newPlayer)
     })
     Game.playerInterface.appendChild(endTurnBtn)
+    return endTurnBtn
   }
   public static outOfJailBtn(player: IPlayer) {
     const turnsLeft = player.isInPrison as number
@@ -107,6 +107,11 @@ export class PlayerBtnsInterface {
     PlayerBtnsInterface.tradeAndLockComboBtns(player)
     PlayerBtnsInterface.addEndTurnBtn(player)
   }
+  public static addBankruptBtn(player: IPlayer) {
+    Game.playerInterface.innerHTML = ''
+    const btn = PlayerBtnsInterface.addEndTurnBtn(player)
+    btn.innerText = 'BANKRUPT!'
+  }
   // shares
   public static addBuySharesBtn(player: IPlayer) {
     const buySharesBtn = document.createElement('button') as HTMLButtonElement
@@ -127,6 +132,7 @@ export class PlayerBtnsInterface {
     const playerMonopolyFields: number[][] = [...CardValue.countryFields.values()].filter((arr) => arr.every((n) => playerFields.includes(n)))
 
     const sharesHandler = (e: Event, isBuy?: boolean) => {
+      e.stopPropagation();
       const targetField = (e.target as HTMLDivElement).closest('.playField')
       const fieldId = targetField?.id as string
       if (fieldId) {
@@ -217,7 +223,6 @@ export class PlayerBtnsInterface {
                     console.log(`Player ${player.id} had bought his 1st share of ${currField.title}`);
                     break;
                   default:
-                    // currField.currValue = currFieldShares[2]
                     strictSell = true
                     console.log(`Player ${player.id} don't have shares of ${currField.title}`);
                     break;
@@ -237,22 +242,19 @@ export class PlayerBtnsInterface {
                 }
                 break;
             }
-            console.log(`Player's field current value: $${currField.currValue}K`);
             GameLayout.changeFieldValue(<ICardsData[]>currMonopolyFields)
+            // return
+            switch (isBuy) {
+              case true:
+                if (currFieldValue !== currField.currValue) {
+                  buySharesBtn.remove()
+                }
+                break;
+              default:
+                break;
+            }
           }
-
-
         }
-
-
-      }
-      // return
-      switch (isBuy) {
-        case true:
-          // buySharesBtn.remove()
-          break;
-        default:
-          break;
       }
     }
     buySharesBtn.addEventListener('click', () => {
