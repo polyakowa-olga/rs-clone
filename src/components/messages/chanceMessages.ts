@@ -107,66 +107,66 @@ class EventMessages {
     const ArrayMesasges = [
       {
         text: "Doctor’s fee. Pay $50",
-        sum: -50
+        sum: 50
       },
       {
         text:
           "You go to the local school’s car wash fundraiser – but you forget to close your windows! PAY $100.",
-        sum: -100
+        sum: 100
       },
       {
         text: "You didn’t shop local! PAY $50.",
-        sum: -50
+        sum: 50
       },
       {
         text: "You help build a new school playground! PAY $100.",
-        sum: -100
+        sum: 100
       },
       {
         text: "You donate your birthday money to a community center! PAY $50.",
-        sum: -50
+        sum: 50
       },
       {
         text:
           "You buy a few bags of cookies from that school bake sale. Yum! PAY $50.",
-        sum: -50
+        sum: 50
       },
       {
         text:
           "Your fuzzy friends at the animal shelter will be thankful for your donation. PAY $50.",
-        sum: -50
+        sum: 50
       },
       {
         text: "Pay your insurance premium $50! PAY $50.",
-        sum: -50
+        sum: 50
       },
       {
         text: "Parking fine $15",
-        sum: -15
+        sum: 15
       },
       {
         text: "Speeding fine $15",
-        sum: -15
+        sum: 15
       },
       {
         text: "Life Insurance Matures. Pay $100",
-        sum: -100
+        sum: 100
       },
       {
         text: "Pay Hospital Fees of $100",
-        sum: -100
+        sum: 100
       },
       {
         text: "Pay School Fees of $50",
-        sum: -50
+        sum: 50
       },
       {
         text: "Consultancy Fee. Pay $25",
-        sum: -25
+        sum: 25
       },
       {
         text: "You are assessed for street repairs. Pay $40",
-        sum: -40
+        sum: 40
       }
     ];
     const number =

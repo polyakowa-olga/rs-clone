@@ -1,4 +1,5 @@
 import { ICardsData, IPlayer } from "../../interfaces/interfaces";
+import { CardValue } from "./card-value";
 import { GameLayout } from "./game-layout";
 import { RemovePlayer } from "./remove-player";
 /* eslint-disable */
@@ -11,7 +12,7 @@ export class PlayerCash {
   }
 
   public static removeMoneyFromPlayer(player: IPlayer, sumToRemove: number, buyingProp?: boolean) {
-    const isBankrupt = PlayerCash.checkForBankruptcy(player, sumToRemove)
+    const isBankrupt: boolean | undefined = PlayerCash.checkForBankruptcy(player, sumToRemove)
     if (isBankrupt) {
       RemovePlayer.remove(player)
       console.log(`Player ${player.id} is bankrupt!`);
@@ -35,6 +36,8 @@ export class PlayerCash {
     const restPlayerCash: number | undefined = PlayerCash.removeMoneyFromPlayer(player, sumToPay)
     if (restPlayerCash) {
       PlayerCash.addMoneyToPlayer(field.owner, restPlayerCash)
+      player.money = 0
+      player.capital = 0
       GameLayout.refreshPlayerHTML(player)
       console.log(`Player ${field.owner.id} get rest cash from player ${player.id}`);
     } else {
@@ -42,18 +45,22 @@ export class PlayerCash {
       GameLayout.refreshPlayerHTML(player)
       console.log(`Player ${field.owner.id} get ${sumToPay} from player ${player.id}`);
     }
+    return !!restPlayerCash
   }
 
-  protected static checkForBankruptcy(player: IPlayer, sumToPay: number) {
+  public static checkForBankruptcy(player: IPlayer, sumToPay: number) {
     if (player.money >= sumToPay && player.capital > sumToPay) {
       return false
-    } else
-      if (player.capital > sumToPay) {
-        alert(`Player ${player.id} doesn't have enough in cash.\n
-        You need to sold something or declare bankruptcy/defeat`)
-      } else {
-        return true
-      }
+    }
+    return true
+  }
+
+  public static checkCapital(player: IPlayer, sumToPay: number) {
+    if (player.capital > sumToPay && player.money < sumToPay) {
+      return false
+    }
+    return true
+
   }
 
   public static isEnoughInCash(player: IPlayer, sumToPay: number) {
@@ -62,5 +69,15 @@ export class PlayerCash {
     }
     console.log(`Player ${player.id} doesn't have enough in cash`);
     return false
+  }
+
+  public static tradeFields(player: IPlayer, playerForTrade: IPlayer, prop: ICardsData) {
+    prop.owner = player
+    player.capital += prop.price as number
+    playerForTrade.capital -= prop.price as number
+    GameLayout.refreshPlayerHTML(player)
+    GameLayout.refreshPlayerHTML(playerForTrade)
+    GameLayout.playerColorField(player, prop)
+    CardValue.setCurrentValue(player, prop)
   }
 }

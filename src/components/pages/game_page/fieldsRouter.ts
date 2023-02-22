@@ -50,6 +50,12 @@ export class FieldsRouter {// for chat
         forceMajorBtn.innerText = `PAY: ${sumToPay}k$`
         Game.playerInterface.appendChild(forceMajorBtn)
         forceMajorBtn.addEventListener('click', () => {
+          const isEnough = PlayerCash.checkCapital(player, sumToPay)
+          if (!isEnough) {
+            console.log(`Player ${player.id} doesn't have enough in cash.\n
+            You need to sold something...`);
+            return
+          }
           // check bankrupt logic
           PlayerCash.removeMoneyFromPlayer(player, sumToPay)
           console.log(`Player ${player.id} lost ${sumToPay}`);
@@ -69,6 +75,12 @@ export class FieldsRouter {// for chat
         taxBtn.innerText = `PAY: ${taxToPay}k$`
         Game.playerInterface.appendChild(taxBtn)
         taxBtn.addEventListener('click', () => {
+          const isEnough = PlayerCash.checkCapital(player, taxToPay)
+          if (!isEnough) {
+            console.log(`Player ${player.id} doesn't have enough in cash.\n
+            You need to sold something...`);
+            return
+          }
           PlayerCash.removeMoneyFromPlayer(player, taxToPay)
           console.log(`Player ${player.id} lost ${taxToPay}`);
           PlayerBtnsInterface.clearEndTurn(player)
@@ -173,6 +185,7 @@ export class FieldsRouter {// for chat
             // -----------
           } else {
             console.log(`Player ${player.id} doesn't have enough in cash to buy ${field.title}`)
+            return
           }
           PlayerBtnsInterface.clearEndTurn(player)
         })
@@ -194,8 +207,21 @@ export class FieldsRouter {// for chat
         const payBtn = document.createElement('button') as HTMLButtonElement;
         payBtn.innerText = `PAY: ${sumToPay}k$`;
         payBtn.addEventListener('click', () => {
-          PlayerCash.payPlayer2Player(player, sumToPay, field)
-          PlayerBtnsInterface.clearEndTurn(player)
+          const isEnough = PlayerCash.checkCapital(player, sumToPay)
+          if (!isEnough) {
+            console.log(`Player ${player.id} doesn't have enough in cash.\n
+            You need to sold something...`);
+            return
+          }
+          const isBankrupt = PlayerCash.payPlayer2Player(player, sumToPay, field)
+          switch (isBankrupt) {
+            case true:
+              PlayerBtnsInterface.addBankruptBtn(player)
+              break;
+            default:
+              PlayerBtnsInterface.clearEndTurn(player)
+              break;
+          }
         })
         Game.playerInterface.appendChild(payBtn)
         break;

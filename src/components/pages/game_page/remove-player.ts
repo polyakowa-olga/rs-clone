@@ -30,6 +30,7 @@ export class RemovePlayer {
     if (playersLeft.length === 1) {
       console.log('GAME OVER');
       // here html changes if game over
+
     }
   }
 }
