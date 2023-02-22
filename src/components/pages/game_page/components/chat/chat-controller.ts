@@ -52,7 +52,11 @@ class ChatController {
           (messageInfo = messageInfo ? messageInfo : undefined)
         ).returnHTML();
         setTimeout(() => {
-          document.querySelector(".messages-box")?.append(message, separator);
+          const box = document.querySelector(".messages-box");
+          if (box) {
+            box.append(message, separator);
+            box.scrollTop = box.scrollHeight;
+          }
         }, 1500);
       }
     }

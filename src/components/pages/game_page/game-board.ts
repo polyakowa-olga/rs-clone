@@ -20,7 +20,7 @@ export default class GameBoard {
     this.createChips()
 
     //// chat start
-    const chatWindowBox = board.querySelector('.chat') as HTMLDivElement;
+    const chatWindowBox = board.querySelector('.boardFieldsContainer') as HTMLDivElement;
     chat.run(chatWindowBox);
     //// chat end
     //// info-window start
