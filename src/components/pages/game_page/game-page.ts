@@ -159,7 +159,7 @@ class GamePage extends Page {
       },
       {
         "id": 2,
-        "name": "PLayer2",
+        "name": "Player2",
         "money": 1500,
         "capital": 1500,
         "color": "blue",
@@ -182,7 +182,7 @@ class GamePage extends Page {
       },
       {
         "id": 5,
-        "name": "PLayer5",
+        "name": "Player5",
         "money": 1500,
         "capital": 1500,
         "color": "pink",

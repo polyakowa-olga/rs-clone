@@ -33,6 +33,12 @@ export class Game {
   }
   public static newTurn(player: IPlayer) {
     console.log(`player: ${player.id} turn...`);
+    const arrayplayer = document.querySelectorAll(".player"); // Anton active block players
+    arrayplayer.forEach(e => {
+      if (player.id === Number(e.id)) {
+        e.classList.add("active-palyer");
+      } else e.classList.remove("active-palyer");
+    });
 
     Game.playerInterface.innerHTML = ''
 
