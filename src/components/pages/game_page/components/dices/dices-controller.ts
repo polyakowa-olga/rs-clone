@@ -2,6 +2,7 @@ import DicesWindow from "./components/throw-dices-window";
 import DiceAnimator from "./dices-animation/dice-animator";
 import throwSettings from "./dices-animation/throw-settings";
 import dices from "./components/dice-params";
+import SoundsGame from "../../../../sounds/Sounds";
 
 class DicesController {
   throwDices() {
@@ -21,7 +22,10 @@ class DicesController {
     if (dicesWindowBox) {
       dicesWindowBox.append(dicesWindowHTML);
     }
-    setTimeout(() => this.throwDices(), 1000);
+    setTimeout(() => {
+      this.throwDices();
+      SoundsGame.Dice();
+    }, 1000);
 
     setTimeout(() => dicesWindowHTML.remove(), 3000);
   }

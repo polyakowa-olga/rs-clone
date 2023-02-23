@@ -1,3 +1,4 @@
+import SoundsGame from "../../sounds/Sounds";
 import { IPlayer } from "../../interfaces/interfaces";
 import { Game } from "./init-game";
 import { PlayerCash } from "./playerCash";
@@ -5,8 +6,9 @@ import { PlayerCash } from "./playerCash";
 /* eslint-disable */
 export class Move {
   public static move(player: IPlayer, targetField: number) {
-    const currField = player.currentPosition
-    Move.playerChipMove(player, targetField)
+    const currField = player.currentPosition;
+    Move.playerChipMove(player, targetField);
+    SoundsGame.chipShuffle();
     if ((27 <= currField && currField <= 38) && (1 <= targetField && targetField <= 12)) {
       // chat message "give 200k$ for round"
       PlayerCash.addMoneyToPlayer(player, 200)

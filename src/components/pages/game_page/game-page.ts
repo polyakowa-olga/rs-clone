@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
 // import { IPlayer } from "../../interfaces/interfaces";
+import SoundsGame from "../../sounds/Sounds";
 import ShowPlayer from "../../player/ShowPlayer";
 import Page from "../../templates/page";
 // import { creatPlayer } from "../createJson/createJson";
@@ -86,7 +87,8 @@ class GamePage extends Page {
         inputBlock.remove();
         this.createImg();
       }
-    })
+      SoundsGame.OutComing();
+    });
     return inputBlock;
   }
 
@@ -119,7 +121,8 @@ class GamePage extends Page {
     buttonAddInputs.innerText = "+";
     textforBlock.innerText = "Please, add player from 2 till 5";
     buttonAddInputs.addEventListener("click", () => {
-      const allInputs = document.querySelectorAll("input")
+      const allInputs = document.querySelectorAll("input");
+      SoundsGame.Incoming();
       if (allInputs.length < 4) {
         const input = this.createInput();
         link.append(input);
@@ -131,7 +134,7 @@ class GamePage extends Page {
         buttonAddInputs.classList.add("no-add");
         this.createImg();
       }
-    })
+    });
     link.prepend(buttonAddInputs);
     const input = this.createInput();
     link.prepend(input);
@@ -198,12 +201,9 @@ class GamePage extends Page {
         const createBlockPlayer = createPlayer.createDiv();
         blockPlayers.append(createBlockPlayer);
       })
-      const game = new Game(playersToPlay)
+      const game = new Game(playersToPlay);
       game.init();
-
-      // 
-
-
+      SoundsGame.StartGame();
     })
     return message;
   }

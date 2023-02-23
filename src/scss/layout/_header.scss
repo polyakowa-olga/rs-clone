@@ -5,8 +5,29 @@
 
     padding: 1em 2em;
 
+
 }
 
 .page-button-box {
     @include flex();
+    flex-wrap: nowrap;
+
+    .block-button-sound {
+        width: 10%;
+        cursor: pointer;
+    }
+
+    .button-sound {
+        color: aqua;
+        position: relative;
+        left: 50%;
+        background-image: url("../assets/img/SoundOff.jpg");
+        width: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .active {
+        background-image: url("../assets/img/SoundOn.jpg");
+    }
 }

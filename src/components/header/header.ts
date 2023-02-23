@@ -29,6 +29,8 @@ class Header extends Element {
 
   createPageButtons() {
     const pageButtonsBox = document.createElement("div");
+    const blockButtonSound = document.createElement("div");
+    const buttonSound = document.createElement("img");
     pageButtonsBox.classList.add("page-button-box");
     Buttons.forEach((button) => {
       const buttonHTML = document.createElement("a");
@@ -36,6 +38,15 @@ class Header extends Element {
       buttonHTML.innerText = button.content;
       buttonHTML.classList.add("button", `#${button.id}-button`);
       pageButtonsBox.append(buttonHTML);
+    });
+    pageButtonsBox.append(blockButtonSound);
+    blockButtonSound.append(buttonSound);
+    blockButtonSound.classList.add("block-button-sound");
+    buttonSound.classList.add("button-sound");
+    buttonSound.classList.toggle("active");
+    buttonSound.src = "../assets/img/SoundOn.jpg";
+    buttonSound.addEventListener("click", () => {
+      buttonSound.classList.toggle("active");
     });
     return pageButtonsBox;
   }

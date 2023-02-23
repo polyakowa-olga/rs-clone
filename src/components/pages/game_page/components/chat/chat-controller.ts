@@ -3,6 +3,7 @@ import Chat from "./components/chat";
 import { IMessageInfo } from "./components/types";
 import Separator from "./components/separator";
 import { IPlayer, ICardsData } from "../../../../interfaces/interfaces";
+// import SoundsGame from "../../../../sounds/Sounds";
 
 const chatData = {
   tag: "div",
@@ -55,6 +56,7 @@ class ChatController {
           const box = document.querySelector(".messages-box");
           if (box) {
             box.append(message, separator);
+            // SoundsGame.AddMessage();
             box.scrollTop = box.scrollHeight;
           }
         }, 1500);

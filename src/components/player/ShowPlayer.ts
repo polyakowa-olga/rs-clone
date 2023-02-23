@@ -18,6 +18,7 @@ class ShowPlayer {
 
   createDiv() {
     const block = document.createElement("div");
+    const blockbuttonTrade = document.createElement("div");
     const pictureBlock = document.createElement("div");
     const picturePlayerBlock = document.createElement("div");
     const picturePlayer = document.createElement("img");
@@ -41,6 +42,7 @@ class ShowPlayer {
     block.append(discriptionPlayerBlock);
     discriptionPlayerBlock.append(moneyBlock);
     discriptionPlayerBlock.append(capitalBlock);
+    block.append(blockbuttonTrade);
 
     block.classList.add("player");
     pictureBlock.classList.add("picture-block");
@@ -52,7 +54,7 @@ class ShowPlayer {
     picturePlayer.classList.add(`${this.color}`);
     picturePlayer.classList.add("picture-player");
     discriptionPlayerBlock.classList.add("description-player");
-
+    blockbuttonTrade.classList.add(`block-button-trade-${this.id}`);
     block.id = this.id.toString();
     nameChip.src = "../../assets/img/chips_hall.png";
     picturePlayer.src = "../../assets/img/unknownPlayer.jpg";

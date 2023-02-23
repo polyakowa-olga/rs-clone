@@ -1,3 +1,4 @@
+import SoundsGame from "../../sounds/Sounds";
 import { GameCubeRoll } from "../../blocks/createNumbers";
 import { ICardsData, IPlayer } from "../../interfaces/interfaces";
 import { CardValue } from "./card-value";
@@ -10,6 +11,7 @@ import { Trade } from "./trade";
 /* eslint-disable */
 export class PlayerBtnsInterface {
   public static addRollBtn(player: IPlayer) {
+    Game.buttonTradePlayer = document.querySelector(`.block-button-trade-${player.id}`) as HTMLDivElement;
     const rollBtn = document.createElement('button')
     rollBtn.innerText = 'roll'
     rollBtn.addEventListener('click', () => {
@@ -31,7 +33,8 @@ export class PlayerBtnsInterface {
           delete player.isInPrison
           console.log(`player ${player.id}: has rolled a double and now broke free`);
           // PlayerBtnsInterface.clearEndTurn(player)
-          Game.playerInterface.innerHTML = ''
+          Game.playerInterface.innerHTML = '';
+          Game.buttonTradePlayer.innerHTML = '';
         }
       }
       Move.move(player, targetField)
@@ -46,8 +49,14 @@ export class PlayerBtnsInterface {
   public static addTradeBtn(player: IPlayer) {
     const tradeBtn = document.createElement('button')
     tradeBtn.innerText = 'trade'
-    tradeBtn.addEventListener('click', () => Trade.startTrading(player))
-    Game.playerInterface.appendChild(tradeBtn)
+    tradeBtn.addEventListener('click', () => {
+      const playerInterface = document.querySelector(".trade") as HTMLDivElement;
+      if (playerInterface) {
+        playerInterface.remove();
+      } else SoundsGame.OpenTrade();
+      Trade.startTrading(player);
+    })
+    Game.buttonTradePlayer.appendChild(tradeBtn);
   }
   public static addEndTurnBtn(player: IPlayer) {
     const endTurnBtn = document.createElement('button')
@@ -77,7 +86,8 @@ export class PlayerBtnsInterface {
     payForOutBtn.addEventListener('click', () => {
       PlayerCash.removeMoneyFromPlayer(player, sumToPay)
       delete player.isInPrison
-      Game.playerInterface.innerHTML = ''
+      Game.playerInterface.innerHTML = '';
+      Game.buttonTradePlayer.innerHTML = '';
 
       PlayerBtnsInterface.addRollBtn(player)
     })
@@ -103,12 +113,14 @@ export class PlayerBtnsInterface {
     // PlayerBtnsInterface.addLockBtn(player)
   }
   public static clearEndTurn(player: IPlayer) {
-    Game.playerInterface.innerHTML = ''
+    Game.playerInterface.innerHTML = '';
+    Game.buttonTradePlayer.innerHTML = '';
     PlayerBtnsInterface.tradeAndLockComboBtns(player)
     PlayerBtnsInterface.addEndTurnBtn(player)
   }
   public static addBankruptBtn(player: IPlayer) {
-    Game.playerInterface.innerHTML = ''
+    Game.playerInterface.innerHTML = '';
+    Game.buttonTradePlayer.innerHTML = '';
     const btn = PlayerBtnsInterface.addEndTurnBtn(player)
     btn.innerText = 'BANKRUPT!'
   }

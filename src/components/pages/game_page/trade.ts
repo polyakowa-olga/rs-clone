@@ -1,3 +1,4 @@
+import SoundsGame from "../../sounds/Sounds";
 import { ICardsData, IPlayer } from "../../interfaces/interfaces";
 import { CardValue } from "./card-value";
 import { skChinaFields, tradeChoosePlayerWindow, tradeContainer } from "./game-board-src";
@@ -22,8 +23,9 @@ export class Trade {
     gameInterfaceElem.append(tradeElem)
     const closeBtn = document.querySelector('#tradeClose') as HTMLButtonElement
     closeBtn.addEventListener('click', () => {
-      tradeElem.remove()
-      pmv.style.visibility = 'visible'
+      tradeElem.remove();
+      pmv.style.visibility = 'visible';
+      SoundsGame.AdminSound();
     })
     const currPlayerElem = document.querySelector('#tradeCP') as HTMLSpanElement
     const selectElem = document.querySelector('#tradeSelectPlayer') as HTMLSelectElement
@@ -127,10 +129,12 @@ export class Trade {
               tpPlayerProps.forEach((prop) => {
                 PlayerCash.tradeFields(playerForTrade, player, prop)
               })
-              tradeElem.remove()
+              tradeElem.remove();
+              SoundsGame.TradeDoing();
               console.log('The deal is done!');
             } else {
-              tradeElem.remove()
+              tradeElem.remove();
+              SoundsGame.AdminSound();
               console.log('Offer was rejected.');
             }
             allFieldsElems.forEach((elem) => {
