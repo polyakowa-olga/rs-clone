@@ -12,7 +12,7 @@ export class Trade {
       .filter((pl) => pl !== player)
     const gameInterfaceElem = document.querySelector('.playerMainView') as HTMLDivElement
     const pmv = document.querySelector('#pmv') as HTMLDivElement
-    pmv.style.visibility = 'hidden'
+    gameInterfaceElem.removeChild(pmv)
     const tradeElem = document.createElement('div') as HTMLDivElement
 
     tradeElem.classList.add('trade')
@@ -23,7 +23,11 @@ export class Trade {
     const closeBtn = document.querySelector('#tradeClose') as HTMLButtonElement
     closeBtn.addEventListener('click', () => {
       tradeElem.remove()
-      pmv.style.visibility = 'visible'
+      const pmvElem = document.querySelector('#pmv')
+      if (!pmvElem) {
+        gameInterfaceElem.appendChild(pmv)
+      }
+
     })
     const currPlayerElem = document.querySelector('#tradeCP') as HTMLSpanElement
     const selectElem = document.querySelector('#tradeSelectPlayer') as HTMLSelectElement
@@ -136,7 +140,10 @@ export class Trade {
             allFieldsElems.forEach((elem) => {
               elem?.removeEventListener('click', elemListener)
             })
-            pmv.style.visibility = 'visible'
+            const pmvElem = document.querySelector('#pmv')
+            if (!pmvElem) {
+              gameInterfaceElem.appendChild(pmv)
+            }
             break;
         }
       }
@@ -169,7 +176,7 @@ export class Trade {
           .map((cardId) => cardsData.find((card) => card.id === cardId))
           .some((card) => (card as ICardsData).value?.shares.includes((card as ICardsData).currValue as number))
         // shares check
-        if (/* targetCard.value?.shares.includes(targetCard.currValue as number) */ isCleanFields && !skChinaFields.includes(targetCard.id)) {
+        if (isCleanFields && !skChinaFields.includes(targetCard.id)) {
           console.log('You need to pick companie\'s w/o shares in it\'s country');
           return;
         }

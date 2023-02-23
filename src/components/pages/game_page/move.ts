@@ -16,7 +16,6 @@ export class Move {
     player.currentPosition = targetField
   }
 
-
   protected static playerChipMove(player: IPlayer, targetField: number) {
     // const currFieldElem = document.querySelector(`#field${currField}`) as HTMLDivElement
     const currPlayer = Game.currPlayer

@@ -15,7 +15,7 @@ class GamePage extends Page {
 
   createImg() {
     const allImg = document.querySelectorAll(".input-img");
-    console.log(allImg);
+    // console.log(allImg);
     for (let i = 0; i < allImg.length; ++i) {
       const e = allImg[i] as HTMLImageElement;
       e.src = "../../../assets/img/chips_hall.png";
@@ -192,7 +192,7 @@ class GamePage extends Page {
         if (names[i]) player.name = names[i];
       })
       playersToPlay.length = names.length
-      console.log('final players:', playersToPlay);
+      // console.log('final players:', playersToPlay);
       playersToPlay.forEach((player, i) => {
         const createPlayer = new ShowPlayer(player);
         const createBlockPlayer = createPlayer.createDiv();

@@ -29,7 +29,7 @@ class Dice extends Element {
   }
 
   createDice(diceSidesSet?: number[]) {
-    console.log(diceSidesSet)
+    // console.log(diceSidesSet)
     const sidesBox = document.createDocumentFragment();
 
     for (let i = 0; i < sideData.indivClasses.length; i++) {
