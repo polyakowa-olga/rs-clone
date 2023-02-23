@@ -51,3 +51,7 @@ export const tradeContainer = `
     </div>
     <button id="makeOfferBtn">Make offer!</button>
 `
+export const mortgageMenu = `
+<div class="mortgage">
+<button id="exitLockBtn">Exit</button>
+</div>`

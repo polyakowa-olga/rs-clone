@@ -30,7 +30,15 @@ export class Game {
     Game.chatWindowBox = document.querySelector('.chat') as HTMLDivElement
     Game.newTurn(Game.players[Game.currPlayer])
     Game.hideExtraChips(Game.playersQnt)
+
+    const arrayplayer = document.querySelectorAll(".player");
+    arrayplayer.forEach((el, i) => el.append(PlayerBtnsInterface.createConcedeBtn(Game.players[i])))
   }
+
+  public static timeout(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
   public static newTurn(player: IPlayer) {
     console.log(`player: ${player.id} turn...`);
     const arrayplayer = document.querySelectorAll(".player"); // Anton active block players

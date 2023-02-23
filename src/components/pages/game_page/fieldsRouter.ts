@@ -202,6 +202,11 @@ export class FieldsRouter {// for chat
         chat.run(Game.chatWindowBox, player, field);
 
         ///// chat end
+        if (field.lock) {
+          console.log(`${player.name} got on pawned field. Nothing happend`);
+          PlayerBtnsInterface.clearEndTurn(player)
+          return
+        }
         const currFieldValue = field.currValue ? field.currValue : field.price as number
         const sumToPay = [7, 26].includes(field.id) ? (currFieldValue * GameCubeRoll.sum) : currFieldValue as number /* SUM TO PAY other player {field.value}, south-korea check*/
         const payBtn = document.createElement('button') as HTMLButtonElement;

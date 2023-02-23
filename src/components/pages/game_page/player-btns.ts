@@ -4,32 +4,33 @@ import { CardValue } from "./card-value";
 import { FieldsRouter } from "./fieldsRouter";
 import { GameLayout } from "./game-layout";
 import { Game } from "./init-game";
+import { Lock } from "./lock-properties";
 import { Move } from "./move";
 import { PlayerCash } from "./playerCash";
+import { RemovePlayer } from "./remove-player";
 import { Trade } from "./trade";
 /* eslint-disable */
 export class PlayerBtnsInterface {
   public static addRollBtn(player: IPlayer) {
     const rollBtn = document.createElement('button')
     rollBtn.innerText = 'roll'
-    rollBtn.addEventListener('click', () => {
+    rollBtn.addEventListener('click', async () => {
       GameCubeRoll.roll()
+      await Game.timeout(3200)
       const cubeSum: number = GameCubeRoll.sum
       const isDouble: boolean = GameCubeRoll.isDouble
       const currField: number = player.currentPosition
       const tf = currField + cubeSum
       const targetField = tf === 38 ? 38 : tf % 38
-      console.log(`cube1:${GameCubeRoll.cube1}; cube2:${GameCubeRoll.cube2} double:${isDouble}`);
-
       if (player.isInPrison) {
         if (!isDouble) {
           player.isInPrison -= 1
-          console.log(`player ${player.id}: hasn't rolled a double. Left: ${player.isInPrison}`);
+          console.log(`${player.name}: hasn't rolled a double. Left: ${player.isInPrison}`);
           PlayerBtnsInterface.clearEndTurn(player)
           return
         } else {
           delete player.isInPrison
-          console.log(`player ${player.id}: has rolled a double and now broke free`);
+          console.log(`${player.name}: has rolled a double and now broke free`);
           // PlayerBtnsInterface.clearEndTurn(player)
           Game.playerInterface.innerHTML = ''
         }
@@ -52,24 +53,31 @@ export class PlayerBtnsInterface {
   public static addEndTurnBtn(player: IPlayer) {
     const endTurnBtn = document.createElement('button')
     endTurnBtn.innerText = 'end turn'
-    endTurnBtn.addEventListener('click', () => {
-      const giveNewPlayer: () => IPlayer = () => {
-        Game.currPlayer += 1
-        if (Game.currPlayer === Game.players.length) {
-          Game.currPlayer = 0
-        }
-        let newPlayer = Game.players[Game.currPlayer] as IPlayer
-        if (Object.prototype.hasOwnProperty.call(newPlayer, "isBankrupt")) {
-          return giveNewPlayer()
-        }
-        return newPlayer
-      }
-      const newPlayer = giveNewPlayer()
-      Game.newTurn(newPlayer)
-    })
+    endTurnBtn.addEventListener('click', () => PlayerBtnsInterface.endTurnHandler(player))
     Game.playerInterface.appendChild(endTurnBtn)
     return endTurnBtn
   }
+  public static endTurnHandler(player: IPlayer) {
+    if (!player.isBankrupt && GameCubeRoll.isDouble) {
+      console.log(`${player.name} goes again because he threw off the double`);
+      Game.newTurn(player)
+      return
+    }
+    const giveNewPlayer: () => IPlayer = () => {
+      Game.currPlayer += 1
+      if (Game.currPlayer === Game.players.length) {
+        Game.currPlayer = 0
+      }
+      let newPlayer = Game.players[Game.currPlayer] as IPlayer
+      if (Object.prototype.hasOwnProperty.call(newPlayer, "isBankrupt")) {
+        return giveNewPlayer()
+      }
+      return newPlayer
+    }
+    const newPlayer = giveNewPlayer()
+    Game.newTurn(newPlayer)
+  }
+
   public static outOfJailBtn(player: IPlayer) {
     const turnsLeft = player.isInPrison as number
     const sumToPay = turnsLeft !== 0 ? 50 : 150
@@ -100,7 +108,7 @@ export class PlayerBtnsInterface {
   }
   public static tradeAndLockComboBtns(player: IPlayer) {
     PlayerBtnsInterface.addTradeBtn(player)
-    // PlayerBtnsInterface.addLockBtn(player)
+    PlayerBtnsInterface.addLockBtn(player)
   }
   public static clearEndTurn(player: IPlayer) {
     Game.playerInterface.innerHTML = ''
@@ -111,6 +119,19 @@ export class PlayerBtnsInterface {
     Game.playerInterface.innerHTML = ''
     const btn = PlayerBtnsInterface.addEndTurnBtn(player)
     btn.innerText = 'BANKRUPT!'
+  }
+  public static createConcedeBtn(player: IPlayer) {
+    const btn = document.createElement('button') as HTMLButtonElement
+    btn.addEventListener('click', () => {
+      RemovePlayer.remove(player)
+      if (Game.players[Game.currPlayer] === player) {
+        PlayerBtnsInterface.endTurnHandler(player)
+      }
+      btn.remove()
+    })
+    btn.classList.add('concede-btn')
+    btn.innerText = 'concede'
+    return btn
   }
   // shares
   public static addBuySharesBtn(player: IPlayer) {
@@ -270,6 +291,23 @@ export class PlayerBtnsInterface {
     })
     sellSharesBtn.innerText = `sell shares`
     Game.playerInterface.appendChild(sellSharesBtn)
+  }
+
+  public static addLockBtn(player: IPlayer) {
+    const lockBtn = document.createElement('button')
+    lockBtn.innerText = 'mortgage/return property'
+    lockBtn.addEventListener('click', () => Lock.lockProperties(player))
+
+    const playerFields = Game.cardsData
+      .filter((field) => field.owner === player)
+
+    if (playerFields.length !== 0) {
+      Game.playerInterface.append(lockBtn)
+    }
+
+
+
+
   }
 
 }

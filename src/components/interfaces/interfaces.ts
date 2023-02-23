@@ -18,6 +18,8 @@ export interface ICardsData {
   name: string,
   description: string,
   price?: number,
+  pledge?: number,
+  redemption?: number
   sharesPrice?: number
   tax: number,
   country?: string,
@@ -27,6 +29,7 @@ export interface ICardsData {
   web?: string,
   value?: ICardValue,
   currValue?: number,
+  lock?: boolean,
 }
 
 export interface ICardValue {
