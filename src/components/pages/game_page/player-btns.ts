@@ -9,6 +9,8 @@ import { Move } from "./move";
 import { PlayerCash } from "./playerCash";
 import { RemovePlayer } from "./remove-player";
 import { Trade } from "./trade";
+//import { chat } from "./components/chat/index"; // for chat
+
 /* eslint-disable */
 export class PlayerBtnsInterface {
   public static addRollBtn(player: IPlayer) {

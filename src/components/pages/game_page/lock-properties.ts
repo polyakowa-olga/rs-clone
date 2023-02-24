@@ -5,6 +5,7 @@ import { CardValue } from "./card-value";
 import { mortgageMenu, skChinaFields } from "./game-board-src";
 import { Game } from "./init-game";
 import { PlayerCash } from "./playerCash";
+import { chat } from "./components/chat/index"; // for chat
 
 export class Lock {
   public static lockProperties(player: IPlayer) {
@@ -38,6 +39,7 @@ export class Lock {
         const targetCard = Game.cardsData.find((card) => card.id === id) as ICardsData
         const targetCountry: string | undefined = targetCard.country
         if (!targetCountry || targetCard.owner !== player) {
+          chat.run(Game.boardFieldsContainer, player, targetCard, undefined, "pickshares"); ///// chat
           console.log('You need to pick your fields');
           return
         }
@@ -46,6 +48,7 @@ export class Lock {
           .map((cardId) => Game.cardsData.find((card) => card.id === cardId))
           .some((card) => (card as ICardsData).value?.shares.includes((card as ICardsData).currValue as number))
         if (isCleanFields && !skChinaFields.includes(targetCard.id)) {
+          chat.run(Game.boardFieldsContainer, player, targetCard, undefined, "pickshares"); ///// chat
           console.log('You need to pick your field\'s w/o shares on it\'s country');
           return;
         }
@@ -68,6 +71,7 @@ export class Lock {
             lockElem.classList.remove('active')
             darkerElem.classList.remove('active')
             // ----------------------
+            chat.run(Game.boardFieldsContainer, player, targetCard, undefined, "return"); ///// chat
             console.log(`${player.name} return ${targetCard.name}`);
             break;
 
@@ -76,6 +80,7 @@ export class Lock {
             targetCard.lock = true
             lockElem.classList.add('active')
             darkerElem.classList.add('active')
+            chat.run(Game.boardFieldsContainer, player, targetCard, undefined, "pawnlock"); ///// chat
             console.log(`${player.name} has pawned ${targetCard.name}`);
             break;
         }
