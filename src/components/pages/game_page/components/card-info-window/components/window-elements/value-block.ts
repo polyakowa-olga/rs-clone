@@ -56,9 +56,10 @@ class ValueBlockCreator extends Element {
       ["i-share-value-key"],
       "Share value"
     ); //"Стоимость акций"
+    const value = sharesPrice ? WindowCreator.changeValueView(sharesPrice) : "not purchasable"
     const shareValueValue = WindowCreator.createElement(
       ["i-share-value"],
-      WindowCreator.changeValueView(sharesPrice!)
+      value
     ); //add Field
     const shareValueContainer = WindowCreator.createContainer(
       ["i-share-value", "value-container"],
