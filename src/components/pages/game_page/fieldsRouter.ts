@@ -39,12 +39,9 @@ export class FieldsRouter {// for chat
       case ([6, 25].includes(fieldId)):
         // create message to chat and take some money from player
 
-        ////// chat start
         message = FieldsRouter.MessageDataGetter.forceMajeureMessages();
+        chat.run(Game.chatWindowBox, player, field, message); ///// chat fm
 
-        chat.run(Game.chatWindowBox, player, field, message);
-
-        ///// chat end
         const sumToPay = message.sum /* res of func */
         const forceMajorBtn = document.createElement('button') as HTMLButtonElement
         forceMajorBtn.innerText = `PAY: ${sumToPay}k$`
@@ -59,17 +56,17 @@ export class FieldsRouter {// for chat
           // check bankrupt logic
           PlayerCash.removeMoneyFromPlayer(player, sumToPay)
           console.log(`Player ${player.id} lost ${sumToPay}`);
+
+          chat.run(Game.chatWindowBox, player, field, undefined, "lost", sumToPay);///// chat fm
           // --------------------
           PlayerBtnsInterface.clearEndTurn(player)
         })
         break;
       case ([17, 36].includes(fieldId)):
         // create message to chat and take some money from player
-        ////// chat start
 
-        chat.run(Game.chatWindowBox, player, field);
+        chat.run(Game.chatWindowBox, player, field);///// chat tax
 
-        ///// chat end
         const taxToPay = Math.floor(player.capital * 6 / 100);
         const taxBtn = document.createElement('button') as HTMLButtonElement;
         taxBtn.innerText = `PAY: ${taxToPay}k$`
@@ -84,6 +81,8 @@ export class FieldsRouter {// for chat
           PlayerCash.removeMoneyFromPlayer(player, taxToPay)
           console.log(`Player ${player.id} lost ${taxToPay}`);
           PlayerBtnsInterface.clearEndTurn(player)
+
+          chat.run(Game.chatWindowBox, player, field, undefined, "pay"); ///// chat tax
         })
         break;
       case ([8, 27].includes(fieldId)):
@@ -103,6 +102,9 @@ export class FieldsRouter {// for chat
         chanceBtn.addEventListener('click', () => {
           PlayerCash.addMoneyToPlayer(player, sumToGet)
           console.log(`Player ${player.id} get ${sumToGet}`);
+          ////// chat start
+          chat.run(Game.chatWindowBox, player, field, undefined, "get", sumToGet);
+          ///// chat end
           PlayerBtnsInterface.clearEndTurn(player)
         })
         break;
@@ -180,11 +182,17 @@ export class FieldsRouter {// for chat
             CardValue.setCurrentValue(player, field)
             // ------------------
             console.log(`Player ${player.id} buying ${field.title}`);
+            ////// chat start
+            chat.run(Game.chatWindowBox, player, field, undefined, "buy");
+            ///// chat end
             // color field
             GameLayout.playerColorField(player, field)
             // -----------
           } else {
             console.log(`Player ${player.id} doesn't have enough in cash to buy ${field.title}`)
+            ////// chat start
+            chat.run(Game.chatWindowBox, player, field, undefined, "nobuy");
+            ///// chat end
             return
           }
           PlayerBtnsInterface.clearEndTurn(player)
@@ -227,6 +235,9 @@ export class FieldsRouter {// for chat
               PlayerBtnsInterface.clearEndTurn(player)
               break;
           }
+          ////// chat start
+          chat.run(Game.chatWindowBox, player, field, undefined, "payto");
+          ///// chat end
         })
         Game.playerInterface.appendChild(payBtn)
         break;
