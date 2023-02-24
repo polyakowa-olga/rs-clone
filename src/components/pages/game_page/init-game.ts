@@ -6,7 +6,7 @@ import GameBoard from "./game-board"
 import { GameLayout } from "./game-layout"
 // import { Move } from "./move"
 import { PlayerBtnsInterface } from "./player-btns"
-
+import { chat } from "./components/chat/index"; // for chat
 
 
 
@@ -49,6 +49,7 @@ export class Game {
   // ------
   public static newTurn(player: IPlayer) {
     console.log(`player: ${player.id} turn...`);
+    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "turn"); ///// chat
     const arrayplayer = document.querySelectorAll(".player"); // Anton active block players
     arrayplayer.forEach(e => {
       if (player.id === Number(e.id)) {

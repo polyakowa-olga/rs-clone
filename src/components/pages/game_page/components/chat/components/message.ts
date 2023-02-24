@@ -21,14 +21,36 @@ class Message extends Element {
   }
 
   createMessage(hint?: string, sum?: number) {
-    console.log(hint)
-    console.log(sum)
     const info = this.messageInfo
       ? this.messageInfo.text.replace(/Y/i, "y")
       : undefined;
     let message = "";
-
-    if (hint === "lost") {
+    if (hint === "turn") {
+      message = `${this.player.name}'s turn now`;
+    } else if (hint === "pawnlock") {
+      message = `${this.player.name} has pawned ${this.cardData.name}`;
+    } else if (hint === "return") {
+      message = `${this.player.name} return ${this.cardData.name}`;
+    } else if (hint === "pickshares") {
+      message = `You need to pick your field\'s w/o shares on it\'s country`;
+    } else if (hint === "shares") {
+      message = `You need to pick your fields`;
+    } else if (hint === "trade1") {
+      message = `Player ${sum} not found.`;
+    } else if (hint === "trade2") {
+      message = `Error! Choose correct amount of money`;
+    } else if (hint === "trade3") {
+      message = `Error in tradeble props`;
+    } else if (hint === "trade4") {
+      message = `The deal is done!`;
+    } else if (hint === "trade5") {
+      message = `Offer was rejected.`;
+    } else if (hint === "trade6") {
+      message = `You need to pick tradeble companies!`;
+    } else if (hint === "trade7") {
+      message = `You need to pick companie\'s w/o shares in it\'s country`;
+    }
+    else if (hint === "lost") {
       message = `${this.player.name} lost $${sum}`;
     } else if (hint == "buy") {
       message = `${this.player.name} bought ${this.cardData.name}`;
@@ -67,8 +89,6 @@ class Message extends Element {
       this.cardData.owner !== null &&
       this.player.id !== this.cardData.owner.id
     ) {
-      console.log(this.player.id)
-      console.log(this.cardData.owner)
       let tax = this.cardData.value ? this.cardData.value.tax : undefined;
       message = `${this.player.name} moved to ${this.cardData.owner.name}'s field and must pay $${tax}K`;
     }
