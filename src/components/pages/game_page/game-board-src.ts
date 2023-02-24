@@ -55,3 +55,14 @@ export const mortgageMenu = `
 <div class="mortgage">
 <button id="exitLockBtn">Exit</button>
 </div>`
+
+export const winnerMenu = `
+<div class="winner">
+<div class="winner__container">
+<p class="game-over__title">GAME OVER!</p>
+<p class="winner__title">WINNER!</p>
+<div class="winner__name"></div>
+<div class="winner__capital"></div>
+<div class="winner__time"></div>
+</div>
+</div>`
