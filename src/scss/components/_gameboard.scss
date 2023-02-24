@@ -831,6 +831,7 @@
     background-color: #222;
     opacity: .8;
     z-index: 1000;
+    top: -.1%;
   }
 }
 
@@ -852,15 +853,18 @@
   background-position: center center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  margin: 4rem auto;
-  width: 41rem;
-  height: 34.5rem;
+  margin: 2rem auto;
+  width: 43rem;
+  height: 36rem;
   z-index: 1002;
   position: relative;
 
   padding-top: 5%;
 }
 
+.game-over__title {
+  padding-top: 3%;
+}
 
 .game-over__title,
 .winner__title {

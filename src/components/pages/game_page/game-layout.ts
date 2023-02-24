@@ -102,7 +102,7 @@ export class GameLayout {
     const time = timerElem.innerText
     timerElem.style.visibility = 'hidden'
     gamePageElem?.classList.add('end-game')
-    gamePageElem?.insertAdjacentHTML('afterend', winnerMenu)
+    gamePageElem?.insertAdjacentHTML('afterbegin', winnerMenu)
 
     const winnerNameElem = document.querySelector('.winner__name') as HTMLDivElement
     const winnerCapitalElem = document.querySelector('.winner__capital') as HTMLDivElement

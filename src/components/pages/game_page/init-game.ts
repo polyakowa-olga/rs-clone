@@ -15,7 +15,7 @@ export class Game {
   static players: IPlayer[]
   static currPlayer = 0
   static playersQnt: number
-  static time = 0
+  static time: number
   static playerInterface: HTMLDivElement
   static chatWindowBox: HTMLDivElement
   static cardsData: ICardsData[]
@@ -25,6 +25,7 @@ export class Game {
     Game.playersQnt = players.length
   }
   async init() {
+    Game.time = 0
     Game.cardsData = await GameBoard.getCardsData()
     Game.playerInterface = document.querySelector('#pmv') as HTMLDivElement
     Game.boardFieldsContainer = document.querySelector('.boardFieldsContainer') as HTMLDivElement
