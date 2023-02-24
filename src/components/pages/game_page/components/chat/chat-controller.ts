@@ -37,7 +37,9 @@ class ChatController {
     place: HTMLElement,
     player?: IPlayer | undefined,
     cardData?: ICardsData | undefined,
-    messageInfo?: IMessageInfo | undefined
+    messageInfo?: IMessageInfo | undefined,
+    hint?: string,
+    sum?: number
   ) {
     if (!this.checkForChatExist()) {
       place.append(this.chat);
@@ -50,7 +52,7 @@ class ChatController {
           player,
           cardData,
           (messageInfo = messageInfo ? messageInfo : undefined)
-        ).returnHTML();
+        ).returnHTML(hint, sum ? sum : undefined);
         setTimeout(() => {
           const box = document.querySelector(".messages-box");
           if (box) {

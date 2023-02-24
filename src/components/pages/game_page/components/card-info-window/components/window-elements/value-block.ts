@@ -11,10 +11,7 @@ class ValueBlockCreator extends Element {
   }
 
   createBlock() {
-    const { price } = this.choosedField;
-    const deposit = 0;
-    const redemption = 0;
-    const share = 0;
+    const { price, pledge, redemption, sharesPrice } = this.choosedField;
 
     const initValueKey = WindowCreator.createElement(
       ["i-init-value-key"],
@@ -35,7 +32,7 @@ class ValueBlockCreator extends Element {
     ); //"Залоговая стоимость"
     const depositValueValue = WindowCreator.createElement(
       ["i-deposit-value"],
-      WindowCreator.changeValueView(deposit)
+      WindowCreator.changeValueView(pledge!)
     ); //add Field
     const depositValueContainer = WindowCreator.createContainer(
       ["i-deposit-value", "value-container"],
@@ -48,7 +45,7 @@ class ValueBlockCreator extends Element {
     ); //"Стоимость выкупа"
     const redemptionValueValue = WindowCreator.createElement(
       ["i-redemption-value"],
-      WindowCreator.changeValueView(redemption)
+      WindowCreator.changeValueView(redemption!)
     ); //add Field
     const redemptionValueContainer = WindowCreator.createContainer(
       ["i-redemption-value", "value-container"],
@@ -61,7 +58,7 @@ class ValueBlockCreator extends Element {
     ); //"Стоимость акций"
     const shareValueValue = WindowCreator.createElement(
       ["i-share-value"],
-      WindowCreator.changeValueView(share)
+      WindowCreator.changeValueView(sharesPrice!)
     ); //add Field
     const shareValueContainer = WindowCreator.createContainer(
       ["i-share-value", "value-container"],
