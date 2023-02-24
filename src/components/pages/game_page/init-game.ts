@@ -44,7 +44,6 @@ export class Game {
   public static timerStart() {
     Game.time += 1
     GameLayout.timerHTML(Game.time)
-    console.log(Game.time);
     setTimeout(Game.timerStart, 1000)
   }
   // ------
