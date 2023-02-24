@@ -3,6 +3,7 @@ import { IPlayer, ICardsData } from "../../interfaces/interfaces"
 // import { GameCubeRoll } from "../../blocks/createNumbers"
 // import { FieldsRouter } from "./fieldsRouter"
 import GameBoard from "./game-board"
+import { GameLayout } from "./game-layout"
 // import { Move } from "./move"
 import { PlayerBtnsInterface } from "./player-btns"
 
@@ -14,7 +15,7 @@ export class Game {
   static players: IPlayer[]
   static currPlayer = 0
   static playersQnt: number
-
+  static time: number
   static playerInterface: HTMLDivElement
   static chatWindowBox: HTMLDivElement
   static cardsData: ICardsData[]
@@ -24,21 +25,28 @@ export class Game {
     Game.playersQnt = players.length
   }
   async init() {
+    Game.time = 0
     Game.cardsData = await GameBoard.getCardsData()
     Game.playerInterface = document.querySelector('#pmv') as HTMLDivElement
     Game.boardFieldsContainer = document.querySelector('.boardFieldsContainer') as HTMLDivElement
     Game.chatWindowBox = document.querySelector('.chat') as HTMLDivElement
     Game.newTurn(Game.players[Game.currPlayer])
     Game.hideExtraChips(Game.playersQnt)
-
+    Game.timerStart()
     const arrayplayer = document.querySelectorAll(".player");
     arrayplayer.forEach((el, i) => el.append(PlayerBtnsInterface.createConcedeBtn(Game.players[i])))
   }
-
+  // timers
   public static timeout(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+  public static timerStart() {
+    Game.time += 1
+    GameLayout.timerHTML(Game.time)
+    setTimeout(Game.timerStart, 1000)
+  }
+  // ------
   public static newTurn(player: IPlayer) {
     console.log(`player: ${player.id} turn...`);
     const arrayplayer = document.querySelectorAll(".player"); // Anton active block players

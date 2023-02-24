@@ -5,7 +5,7 @@
 
 .chat-box {
   width: 28%;
-  height: 55%;
+  height: 60.5%;
   background-image: url("../assets/img/chat.png");
   background-position: center;
   background-size: cover;
@@ -16,8 +16,8 @@
   @include flex ($direction: column);
   flex-wrap: nowrap;
   position: absolute;
-  top: 23%;
-  right: 15%;
+  top: 19.7%;
+  right: 14%;
   z-index: 500;
 }
 

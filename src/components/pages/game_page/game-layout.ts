@@ -1,5 +1,5 @@
 import { ICardsData, IPlayer } from "../../interfaces/interfaces";
-import { chinaSharesFields, leftrightSharesFields, skSharesFields, topBottomSharesFields } from "./game-board-src";
+import { chinaSharesFields, leftrightSharesFields, skSharesFields, topBottomSharesFields, winnerMenu } from "./game-board-src";
 
 /* eslint-disable */
 export class GameLayout {
@@ -94,5 +94,62 @@ export class GameLayout {
     const cardColorElem = cardElem.querySelector('.playerColor') as HTMLDivElement
     cardColorElem.className = ''
     cardColorElem.classList.add('playerColor', `color${player.id}`)
+  }
+
+  public static winnerHtml(player: IPlayer) {
+    const gamePageElem = document.querySelector('#game-page') as HTMLDivElement
+    const timerElem = document.querySelector('#timer') as HTMLDivElement
+    const time = timerElem.innerText
+    timerElem.style.visibility = 'hidden'
+    gamePageElem?.classList.add('end-game')
+    gamePageElem?.insertAdjacentHTML('afterbegin', winnerMenu)
+
+    const winnerNameElem = document.querySelector('.winner__name') as HTMLDivElement
+    const winnerCapitalElem = document.querySelector('.winner__capital') as HTMLDivElement
+    const timeElem = document.querySelector('.winner__time') as HTMLDivElement
+
+    winnerNameElem.innerText = player.name
+    winnerCapitalElem.innerText = `Capital: ${player.capital}`
+    timeElem.innerText = `time: ${time}`
+
+  }
+
+  public static timerHTML(time: number) {
+    const boardElem = document.querySelector('.board') as HTMLDivElement
+    let timerElem = document.querySelector('#timer') as HTMLDivElement
+    if (!timerElem) {
+      const timer = document.createElement('div')
+      timer.id = 'timer'
+      timerElem = timer
+      boardElem.append(timer)
+    }
+    const currTimeLine = (time: number) => {
+      let hh: number | string
+      let mm: number | string
+      let ss: number | string
+      hh = Math.floor(time / 3600)
+      mm = Math.floor((time / 3600 - hh) * 60)
+      ss = Math.floor(time - hh * 3600 - mm * 60)
+
+      if (hh >= 10) {
+        hh = `${hh}`
+      } else {
+        hh = `0${hh}`
+      }
+      if (mm >= 10) {
+        mm = `${mm}`
+      } else {
+        mm = `0${mm}`
+      }
+      if (ss >= 10) {
+        ss = `${ss}`
+      } else {
+        ss = `0${ss}`
+      }
+
+      return `${hh}:${mm}:${ss}`
+    }
+
+    timerElem.innerText = currTimeLine(time)
   }
 }
