@@ -2,7 +2,6 @@
 
 export const boardBody = `<div class="boardBody">
 <div class="boardFieldsContainer"></div>
-<div class="chat" id="gameChat"><h3 class="block-name">CHAT</h3></div>
 <div class="playerMainView"><div id="pmv"></div></div>
 </div>`;
 
