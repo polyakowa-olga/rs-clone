@@ -29,7 +29,7 @@ export class PlayerBtnsInterface {
       const cubeSum: number = GameCubeRoll.sum
       const isDouble: boolean = GameCubeRoll.isDouble
       const currField: number = player.currentPosition
-      const tf = currField + 31
+      const tf = currField + cubeSum
       const targetField = tf === 38 ? 38 : tf % 38
       if (player.isInPrison) {
         if (!isDouble) {
