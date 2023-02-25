@@ -19,8 +19,13 @@ export class PlayerBtnsInterface {
     const rollBtn = document.createElement('button')
     rollBtn.innerText = 'roll'
     rollBtn.addEventListener('click', async () => {
+      const playerMainView = document.querySelector('.playerMainView') as HTMLDivElement
+      const btns = Game.playerInterface
+      playerMainView.removeChild(Game.playerInterface)
+      Game.playerInterface
       GameCubeRoll.roll()
       await Game.timeout(3200)
+      playerMainView.appendChild(btns)
       const cubeSum: number = GameCubeRoll.sum
       const isDouble: boolean = GameCubeRoll.isDouble
       const currField: number = player.currentPosition
