@@ -1,19 +1,21 @@
 import Page from "../../templates/page";
+import { Buttons } from "../../header/header";
 
 class StartPage extends Page {
   constructor(id: string) {
     super(id);
   }
 
-  createStartPage() {
-    const message = document.createElement("div");
-    message.textContent = "Page about game";
-    message.classList.add("message");
-    return message;
+  createPageButton() {
+    const buttonHTML = document.createElement("a");
+    buttonHTML.href = `#${Buttons[1].id}`;
+    buttonHTML.innerText = "START GAME";
+    buttonHTML.classList.add("button", `${Buttons[1].id}-button`);
+    return buttonHTML;
   }
   returnHTML() {
-    const page = this.createStartPage();
-    this.container.append(page);
+    const button = this.createPageButton();
+    this.container.append(button);
     return this.container;
   }
 }

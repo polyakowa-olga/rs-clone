@@ -84,7 +84,7 @@ export class FieldsRouter {// for chat
           console.log(`Player ${player.id} lost ${taxToPay}`);
           PlayerBtnsInterface.clearEndTurn(player)
           SoundsGame.ForceorTax();
-          
+
           chat.run(Game.chatWindowBox, player, field, undefined, "pay"); ///// chat tax
         });
         break;
@@ -223,6 +223,9 @@ export class FieldsRouter {// for chat
         ///// chat end
         if (field.lock) {
           console.log(`${player.name} got on pawned field. Nothing happend`);
+
+          chat.run(Game.chatWindowBox, player, field);///// chat new
+
           PlayerBtnsInterface.clearEndTurn(player)
           return
         }
@@ -235,6 +238,7 @@ export class FieldsRouter {// for chat
           if (!isEnough) {
             console.log(`Player ${player.id} doesn't have enough in cash.\n
             You need to sold something...`);
+            chat.run(Game.chatWindowBox, player, field, undefined, "sold");///// chat new
             return
           }
           const isBankrupt = PlayerCash.payPlayer2Player(player, sumToPay, field)

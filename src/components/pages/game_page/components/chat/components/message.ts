@@ -31,6 +31,9 @@ class Message extends Element {
       message = `${this.player.name} has pawned ${this.cardData.name}`;
     } else if (hint === "return") {
       message = `${this.player.name} return ${this.cardData.name}`;
+    } else if (hint === "sold") {
+      message = `Player ${this.player.id} doesn't have enough in cash.\n
+      You need to sold something...`;
     } else if (hint === "pickshares") {
       message = `You need to pick your field\'s w/o shares on it\'s country`;
     } else if (hint === "shares") {
@@ -89,8 +92,13 @@ class Message extends Element {
       this.cardData.owner !== null &&
       this.player.id !== this.cardData.owner.id
     ) {
-      let tax = this.cardData.value ? this.cardData.value.tax : undefined;
-      message = `${this.player.name} moved to ${this.cardData.owner.name}'s field and must pay $${tax}K`;
+      if (this.cardData.lock) {
+        message = `${this.player.name} got on pawned field. Nothing happend`;
+      } else {
+        let tax = this.cardData.value ? this.cardData.value.tax : undefined;
+        message = `${this.player.name} moved to ${this.cardData.owner.name}'s field and must pay $${tax}K`;
+      }
+
     }
     else {
       message = `${this.player.name} moved to ${this.cardData.name} field`;

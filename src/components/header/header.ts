@@ -1,13 +1,13 @@
 import Element from ".././templates/element";
 import { PageIds } from "../app";
 
-enum PageNames {
+export enum PageNames {
   StartPage = "Start Page",
   GamePage = "Game Page",
   RulesPage = "Rules Page"
 }
 
-const Buttons = [
+export const Buttons = [
   {
     id: PageIds.StartPage,
     content: PageNames.StartPage
@@ -33,11 +33,13 @@ class Header extends Element {
     const buttonSound = document.createElement("img");
     pageButtonsBox.classList.add("page-button-box");
     Buttons.forEach((button) => {
-      const buttonHTML = document.createElement("a");
-      buttonHTML.href = `#${button.id}`;
-      buttonHTML.innerText = button.content;
-      buttonHTML.classList.add("button", `#${button.id}-button`);
-      pageButtonsBox.append(buttonHTML);
+      if (button.id !== PageIds.StartPage && button.id !== PageIds.GamePage) {
+        const buttonHTML = document.createElement("a");
+        buttonHTML.href = `#${button.id}`;
+        buttonHTML.innerText = button.content;
+        buttonHTML.classList.add("button", `#${button.id}-button`);
+        pageButtonsBox.append(buttonHTML);
+      }
     });
     pageButtonsBox.append(blockButtonSound);
     blockButtonSound.append(buttonSound);
