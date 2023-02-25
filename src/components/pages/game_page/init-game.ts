@@ -73,10 +73,7 @@ export class Game {
     Game.playerInterface.innerHTML = ''
 
     if (player.isInPrison || player.isInPrison === 0) {
-      if (player.isInPrison !== 0) {
-        PlayerBtnsInterface.addRollBtn(player)
-      }
-      PlayerBtnsInterface.outOfJailBtn(player)
+      PlayerBtnsInterface.prisonComboBtns(player)
     } else {
       PlayerBtnsInterface.baseComboBtns(player)
     }
