@@ -1,5 +1,5 @@
 /* eslint-disable */
- import { dices } from "../pages/game_page/components/dices/index"; // for dices animation
+import { dices } from "../pages/game_page/components/dices/index"; // for dices animation
 
 export class GameCubeRoll {
   static min: number = 1;
@@ -22,7 +22,7 @@ export class GameCubeRoll {
     GameCubeRoll.arrayNumbersTwoBlock = GameCubeRoll.arrayblock(GameCubeRoll.cube2) as number[]
 
     ///// animation dices start
-     dices.run(GameCubeRoll.arrayNumbersOneBlock, GameCubeRoll.arrayNumbersTwoBlock);
+    dices.run(GameCubeRoll.arrayNumbersOneBlock, GameCubeRoll.arrayNumbersTwoBlock);
     ///// animation dices end
   }
 
