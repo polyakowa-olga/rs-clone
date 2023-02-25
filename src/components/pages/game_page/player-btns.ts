@@ -29,7 +29,7 @@ export class PlayerBtnsInterface {
       const cubeSum: number = GameCubeRoll.sum
       const isDouble: boolean = GameCubeRoll.isDouble
       const currField: number = player.currentPosition
-      const tf = currField + cubeSum
+      const tf = currField + 31
       const targetField = tf === 38 ? 38 : tf % 38
       if (player.isInPrison) {
         if (!isDouble) {
@@ -42,7 +42,8 @@ export class PlayerBtnsInterface {
           console.log(`${player.name}: has rolled a double and now broke free`);
           // PlayerBtnsInterface.clearEndTurn(player)
           Game.playerInterface.innerHTML = '';
-          // Game.buttonTradePlayer.innerHTML = '';
+          PlayerBtnsInterface.baseComboBtns(player)
+          return
         }
       }
       Move.move(player, targetField)
@@ -101,27 +102,33 @@ export class PlayerBtnsInterface {
     payForOutBtn.addEventListener('click', () => {
       PlayerCash.removeMoneyFromPlayer(player, sumToPay)
       delete player.isInPrison
-      Game.playerInterface.innerHTML = '';
-      // Game.buttonTradePlayer.innerHTML = '';
-
-      PlayerBtnsInterface.addRollBtn(player)
+      PlayerBtnsInterface.baseComboBtns(player)
     })
     payForOutBtn.innerText = `Pay: ${sumToPay}k$ for out`
     Game.playerInterface.appendChild(payForOutBtn)
   }
 
   public static baseComboBtns(player: IPlayer) {
+    Game.playerInterface.innerHTML = ''
     PlayerBtnsInterface.addRollBtn(player)
     PlayerBtnsInterface.tradeAndLockComboBtns(player)
-    // shares
     PlayerBtnsInterface.addSharesBtns(player)
   }
   public static addSharesBtns(player: IPlayer) {
     PlayerBtnsInterface.addBuySharesBtn(player)
   }
   public static prisonComboBtns(player: IPlayer) {
-    PlayerBtnsInterface.addRollBtn(player)
+    if (player.isInPrison !== 0) {
+      PlayerBtnsInterface.addRollBtn(player)
+    }
     PlayerBtnsInterface.outOfJailBtn(player)
+    PlayerBtnsInterface.tradeAndLockComboBtns(player)
+    PlayerBtnsInterface.addSharesBtns(player)
+  }
+  public static prisonComboBtnsWORoll(player: IPlayer) {
+    PlayerBtnsInterface.outOfJailBtn(player)
+    PlayerBtnsInterface.tradeAndLockComboBtns(player)
+    PlayerBtnsInterface.addSharesBtns(player)
   }
   public static tradeAndLockComboBtns(player: IPlayer) {
     PlayerBtnsInterface.addTradeBtn(player)
@@ -131,6 +138,7 @@ export class PlayerBtnsInterface {
     Game.playerInterface.innerHTML = '';
     // Game.buttonTradePlayer.innerHTML = '';
     PlayerBtnsInterface.tradeAndLockComboBtns(player)
+    PlayerBtnsInterface.addSharesBtns(player)
     PlayerBtnsInterface.addEndTurnBtn(player)
   }
   public static addBankruptBtn(player: IPlayer) {
