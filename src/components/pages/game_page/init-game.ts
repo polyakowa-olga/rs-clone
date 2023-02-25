@@ -16,7 +16,7 @@ export class Game {
   static playersQnt: number
 
   static playerInterface: HTMLDivElement
-  static buttonTradePlayer: HTMLDivElement
+  // static buttonTradePlayer: HTMLDivElement
   static chatWindowBox: HTMLDivElement
   static cardsData: ICardsData[]
   static boardFieldsContainer: HTMLDivElement
@@ -35,16 +35,16 @@ export class Game {
   }
   public static newTurn(player: IPlayer) {
     console.log(`player: ${player.id} turn...`);
-    const arrayplayer = document.querySelectorAll(".player"); // Anton active block players
-    arrayplayer.forEach(e => {
-      Game.buttonTradePlayer = document.querySelector(`.block-button-trade-${e.id}`) as HTMLDivElement;
-      if (player.id === Number(e.id)) {
-        e.classList.add("active-palyer");
-      } else {
-        e.classList.remove("active-palyer");
-        Game.buttonTradePlayer.innerHTML = '';
-      }
-    });
+    // const arrayplayer = document.querySelectorAll(".player"); // Anton active block players
+    // arrayplayer.forEach(e => {
+    //   Game.buttonTradePlayer = document.querySelector(`.block-button-trade-${e.id}`) as HTMLDivElement;
+    //   if (player.id === Number(e.id)) {
+    //     e.classList.add("active-palyer");
+    //   } else {
+    //     e.classList.remove("active-palyer");
+    //     Game.buttonTradePlayer.innerHTML = '';
+    //   }
+    // });
 
     Game.playerInterface.innerHTML = '';
 
