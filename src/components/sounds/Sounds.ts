@@ -83,7 +83,7 @@ export default class SoundsGame {
     const buttonSound = document.querySelector(".active") as HTMLDivElement;
     if (buttonSound) {
       const audioCoins = new Audio();
-      audioCoins.src = '../assets/audio/board-game-pieces-drop.mp3';
+      audioCoins.src = '../assets/audio/piecesDrop.mp3';
       audioCoins.autoplay = true;
     }
   }
@@ -119,7 +119,7 @@ export default class SoundsGame {
     const buttonSound = document.querySelector(".active") as HTMLDivElement;
     if (buttonSound) {
       const audioCoins = new Audio();
-      audioCoins.src = '../assets/audio/board-game-plastic-pieces-pick-up.mp3';
+      audioCoins.src = '../assets/audio/piecesPickUp.mp3';
       audioCoins.autoplay = true;
     }
   }
@@ -138,6 +138,24 @@ export default class SoundsGame {
     if (buttonSound) {
       const audioCoins = new Audio();
       audioCoins.src = '../assets/audio/pole_letter_wrong.mp3';
+      audioCoins.autoplay = true;
+    }
+  }
+
+  public static Bankrupt() {
+    const buttonSound = document.querySelector(".active") as HTMLDivElement;
+    if (buttonSound) {
+      const audioCoins = new Audio();
+      audioCoins.src = '../assets/audio/bankrupt.mp3';
+      audioCoins.autoplay = true;
+    }
+  }
+
+  public static Win() {
+    const buttonSound = document.querySelector(".active") as HTMLDivElement;
+    if (buttonSound) {
+      const audioCoins = new Audio();
+      audioCoins.src = '../assets/audio/pobeda.mp3';
       audioCoins.autoplay = true;
     }
   }
