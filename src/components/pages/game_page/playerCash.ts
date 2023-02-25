@@ -1,3 +1,4 @@
+import SoundsGame from "../../sounds/Sounds";
 import { ICardsData, IPlayer } from "../../interfaces/interfaces";
 import { CardValue } from "./card-value";
 import { GameLayout } from "./game-layout";
@@ -7,8 +8,8 @@ export class PlayerCash {
   public static addMoneyToPlayer(player: IPlayer, sumToAdd: number) {
     player.money += sumToAdd;
     player.capital += sumToAdd;
-
-    GameLayout.refreshPlayerHTML(player)
+    SoundsGame.Coins();
+    GameLayout.refreshPlayerHTML(player);
   }
 
   public static removeMoneyFromPlayer(player: IPlayer, sumToRemove: number, buyingProp?: boolean) {
@@ -22,11 +23,13 @@ export class PlayerCash {
     switch (buyingProp) {
       case true:
         player.money -= sumToRemove;
-        GameLayout.refreshPlayerHTML(player)
+        SoundsGame.DropCoins();
+        GameLayout.refreshPlayerHTML(player);
         break;
       default:
         player.money -= sumToRemove;
         player.capital -= sumToRemove;
+        SoundsGame.DropCoins();
         GameLayout.refreshPlayerHTML(player)
         break;
     }

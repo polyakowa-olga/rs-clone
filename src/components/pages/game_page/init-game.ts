@@ -17,6 +17,7 @@ export class Game {
   static playersQnt: number
   static time: number
   static playerInterface: HTMLDivElement
+  // static buttonTradePlayer: HTMLDivElement
   static chatWindowBox: HTMLDivElement
   static cardsData: ICardsData[]
   static boardFieldsContainer: HTMLDivElement
@@ -27,10 +28,11 @@ export class Game {
   async init() {
     Game.time = 0
     Game.cardsData = await GameBoard.getCardsData()
-    Game.playerInterface = document.querySelector('#pmv') as HTMLDivElement
+    Game.playerInterface = document.querySelector('#pmv') as HTMLDivElement;
     Game.boardFieldsContainer = document.querySelector('.boardFieldsContainer') as HTMLDivElement
     Game.chatWindowBox = document.querySelector('.chat') as HTMLDivElement
     Game.newTurn(Game.players[Game.currPlayer])
+
     Game.hideExtraChips(Game.playersQnt)
     Game.timerStart()
     const arrayplayer = document.querySelectorAll(".player");
@@ -49,6 +51,17 @@ export class Game {
   // ------
   public static newTurn(player: IPlayer) {
     console.log(`player: ${player.id} turn...`);
+    // const arrayplayer = document.querySelectorAll(".player"); // Anton active block players
+    // arrayplayer.forEach(e => {
+    //   Game.buttonTradePlayer = document.querySelector(`.block-button-trade-${e.id}`) as HTMLDivElement;
+    //   if (player.id === Number(e.id)) {
+    //     e.classList.add("active-palyer");
+    //   } else {
+    //     e.classList.remove("active-palyer");
+    //     Game.buttonTradePlayer.innerHTML = '';
+    //   }
+    // });
+
     chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "turn"); ///// chat
     const arrayplayer = document.querySelectorAll(".player"); // Anton active block players
     arrayplayer.forEach(e => {

@@ -8,6 +8,7 @@ import EventMessages from "../../messages/chanceMessages"; // for chat
 import { CardValue } from "./card-value";
 import { GameCubeRoll } from "../../blocks/createNumbers";
 import { GameLayout } from "./game-layout";
+import SoundsGame from "../../sounds/Sounds";
 /* eslint-disable */
 export class FieldsRouter {// for chat
   static MessageDataGetter = new EventMessages();// for chat
@@ -60,7 +61,8 @@ export class FieldsRouter {// for chat
           chat.run(Game.chatWindowBox, player, field, undefined, "lost", sumToPay);///// chat fm
           // --------------------
           PlayerBtnsInterface.clearEndTurn(player)
-        })
+        });
+        SoundsGame.ForceorTax();
         break;
       case ([17, 36].includes(fieldId)):
         // create message to chat and take some money from player
@@ -81,9 +83,10 @@ export class FieldsRouter {// for chat
           PlayerCash.removeMoneyFromPlayer(player, taxToPay)
           console.log(`Player ${player.id} lost ${taxToPay}`);
           PlayerBtnsInterface.clearEndTurn(player)
-
+          SoundsGame.ForceorTax();
+          
           chat.run(Game.chatWindowBox, player, field, undefined, "pay"); ///// chat tax
-        })
+        });
         break;
       case ([8, 27].includes(fieldId)):
         // create message to chat and give some money to player
@@ -98,7 +101,8 @@ export class FieldsRouter {// for chat
         const sumToGet = message.sum /* res */;
         const chanceBtn = document.createElement('button') as HTMLButtonElement;
         chanceBtn.innerText = `GET: ${sumToGet}k$`
-        Game.playerInterface.appendChild(chanceBtn)
+        SoundsGame.ChanceorRelax();
+        Game.playerInterface.appendChild(chanceBtn);
         chanceBtn.addEventListener('click', () => {
           PlayerCash.addMoneyToPlayer(player, sumToGet)
           console.log(`Player ${player.id} get ${sumToGet}`);
@@ -116,7 +120,8 @@ export class FieldsRouter {// for chat
 
         ///// chat end
         console.log(`Player ${player.id} got on prison zone, nothing happend`);
-        PlayerBtnsInterface.clearEndTurn(player)
+        PlayerBtnsInterface.clearEndTurn(player);
+        SoundsGame.PickUp();
         break;
       case ([1].includes(fieldId)):
         // create message to chat like "{player} got on prison zone, nothing happend"
@@ -136,7 +141,8 @@ export class FieldsRouter {// for chat
         chat.run(Game.chatWindowBox, player, field);
 
         ///// chat end
-        PlayerBtnsInterface.clearEndTurn(player)
+        PlayerBtnsInterface.clearEndTurn(player);
+        SoundsGame.PickUp();
         break;
       case ([32].includes(fieldId)):
         // create message to chat like "{player} broke the law and ended up in jail"
@@ -146,9 +152,12 @@ export class FieldsRouter {// for chat
 
         ///// chat end
         player.isInPrison = 3
+        SoundsGame.ForceorTax();
         Move.move(player, 13)
         console.log(`Player ${player.id} broke the law and ended up in jail`);
-        PlayerBtnsInterface.clearEndTurn(player)
+        PlayerBtnsInterface.clearEndTurn(player);
+
+        SoundsGame.PickUp();
     }
   }
 
@@ -186,10 +195,12 @@ export class FieldsRouter {// for chat
             chat.run(Game.chatWindowBox, player, field, undefined, "buy");
             ///// chat end
             // color field
-            GameLayout.playerColorField(player, field)
+            GameLayout.playerColorField(player, field);
+            SoundsGame.BuyCard();
             // -----------
           } else {
-            console.log(`Player ${player.id} doesn't have enough in cash to buy ${field.title}`)
+            console.log(`Player ${player.id} doesn't have enough in cash to buy ${field.title}`);
+            SoundsGame.AdminSound();
             ////// chat start
             chat.run(Game.chatWindowBox, player, field, undefined, "nobuy");
             ///// chat end
