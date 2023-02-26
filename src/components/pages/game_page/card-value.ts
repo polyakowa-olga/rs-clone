@@ -33,7 +33,7 @@ export class CardValue {
       } else if (!field.value?.shares.includes(field.currValue as number)) { /* errors may be */
         countryTradeCards.map((fld) => fld.currValue = fld.value?.monopoly)
       } else {
-        console.log(`from card-value.ts 36+- (shares mb)`);
+        // console.log(`from card-value.ts 36+- (shares mb)`);
       }
 
       // shares logic...

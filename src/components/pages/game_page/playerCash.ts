@@ -3,6 +3,8 @@ import { ICardsData, IPlayer } from "../../interfaces/interfaces";
 import { CardValue } from "./card-value";
 import { GameLayout } from "./game-layout";
 import { RemovePlayer } from "./remove-player";
+import { chat } from "./components/chat/index"; // for chat
+import { Game } from "./init-game";
 /* eslint-disable */
 export class PlayerCash {
   public static addMoneyToPlayer(player: IPlayer, sumToAdd: number) {
@@ -16,7 +18,9 @@ export class PlayerCash {
     const isBankrupt: boolean | undefined = PlayerCash.checkForBankruptcy(player, sumToRemove)
     if (isBankrupt) {
       RemovePlayer.remove(player)
-      console.log(`Player ${player.id} is bankrupt!`);
+      //console.log(`Player ${player.id} is bankrupt!`);
+      const message = `Player ${player.id} is bankrupt!` ///// chat
+      chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
       return player.money
     }
 
@@ -42,11 +46,15 @@ export class PlayerCash {
       player.money = 0
       player.capital = 0
       GameLayout.refreshPlayerHTML(player)
-      console.log(`Player ${field.owner.id} get rest cash from player ${player.id}`);
+      // console.log(`Player ${field.owner.id} get rest cash from player ${player.id}`);
+      const message = `Player ${field.owner.id} get rest cash from player ${player.id}` ///// chat
+      chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
     } else {
       PlayerCash.addMoneyToPlayer(field.owner, sumToPay)
       GameLayout.refreshPlayerHTML(player)
-      console.log(`Player ${field.owner.id} get ${sumToPay} from player ${player.id}`);
+      // console.log(`Player ${field.owner.id} get ${sumToPay} from player ${player.id}`);
+      const message = `${field.owner.name} get $${sumToPay}K from  ${player.name}` ///// chat
+      chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
     }
     return !!restPlayerCash
   }
@@ -70,7 +78,9 @@ export class PlayerCash {
     if (player.money >= sumToPay) {
       return true
     }
-    console.log(`Player ${player.id} doesn't have enough in cash`);
+    // console.log(`Player ${player.id} doesn't have enough in cash`);
+    const message = `Player ${player.id} doesn't have enough in cash` ///// chat
+    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
     return false
   }
 

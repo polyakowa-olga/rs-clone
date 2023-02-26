@@ -52,7 +52,7 @@ export class Trade {
       const playerForTrade = otherPlayers.find((pl) => pl.id === playerForTradeId) as IPlayer
       if (!playerForTrade) {
 
-        console.log(`Player ${playerForTradeId} not found.`)
+        // console.log(`Player ${playerForTradeId} not found.`)
         chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade1", playerForTradeId); ///// chat
         return;
       }
@@ -116,11 +116,11 @@ export class Trade {
         const isBpCorrectProps = bpPlayerProps.filter((card) => card.owner === playerForTrade).length === bpPlayerProps.length
         switch (true) {
           case (tpRangeVal > player.money || bpRangeVal > playerForTrade.money):
-            console.log('Error! Choose correct amount of money');
+            // console.log('Error! Choose correct amount of money');
             chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade2"); ///// chat
             return
           case (!isTpCorrectProps || !isBpCorrectProps):
-            console.log('Error in tradeble props');
+            // console.log('Error in tradeble props');
             chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade3"); ///// chat
             return
           default:
@@ -140,12 +140,12 @@ export class Trade {
               })
               tradeElem.remove();
               SoundsGame.TradeDoing();
-              console.log('The deal is done!');
+              // console.log('The deal is done!');
               chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade4"); ///// chat
             } else {
               tradeElem.remove();
               SoundsGame.AdminSound();
-              console.log('Offer was rejected.');
+              // console.log('Offer was rejected.');
               chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade5"); ///// chat
             }
             allFieldsElems.forEach((elem) => {
@@ -179,7 +179,7 @@ export class Trade {
         const targetCard = Game.cardsData.find((card) => card.id === id) as ICardsData
         const targetCountry: string | undefined = targetCard.country
         if (!targetCountry) {
-          console.log('You need to pick tradeble companies!');
+          //console.log('You need to pick tradeble companies!');
           chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade6"); ///// chat
           return
         }
@@ -189,7 +189,7 @@ export class Trade {
           .some((card) => (card as ICardsData).value?.shares.includes((card as ICardsData).currValue as number))
         // shares check
         if (isCleanFields && !skChinaFields.includes(targetCard.id)) {
-          console.log('You need to pick companie\'s w/o shares in it\'s country');
+          // console.log('You need to pick companie\'s w/o shares in it\'s country');
           chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade7"); ///// chat
           return;
         }
@@ -233,7 +233,9 @@ export class Trade {
             break;
 
           default:
-            console.log(`${player.name ? player.name : 'Player ' + player.id}, you need to pick your or ${playerForTrade.name ? playerForTrade.name + `'s` : 'Player ' + playerForTrade.id} field`);
+            // console.log(`${player.name ? player.name : 'Player ' + player.id}, you need to pick your or ${playerForTrade.name ? playerForTrade.name + `'s` : 'Player ' + playerForTrade.id} field`);
+            let message = `${player.name ? player.name : 'Player ' + player.id}, you need to pick your or ${playerForTrade.name ? playerForTrade.name + `'s` : 'Player ' + playerForTrade.id} field` ///// chat
+            chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
             break;
         }
 

@@ -10,6 +10,7 @@ import { Move } from "./move";
 import { PlayerCash } from "./playerCash";
 import { RemovePlayer } from "./remove-player";
 import { Trade } from "./trade";
+import { chat } from "./components/chat/index"; // for chat
 //import { chat } from "./components/chat/index"; // for chat
 
 /* eslint-disable */
@@ -35,11 +36,15 @@ export class PlayerBtnsInterface {
         if (!isDouble) {
           player.isInPrison -= 1
           console.log(`${player.name}: hasn't rolled a double. Left: ${player.isInPrison}`);
+          const message = `${player.name}: hasn't rolled a double. Left: ${player.isInPrison}` ///// chat
+          chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
           PlayerBtnsInterface.clearEndTurn(player)
           return
         } else {
           delete player.isInPrison
           console.log(`${player.name}: has rolled a double and now broke free`);
+          const message = `${player.name}: has rolled a double and now broke free` ///// chat
+          chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
           // PlayerBtnsInterface.clearEndTurn(player)
           Game.playerInterface.innerHTML = '';
           PlayerBtnsInterface.baseComboBtns(player)
@@ -77,6 +82,8 @@ export class PlayerBtnsInterface {
   public static endTurnHandler(player: IPlayer) {
     if (!player.isBankrupt && GameCubeRoll.isDouble) {
       console.log(`${player.name} goes again because he threw off the double`);
+      const message = `${player.name} goes again because he threw off the double` ///// chat
+      chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
       Game.newTurn(player)
       return
     }
@@ -190,6 +197,8 @@ export class PlayerBtnsInterface {
           if (currMonopoly) {
             if ([7, 26, 3, 30, 11, 22].includes(id)) {
               console.log(`Player ${player.id} can't buy shares for this property`);
+              const message = `${player.name} can't buy shares for this property` ///// chat
+              chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
               return
             }
             const currField = Game.cardsData.find((val) => val.id === id) as ICardsData
@@ -210,10 +219,14 @@ export class PlayerBtnsInterface {
                   case true:
                     currField.currValue = currFieldShares[1]
                     console.log(`Player ${player.id} had bought 2 shares of ${currField.title}`);
+                    let message = `${player.name} had bought 2 shares of ${currField.name}` ///// chat
+                    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
                     break;
                   default:
                     currField.currValue = currField.value?.monopoly
                     console.log(`Player ${player.id} had sold 1 shares of ${currField.title}`);
+                    let message1 = `${player.name} had sold 1 shares of ${currField.name}` ///// chat
+                    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message1); ///// chat
                     break;
                 }
                 break;
@@ -222,10 +235,14 @@ export class PlayerBtnsInterface {
                   case true:
                     currField.currValue = currFieldShares[2]
                     console.log(`Player ${player.id} had bought 3 shares of ${currField.title}`);
+                    let message = `${player.name} had bought 3 shares of ${currField.name}` ///// chat
+                    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
                     break;
                   default:
                     currField.currValue = currFieldShares[0]
                     console.log(`Player ${player.id} had sold 2 shares of ${currField.title}`);
+                    let message1 = `${player.name} had sold 2 shares of ${currField.name}` ///// chat
+                    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message1); ///// chat
                     break;
                 }
                 break;
@@ -234,10 +251,14 @@ export class PlayerBtnsInterface {
                   case true:
                     currField.currValue = currFieldShares[3]
                     console.log(`Player ${player.id} had bought 4 shares of ${currField.title}`);
+                    let message = `${player.name} had bought 4 shares of ${currField.name}` ///// chat
+                    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
                     break;
                   default:
                     currField.currValue = currFieldShares[1]
                     console.log(`Player ${player.id} had sold 3 shares of ${currField.title}`);
+                    let message1 = `${player.name} had sold 3 shares of ${currField.name}` ///// chat
+                    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message1); ///// chat
                     break;
                 }
                 break;
@@ -246,10 +267,14 @@ export class PlayerBtnsInterface {
                   case true:
                     currField.currValue = currFieldShares[4]
                     console.log(`Player ${player.id} had bought 100% shares of ${currField.title}`);
+                    let message = `${player.name} had bought 100% shares of ${currField.name}` ///// chat
+                    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
                     break;
                   default:
                     currField.currValue = currFieldShares[2]
                     console.log(`Player ${player.id} had sold 4 shares of ${currField.title}`);
+                    let message1 = `${player.name} had sold 4 shares of ${currField.name}` ///// chat
+                    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message1); ///// chat
                     break;
                 }
                 break;
@@ -257,10 +282,14 @@ export class PlayerBtnsInterface {
                 switch (isBuy) {
                   case true:
                     console.log(`Player ${player.id} already have 100% shares of ${currField.title}`);
+                    let message = `${player.name} already have 100% shares of ${currField.name}` ///// chat
+                    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
                     break;
                   default:
                     currField.currValue = currFieldShares[3]
                     console.log(`Player ${player.id} had sold 5 shares of ${currField.title}`);
+                    let message1 = `${player.name} had sold 5 shares of ${currField.name}` ///// chat
+                    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message1); ///// chat
                     break;
                 }
                 break;
@@ -269,10 +298,14 @@ export class PlayerBtnsInterface {
                   case true:
                     currField.currValue = currFieldShares[0]
                     console.log(`Player ${player.id} had bought his 1st share of ${currField.title}`);
+                    let message = `${player.name} had bought his 1st share of ${currField.name}` ///// chat
+                    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
                     break;
                   default:
                     strictSell = true
                     console.log(`Player ${player.id} don't have shares of ${currField.title}`);
+                    let message1 = `${player.name} don't have shares of ${currField.name}` ///// chat
+                    chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message1); ///// chat
                     break;
                 }
                 break;
