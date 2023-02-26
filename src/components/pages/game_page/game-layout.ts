@@ -114,6 +114,35 @@ export class GameLayout {
 
   }
 
+  public static fullScreen() {
+    const fSelem = document.createElement('div')
+    const btn = document.createElement('div')
+    fSelem.append(btn)
+    btn.classList.add('fullScreenBtn')
+    fSelem.classList.add('fullScreenElem')
+    btn.title = "fullscreen mode"
+    const main = document.querySelector('#game-page') as HTMLDivElement
+    btn.addEventListener('click', () => {
+      toggleFullscreen()
+    })
+    main.append(fSelem)
+
+
+    function toggleFullscreen() {
+      let elem = document.querySelector('#game-page') as HTMLDivElement;
+      btn.classList.toggle('open-full-screen')
+      if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch((err) => {
+          alert(
+            `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`
+          );
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  }
+
   public static timerHTML(time: number) {
     const boardElem = document.querySelector('.board') as HTMLDivElement
     let timerElem = document.querySelector('#timer') as HTMLDivElement
