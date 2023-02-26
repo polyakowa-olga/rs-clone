@@ -61,7 +61,7 @@ class ChatController {
             // SoundsGame.AddMessage();
             box.scrollTop = box.scrollHeight;
           }
-        }, 1500);
+        }, 50);
       }
     }
   }

@@ -916,3 +916,53 @@
   cursor: pointer;
   font-size: 120%;
 }
+
+.fullScreenBtn {
+  background-image: url(../assets/icons/fullscreen.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 2.5rem;
+  height: 2.5rem;
+  -webkit-animation: pulse 1s infinite alternate;
+  animation: pulse 1s infinite alternate;
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.open-full-screen {
+  animation: none;
+  -webkit-animation: none;
+}
+
+.fullScreenElem {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  transition: perspective 2s;
+  perspective: 1000px;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    transform: translateZ(0px)
+  }
+
+  100% {
+    transform: translateZ(200px)
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateZ(0px)
+  }
+
+  100% {
+    transform: translateZ(200px)
+  }
+}

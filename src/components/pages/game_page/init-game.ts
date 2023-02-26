@@ -37,6 +37,8 @@ export class Game {
     Game.timerStart()
     const arrayplayer = document.querySelectorAll(".player");
     arrayplayer.forEach((el, i) => el.append(PlayerBtnsInterface.createConcedeBtn(Game.players[i])))
+
+    GameLayout.fullScreen()
   }
   // timers
   public static timeout(ms: number) {
