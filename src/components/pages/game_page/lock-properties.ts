@@ -40,7 +40,7 @@ export class Lock {
         const targetCountry: string | undefined = targetCard.country
         if (!targetCountry || targetCard.owner !== player) {
           chat.run(Game.boardFieldsContainer, player, targetCard, undefined, "pickshares"); ///// chat
-          console.log('You need to pick your fields');
+          // console.log('You need to pick your fields');
           return
         }
         const curCountryFields = CardValue.countryFields.get(targetCountry) as number[]
@@ -49,7 +49,7 @@ export class Lock {
           .some((card) => (card as ICardsData).value?.shares.includes((card as ICardsData).currValue as number))
         if (isCleanFields && !skChinaFields.includes(targetCard.id)) {
           chat.run(Game.boardFieldsContainer, player, targetCard, undefined, "pickshares"); ///// chat
-          console.log('You need to pick your field\'s w/o shares on it\'s country');
+          // console.log('You need to pick your field\'s w/o shares on it\'s country');
           return;
         }
 
@@ -72,7 +72,7 @@ export class Lock {
             darkerElem.classList.remove('active')
             // ----------------------
             chat.run(Game.boardFieldsContainer, player, targetCard, undefined, "return"); ///// chat
-            console.log(`${player.name} return ${targetCard.name}`);
+            // console.log(`${player.name} return ${targetCard.name}`);
             break;
 
           default:
@@ -81,7 +81,7 @@ export class Lock {
             lockElem.classList.add('active')
             darkerElem.classList.add('active')
             chat.run(Game.boardFieldsContainer, player, targetCard, undefined, "pawnlock"); ///// chat
-            console.log(`${player.name} has pawned ${targetCard.name}`);
+            // console.log(`${player.name} has pawned ${targetCard.name}`);
             break;
         }
 

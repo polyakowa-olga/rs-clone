@@ -50,7 +50,7 @@ export class Game {
   }
   // ------
   public static newTurn(player: IPlayer) {
-    console.log(`player: ${player.id} turn...`);
+    // console.log(`player: ${player.id} turn...`);
     // const arrayplayer = document.querySelectorAll(".player"); // Anton active block players
     // arrayplayer.forEach(e => {
     //   Game.buttonTradePlayer = document.querySelector(`.block-button-trade-${e.id}`) as HTMLDivElement;

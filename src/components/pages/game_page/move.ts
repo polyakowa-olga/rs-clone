@@ -2,6 +2,7 @@ import SoundsGame from "../../sounds/Sounds";
 import { IPlayer } from "../../interfaces/interfaces";
 import { Game } from "./init-game";
 import { PlayerCash } from "./playerCash";
+import { chat } from "./components/chat/index"; // for chat
 
 /* eslint-disable */
 export class Move {
@@ -12,7 +13,8 @@ export class Move {
     if ((27 <= currField && currField <= 38) && (1 <= targetField && targetField <= 12)) {
       // chat message "give 200k$ for round"
       PlayerCash.addMoneyToPlayer(player, 200)
-      console.log(`player ${player.id} gets 200$ and now have ${player.money}`);
+      // console.log(`player ${player.id} gets 200$ and now have ${player.money}`);
+      chat.run(Game.boardFieldsContainer, player, Game.cardsData[targetField], undefined, "have", player.money); ///// chat
     }
 
     player.currentPosition = targetField

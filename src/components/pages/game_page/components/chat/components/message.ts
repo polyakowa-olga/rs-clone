@@ -25,7 +25,10 @@ class Message extends Element {
       ? this.messageInfo.text.replace(/Y/i, "y")
       : undefined;
     let message = "";
-    if (hint === "turn") {
+    if (hint !== undefined && hint?.length > 11) {
+      message = hint;
+    }
+    else if (hint === "turn") {
       message = `${this.player.name}'s turn now`;
     } else if (hint === "pawnlock") {
       message = `${this.player.name} has pawned ${this.cardData.name}`;
@@ -63,6 +66,10 @@ class Message extends Element {
       message = `${this.player.name} get $${sum}`;
     } else if (hint == "pay") {
       message = `${this.player.name} paid tax`;
+    } else if (hint == "have") {
+      message = `player ${this.player.id} gets 200$ and now have ${sum}`;
+    } else if (hint == "over") {
+      message = `GAME OVER`;
     }
     else if (this.cardData.id === 6 || this.cardData.id === 25) {
       message = `${this.player.name} ${info}`;
@@ -71,7 +78,7 @@ class Message extends Element {
     } else if (this.cardData.id === 8 || this.cardData.id === 27) {
       message = `${this.player.name} ${info}`;
     } else if (this.cardData.id === 13) {
-      message = `${this.player.name} moved to prison zone`;
+      message = `${this.player.name} moved to prison zone, nothing happend`;
     } else if (this.cardData.id === 1) {
       message = `${this.player.name} moved to Start field and get a $200,000 profit`;
     } else if (this.cardData.id === 20) {
@@ -84,8 +91,7 @@ class Message extends Element {
       message = `${this.player.name} paid to ${this.cardData.owner.name} $${tax}K`;
     }
     else if (this.cardData.owner && this.player.id === this.cardData.owner.id) {
-      console.log(this.player.id)
-      console.log(this.cardData.owner)
+
       message = `${this.player.name} moved to his own field`;
     }
     else if (
