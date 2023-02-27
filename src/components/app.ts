@@ -5,7 +5,7 @@ import Header from './header/header';
 import Footer from './footer/footer';
 import StartPage from './pages/start_page/start_page';
 import GamePage from './pages/game_page/game-page';
-import RulesPage from './pages/rules_page/rules_page';
+// import RulesPage from './pages/rules_page/rules_page';
 import ErrorPage from './pages/error_page/error_page';
 //import StartGame from './pages/game_page/start-game';
 // import { Game } from './pages/game_page/init-game';
@@ -14,7 +14,7 @@ export const enum PageIds {
     StartPage = 'start-page',
     GamePage = 'game-page',
     //   StartGame = 'start-game',
-    RulesPage = 'rules-page',
+    // RulesPage = 'rules-page',
     ErrorPage = 'error-page',
 }
 
@@ -40,8 +40,8 @@ class App {
             // } else if (idPage === PageIds.StartGame) {
             //     page = new StartGame(idPage);
 
-        } else if (idPage === PageIds.RulesPage) {
-            page = new RulesPage(idPage);
+            // } else if (idPage === PageIds.RulesPage) {
+            //     page = new RulesPage(idPage);
         } else {
             page = new ErrorPage(PageIds.ErrorPage);
         }
