@@ -200,7 +200,7 @@ export class Trade {
           const elemToremove = document.querySelector(`#tradeFld${id}`)
           elemToremove?.remove()
           arrWithId.splice(arrWithId.indexOf(id), 1)
-          console.log(arrWithId);
+          //console.log(arrWithId);
           return
         }
 
@@ -209,12 +209,12 @@ export class Trade {
             tradeCard.style.backgroundImage = `url('${targetCard?.images}')`
             tpCards.appendChild(tradeCard)
             tpCardsforTrade.push(id)
-            console.log(tpCardsforTrade);
+            //console.log(tpCardsforTrade);
 
             tradeCard.addEventListener('click', () => {
               tradeCard.remove()
               tpCardsforTrade.splice(tpCardsforTrade.indexOf(id), 1)
-              console.log(tpCardsforTrade);
+              //console.log(tpCardsforTrade);
 
             })
             break;
@@ -222,12 +222,12 @@ export class Trade {
             tradeCard.style.backgroundImage = `url('${targetCard?.images}')`
             bpCards.appendChild(tradeCard)
             bpCardsforTrade.push(id)
-            console.log(bpCardsforTrade);
+            //console.log(bpCardsforTrade);
 
             tradeCard.addEventListener('click', () => {
               tradeCard.remove()
               bpCardsforTrade.splice(bpCardsforTrade.indexOf(id), 1)
-              console.log(bpCardsforTrade);
+              //console.log(bpCardsforTrade);
 
             })
             break;
