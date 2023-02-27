@@ -65,3 +65,10 @@ export const winnerMenu = `
 <div class="winner__time"></div>
 </div>
 </div>`
+
+export const tradeAcceptMenu = `
+<div class="player-title"><span id="playerName"></span>. Do you accept trade?</div>
+<div class="trade-accept__btns">
+<button id="yesBtn">yes</button>
+<button id="noBtn">no</button>
+</div>`
