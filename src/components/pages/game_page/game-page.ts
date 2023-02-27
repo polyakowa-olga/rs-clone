@@ -213,6 +213,11 @@ class GamePage extends Page {
         "color": "pink",
         "currentPosition": 1
       }];
+      if (localStorage.getItem("language") === "ru") {
+        for (let i = 0; i < playersToPlay.length; i++) {
+          playersToPlay[i].name = `Игрок${i + 1}`;
+        }
+      }
       playersToPlay.forEach((player, i) => {
         if (names[i]) player.name = names[i];
       })

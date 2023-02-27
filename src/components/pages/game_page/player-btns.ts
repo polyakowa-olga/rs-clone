@@ -19,6 +19,9 @@ export class PlayerBtnsInterface {
     // Game.buttonTradePlayer = document.querySelector(`.block-button-trade-${player.id}`) as HTMLDivElement;
     const rollBtn = document.createElement('button')
     rollBtn.innerText = 'roll'
+    if (localStorage.getItem("language") === "ru") {
+      rollBtn.innerText = "Кинуть кубик";
+    }
     rollBtn.addEventListener('click', async () => {
       const playerMainView = document.querySelector('.playerMainView') as HTMLDivElement
       const btns = Game.playerInterface
@@ -36,14 +39,20 @@ export class PlayerBtnsInterface {
         if (!isDouble) {
           player.isInPrison -= 1
           console.log(`${player.name}: hasn't rolled a double. Left: ${player.isInPrison}`);
-          const message = `${player.name}: hasn't rolled a double. Left: ${player.isInPrison}` ///// chat
+          let message = `${player.name}: hasn't rolled a double. Left: ${player.isInPrison}` ///// chat
+          if (localStorage.getItem("language") === "ru") {
+            message = `${player.name}: не выпал дубль. Следующий: ${player.isInPrison}`
+          }
           chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
           PlayerBtnsInterface.clearEndTurn(player)
           return
         } else {
           delete player.isInPrison
           console.log(`${player.name}: has rolled a double and now broke free`);
-          const message = `${player.name}: has rolled a double and now broke free` ///// chat
+          let message = `${player.name}: has rolled a double and now broke free` ///// chat
+          if (localStorage.getItem("language") === "ru") {
+            message = `${player.name}: выпал дубль и теперь бросай кубики снова`
+          }
           chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
           // PlayerBtnsInterface.clearEndTurn(player)
           Game.playerInterface.innerHTML = '';
@@ -63,6 +72,9 @@ export class PlayerBtnsInterface {
   public static addTradeBtn(player: IPlayer) {
     const tradeBtn = document.createElement('button')
     tradeBtn.innerText = 'trade'
+    if (localStorage.getItem("language") === "ru") {
+      tradeBtn.innerText = "Торговля";
+    }
     tradeBtn.addEventListener('click', () => {
       const playerInterface = document.querySelector(".trade") as HTMLDivElement;
       if (playerInterface) {
@@ -75,6 +87,9 @@ export class PlayerBtnsInterface {
   public static addEndTurnBtn(player: IPlayer) {
     const endTurnBtn = document.createElement('button')
     endTurnBtn.innerText = 'end turn'
+    if (localStorage.getItem("language") === "ru") {
+      endTurnBtn.innerText = "Переход хода";
+    }
     endTurnBtn.addEventListener('click', () => PlayerBtnsInterface.endTurnHandler(player));
     Game.playerInterface.appendChild(endTurnBtn)
     return endTurnBtn
@@ -82,7 +97,10 @@ export class PlayerBtnsInterface {
   public static endTurnHandler(player: IPlayer) {
     if (!player.isBankrupt && GameCubeRoll.isDouble) {
       console.log(`${player.name} goes again because he threw off the double`);
-      const message = `${player.name} goes again because he threw off the double`; ///// chat
+      let message = `${player.name} goes again because he threw off the double`; ///// chat
+      if (localStorage.getItem("language") === "ru") {
+        message = `${player.name} снова ходит, потому-что выпал дубль`;
+      }
       chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
       SoundsGame.againTurn();
       Game.newTurn(player);
@@ -113,7 +131,10 @@ export class PlayerBtnsInterface {
       delete player.isInPrison
       PlayerBtnsInterface.baseComboBtns(player)
     })
-    payForOutBtn.innerText = `Pay: ${sumToPay}k$ for out`
+    payForOutBtn.innerText = `Pay: ${sumToPay}k$ for out`;
+    if (localStorage.getItem("language") === "ru") {
+      payForOutBtn.innerText = `Выплата: ${sumToPay}k$ за выход`;
+    }
     Game.playerInterface.appendChild(payForOutBtn)
   }
 
@@ -154,12 +175,15 @@ export class PlayerBtnsInterface {
     Game.playerInterface.innerHTML = '';
     // Game.buttonTradePlayer.innerHTML = '';
     const btn = PlayerBtnsInterface.addEndTurnBtn(player)
-    btn.innerText = 'BANKRUPT!'
+    btn.innerText = 'BANKRUPT!';
+    if (localStorage.getItem("language") === "ru") {
+      btn.innerText = 'БАНКРОТ!';
+    }
   }
   public static createConcedeBtn(player: IPlayer) {
     const btn = document.createElement('button') as HTMLButtonElement
     btn.addEventListener('click', () => {
-      let deletePlayer = confirm("do ypu want Bankrupt");
+      let deletePlayer = confirm("do you want Bankrupt");
       if (deletePlayer) {
         RemovePlayer.remove(player)
         if (Game.players[Game.currPlayer] === player) {
@@ -178,6 +202,9 @@ export class PlayerBtnsInterface {
     });
     btn.classList.add('concede-btn')
     btn.innerText = 'concede'
+    if (localStorage.getItem("language") === "ru") {
+      btn.innerText = "Сдаться";
+    }
     return btn
   }
   // shares
@@ -210,7 +237,10 @@ export class PlayerBtnsInterface {
           if (currMonopoly) {
             if ([7, 26, 3, 30, 11, 22].includes(id)) {
               console.log(`Player ${player.id} can't buy shares for this property`);
-              const message = `${player.name} can't buy shares for this property` ///// chat
+              let message = `${player.name} can't buy shares for this property` ///// chat
+              if (localStorage.getItem("language") === "ru") {
+                message = `${player.name} не может купить акции для этой компании`;
+              }
               chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
               return
             }
@@ -233,12 +263,18 @@ export class PlayerBtnsInterface {
                     currField.currValue = currFieldShares[1]
                     console.log(`Player ${player.id} had bought 2 shares of ${currField.title}`);
                     let message = `${player.name} had bought 2 shares of ${currField.name}` ///// chat
+                    if (localStorage.getItem("language") === "ru") {
+                      message = `${player.name} купил две акции ${currField.name}`;
+                    }
                     chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
                     break;
                   default:
                     currField.currValue = currField.value?.monopoly
                     console.log(`Player ${player.id} had sold 1 shares of ${currField.title}`);
                     let message1 = `${player.name} had sold 1 shares of ${currField.name}` ///// chat
+                    if (localStorage.getItem("language") === "ru") {
+                      message1 = `${player.name} продал одну акцию ${currField.name}`;
+                    }
                     chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message1); ///// chat
                     break;
                 }
@@ -249,12 +285,18 @@ export class PlayerBtnsInterface {
                     currField.currValue = currFieldShares[2]
                     console.log(`Player ${player.id} had bought 3 shares of ${currField.title}`);
                     let message = `${player.name} had bought 3 shares of ${currField.name}` ///// chat
+                    if (localStorage.getItem("language") === "ru") {
+                      message = `${player.name} купил 3 акции ${currField.name}`
+                    }
                     chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
                     break;
                   default:
                     currField.currValue = currFieldShares[0]
                     console.log(`Player ${player.id} had sold 2 shares of ${currField.title}`);
                     let message1 = `${player.name} had sold 2 shares of ${currField.name}` ///// chat
+                    if (localStorage.getItem("language") === "ru") {
+                      message1 = `${player.name} продал 2 акции ${currField.name}`
+                    }
                     chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message1); ///// chat
                     break;
                 }
@@ -265,12 +307,18 @@ export class PlayerBtnsInterface {
                     currField.currValue = currFieldShares[3]
                     console.log(`Player ${player.id} had bought 4 shares of ${currField.title}`);
                     let message = `${player.name} had bought 4 shares of ${currField.name}` ///// chat
+                    if (localStorage.getItem("language") === "ru") {
+                      message = `${player.name} купил 4 акции ${currField.name}`
+                    }
                     chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
                     break;
                   default:
                     currField.currValue = currFieldShares[1]
                     console.log(`Player ${player.id} had sold 3 shares of ${currField.title}`);
                     let message1 = `${player.name} had sold 3 shares of ${currField.name}` ///// chat
+                    if (localStorage.getItem("language") === "ru") {
+                      message1 = `${player.name} продал 3 акции ${currField.name}`
+                    }
                     chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message1); ///// chat
                     break;
                 }
@@ -281,12 +329,18 @@ export class PlayerBtnsInterface {
                     currField.currValue = currFieldShares[4]
                     console.log(`Player ${player.id} had bought 100% shares of ${currField.title}`);
                     let message = `${player.name} had bought 100% shares of ${currField.name}` ///// chat
+                    if (localStorage.getItem("language") === "ru") {
+                      message = `${player.name} купил 100% акций ${currField.name}`
+                    }
                     chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
                     break;
                   default:
                     currField.currValue = currFieldShares[2]
                     console.log(`Player ${player.id} had sold 4 shares of ${currField.title}`);
                     let message1 = `${player.name} had sold 4 shares of ${currField.name}` ///// chat
+                    if (localStorage.getItem("language") === "ru") {
+                      message1 = `${player.name} продал 4 акции ${currField.name}`
+                    }
                     chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message1); ///// chat
                     break;
                 }
@@ -296,12 +350,18 @@ export class PlayerBtnsInterface {
                   case true:
                     console.log(`Player ${player.id} already have 100% shares of ${currField.title}`);
                     let message = `${player.name} already have 100% shares of ${currField.name}` ///// chat
+                    if (localStorage.getItem("language") === "ru") {
+                      message = `${player.name} уже владеет 100% акций ${currField.name}`
+                    }
                     chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
                     break;
                   default:
                     currField.currValue = currFieldShares[3]
                     console.log(`Player ${player.id} had sold 5 shares of ${currField.title}`);
                     let message1 = `${player.name} had sold 5 shares of ${currField.name}` ///// chat
+                    if (localStorage.getItem("language") === "ru") {
+                      message1 = `${player.name} продал 5 акции ${currField.name}`
+                    }
                     chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message1); ///// chat
                     break;
                 }
@@ -312,12 +372,18 @@ export class PlayerBtnsInterface {
                     currField.currValue = currFieldShares[0]
                     console.log(`Player ${player.id} had bought his 1st share of ${currField.title}`);
                     let message = `${player.name} had bought his 1st share of ${currField.name}` ///// chat
+                    if (localStorage.getItem("language") === "ru") {
+                      message = `${player.name} купил свою 1 акцию ${currField.name}`
+                    }
                     chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
                     break;
                   default:
                     strictSell = true
                     console.log(`Player ${player.id} don't have shares of ${currField.title}`);
                     let message1 = `${player.name} don't have shares of ${currField.name}` ///// chat
+                    if (localStorage.getItem("language") === "ru") {
+                      message1 = `${player.name} нет акций ${currField.name}`
+                    }
                     chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message1); ///// chat
                     break;
                 }
@@ -354,7 +420,10 @@ export class PlayerBtnsInterface {
     buySharesBtn.addEventListener('click', () => {
       boardFieldsContainer.addEventListener('click', (e: Event) => sharesHandler(e, true), { once: true })
     })
-    buySharesBtn.innerText = `BUY SHARES!`
+    buySharesBtn.innerText = `BUY SHARES!`;
+    if (localStorage.getItem("language") === "ru") {
+      buySharesBtn.innerText = "КУПИТЬ АКЦИИ!";
+    }
     Game.playerInterface.appendChild(buySharesBtn)
 
 
@@ -362,13 +431,19 @@ export class PlayerBtnsInterface {
     sellSharesBtn.addEventListener('click', () => {
       boardFieldsContainer.addEventListener('click', (e: Event) => sharesHandler(e, false), { once: true })
     })
-    sellSharesBtn.innerText = `sell shares`
+    sellSharesBtn.innerText = `sell shares`;
+    if (localStorage.getItem("language") === "ru") {
+      sellSharesBtn.innerText = "Продать акции";
+    }
     Game.playerInterface.appendChild(sellSharesBtn)
   }
 
   public static addLockBtn(player: IPlayer) {
     const lockBtn = document.createElement('button')
-    lockBtn.innerText = 'mortgage/return property'
+    lockBtn.innerText = 'mortgage/return property';
+    if (localStorage.getItem("language") === "ru") {
+      lockBtn.innerText = "Ипотека/Возврат имущества";
+    }
     lockBtn.addEventListener('click', () => Lock.lockProperties(player))
 
     const playerFields = Game.cardsData

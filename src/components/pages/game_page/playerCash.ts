@@ -19,7 +19,10 @@ export class PlayerCash {
     if (isBankrupt) {
       RemovePlayer.remove(player)
       //console.log(`Player ${player.id} is bankrupt!`);
-      const message = `Player ${player.id} is bankrupt!` ///// chat
+      let message = `Player ${player.id} is bankrupt!` ///// chat
+      if (localStorage.getItem("language") === "ru") {
+        message = `Игрок ${player.id} банкрот!`;
+      }
       chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
       return player.money
     }

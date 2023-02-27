@@ -81,6 +81,9 @@ export class FieldsRouter {
         const taxToPay = Math.floor((player.capital * 6) / 100);
         const taxBtn = document.createElement("button") as HTMLButtonElement;
         taxBtn.innerText = `PAY: ${taxToPay}k$`;
+        if (localStorage.getItem("language") === "ru") {
+          taxBtn.innerText = `Заплатить: ${taxToPay}k$`;
+        }
         Game.playerInterface.appendChild(taxBtn);
         taxBtn.addEventListener("click", () => {
           const isEnough = PlayerCash.checkCapital(player, taxToPay);
@@ -108,6 +111,9 @@ export class FieldsRouter {
         const sumToGet = message.sum; /* res */
         const chanceBtn = document.createElement("button") as HTMLButtonElement;
         chanceBtn.innerText = `GET: ${sumToGet}k$`;
+        if (localStorage.getItem("language") === "ru") {
+          chanceBtn.innerText = `Получить: ${sumToGet}k$`;
+        }
         SoundsGame.ChanceorRelax();
         Game.playerInterface.appendChild(chanceBtn);
         chanceBtn.addEventListener("click", () => {
@@ -184,6 +190,9 @@ export class FieldsRouter {
         const buyBtn = document.createElement("button") as HTMLButtonElement;
         const fieldPrice = field.price as number;
         buyBtn.innerText = `Buy ${field.title}`;
+        if (localStorage.getItem("language") === "ru") {
+          buyBtn.innerText = `Купить ${field.title}`;
+        }
         buyBtn.addEventListener("click", () => {
           if (player.money >= fieldPrice) {
             field.owner = player;
@@ -240,6 +249,9 @@ export class FieldsRouter {
           : (currFieldValue as number); /* SUM TO PAY other player {field.value}, south-korea check*/
         const payBtn = document.createElement("button") as HTMLButtonElement;
         payBtn.innerText = `PAY: ${sumToPay}k$`;
+        if (localStorage.getItem("language") === "ru") {
+          payBtn.innerText = `Заплатить ${sumToPay}`;
+        }
         payBtn.addEventListener("click", () => {
           const isEnough = PlayerCash.checkCapital(player, sumToPay);
           if (!isEnough) {

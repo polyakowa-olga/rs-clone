@@ -129,11 +129,7 @@ export default class GameBoard {
       const response = await fetch('../../../assets/cards-ru-data.json');
       const data = await response.json();
       return data.cards
-    } else {
-      const response = await fetch('../../../assets/cards-data.json');
-      const data = await response.json();
-      return data.cards
-    };
+    }
   }
 
   private async drawBoardElements() {

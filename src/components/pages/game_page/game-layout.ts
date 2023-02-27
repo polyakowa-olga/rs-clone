@@ -109,9 +109,14 @@ export class GameLayout {
     const timeElem = document.querySelector('.winner__time') as HTMLDivElement
 
     winnerNameElem.innerText = player.name
-    winnerCapitalElem.innerText = `Capital: ${player.capital}`
-    timeElem.innerText = `time: ${time}`
-
+    winnerCapitalElem.innerText = `Capital: ${player.capital}`;
+    if (localStorage.getItem("language") === "ru") {
+      winnerCapitalElem.innerText = `Капитал: ${player.capital}`;
+    }
+    timeElem.innerText = `time: ${time}`;
+    if (localStorage.getItem("language") === "ru") {
+      timeElem.innerText = `Время: ${time}`;
+    }
   }
 
   public static fullScreen() {
