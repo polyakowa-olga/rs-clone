@@ -3,6 +3,8 @@
     background: $color_main-dark;
     box-shadow: 0 -200px 100px -120px rgb(129, 24, 85) inset;
     animation: background 5s infinite alternate;
+    justify-content: center;
+    align-items: center;
 }
 
 @keyframes background {
@@ -15,5 +17,21 @@
 .game-page-button {
     margin: 0 auto;
     margin-top: 20%;
+}
 
+.block-button-language {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-color: 0 -200px 100px -120px rgb(129, 24, 85) inset;
+    animation: background 5s infinite alternate;
+}
+
+.block-button-language:hover {
+    background: rgb(16, 78, 102);
+    box-shadow: 1px 5px 10px rgb(74, 74, 77)
 }

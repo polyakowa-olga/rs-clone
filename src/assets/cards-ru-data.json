@@ -1,0 +1,836 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "type": "common",
+      "title": "start",
+      "name": "Старт",
+      "description": "Стартовое поле. За его прохождение, вы каждый раз получаете прибыль в размере $200 000",
+      "tax": 200,
+      "images": ""
+    },
+    {
+      "id": 2,
+      "type": "trade",
+      "title": "rolls royce",
+      "name": "Rolls-Royce",
+      "description": "Rolls-Royce — настоящая легенда автомобильного мира. Всего было выпущено немногим более 20 моделей этого автомобиля за многолетнюю историю марки. Тем не менее, Rolls-Royce никогда не гнался за количеством в ущерб качеству.",
+      "price": 60,
+      "pledge": 30,
+      "redemption": 66,
+      "sharesPrice": 50,
+      "country": "Великобритания",
+      "owner": null,
+      "images": "../assets/img/comp2.png",
+      "flag": "../assets/img/britain.png",
+      "web": "https://rolls-roycemotorcars.com/",
+      "value": {
+        "tax": 2,
+        "monopoly": 4,
+        "shares": [
+          10,
+          30,
+          90,
+          160,
+          250
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "trade",
+      "title": "alibaba",
+      "name": "Alibaba Group",
+      "description": "Alibaba Group — китайская публичная компания, работающая в сфере интернет-коммерции, владелец веб-порталов Taobao.com, Tmall, Alibaba.com и ряда других.",
+      "price": 200,
+      "pledge": 100,
+      "redemption": 220,
+      "sharesPrice": null,
+      "country": "Китай",
+      "owner": null,
+      "images": "../assets/img/comp3.png",
+      "flag": "../assets/img/china.png",
+      "web": "https://www.alibabagroup.com",
+      "value": {
+        "tax": 25,
+        "shares": [
+          25,
+          50,
+          100,
+          200
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "type": "trade",
+      "title": "bp",
+      "name": "BP",
+      "description": "BP была основана Вильямом Ноксом Д’Арси как англо-персидская нефтяная компания в 1909 году. Ежедневно BP добывает 3,9 млн. барр. нефти и сжиженного газового конденсата. В местах розничной торговли BP обслуживает около 13 миллионов покупателей в день.",
+      "price": 60,
+      "pledge": 30,
+      "redemption": 66,
+      "sharesPrice": 50,
+      "country": "Великобритания",
+      "owner": null,
+      "images": "../assets/img/comp4.png",
+      "flag": "../assets/img/britain.png",
+      "web": "https://bp.com",
+      "value": {
+        "tax": 2,
+        "monopoly": 4,
+        "shares": [
+          10,
+          30,
+          90,
+          160,
+          250
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "type": "trade",
+      "title": "bbc",
+      "name": "BBC",
+      "description": "BBC принадлежат два эфирных и три цифровых телеканала в Великобритании, 14 национальных радиостанций, несколько вэб-сайтов, около 40 журналов. BBC Worldwide принадлежат международные каналы BBC Prime, BBC Canada и BBC America. BBC World Service вещает на весь мир на 32 языках.",
+      "price": 80,
+      "pledge": 40,
+      "redemption": 88,
+      "sharesPrice": 50,
+      "country": "Великобритания",
+      "owner": null,
+      "images": "../assets/img/comp5.png",
+      "flag": "../assets/img/britain.png",
+      "web": "https://bbc.co.uk/",
+      "value": {
+        "tax": 4,
+        "monopoly": 8,
+        "shares": [
+          20,
+          60,
+          180,
+          320,
+          450
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "type": "common",
+      "title": "force majeure",
+      "name": "Форс мажор",
+      "description": "На этом поле вы несете убытки от непредвиденных обстоятельств.",
+      "tax": 0,
+      "images": ""
+    },
+    {
+      "id": 7,
+      "type": "trade",
+      "title": "samsung",
+      "name": "Samsung",
+      "description": "Компания образована в 1938 году. Samsung Electronics производит широкий ассортимент товаров — от микросхем памяти до цифровых телевизоров, от мониторов до мобильных телефонов. В 124 офисах компании на территории 56 стран мира работают около 150 тысяч человек.",
+      "price": 150,
+      "pledge": 75,
+      "redemption": 165,
+      "sharesPrice": null,
+      "country": "Южная Корея",
+      "owner": null,
+      "images": "../assets/img/comp7.png",
+      "flag": "../assets/img/korea.png",
+      "web": "https://samsung.com",
+      "value": {
+        "tax": 10,
+        "monopoly": 25,
+        "shares": [
+          10,
+          25
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "type": "common",
+      "title": "chance",
+      "name": "Шанс",
+      "description": "На этом поле вы можете получить незапланированные доходы.",
+      "tax": 0,
+      "images": ""
+    },
+    {
+      "id": 9,
+      "type": "trade",
+      "title": "danone",
+      "name": "Danone",
+      "description": "Сегодня, на мировом рынке, Данон - лидер в области производства молочных продуктов и печенья, и занимает второе место в производстве минеральной воды.",
+      "price": 100,
+      "pledge": 50,
+      "redemption": 110,
+      "sharesPrice": 50,
+      "country": "Франция",
+      "owner": null,
+      "images": "../assets/img/comp9.png",
+      "flag": "../assets/img/france.png",
+      "web": "https://danone.com",
+      "value": {
+        "tax": 6,
+        "monopoly": 12,
+        "shares": [
+          30,
+          90,
+          270,
+          400,
+          550
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "type": "trade",
+      "title": "hennessy",
+      "name": "Hennessy",
+      "description": "В 1819 году начался экспорт коньяков Hennessy в Россию, в том числе для императорского двора. А уже в 1828 году компания Hennessy открыла в Петербурге постоянное представительство. В течение 19 века французский коньяк Hennessy покорил Японию, Индию и Китай и к 1890 году стал лидером на мировом рынке.",
+      "price": 100,
+      "pledge": 50,
+      "redemption": 110,
+      "sharesPrice": 50,
+      "country": "Франция",
+      "owner": null,
+      "images": "../assets/img/comp10.png",
+      "flag": "../assets/img/france.png",
+      "web": "https://hennessy.com",
+      "value": {
+        "tax": 6,
+        "monopoly": 12,
+        "shares": [
+          30,
+          90,
+          270,
+          400,
+          550
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "type": "trade",
+      "title": "lenovo",
+      "name": "Lenovo",
+      "description": "Lenovo Group Limited — китайская компания, выпускающая персональные компьютеры и другую электронику. Является крупнейшим производителем персональных компьютеров в мире с долей на рынке более 20 %, а также занимает пятое место по производству мобильных телефонов.",
+      "price": 200,
+      "pledge": 100,
+      "redemption": 220,
+      "sharesPrice": null,
+      "country": "Китай",
+      "owner": null,
+      "images": "../assets/img/comp11.png",
+      "flag": "../assets/img/china.png",
+      "web": "https://lenovo.com",
+      "value": {
+        "tax": 25,
+        "shares": [
+          25,
+          50,
+          100,
+          200
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "type": "trade",
+      "title": "loreal",
+      "name": "L'Oréal",
+      "description": "L`Oreal Paris сегодня - это глобальный бренд, включающий в себя декоративную косметику, средства по уходy за волосами, за кожей лица и тела и солнцезащитный уход.",
+      "price": 120,
+      "pledge": 50,
+      "redemption": 110,
+      "sharesPrice": 50,
+      "country": "Франция",
+      "owner": null,
+      "images": "../assets/img/comp12.png",
+      "flag": "../assets/img/france.png",
+      "web": "https://www.loreal.com/",
+      "value": {
+        "tax": 6,
+        "monopoly": 12,
+        "shares": [
+          30,
+          90,
+          270,
+          400,
+          550
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "type": "common",
+      "title": "prison",
+      "name": "Таможня",
+      "description": "Это штрафное поле. Если переходите сюда с поля Таможенная очистка, для отсюда придется заплатить $50 000 или выбросить дубль в одной из трех попыток. При прямом попадании на данное поле, вы не несете никаких затрат.",
+      "tax": 0,
+      "images": ""
+    },
+    {
+      "id": 14,
+      "type": "trade",
+      "title": "ikea",
+      "name": "IKEA",
+      "description": "История ИКе началась в 1943 году в маленькой шведской деревне, когда основателю компании Ингвару Кампраду было всего 17 лет. За последующие 60 лет ИКе превратилась из скромной частной компании в крупнейшее предприятие розничной торговли, имеющее представительства в 44 странах мира.",
+      "price": 140,
+      "pledge": 70,
+      "redemption": 154,
+      "sharesPrice": 100,
+      "country": "Швеция",
+      "owner": null,
+      "images": "../assets/img/comp14.png",
+      "flag": "../assets/img/sweden.png",
+      "web": "https://ikea.com",
+      "value": {
+        "tax": 10,
+        "monopoly": 20,
+        "shares": [
+          50,
+          150,
+          450,
+          625,
+          750
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "type": "trade",
+      "title": "volvo",
+      "name": "Volvo",
+      "description": "Volvo предоставляет свои товары и услуги на транспортном рынке, уделяя особое внимание качеству, безопасности и охране окружающей среды. Более чем за 80 лет с момента своего основания компания заняла прочные позиции и заработала безупречную репутацию по всему миру.",
+      "price": 140,
+      "pledge": 70,
+      "redemption": 154,
+      "sharesPrice": 100,
+      "country": "Швеция",
+      "owner": null,
+      "images": "../assets/img/comp15.png",
+      "flag": "../assets/img/sweden.png",
+      "web": "https://volvocars.com",
+      "value": {
+        "tax": 10,
+        "monopoly": 20,
+        "shares": [
+          50,
+          150,
+          450,
+          625,
+          750
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "type": "trade",
+      "title": "armani",
+      "name": "Giorgio Armani",
+      "description": "Компания Giorgio Armani S.p.A основана в Милане 24 июля 1975 года Серджио Галеотти и Джорджио Армани, который и по сей день остается президентом, исполнительным директором и единственным акционером фирмы. На данный момент эксклюзивная розничная сеть группы охватывает 37 стран.",
+      "price": 180,
+      "pledge": 90,
+      "redemption": 198,
+      "sharesPrice": 100,
+      "country": "Италия",
+      "owner": null,
+      "images": "../assets/img/comp16.png",
+      "flag": "../assets/img/italy.png",
+      "web": "https://armani.com",
+      "value": {
+        "tax": 14,
+        "monopoly": 28,
+        "shares": [
+          70,
+          200,
+          550,
+          750,
+          950
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "type": "common",
+      "title": "tax",
+      "name": "Налог",
+      "description": "На этом поле придется заплатить налоги в размере 6% от вашего текущего капитала",
+      "tax": 6,
+      "images": ""
+    },
+    {
+      "id": 18,
+      "type": "trade",
+      "title": "versace",
+      "name": "Versace",
+      "description": "Можно сказать, что стиль Дома Версаче представляет собой уникальную смесь античности — как римской пышности, так и греческой утонченности — и искусства поп-арта с его эпатажем, игрой на стереотипах и превращения высокого искусства в веселое развлечение.",
+      "price": 180,
+      "pledge": 90,
+      "redemption": 198,
+      "sharesPrice": 100,
+      "country": "Италия",
+      "owner": null,
+      "images": "../assets/img/comp18.png",
+      "flag": "../assets/img/italy.png",
+      "web": "https://versace.com",
+      "value": {
+        "tax": 14,
+        "monopoly": 28,
+        "shares": [
+          70,
+          200,
+          550,
+          750,
+          950
+        ]
+      }
+    },
+    {
+      "id": 19,
+      "type": "trade",
+      "title": "ferrary",
+      "name": "Ferrari",
+      "description": "45 лет назад на один из заводов, принадлежавших Энцо Феррари, приехал тогдашний президент Италии Джованни Гронки. Осмотрев предприятие, он спросил владельца: Вы засиживаетесь здесь допоздна. Зачем?. Легендарный бизнесмен ответил: Работая без отдыха, не успеваешь думать о смерти. Феррари не лукавил. Он прожил 90 лет и успел увидеть, как его брэнд стал культовым.",
+      "price": 200,
+      "pledge": 100,
+      "redemption": 220,
+      "sharesPrice": 100,
+      "country": "Италия",
+      "owner": null,
+      "images": "../assets/img/comp19.png",
+      "flag": "../assets/img/italy.png",
+      "web": "https://ferrari.com",
+      "value": {
+        "tax": 14,
+        "monopoly": 28,
+        "shares": [
+          70,
+          200,
+          550,
+          750,
+          950
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "type": "common",
+      "title": "offshore",
+      "name": "Офшорная зона",
+      "description": "Свобода от всех налогов и пошлин. На этом поле вы не несете никаких затрат и можете отдохнуть.",
+      "tax": 0,
+      "images": ""
+    },
+    {
+      "id": 21,
+      "type": "trade",
+      "title": "sony",
+      "name": "Sony",
+      "description": "Корпорация Sony отличается от многих других производителей аудио и видео тем, что она не только делает телевизоры, видеокамеры и музыкальные центры, но и ведет огромную научно-исследовательскую работу.",
+      "price": 220,
+      "pledge": 110,
+      "redemption": 242,
+      "sharesPrice": 150,
+      "country": "Япония",
+      "owner": null,
+      "images": "../assets/img/comp21.png",
+      "flag": "../assets/img/japan.png",
+      "web": "https://sony.com",
+      "value": {
+        "tax": 18,
+        "monopoly": 36,
+        "shares": [
+          90,
+          250,
+          700,
+          875,
+          1050
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "type": "trade",
+      "title": "huawei",
+      "name": "Huawei",
+      "description": "Huawei Technologies Co. Ltd. — одна из крупнейших мировых компаний в сфере телекоммуникаций. Основана в 1987 году, бывшим инженером Народно-освободительной армии Китая Жэнь Чжэнфэем.",
+      "price": 200,
+      "pledge": 100,
+      "redemption": 220,
+      "sharesPrice": null,
+      "country": "Китай",
+      "owner": null,
+      "images": "../assets/img/comp22.png",
+      "flag": "../assets/img/china.png",
+      "web": "https://huawei.com",
+      "value": {
+        "tax": 25,
+        "shares": [
+          25,
+          50,
+          100,
+          200
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "type": "trade",
+      "title": "canon",
+      "name": "Canon",
+      "description": "Корпорация Canon Inc., головной офис которой расположен в Токио — один из мировых лидеров в области создания цифрового оборудования для пользователей офиса и дома. Со времени основания в 1937 г. компания Canon заняла уверенные позиции в сферах фото-, видеотехники и информационных технологий.",
+      "price": 220,
+      "pledge": 110,
+      "redemption": 242,
+      "sharesPrice": 150,
+      "country": "Япония",
+      "owner": null,
+      "images": "../assets/img/comp23.png",
+      "flag": "../assets/img/japan.png",
+      "web": "https://global.canon",
+      "value": {
+        "tax": 18,
+        "monopoly": 36,
+        "shares": [
+          90,
+          250,
+          700,
+          875,
+          1050
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "type": "trade",
+      "title": "toyota",
+      "name": "Toyota",
+      "description": "Началом истории Toyota можно считать 1933 год, когда в компании, занимавшейся текстильной промышленностью, открылся автомобильный департамент. Открыл его старший сын владельца компании Сакичи Тойоды - Киичиро Тойода, вдальнейшем и приведший марку к мировой известности. Начальным капиталом для разработки первых автомобилей стали деньги, вырученные при продаже патентных прав на прядильные машины английской компании Platt Brothers.",
+      "price": 240,
+      "pledge": 120,
+      "redemption": 264,
+      "sharesPrice": 150,
+      "country": "Япония",
+      "owner": null,
+      "images": "../assets/img/comp24.png",
+      "flag": "../assets/img/japan.png",
+      "web": "https://toyota.com",
+      "value": {
+        "tax": 20,
+        "monopoly": 40,
+        "shares": [
+          100,
+          300,
+          750,
+          925,
+          1100
+        ]
+      }
+    },
+    {
+      "id": 25,
+      "type": "common",
+      "title": "force majeure",
+      "name": "Форс мажор",
+      "description": "На этом поле вы несете убытки от непредвиденных обстоятельств.",
+      "tax": 0,
+      "images": ""
+    },
+    {
+      "id": 26,
+      "type": "trade",
+      "title": "hyundai",
+      "name": "Hyundai",
+      "description": "Хендэ в вольном переводе означает новое время. Почти 60 лет корейский концерн потратил на то, чтобы догнать это самое время и оказаться в рядах флагманов мировой индустрии. На его пути не было громких революций, но была долгая эволюция, потребовавшая усердной учебы и упорного труда многих тысяч сотрудников.",
+      "price": 150,
+      "pledge": 75,
+      "redemption": 165,
+      "sharesPrice": null,
+      "country": "Южная Корея",
+      "owner": null,
+      "images": "../assets/img/comp26.png",
+      "flag": "../assets/img/korea.png",
+      "web": "https://hyundai.com",
+      "value": {
+        "tax": 10,
+        "monopoly": 25,
+        "shares": [
+          10,
+          25
+        ]
+      }
+    },
+    {
+      "id": 27,
+      "type": "common",
+      "title": "chance",
+      "name": "Шанс",
+      "description": "На этом поле вы можете получить незапланированные доходы.",
+      "tax": 0,
+      "images": ""
+    },
+    {
+      "id": 28,
+      "type": "trade",
+      "title": "siemens",
+      "name": "Siemens",
+      "description": "Основанная в 1847 г. в Берлине телеграфно-строительная компания Сименс и Гальске с момента своего создания принадлежала к числу наиболее динамичных предприятий, работающих в сфере электротехники. Принципиальную роль в становлении молодого предприятия сыграло развитие первого зарубежного бизнеса компании в России.",
+      "price": 260,
+      "pledge": 130,
+      "redemption": 286,
+      "sharesPrice": 150,
+      "country": "Германия",
+      "owner": null,
+      "images": "../assets/img/comp28.png",
+      "flag": "../assets/img/germany.png",
+      "web": "https://siemens.com",
+      "value": {
+        "tax": 22,
+        "monopoly": 44,
+        "shares": [
+          110,
+          330,
+          800,
+          975,
+          1150
+        ]
+      }
+    },
+    {
+      "id": 29,
+      "type": "trade",
+      "title": "adidas",
+      "name": "Adidas",
+      "description": "Начиналась история бренда довольно прозаично. Изначально компания Адидас представляла собой небольшое семейное предприятие по пошиву обуви, открытое братьями Адольфом и Рудольфом Дасслерами, и имела название Обувная фабрика братьев Дасслер в Херцогенауэрахе.",
+      "price": 260,
+      "pledge": 130,
+      "redemption": 286,
+      "sharesPrice": 150,
+      "country": "Германия",
+      "owner": null,
+      "images": "../assets/img/comp29.png",
+      "flag": "../assets/img/germany.png",
+      "web": "https://adidas.com",
+      "value": {
+        "tax": 22,
+        "monopoly": 44,
+        "shares": [
+          110,
+          330,
+          800,
+          975,
+          1150
+        ]
+      }
+    },
+    {
+      "id": 30,
+      "type": "trade",
+      "title": "xiaomi",
+      "name": "Xiaomi",
+      "description": "Xiaomi Corporation — китайская корпорация, основанная Лэй Цзюнем в 2010 году, занимает четвертое место в мире и четвертое в Китае по объему производства смартфонов С 2018 года является публичной.",
+      "price": 200,
+      "pledge": 100,
+      "redemption": 220,
+      "sharesPrice": null,
+      "country": "Китай",
+      "owner": null,
+      "images": "../assets/img/comp30.png",
+      "flag": "../assets/img/china.png",
+      "web": "https://mi.com",
+      "value": {
+        "tax": 25,
+        "shares": [
+          25,
+          50,
+          100,
+          200
+        ]
+      }
+    },
+    {
+      "id": 31,
+      "type": "trade",
+      "title": "mercedes",
+      "name": "Mercedes-Benz",
+      "description": "Нет никакой нужды расхваливать все достоинства Mercedes-Benz.",
+      "price": 280,
+      "pledge": 140,
+      "redemption": 308,
+      "sharesPrice": 150,
+      "country": "Германия",
+      "owner": null,
+      "images": "../assets/img/comp31.png",
+      "flag": "../assets/img/germany.png",
+      "web": "https://mercedes-benz.com",
+      "value": {
+        "tax": 24,
+        "monopoly": 48,
+        "shares": [
+          120,
+          360,
+          850,
+          1110,
+          1200
+        ]
+      }
+    },
+    {
+      "id": 32,
+      "type": "common",
+      "title": "customs",
+      "name": "Таможенная очистка",
+      "description": "Таможенная очистка. Ваш груз арестован, перейдите на штрафное поле Таможня, для выхода с которого нужно заплатить $50 000 или выбросить дубль в одной из трех попыток.",
+      "tax": 0,
+      "images": ""
+    },
+    {
+      "id": 33,
+      "type": "trade",
+      "title": "nestle",
+      "name": "Nestle",
+      "description": "История Nestle уходит корнями в 1866 год. Именно в этом году Генри Нестле, решив побороть детскую смертность, изобрел первую в мире молочную смесь для грудных детей и приступил к ее производству. Сегодня ассортимент продукции Nestle насчитывает свыше 8000 торговых марок продуктов питания, которые знают потребители на всех пяти континентах.",
+      "price": 320,
+      "pledge": 160,
+      "redemption": 352,
+      "sharesPrice": 200,
+      "country": "Швейцария",
+      "owner": null,
+      "images": "../assets/img/comp33.png",
+      "flag": "../assets/img/swiss.png",
+      "web": "https://nestle.com",
+      "value": {
+        "tax": 28,
+        "monopoly": 56,
+        "shares": [
+          150,
+          450,
+          1000,
+          1200,
+          1400
+        ]
+      }
+    },
+    {
+      "id": 34,
+      "type": "trade",
+      "title": "rolex",
+      "name": "Rolex",
+      "description": "Часы этой компании стали именем нарицательным: если человек носит Ролекс, значит он, несомненно, богат и успешен. Именно эта марка является визиткой успешного человека. Может быть, это не самые дорогие, но уж точно, самые известные часы в мире.",
+      "price": 320,
+      "pledge": 160,
+      "redemption": 352,
+      "sharesPrice": 200,
+      "country": "Швейцария",
+      "owner": null,
+      "images": "../assets/img/comp34.png",
+      "flag": "../assets/img/swiss.png",
+      "web": "https://rolex.com",
+      "value": {
+        "tax": 28,
+        "monopoly": 56,
+        "shares": [
+          150,
+          450,
+          1000,
+          1200,
+          1400
+        ]
+      }
+    },
+    {
+      "id": 35,
+      "type": "trade",
+      "title": "mcdonald's",
+      "name": "McDonald's",
+      "description": "Открытия некоторых ресторанов Макдоналдс оказались столь знаменательными, что попали в заголовки газет всего мира. Так, 31 января 1990 года более 30 000 человек выстроились в очередь в первый ресторан Макдоналдс в Москве. До этого дня ни один ресторан не обслуживал столько посетителей за один день.",
+      "price": 350,
+      "pledge": 175,
+      "redemption": 385,
+      "sharesPrice": 200,
+      "country": "Соединенные Штаты Америки",
+      "owner": null,
+      "images": "../assets/img/comp35.png",
+      "flag": "../assets/img/usa.png",
+      "web": "https://www.mcdonalds.com/",
+      "value": {
+        "tax": 35,
+        "monopoly": 70,
+        "shares": [
+          175,
+          500,
+          1100,
+          1300,
+          1500
+        ]
+      }
+    },
+    {
+      "id": 36,
+      "type": "common",
+      "title": "tax",
+      "name": "Налог",
+      "description": "На этом поле придется заплатить налоги в размере 6% от вашего текущего капитала",
+      "tax": 6,
+      "images": ""
+    },
+    {
+      "id": 37,
+      "type": "trade",
+      "title": "walt disney",
+      "name": "Walt Disney",
+      "description": "С момента основания в 1923 году компания Disney и структуры, входящие в ее состав, остаются верны своему основному принципу — создавать исключительно качественный продукт в области развлечений, используя богатейший опыт, накопленный за долгие годы успешной работы.",
+      "price": 350,
+      "pledge": 175,
+      "redemption": 385,
+      "sharesPrice": 200,
+      "country": "Соединенные Штаты Америки",
+      "owner": null,
+      "images": "../assets/img/comp37.png",
+      "flag": "../assets/img/usa.png",
+      "web": "https://disney.com",
+      "value": {
+        "tax": 35,
+        "monopoly": 70,
+        "shares": [
+          175,
+          500,
+          1100,
+          1300,
+          1500
+        ]
+      }
+    },
+    {
+      "id": 38,
+      "type": "trade",
+      "title": "coca-cola",
+      "name": "Coca-Cola",
+      "description": "На сегодняшний день товарный знак Кока-Кола является наиболее известным товарным знаком в мире, а компания Кока-Кола - известнейшей компанией на Земле. Торговую марку Кока-Колы знают 98% населения земного шара. «Кока-Кола» продается почти в 200 странах мира. Каждый день в мире продается около 1 миллиарда единиц продукции Компании.",
+      "price": 400,
+      "pledge": 200,
+      "redemption": 440,
+      "sharesPrice": 200,
+      "country": "Соединенные Штаты Америки",
+      "owner": null,
+      "images": "../assets/img/comp38.png",
+      "flag": "../assets/img/usa.png",
+      "web": "https://coca-cola.com",
+      "value": {
+        "tax": 50,
+        "monopoly": 100,
+        "shares": [
+          200,
+          600,
+          1400,
+          1700,
+          2000
+        ]
+      }
+    }
+  ]
+}

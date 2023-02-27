@@ -45,7 +45,13 @@ class Header extends Element {
     buttonRules.classList.add("button-rules");
     buttonSound.classList.add("button-sound");
     buttonSound.classList.toggle("active");
-    buttonRules.innerText = "Rules";
+    if (localStorage.getItem("language") === "en") {
+      buttonRules.innerText = "Rules";
+    } else if (localStorage.getItem("language") === "ru") {
+      buttonRules.innerText = "Правила игры";
+    } else {
+      buttonRules.innerText = "Rules";
+    }
     buttonSound.src = "../assets/img/SoundOn.jpg";
     buttonSound.addEventListener("click", () => {
       buttonSound.classList.toggle("active");

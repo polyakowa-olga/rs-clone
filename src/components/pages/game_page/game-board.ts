@@ -121,9 +121,19 @@ export default class GameBoard {
   }
 
   public static async getCardsData() {
-    const response = await fetch('../../../assets/cards-data.json')
-    const data = await response.json()
-    return data.cards
+    if (localStorage.getItem("language") === "en") {
+      const response = await fetch('../../../assets/cards-data.json');
+      const data = await response.json();
+      return data.cards
+    } else if (localStorage.getItem("language") === "ru") {
+      const response = await fetch('../../../assets/cards-ru-data.json');
+      const data = await response.json();
+      return data.cards
+    } else {
+      const response = await fetch('../../../assets/cards-data.json');
+      const data = await response.json();
+      return data.cards
+    };
   }
 
   private async drawBoardElements() {
@@ -148,7 +158,7 @@ export default class GameBoard {
           field.insertAdjacentHTML('beforeend', boardAccidental);
           const acc = field.querySelector('.accidential') as HTMLDivElement
           if (acc) {
-            acc.innerText = currCard.title
+            acc.innerText = currCard.name
           }
       }
     })

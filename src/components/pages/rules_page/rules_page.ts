@@ -9,15 +9,26 @@ class RulesPage {
     const button = document.createElement("button");
     const buttonDelete = document.createElement("button");
     rulsGameShadow.append(rulsGame);
-    rulsGame.innerHTML = rullOfGameEn;
+    if (localStorage.getItem("language") === "en") {
+      rulsGame.innerHTML = rullOfGameEn;
+      button.innerText = "Ru";
+      button.classList.add("en");
+    } if (localStorage.getItem("language") === "ru") {
+      rulsGame.innerHTML = rullOfGameRu;
+      button.innerText = "En";
+      button.classList.add("ru");
+    } else {
+      rulsGame.innerHTML = rullOfGameEn;
+      button.innerText = "Ru";
+      button.classList.add("en");
+    }
     rulsGame.prepend(button);
     rulsGame.prepend(buttonDelete);
     rulsGameShadow.classList.add("rules-game-shadow");
     rulsGame.classList.add("rules-game");
     button.classList.add("button-language");
     buttonDelete.classList.add("button-delete");
-    button.innerText = "Ru";
-    button.classList.add("en");
+
     button.addEventListener("click", () => {
       if (button.classList.contains("en")) {
         rulsGame.innerHTML = rullOfGameRu;
