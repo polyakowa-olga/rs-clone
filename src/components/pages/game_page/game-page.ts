@@ -143,6 +143,10 @@ class GamePage extends Page {
     button.classList.add("no-add");
     button.addEventListener("click", async () => {
       const names = this.createArrayName();
+      if (names.length < 2) {
+        alert("PLease, add new player");
+        return;
+      }
       const container = document.querySelector('main');
       const gameBoard = new GameBoard().init();
       (container as HTMLDivElement).innerHTML = '';
