@@ -1,6 +1,7 @@
 import { Game } from "./init-game"
 import { IPlayer } from "../../interfaces/interfaces";
 import { GameLayout } from "./game-layout";
+import SoundsGame from "../../sounds/Sounds";
 import { chat } from "./components/chat/index"; // for chat
 /* eslint-disable */
 export class RemovePlayer {
@@ -30,10 +31,10 @@ export class RemovePlayer {
     const playersLeft = Game.players.filter((player) => !player.isBankrupt)
     if (playersLeft.length === 1) {
       console.log('GAME OVER');
+      SoundsGame.Win();
       chat.run(Game.boardFieldsContainer, undefined, Game.cardsData[0], undefined, "over"); ///// chat
       // here html changes if game over
       GameLayout.winnerHtml(playersLeft[0])
-
     }
   }
 }

@@ -11,6 +11,7 @@
 .page-button-box {
     @include flex();
     flex-wrap: nowrap;
+    justify-content: space-around;
 
     .block-button-sound {
         width: 10%;
@@ -29,7 +30,19 @@
         background-size: cover;
     }
 
+    .button-rules {
+        background-color: #ffcca7;
+        border: solid 1px #835331;
+        border-radius: 50%;
+        padding: 1%;
+        cursor: pointer;
+    }
+
     .button-sound:hover {
+        box-shadow: 1px 1px 10px #ffcca7;
+    }
+
+    .button-rules:hover {
         box-shadow: 1px 1px 10px #ffcca7;
     }
 

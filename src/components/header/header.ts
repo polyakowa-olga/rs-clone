@@ -1,10 +1,10 @@
 import Element from ".././templates/element";
 import { PageIds } from "../app";
+import RulesPage from "../pages/rules_page/rules_page";
 
 export enum PageNames {
   StartPage = "Start Page",
-  GamePage = "Game Page",
-  RulesPage = "Rules Page"
+  GamePage = "Game Page"
 }
 
 export const Buttons = [
@@ -15,10 +15,6 @@ export const Buttons = [
   {
     id: PageIds.GamePage,
     content: PageNames.GamePage
-  },
-  {
-    id: PageIds.RulesPage,
-    content: PageNames.RulesPage
   }
 ];
 
@@ -30,6 +26,7 @@ class Header extends Element {
   createPageButtons() {
     const pageButtonsBox = document.createElement("div");
     const blockButtonSound = document.createElement("div");
+    const buttonRules = document.createElement("div");
     const buttonSound = document.createElement("img");
     pageButtonsBox.classList.add("page-button-box");
     Buttons.forEach((button) => {
@@ -42,13 +39,24 @@ class Header extends Element {
       }
     });
     pageButtonsBox.append(blockButtonSound);
+    pageButtonsBox.append(buttonRules);
     blockButtonSound.append(buttonSound);
     blockButtonSound.classList.add("block-button-sound");
+    buttonRules.classList.add("button-rules");
     buttonSound.classList.add("button-sound");
     buttonSound.classList.toggle("active");
+    buttonRules.innerText = "Rules";
     buttonSound.src = "../assets/img/SoundOn.jpg";
     buttonSound.addEventListener("click", () => {
       buttonSound.classList.toggle("active");
+    });
+    buttonRules.addEventListener("click", () => {
+      const rulesGame = document.querySelector(".rules-game");
+      if (rulesGame) {
+        rulesGame.remove();
+      }
+      const blockRules = RulesPage.createBlockRules();
+      pageButtonsBox.append(blockRules);
     });
     return pageButtonsBox;
   }

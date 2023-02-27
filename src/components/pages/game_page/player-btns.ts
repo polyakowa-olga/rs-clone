@@ -75,16 +75,17 @@ export class PlayerBtnsInterface {
   public static addEndTurnBtn(player: IPlayer) {
     const endTurnBtn = document.createElement('button')
     endTurnBtn.innerText = 'end turn'
-    endTurnBtn.addEventListener('click', () => PlayerBtnsInterface.endTurnHandler(player))
+    endTurnBtn.addEventListener('click', () => PlayerBtnsInterface.endTurnHandler(player));
     Game.playerInterface.appendChild(endTurnBtn)
     return endTurnBtn
   }
   public static endTurnHandler(player: IPlayer) {
     if (!player.isBankrupt && GameCubeRoll.isDouble) {
       console.log(`${player.name} goes again because he threw off the double`);
-      const message = `${player.name} goes again because he threw off the double` ///// chat
+      const message = `${player.name} goes again because he threw off the double`; ///// chat
       chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, message); ///// chat
-      Game.newTurn(player)
+      SoundsGame.againTurn();
+      Game.newTurn(player);
       return
     }
     const giveNewPlayer: () => IPlayer = () => {
@@ -98,7 +99,8 @@ export class PlayerBtnsInterface {
       }
       return newPlayer
     }
-    const newPlayer = giveNewPlayer()
+    const newPlayer = giveNewPlayer();
+    SoundsGame.endTurn();
     Game.newTurn(newPlayer)
   }
 
@@ -157,12 +159,23 @@ export class PlayerBtnsInterface {
   public static createConcedeBtn(player: IPlayer) {
     const btn = document.createElement('button') as HTMLButtonElement
     btn.addEventListener('click', () => {
-      RemovePlayer.remove(player)
-      if (Game.players[Game.currPlayer] === player) {
-        PlayerBtnsInterface.endTurnHandler(player)
+      let deletePlayer = confirm("do ypu want Bankrupt");
+      if (deletePlayer) {
+        RemovePlayer.remove(player)
+        if (Game.players[Game.currPlayer] === player) {
+          PlayerBtnsInterface.endTurnHandler(player)
+        }
+        let num = 0;
+        Game.players.forEach(e => {
+          if (!e.isBankrupt) {
+            num += 1;
+          }
+        });
+        if (num > 1) SoundsGame.Bankrupt();
+
+        btn.remove();
       }
-      btn.remove()
-    })
+    });
     btn.classList.add('concede-btn')
     btn.innerText = 'concede'
     return btn

@@ -159,4 +159,22 @@ export default class SoundsGame {
       audioCoins.autoplay = true;
     }
   }
+
+  public static endTurn() {
+    const buttonSound = document.querySelector(".active") as HTMLDivElement;
+    if (buttonSound) {
+      const audioCoins = new Audio();
+      audioCoins.src = '../assets/audio/vnezapnyiy_perehod.mp3';
+      audioCoins.autoplay = true;
+    }
+  }
+
+  public static againTurn() {
+    const buttonSound = document.querySelector(".active") as HTMLDivElement;
+    if (buttonSound) {
+      const audioCoins = new Audio();
+      audioCoins.src = '../assets/audio/again_perehod.mp3';
+      audioCoins.autoplay = true;
+    }
+  }
 }
