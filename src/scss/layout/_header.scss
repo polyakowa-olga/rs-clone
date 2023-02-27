@@ -5,13 +5,14 @@
 
     padding: 1em 2em;
 
-
+    display: flex;
 }
 
 .page-button-box {
     @include flex();
     flex-wrap: nowrap;
-    justify-content: space-around;
+    justify-content: flex-end;
+    width: 50%;
 
     .block-button-sound {
         width: 10%;
@@ -55,4 +56,5 @@
     font-size: 56px;
     color: rgb(13, 92, 17);
     letter-spacing: 4px;
+    display: inline-block;
 }
