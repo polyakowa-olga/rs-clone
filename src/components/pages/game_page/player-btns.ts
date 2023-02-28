@@ -11,6 +11,7 @@ import { PlayerCash } from "./playerCash";
 import { RemovePlayer } from "./remove-player";
 import { Trade } from "./trade";
 import { chat } from "./components/chat/index"; // for chat
+import { concedeAcceptMenuRu } from "./game-board-src";
 //import { chat } from "./components/chat/index"; // for chat
 
 /* eslint-disable */
@@ -183,8 +184,18 @@ export class PlayerBtnsInterface {
   public static createConcedeBtn(player: IPlayer) {
     const btn = document.createElement('button') as HTMLButtonElement
     btn.addEventListener('click', () => {
-      let deletePlayer = confirm("do you want Bankrupt");
-      if (deletePlayer) {
+      const blockGame = document.body;
+      // let deletePlayer = confirm("do you want Bankrupt");
+      const blockShadow = document.createElement("div");
+      const questionBankrupt = document.createElement("div");
+      questionBankrupt.classList.add("question-block-bankrupt")
+      blockGame.append(blockShadow);
+      blockShadow.classList.add("block-shadow")
+      blockShadow.append(questionBankrupt);
+      questionBankrupt.insertAdjacentHTML('afterbegin', concedeAcceptMenuRu);
+      const yesButton = document.getElementById("yesBtnConcede");
+      const noButton = document.getElementById("noBtnConcede");
+      yesButton?.addEventListener("click", () => {
         RemovePlayer.remove(player)
         if (Game.players[Game.currPlayer] === player) {
           PlayerBtnsInterface.endTurnHandler(player)
@@ -198,7 +209,14 @@ export class PlayerBtnsInterface {
         if (num > 1) SoundsGame.Bankrupt();
 
         btn.remove();
-      }
+        blockShadow.remove();
+      });
+
+      noButton?.addEventListener("click", () => {
+        blockShadow.remove();
+        SoundsGame.AdminSound();
+        return
+      });
     });
     btn.classList.add('concede-btn')
     btn.innerText = 'concede'
@@ -442,7 +460,7 @@ export class PlayerBtnsInterface {
     const lockBtn = document.createElement('button')
     lockBtn.innerText = 'mortgage/return property';
     if (localStorage.getItem("language") === "ru") {
-      lockBtn.innerText = "Ипотека/Возврат имущества";
+      lockBtn.innerText = "Заложить/Выкупить имущество";
     }
     lockBtn.addEventListener('click', () => Lock.lockProperties(player))
 

@@ -76,14 +76,13 @@ export const tradeAcceptMenu = `
 
 // Ru language
 
-
 export const tradeChoosePlayerWindowRu = `
 <span id="tradeClose">X</span>
 <div class="trade__container">
 <p class="trade__title">Текущий игрок: <span id="tradeCP"></span></p>
 <p class="trade__title">Выбрать игрока:</p>
 <select id="tradeSelectPlayer"></select>
-<button id="tradeBtn">Торговля</button>
+<button id="tradeBtn">Начать обмен</button>
 </div>`
 
 
@@ -126,4 +125,11 @@ export const tradeAcceptMenuRu = `
 <div class="trade-accept__btns">
 <button id="yesBtn">Да</button>
 <button id="noBtn">Нет</button>
+</div>`
+
+export const concedeAcceptMenuRu = `
+<div class="block-bankrupt"><span id="playerName"></span>Вы уверенны? Если согласитесь, вы покините игру.</div>
+<div class="concede-accept__btns">
+<button id="yesBtnConcede">Да</button>
+<button id="noBtnConcede">Нет</button>
 </div>`
