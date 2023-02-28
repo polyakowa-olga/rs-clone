@@ -3,6 +3,7 @@
 import { ICardsData, IPlayer } from "../../interfaces/interfaces";
 import { CardValue } from "./card-value";
 import { mortgageMenu, skChinaFields } from "./game-board-src";
+import { mortgageMenuRu } from "./game-board-src";
 import { Game } from "./init-game";
 import { PlayerCash } from "./playerCash";
 import { chat } from "./components/chat/index"; // for chat
@@ -14,7 +15,12 @@ export class Lock {
     const pmv = document.querySelector('#pmv') as HTMLDivElement
     gameInterfaceElem.removeChild(pmv)
 
-    gameInterfaceElem.insertAdjacentHTML('afterbegin', mortgageMenu)
+
+    if (localStorage.getItem("language") === "ru") {
+      gameInterfaceElem.insertAdjacentHTML('afterbegin', mortgageMenuRu);
+    } else {
+      gameInterfaceElem.insertAdjacentHTML('afterbegin', mortgageMenu);
+    }
     const mortgageElem = document.querySelector('.mortgage') as HTMLDivElement
 
     const exitBtn = document.querySelector('#exitLockBtn') as HTMLButtonElement

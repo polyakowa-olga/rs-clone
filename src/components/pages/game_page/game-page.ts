@@ -71,7 +71,11 @@ class GamePage extends Page {
     inputBlock.append(addInput);
 
     inputName.type = "text";
-    inputName.placeholder = "Please, enter your name";
+    if (localStorage.getItem("language") === "en") {
+      inputName.placeholder = "Enter your name";
+    } else if (localStorage.getItem("language") === "ru") {
+      inputName.placeholder = "Введите ваше имя";
+    } else inputName.placeholder = "Enter your name";
     inputName.classList.add("input");
     inputBlock.classList.add("input-block");
     addInput.classList.add("addInput");
@@ -119,7 +123,11 @@ class GamePage extends Page {
     const buttonAddInputs = document.createElement("div");
     buttonAddInputs.classList.add("form-add");
     buttonAddInputs.innerText = "+";
-    textforBlock.innerText = "Please, add player from 2 till 5";
+    if (localStorage.getItem("language") === "ru") {
+      textforBlock.innerText = "Пожалуйста, добавте игроков от 2 до 5";
+    } else {
+      textforBlock.innerText = "Please, add player from 2 till 5";
+    }
     buttonAddInputs.addEventListener("click", () => {
       const allInputs = document.querySelectorAll("input");
       SoundsGame.Incoming();
@@ -138,14 +146,24 @@ class GamePage extends Page {
     link.prepend(buttonAddInputs);
     const input = this.createInput();
     link.prepend(input);
-    button.innerText = "Start game";
+    if (localStorage.getItem("language") === "ru") {
+      button.innerText = "Начать игру";
+    } else {
+      button.innerText = "Start game";
+    }
     button.classList.add("button-start-game");
     button.classList.add("no-add");
     button.addEventListener("click", async () => {
       const names = this.createArrayName();
+
       if (names.length < 2) {
-        alert("PLease, add new player");
-        return;
+        if (localStorage.getItem("language") === "ru") {
+          alert("Пожалуйста, добавьте нового игрока");
+          return;
+        } else {
+          alert("PLease, add new player");
+          return;
+        }
       }
       const container = document.querySelector('main');
       const gameBoard = new GameBoard().init();
@@ -194,7 +212,12 @@ class GamePage extends Page {
         "capital": 1500,
         "color": "pink",
         "currentPosition": 1
-      }]
+      }];
+      if (localStorage.getItem("language") === "ru") {
+        for (let i = 0; i < playersToPlay.length; i++) {
+          playersToPlay[i].name = `Игрок${i + 1}`;
+        }
+      }
       playersToPlay.forEach((player, i) => {
         if (names[i]) player.name = names[i];
       })

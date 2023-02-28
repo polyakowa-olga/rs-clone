@@ -10,7 +10,7 @@ const shareImgURL = {
   bar: "url('../assets/img/golden_bar.png')"
 }
 
-const KoreaAmount = ["$10K x The sum on the dice", "$25K x The sum on the dice"];
+const KoreaAmount = (localStorage.getItem("language") === "ru") ? ["$10K x Сумма на костях", "$25K x Сумма на костях"] : ["$10K x The sum on the dice", "$25K x The sum on the dice"];
 
 class YieldBlockCreator extends Element {
   choosedField: ICardData;
@@ -20,10 +20,16 @@ class YieldBlockCreator extends Element {
   }
 
   createbaseYieldContainer(tax: number) {
-    const baseYieldKey = WindowCreator.createElement(
+    let baseYieldKey = WindowCreator.createElement(
       ["i-base-yield-key"],
       "Base"
-    ); //"Стоимость акций"
+    );
+    if (localStorage.getItem("language") === "ru") {
+      baseYieldKey = WindowCreator.createElement(
+        ["i-base-yield-key"],
+        "Стоимость акций"
+      );
+    } //"Стоимость акций"
     const baseYieldValue = WindowCreator.createElement(
       ["base-yield-value"],
       WindowCreator.changeValueView(tax)
@@ -36,10 +42,16 @@ class YieldBlockCreator extends Element {
   }
 
   createMonopolyYieldContainer(monopoly: number) {
-    const monopolyYieldKey = WindowCreator.createElement(
+    let monopolyYieldKey = WindowCreator.createElement(
       ["i-monopoly-yield-key"],
       "In a monopoly, without shares"
-    ); //"В монополии, без акций"
+    );
+    if (localStorage.getItem("language") === "ru") {
+      monopolyYieldKey = WindowCreator.createElement(
+        ["i-monopoly-yield-key"],
+        "В монополии, без акций"
+      );
+    } //"В монополии, без акций"
     const monopolyYieldValue = WindowCreator.createElement(
       ["monopoly-yield-value"],
       WindowCreator.changeValueView(monopoly)
@@ -123,10 +135,16 @@ class YieldBlockCreator extends Element {
     const { country, value } = this.choosedField;
     const { tax, monopoly, shares } = value as ICardValue;
 
-    const yieldTitle = WindowCreator.createElement(
+    let yieldTitle = WindowCreator.createElement(
       ["yield-title"],
       "COMPANY PROFITABILITY"
-    ); //"ДОХОДНОСТЬ КОМПАНИИ"
+    );
+    if (localStorage.getItem("language") === "ru") {
+      yieldTitle = WindowCreator.createElement(
+        ["yield-title"],
+        "ДОХОДНОСТЬ КОМПАНИИ"
+      );
+    } //"ДОХОДНОСТЬ КОМПАНИИ"
 
     const baseYieldContainer = (country === "South Korea" || country === "China") ? "" : this.createbaseYieldContainer(tax);
 

@@ -50,6 +50,7 @@ export const tradeContainer = `
     </div>
     <button id="makeOfferBtn">Make offer!</button>
 `
+
 export const mortgageMenu = `
 <div class="mortgage">
 <button id="exitLockBtn">Exit</button>
@@ -67,8 +68,75 @@ export const winnerMenu = `
 </div>`
 
 export const tradeAcceptMenu = `
-<div class="player-title"><span id="playerName"></span>. Do you accept trade?</div>
+<div class="player-title"><span id="playerName"></span> Do you accept trade?</div>
 <div class="trade-accept__btns">
 <button id="yesBtn">yes</button>
 <button id="noBtn">no</button>
+</div>`
+
+export const concedeAcceptMenu = `
+<div class="block-bankrupt"><span id="playerNameConcede"></span>If you agree, you will leave the game.</div>
+<div class="concede-accept__btns">
+<button id="yesBtnConcede">Yes, I'm out</button>
+<button id="noBtnConcede">No, I stay</button>
+</div>`
+
+// Ru language
+
+export const tradeChoosePlayerWindowRu = `
+<span id="tradeClose">X</span>
+<div class="trade__container">
+<p class="trade__title">Текущий игрок: <span id="tradeCP"></span></p>
+<p class="trade__title">Выбрать игрока:</p>
+<select id="tradeSelectPlayer"></select>
+<button id="tradeBtn">Начать обмен</button>
+</div>`
+
+
+export const tradeContainerRu = `
+    <div class="trade__top-player">
+    <p class="trade__title"><span id="tradeCP"></span></p>
+        <input type="range" id="tpRange" value="0" step="1">
+        <div class="range-value">$<output id="tpValue">0</output>K</div>
+        <p class="trade__title">Имущество:</p>
+        <div id="tpCards"></div>
+    </div>
+    <div class="trade__bottom-player">
+    <p class="trade__title"><span id="tradeBP"></span></p>
+        <input type="range" id="bpRange" value="0" step="1">
+        <div class="range-value">$<output id="bpValue">0</output>K</div>
+        <p class="trade__title">Имущество:</p>
+        <div id="bpCards"></div>
+    </div>
+    <button id="makeOfferBtn">Сделать предложение!</button>
+`
+
+export const winnerMenuRu = `
+<div class="winner">
+<div class="winner__container">
+<p class="game-over__title">Конец Игры!</p>
+<p class="winner__title">Победитель!</p>
+<div class="winner__name"></div>
+<div class="winner__capital"></div>
+<div class="winner__time"></div>
+</div>
+</div>`
+
+export const mortgageMenuRu = `
+<div class="mortgage">
+<button id="exitLockBtn">Выход</button>
+</div>`
+
+export const tradeAcceptMenuRu = `
+<div class="player-title"><span id="playerName"></span> Вы соглашаетесь на обмен?</div>
+<div class="trade-accept__btns">
+<button id="yesBtn">Да</button>
+<button id="noBtn">Нет</button>
+</div>`
+
+export const concedeAcceptMenuRu = `
+<div class="block-bankrupt"><span id="playerNameConcede"></span>Если согласитесь, вы покините игру.</div>
+<div class="concede-accept__btns">
+<button id="yesBtnConcede">Да, я выхожу</button>
+<button id="noBtnConcede">Нет, я остаюсь</button>
 </div>`

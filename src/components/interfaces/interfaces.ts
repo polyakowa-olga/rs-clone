@@ -23,6 +23,7 @@ export interface ICardsData {
   sharesPrice?: number
   tax: number,
   country?: string,
+  countryName?: string,
   owner?: any,
   images?: string,
   flag?: string,

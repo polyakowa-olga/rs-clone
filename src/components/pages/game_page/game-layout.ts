@@ -1,6 +1,6 @@
 import { ICardsData, IPlayer } from "../../interfaces/interfaces";
 import { chinaSharesFields, leftrightSharesFields, skSharesFields, topBottomSharesFields, winnerMenu } from "./game-board-src";
-
+import { winnerMenuRu } from "./game-board-src";
 /* eslint-disable */
 export class GameLayout {
   public static changeFieldValue(fields: ICardsData[]) {
@@ -103,17 +103,27 @@ export class GameLayout {
     const timerElem = document.querySelector('#timer') as HTMLDivElement
     const time = timerElem.innerText
     timerElem.style.visibility = 'hidden'
-    gamePageElem?.classList.add('end-game')
-    board?.insertAdjacentHTML('afterbegin', winnerMenu)
+    gamePageElem?.classList.add('end-game');
+
+    if (localStorage.getItem("language") === "ru") {
+      gamePageElem?.insertAdjacentHTML('afterbegin', winnerMenuRu);
+    } else {
+      gamePageElem?.insertAdjacentHTML('afterbegin', winnerMenu);
+    }
 
     const winnerNameElem = document.querySelector('.winner__name') as HTMLDivElement
     const winnerCapitalElem = document.querySelector('.winner__capital') as HTMLDivElement
     const timeElem = document.querySelector('.winner__time') as HTMLDivElement
 
     winnerNameElem.innerText = player.name
-    winnerCapitalElem.innerText = `Capital: ${player.capital}`
-    timeElem.innerText = `time: ${time}`
-
+    winnerCapitalElem.innerText = `Capital: ${player.capital}`;
+    if (localStorage.getItem("language") === "ru") {
+      winnerCapitalElem.innerText = `Капитал: ${player.capital}`;
+    }
+    timeElem.innerText = `time: ${time}`;
+    if (localStorage.getItem("language") === "ru") {
+      timeElem.innerText = `Время: ${time}`;
+    }
   }
 
   public static fullScreen() {

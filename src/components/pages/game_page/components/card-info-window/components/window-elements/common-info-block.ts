@@ -11,10 +11,13 @@ class CommonInfoBlockCreator extends Element {
   }
 
   createBlock() {
-    const { name, country, web, images, description } = this.choosedField;
+    const { name, country, countryName, web, images, description } = this.choosedField;
 
     const nameBox = WindowCreator.createElement(["i-name"], name);
-    const countryBox = WindowCreator.createElement(["i-country"], country);
+    let countryBox = WindowCreator.createElement(["i-country"], country);
+    if (localStorage.getItem("language") === "ru") {
+      countryBox = WindowCreator.createElement(["i-country"], countryName);
+    }
     const webBox = WindowCreator.createElement(
       ["i-web"],
       web,

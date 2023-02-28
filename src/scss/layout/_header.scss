@@ -2,9 +2,7 @@
     @include flex-between();
 
     background-color: $color_main-dark;
-
-    padding: 0 2em;
-
+    padding: 1em 2em;
     display: flex;
     flex-direction: row
 }
@@ -13,6 +11,7 @@
     @include flex();
     flex-wrap: nowrap;
     justify-content: flex-end;
+
     width: 2vw;
     align-items: center;
 
@@ -39,11 +38,11 @@
         border: solid 1px #835331;
         border-radius: 50%;
         cursor: pointer;
-        width: 6vw;
+        width: fit-content;
         height: 3vw;
         padding: 10% 30% 0% 30%;
         line-height: 2.2vw;
-
+        white-space: nowrap;
     }
 
     .button-sound:hover {
