@@ -10,7 +10,7 @@ class StartPage extends Page {
   createPageButton() {
     const blockStart = document.createElement("div");
     const buttonHTML = document.createElement("a");
-    const buttonLanguage = document.createElement("button");
+    const buttonLanguage = document.createElement("img");
     blockStart.append(buttonHTML);
     blockStart.append(buttonLanguage);
     buttonHTML.href = `#${Buttons[1].id}`;
@@ -20,14 +20,14 @@ class StartPage extends Page {
     buttonLanguage.addEventListener("click", () => {
       const buttonRules = document.querySelector(".button-rules") as HTMLElement;
       if (localStorage.getItem("language") === "en") {
-        buttonLanguage.innerText = "En";
+        buttonLanguage.src = "../../../../assets/icons/icon-united-kingdom.png";
         localStorage.setItem("language", "ru");
         buttonLanguage.classList.add("ru");
         buttonLanguage.classList.remove("en");
         buttonHTML.innerText = "Старт Игры";
         buttonRules.innerText = "Правила игры";
       } else {
-        buttonLanguage.innerText = "Ru";
+        buttonLanguage.src = "../../../../assets/icons/icon-russia.png";
         localStorage.setItem("language", "en");
         buttonLanguage.classList.add("en");
         buttonLanguage.classList.remove("ru");
@@ -37,14 +37,14 @@ class StartPage extends Page {
     });
     if (localStorage.getItem("language") === "en") {
       buttonHTML.innerText = "START GAME";
-      buttonLanguage.innerText = "Ru";
+      buttonLanguage.src = "../../../../assets/icons/icon-russia.png";
     } else if (localStorage.getItem("language") === "ru") {
       buttonHTML.innerText = "Старт Игры";
-      buttonLanguage.innerText = "En";
+      buttonLanguage.src = "../../../../assets/icons/icon-united-kingdom.png";
     } else {
       localStorage.setItem("language", "en");
       buttonHTML.innerText = "START GAME";
-      buttonLanguage.innerText = "Ru";
+      buttonLanguage.src = "../../../../assets/icons/icon-russia.png";
     }
     buttonHTML.classList.add("button", `${Buttons[1].id}-button`);
     return blockStart;

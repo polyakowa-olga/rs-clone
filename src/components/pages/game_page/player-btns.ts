@@ -11,7 +11,7 @@ import { PlayerCash } from "./playerCash";
 import { RemovePlayer } from "./remove-player";
 import { Trade } from "./trade";
 import { chat } from "./components/chat/index"; // for chat
-import { concedeAcceptMenuRu } from "./game-board-src";
+import { concedeAcceptMenu, concedeAcceptMenuRu } from "./game-board-src";
 //import { chat } from "./components/chat/index"; // for chat
 
 /* eslint-disable */
@@ -192,10 +192,18 @@ export class PlayerBtnsInterface {
       blockGame.append(blockShadow);
       blockShadow.classList.add("block-shadow")
       blockShadow.append(questionBankrupt);
-      questionBankrupt.insertAdjacentHTML('afterbegin', concedeAcceptMenuRu);
-      const yesButton = document.getElementById("yesBtnConcede");
-      const noButton = document.getElementById("noBtnConcede");
-      yesButton?.addEventListener("click", () => {
+      if (localStorage.getItem("language") === "ru") {
+        questionBankrupt.insertAdjacentHTML('afterbegin', concedeAcceptMenuRu);
+        const namePlayer = document.querySelector("#playerNameConcede") as HTMLElement;
+        namePlayer.innerText = `${player.name} вы уверены?`;
+      } else {
+        questionBankrupt.insertAdjacentHTML('afterbegin', concedeAcceptMenu);
+        const namePlayer = document.querySelector("#playerNameConcede") as HTMLElement;
+        namePlayer.innerText = `${player.name} are you sure?`;
+      }
+      const yesButton = document.getElementById("yesBtnConcede") as HTMLElement;
+      const noButton = document.getElementById("noBtnConcede") as HTMLElement;
+      yesButton.addEventListener("click", () => {
         RemovePlayer.remove(player)
         if (Game.players[Game.currPlayer] === player) {
           PlayerBtnsInterface.endTurnHandler(player)
@@ -212,7 +220,7 @@ export class PlayerBtnsInterface {
         blockShadow.remove();
       });
 
-      noButton?.addEventListener("click", () => {
+      noButton.addEventListener("click", () => {
         blockShadow.remove();
         SoundsGame.AdminSound();
         return

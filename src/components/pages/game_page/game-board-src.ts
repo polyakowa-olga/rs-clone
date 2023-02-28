@@ -68,10 +68,17 @@ export const winnerMenu = `
 </div>`
 
 export const tradeAcceptMenu = `
-<div class="player-title"><span id="playerName"></span>. Do you accept trade?</div>
+<div class="player-title"><span id="playerName"></span>Do you accept trade?</div>
 <div class="trade-accept__btns">
 <button id="yesBtn">yes</button>
 <button id="noBtn">no</button>
+</div>`
+
+export const concedeAcceptMenu = `
+<div class="block-bankrupt"><span id="playerNameConcede"></span>If you agree, you will leave the game.</div>
+<div class="concede-accept__btns">
+<button id="yesBtnConcede">Yes, I'm out</button>
+<button id="noBtnConcede">No, I stay</button>
 </div>`
 
 // Ru language
@@ -121,15 +128,15 @@ export const mortgageMenuRu = `
 </div>`
 
 export const tradeAcceptMenuRu = `
-<div class="player-title"><span id="playerName"></span>. Вы соглашаетесь на обмен?</div>
+<div class="player-title"><span id="playerName"></span>Вы соглашаетесь на обмен?</div>
 <div class="trade-accept__btns">
 <button id="yesBtn">Да</button>
 <button id="noBtn">Нет</button>
 </div>`
 
 export const concedeAcceptMenuRu = `
-<div class="block-bankrupt"><span id="playerName"></span>Вы уверенны? Если согласитесь, вы покините игру.</div>
+<div class="block-bankrupt"><span id="playerNameConcede"></span>Если согласитесь, вы покините игру.</div>
 <div class="concede-accept__btns">
-<button id="yesBtnConcede">Да</button>
-<button id="noBtnConcede">Нет</button>
+<button id="yesBtnConcede">Да, я выхожу</button>
+<button id="noBtnConcede">Нет, я остаюсь</button>
 </div>`

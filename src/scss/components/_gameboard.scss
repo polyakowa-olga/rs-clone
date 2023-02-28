@@ -1032,9 +1032,8 @@
   color: rgba(0, 0, 0, .75);
   white-space: nowrap;
   cursor: pointer;
-  // position: absolute;
-  // width: 100%;
-  // height: 100%;
+  padding: 5%;
+  margin: 20%;
   font-size: 100%;
   line-height: 1;
 }
@@ -1043,4 +1042,21 @@
   background: #1f7429;
   border: solid 1px #1f7429;
   box-shadow: 2px 1px 3px #18591f;
+}
+
+.block-bankrupt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.block-bankrupt span {
+  font-size: 2rem;
+  padding: 20px;
+}
+
+.concede-accept__btns {
+  display: flex;
+  justify-content: space-around;
 }
