@@ -2,6 +2,7 @@ import SoundsGame from "../../sounds/Sounds";
 import { ICardsData, IPlayer } from "../../interfaces/interfaces";
 import { CardValue } from "./card-value";
 import { skChinaFields, tradeAcceptMenu, tradeChoosePlayerWindow, tradeContainer } from "./game-board-src";
+import { tradeAcceptMenuRu, tradeChoosePlayerWindowRu, tradeContainerRu } from "./game-board-src";
 import { Game } from "./init-game";
 import { PlayerCash } from "./playerCash";
 import { chat } from "./components/chat/index"; // for chat
@@ -19,7 +20,12 @@ export class Trade {
 
     tradeElem.classList.add('trade')
 
-    tradeElem.innerHTML = tradeChoosePlayerWindow
+
+    if (localStorage.getItem("language") === "ru") {
+      tradeElem.innerHTML = tradeChoosePlayerWindowRu;
+    } else {
+      tradeElem.innerHTML = tradeChoosePlayerWindow;
+    }
 
     gameInterfaceElem.append(tradeElem)
     const closeBtn = document.querySelector('#tradeClose') as HTMLButtonElement
@@ -63,8 +69,12 @@ export class Trade {
 
       const allFieldsElems = document.querySelectorAll('.playField') as NodeListOf<HTMLDivElement>
       const tradeContainerElem = document.querySelector('.trade__container') as HTMLDivElement
-      tradeContainerElem.innerHTML = tradeContainer
-      // tradeElem.innerHTML = tradeContainer
+
+      if (localStorage.getItem("language") === "ru") {
+        tradeContainerElem.innerHTML = tradeContainerRu;
+      } else {
+        tradeContainerElem.innerHTML = tradeContainer;
+      }
 
       const elemListener = (e: Event) => {
         tradeElemHandler(e, currPlayerCards, playerForTradeCards, playerForTrade)
@@ -128,7 +138,11 @@ export class Trade {
 
             gameInterfaceElem.removeChild(tradeElem)
 
-            gameInterfaceElem.insertAdjacentHTML('afterbegin', tradeAcceptMenu)
+            if (localStorage.getItem("language") === "ru") {
+              gameInterfaceElem.insertAdjacentHTML('afterbegin', tradeAcceptMenuRu);
+            } else {
+              gameInterfaceElem.insertAdjacentHTML('afterbegin', tradeAcceptMenu);
+            }
             const playerSpan = document.querySelector('#playerName') as HTMLSpanElement
             playerSpan.innerText = `${playerForTrade.name}`
             const btnsMenu = document.querySelector('.trade-accept__btns') as HTMLDivElement
