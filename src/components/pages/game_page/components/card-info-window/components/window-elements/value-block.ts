@@ -13,10 +13,16 @@ class ValueBlockCreator extends Element {
   createBlock() {
     const { price, pledge, redemption, sharesPrice } = this.choosedField;
 
-    const initValueKey = WindowCreator.createElement(
+    let initValueKey = WindowCreator.createElement(
       ["i-init-value-key"],
       "Initial price"
-    ); //"Начальная стоимость"
+    );
+    if (localStorage.getItem("language") === "ru") {
+      initValueKey = WindowCreator.createElement(
+        ["i-init-value-key"],
+        "Начальная стоимость"
+      );
+    } //"Начальная стоимость"
     const initValueValue = WindowCreator.createElement(
       ["i-init-value-value"],
       WindowCreator.changeValueView(price!)
@@ -26,10 +32,16 @@ class ValueBlockCreator extends Element {
       [initValueKey, initValueValue]
     );
 
-    const depositValueKey = WindowCreator.createElement(
+    let depositValueKey = WindowCreator.createElement(
       ["i-deposit-value-key"],
       "Pledge price"
-    ); //"Залоговая стоимость"
+    );
+    if (localStorage.getItem("language") === "ru") {
+      depositValueKey = WindowCreator.createElement(
+        ["i-deposit-value-key"],
+        "Залоговая стоимость"
+      );
+    } //"Залоговая стоимость"
     const depositValueValue = WindowCreator.createElement(
       ["i-deposit-value"],
       WindowCreator.changeValueView(pledge!)
@@ -39,10 +51,16 @@ class ValueBlockCreator extends Element {
       [depositValueKey, depositValueValue]
     );
 
-    const redemptionValueKey = WindowCreator.createElement(
+    let redemptionValueKey = WindowCreator.createElement(
       ["i-redemption-value-key"],
       "Redemption value"
-    ); //"Стоимость выкупа"
+    );
+    if (localStorage.getItem("language") === "ru") {
+      redemptionValueKey = WindowCreator.createElement(
+        ["i-redemption-value-key"],
+        "Стоимость выкупа"
+      );
+    } //"Стоимость выкупа"
     const redemptionValueValue = WindowCreator.createElement(
       ["i-redemption-value"],
       WindowCreator.changeValueView(redemption!)
@@ -52,10 +70,16 @@ class ValueBlockCreator extends Element {
       [redemptionValueKey, redemptionValueValue]
     );
 
-    const shareValueKey = WindowCreator.createElement(
+    let shareValueKey = WindowCreator.createElement(
       ["i-share-value-key"],
       "Share value"
-    ); //"Стоимость акций"
+    );
+    if (localStorage.getItem("language") === "ru") {
+      shareValueKey = WindowCreator.createElement(
+        ["i-share-value-key"],
+        "Стоимость акций"
+      );
+    } //"Стоимость акций"
     const value = sharesPrice ? WindowCreator.changeValueView(sharesPrice) : "not purchasable"
     const shareValueValue = WindowCreator.createElement(
       ["i-share-value"],
