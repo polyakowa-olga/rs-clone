@@ -184,7 +184,7 @@ export class PlayerBtnsInterface {
   public static createConcedeBtn(player: IPlayer) {
     const btn = document.createElement('button') as HTMLButtonElement
     btn.addEventListener('click', () => {
-      const blockGame = document.body;
+      const blockGame = document.querySelector(".main") as HTMLElement;
       // let deletePlayer = confirm("do you want Bankrupt");
       const blockShadow = document.createElement("div");
       const questionBankrupt = document.createElement("div");
