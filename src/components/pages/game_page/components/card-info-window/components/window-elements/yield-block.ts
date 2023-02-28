@@ -10,7 +10,7 @@ const shareImgURL = {
   bar: "url('../assets/img/golden_bar.png')"
 }
 
-const KoreaAmount = ["$10K x The sum on the dice", "$25K x The sum on the dice"];
+const KoreaAmount = (localStorage.getItem("language") === "ru") ? ["$10K x Сумма на костях", "$25K x Сумма на костях"] : ["$10K x The sum on the dice", "$25K x The sum on the dice"];
 
 class YieldBlockCreator extends Element {
   choosedField: ICardData;
@@ -142,7 +142,7 @@ class YieldBlockCreator extends Element {
     if (localStorage.getItem("language") === "ru") {
       yieldTitle = WindowCreator.createElement(
         ["yield-title"],
-        "COMPANY PROFITABILITY"
+        "ДОХОДНОСТЬ КОМПАНИИ"
       );
     } //"ДОХОДНОСТЬ КОМПАНИИ"
 

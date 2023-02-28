@@ -80,7 +80,10 @@ class ValueBlockCreator extends Element {
         "Стоимость акций"
       );
     } //"Стоимость акций"
-    const value = sharesPrice ? WindowCreator.changeValueView(sharesPrice) : "not purchasable"
+    let value = sharesPrice ? WindowCreator.changeValueView(sharesPrice) : "not purchasable";
+    if (localStorage.getItem("language") === "ru") {
+      value = sharesPrice ? WindowCreator.changeValueView(sharesPrice) : "нельзя купить";
+    }
     const shareValueValue = WindowCreator.createElement(
       ["i-share-value"],
       value
