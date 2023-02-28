@@ -66,8 +66,15 @@ class Header extends Element {
     });
     return pageButtonsBox;
   }
+  createLogo() {
+    const logo = document.createElement("div");
+    logo.className = "header-logo";
+    logo.textContent = "MONOPOLY";
+    return logo;
+  }
 
   returnHTML() {
+    this.container.append(this.createLogo());
     this.container.append(this.createPageButtons());
     return this.container;
   }

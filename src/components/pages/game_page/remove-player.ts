@@ -30,7 +30,7 @@ export class RemovePlayer {
   protected static checkEndGame() {
     const playersLeft = Game.players.filter((player) => !player.isBankrupt)
     if (playersLeft.length === 1) {
-      console.log('GAME OVER');
+      // console.log('GAME OVER');
       SoundsGame.Win();
       chat.run(Game.boardFieldsContainer, undefined, Game.cardsData[0], undefined, "over"); ///// chat
       // here html changes if game over

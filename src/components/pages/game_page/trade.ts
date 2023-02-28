@@ -1,7 +1,7 @@
 import SoundsGame from "../../sounds/Sounds";
 import { ICardsData, IPlayer } from "../../interfaces/interfaces";
 import { CardValue } from "./card-value";
-import { skChinaFields, tradeChoosePlayerWindow, tradeContainer } from "./game-board-src";
+import { skChinaFields, tradeAcceptMenu, tradeChoosePlayerWindow, tradeContainer } from "./game-board-src";
 import { Game } from "./init-game";
 import { PlayerCash } from "./playerCash";
 import { chat } from "./components/chat/index"; // for chat
@@ -124,37 +124,100 @@ export class Trade {
             chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade3"); ///// chat
             return
           default:
-            const result = confirm(`${playerForTrade.name ? playerForTrade.name : 'Player ' + playerForTrade.id}. Do you accept ${player.name ? player.name + `'s` : 'Player ' + player.id} offer?`)
-            if (result) {
-              PlayerCash.addMoneyToPlayer(player, bpRangeVal)
-              PlayerCash.removeMoneyFromPlayer(player, tpRangeVal)
 
-              PlayerCash.addMoneyToPlayer(playerForTrade, tpRangeVal)
-              PlayerCash.removeMoneyFromPlayer(playerForTrade, bpRangeVal)
 
-              bpPlayerProps.forEach((prop) => {
-                PlayerCash.tradeFields(player, playerForTrade, prop)
-              })
-              tpPlayerProps.forEach((prop) => {
-                PlayerCash.tradeFields(playerForTrade, player, prop)
-              })
-              tradeElem.remove();
-              SoundsGame.TradeDoing();
-              // console.log('The deal is done!');
-              chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade4"); ///// chat
-            } else {
-              tradeElem.remove();
-              SoundsGame.AdminSound();
-              // console.log('Offer was rejected.');
-              chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade5"); ///// chat
-            }
-            allFieldsElems.forEach((elem) => {
-              elem?.removeEventListener('click', elemListener)
+            gameInterfaceElem.removeChild(tradeElem)
+
+            gameInterfaceElem.insertAdjacentHTML('afterbegin', tradeAcceptMenu)
+            const playerSpan = document.querySelector('#playerName') as HTMLSpanElement
+            playerSpan.innerText = `${playerForTrade.name}`
+            const btnsMenu = document.querySelector('.trade-accept__btns') as HTMLDivElement
+            btnsMenu.addEventListener('click', (e: Event) => {
+              const yesBtn = document.querySelector('#yesBtn') as HTMLButtonElement
+              const noBtn = document.querySelector('#noBtn') as HTMLButtonElement
+              if ((e.target as HTMLElement).closest('#yesBtn')) {
+                PlayerCash.addMoneyToPlayer(player, bpRangeVal)
+                PlayerCash.removeMoneyFromPlayer(player, tpRangeVal)
+
+                PlayerCash.addMoneyToPlayer(playerForTrade, tpRangeVal)
+                PlayerCash.removeMoneyFromPlayer(playerForTrade, bpRangeVal)
+
+                bpPlayerProps.forEach((prop) => {
+                  PlayerCash.tradeFields(player, playerForTrade, prop)
+                })
+                tpPlayerProps.forEach((prop) => {
+                  PlayerCash.tradeFields(playerForTrade, player, prop)
+                })
+                tradeElem.remove();
+                SoundsGame.TradeDoing();
+                // console.log('The deal is done!');
+                chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade4"); ///// chat
+              } else if ((e.target as HTMLElement).closest('#noBtn')) {
+                tradeElem.remove();
+                SoundsGame.AdminSound();
+                // console.log('Offer was rejected.');
+                chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade5"); ///// chat
+              }
+              if ((e.target as HTMLElement).closest('#yesBtn') || (e.target as HTMLElement).closest('#noBtn')) {
+                allFieldsElems.forEach((elem) => {
+                  elem?.removeEventListener('click', elemListener)
+                })
+                gameInterfaceElem.innerHTML = ''
+                const pmvElem = document.querySelector('#pmv')
+                if (!pmvElem) {
+                  gameInterfaceElem.appendChild(pmv)
+                }
+              }
             })
-            const pmvElem = document.querySelector('#pmv')
-            if (!pmvElem) {
-              gameInterfaceElem.appendChild(pmv)
-            }
+            // okBtn.addEventListener('click', () => {
+            //   PlayerCash.addMoneyToPlayer(player, bpRangeVal)
+            //   PlayerCash.removeMoneyFromPlayer(player, tpRangeVal)
+
+            //   PlayerCash.addMoneyToPlayer(playerForTrade, tpRangeVal)
+            //   PlayerCash.removeMoneyFromPlayer(playerForTrade, bpRangeVal)
+
+            //   bpPlayerProps.forEach((prop) => {
+            //     PlayerCash.tradeFields(player, playerForTrade, prop)
+            //   })
+            //   tpPlayerProps.forEach((prop) => {
+            //     PlayerCash.tradeFields(playerForTrade, player, prop)
+            //   })
+            //   tradeElem.remove();
+            //   SoundsGame.TradeDoing();
+            //   // console.log('The deal is done!');
+            //   chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade4"); ///// chat
+            //   okBtn.remove()
+            // }, { once: true })
+            // if (result) {
+            // PlayerCash.addMoneyToPlayer(player, bpRangeVal)
+            // PlayerCash.removeMoneyFromPlayer(player, tpRangeVal)
+
+            // PlayerCash.addMoneyToPlayer(playerForTrade, tpRangeVal)
+            // PlayerCash.removeMoneyFromPlayer(playerForTrade, bpRangeVal)
+
+            // bpPlayerProps.forEach((prop) => {
+            //   PlayerCash.tradeFields(player, playerForTrade, prop)
+            // })
+            // tpPlayerProps.forEach((prop) => {
+            //   PlayerCash.tradeFields(playerForTrade, player, prop)
+            // })
+            // tradeElem.remove();
+            // SoundsGame.TradeDoing();
+            // // console.log('The deal is done!');
+            // chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade4"); ///// chat
+            // } else {
+            //   tradeElem.remove();
+            //   SoundsGame.AdminSound();
+            //   // console.log('Offer was rejected.');
+            //   chat.run(Game.boardFieldsContainer, player, Game.cardsData[0], undefined, "trade5"); ///// chat
+            // }
+            // allFieldsElems.forEach((elem) => {
+            //   elem?.removeEventListener('click', elemListener)
+            // })
+            // const pmvElem = document.querySelector('#pmv')
+            // if (!pmvElem) {
+            //   gameInterfaceElem.appendChild(pmv)
+            // }
             break;
         }
       }
@@ -200,7 +263,7 @@ export class Trade {
           const elemToremove = document.querySelector(`#tradeFld${id}`)
           elemToremove?.remove()
           arrWithId.splice(arrWithId.indexOf(id), 1)
-          console.log(arrWithId);
+          // console.log(arrWithId);
           return
         }
 
@@ -209,12 +272,12 @@ export class Trade {
             tradeCard.style.backgroundImage = `url('${targetCard?.images}')`
             tpCards.appendChild(tradeCard)
             tpCardsforTrade.push(id)
-            console.log(tpCardsforTrade);
+            // console.log(tpCardsforTrade);
 
             tradeCard.addEventListener('click', () => {
               tradeCard.remove()
               tpCardsforTrade.splice(tpCardsforTrade.indexOf(id), 1)
-              console.log(tpCardsforTrade);
+              // console.log(tpCardsforTrade);
 
             })
             break;
@@ -222,12 +285,12 @@ export class Trade {
             tradeCard.style.backgroundImage = `url('${targetCard?.images}')`
             bpCards.appendChild(tradeCard)
             bpCardsforTrade.push(id)
-            console.log(bpCardsforTrade);
+            // console.log(bpCardsforTrade);
 
             tradeCard.addEventListener('click', () => {
               tradeCard.remove()
               bpCardsforTrade.splice(bpCardsforTrade.indexOf(id), 1)
-              console.log(bpCardsforTrade);
+              // console.log(bpCardsforTrade);
 
             })
             break;
