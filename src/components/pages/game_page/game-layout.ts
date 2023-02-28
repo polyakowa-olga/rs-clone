@@ -98,11 +98,13 @@ export class GameLayout {
 
   public static winnerHtml(player: IPlayer) {
     const gamePageElem = document.querySelector('#game-page') as HTMLDivElement
+    const board = document.querySelector('.boardBody') as HTMLDivElement
+
     const timerElem = document.querySelector('#timer') as HTMLDivElement
     const time = timerElem.innerText
     timerElem.style.visibility = 'hidden'
     gamePageElem?.classList.add('end-game')
-    gamePageElem?.insertAdjacentHTML('afterbegin', winnerMenu)
+    board?.insertAdjacentHTML('afterbegin', winnerMenu)
 
     const winnerNameElem = document.querySelector('.winner__name') as HTMLDivElement
     const winnerCapitalElem = document.querySelector('.winner__capital') as HTMLDivElement
