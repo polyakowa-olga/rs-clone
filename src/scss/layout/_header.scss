@@ -2,20 +2,21 @@
     @include flex-between();
 
     background-color: $color_main-dark;
-
     padding: 1em 2em;
-
     display: flex;
+    flex-direction: row
 }
 
 .page-button-box {
     @include flex();
     flex-wrap: nowrap;
     justify-content: flex-end;
-    width: 50%;
 
+    width: 2vw;
+    align-items: center;
+    
     .block-button-sound {
-        width: 10%;
+        // width: 100%;
         cursor: pointer;
     }
 
@@ -23,10 +24,11 @@
         background-color: #ffcca7;
         border: solid 1px #835331;
         border-radius: 50%;
-        position: relative;
-        left: 50%;
+        width: 3vw;
+        // position: relative;
+        // left: 50%;
         background-image: url("../assets/img/SoundOff.jpg");
-        width: 50%;
+        // width: 50%;
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -35,8 +37,12 @@
         background-color: #ffcca7;
         border: solid 1px #835331;
         border-radius: 50%;
-        padding: 1%;
         cursor: pointer;
+        width: 6vw;
+        height: 3vw;
+        padding: 10% 30% 0% 30%;
+        line-height: 2.2vw;
+
     }
 
     .button-sound:hover {
@@ -53,7 +59,7 @@
 }
 
 .header-logo {
-    font-size: 56px;
+    font-size: 4vw;
     color: rgb(13, 92, 17);
     letter-spacing: 4px;
     display: inline-block;

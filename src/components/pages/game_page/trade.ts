@@ -135,7 +135,6 @@ export class Trade {
             return
           default:
 
-
             gameInterfaceElem.removeChild(tradeElem)
 
             if (localStorage.getItem("language") === "ru") {
@@ -143,6 +142,7 @@ export class Trade {
             } else {
               gameInterfaceElem.insertAdjacentHTML('afterbegin', tradeAcceptMenu);
             }
+
             const playerSpan = document.querySelector('#playerName') as HTMLSpanElement
             playerSpan.innerText = `${playerForTrade.name}`
             const btnsMenu = document.querySelector('.trade-accept__btns') as HTMLDivElement
@@ -278,6 +278,7 @@ export class Trade {
           elemToremove?.remove()
           arrWithId.splice(arrWithId.indexOf(id), 1)
           // console.log(arrWithId);
+
           return
         }
 

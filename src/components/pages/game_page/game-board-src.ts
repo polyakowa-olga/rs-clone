@@ -68,7 +68,7 @@ export const winnerMenu = `
 </div>`
 
 export const tradeAcceptMenu = `
-<div class="player-title"><span id="playerName"></span>Do you accept trade?</div>
+<div class="player-title"><span id="playerName"></span> Do you accept trade?</div>
 <div class="trade-accept__btns">
 <button id="yesBtn">yes</button>
 <button id="noBtn">no</button>
@@ -128,7 +128,7 @@ export const mortgageMenuRu = `
 </div>`
 
 export const tradeAcceptMenuRu = `
-<div class="player-title"><span id="playerName"></span>Вы соглашаетесь на обмен?</div>
+<div class="player-title"><span id="playerName"></span> Вы соглашаетесь на обмен?</div>
 <div class="trade-accept__btns">
 <button id="yesBtn">Да</button>
 <button id="noBtn">Нет</button>

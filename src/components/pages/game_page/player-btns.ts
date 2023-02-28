@@ -296,7 +296,9 @@ export class PlayerBtnsInterface {
                     break;
                   default:
                     currField.currValue = currField.value?.monopoly
+
                     // console.log(`Player ${player.id} had sold 1 shares of ${currField.title}`);
+
                     let message1 = `${player.name} had sold 1 shares of ${currField.name}` ///// chat
                     if (localStorage.getItem("language") === "ru") {
                       message1 = `${player.name} продал одну акцию ${currField.name}`;
@@ -310,6 +312,7 @@ export class PlayerBtnsInterface {
                   case true:
                     currField.currValue = currFieldShares[2]
                     // console.log(`Player ${player.id} had bought 3 shares of ${currField.title}`);
+
                     let message = `${player.name} had bought 3 shares of ${currField.name}` ///// chat
                     if (localStorage.getItem("language") === "ru") {
                       message = `${player.name} купил 3 акции ${currField.name}`
@@ -319,6 +322,7 @@ export class PlayerBtnsInterface {
                   default:
                     currField.currValue = currFieldShares[0]
                     // console.log(`Player ${player.id} had sold 2 shares of ${currField.title}`);
+
                     let message1 = `${player.name} had sold 2 shares of ${currField.name}` ///// chat
                     if (localStorage.getItem("language") === "ru") {
                       message1 = `${player.name} продал 2 акции ${currField.name}`
@@ -332,6 +336,7 @@ export class PlayerBtnsInterface {
                   case true:
                     currField.currValue = currFieldShares[3]
                     // console.log(`Player ${player.id} had bought 4 shares of ${currField.title}`);
+
                     let message = `${player.name} had bought 4 shares of ${currField.name}` ///// chat
                     if (localStorage.getItem("language") === "ru") {
                       message = `${player.name} купил 4 акции ${currField.name}`
@@ -354,6 +359,7 @@ export class PlayerBtnsInterface {
                   case true:
                     currField.currValue = currFieldShares[4]
                     // console.log(`Player ${player.id} had bought 100% shares of ${currField.title}`);
+
                     let message = `${player.name} had bought 100% shares of ${currField.name}` ///// chat
                     if (localStorage.getItem("language") === "ru") {
                       message = `${player.name} купил 100% акций ${currField.name}`
@@ -375,6 +381,7 @@ export class PlayerBtnsInterface {
                 switch (isBuy) {
                   case true:
                     // console.log(`Player ${player.id} already have 100% shares of ${currField.title}`);
+
                     let message = `${player.name} already have 100% shares of ${currField.name}` ///// chat
                     if (localStorage.getItem("language") === "ru") {
                       message = `${player.name} уже владеет 100% акций ${currField.name}`
@@ -384,6 +391,7 @@ export class PlayerBtnsInterface {
                   default:
                     currField.currValue = currFieldShares[3]
                     // console.log(`Player ${player.id} had sold 5 shares of ${currField.title}`);
+
                     let message1 = `${player.name} had sold 5 shares of ${currField.name}` ///// chat
                     if (localStorage.getItem("language") === "ru") {
                       message1 = `${player.name} продал 5 акции ${currField.name}`
@@ -406,6 +414,7 @@ export class PlayerBtnsInterface {
                   default:
                     strictSell = true
                     // console.log(`Player ${player.id} don't have shares of ${currField.title}`);
+
                     let message1 = `${player.name} don't have shares of ${currField.name}` ///// chat
                     if (localStorage.getItem("language") === "ru") {
                       message1 = `${player.name} нет акций ${currField.name}`

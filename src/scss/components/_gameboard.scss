@@ -831,6 +831,10 @@
   top: 0;
   left: 0;
   z-index: 1001;
+  // margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .winner__container {
@@ -838,22 +842,18 @@
   background-position: center center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  margin: 2rem auto;
-  width: 43rem;
-  height: 36rem;
-  z-index: 1002;
-  position: relative;
-
-  padding-top: 5%;
+  width: 35vw;
+  height: 36vw;
+  font-size: 2vw;
 }
 
 .game-over__title {
-  padding-top: 3%;
+  padding-top: 20%;
+  line-height: 200%;
 }
 
 .game-over__title,
 .winner__title {
-  font-size: 250%;
   text-align: center;
   margin: 0 auto;
   color: #fffb00;
@@ -861,32 +861,20 @@
 }
 
 .winner__name {
-  font-size: 350%;
+  font-size: 1.5em;
   font-weight: 600;
   text-align: center;
-  margin: 7% auto 10.5% auto;
+  margin: 7% auto 13.8% auto;
   color: #ff0000;
 
 }
 
-.winner__capital {
-  font-size: 150%;
-  text-align: center;
-  width: fit-content;
-  height: fit-content;
-  margin: auto auto;
-  color: white;
-}
-
+.winner__capital,
 .winner__time {
-  font-size: 150%;
-  text-align: center;
-  width: fit-content;
-  height: fit-content;
-  margin: auto auto;
   color: white;
+  text-align: center;
+  font-size: .73em;
 }
-
 
 
 // timer
@@ -929,6 +917,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  right: 0.4rem;
 }
 
 .open-full-screen {
